@@ -45,6 +45,9 @@ const requestParcels = async ({ county, columns, page }) => {
 
   const parcels = []
 
+  // const missing = Object.keys(res.table[0].parcel).filter((k) => !columns.includes(k))
+  // console.log(missing)
+
   for (const item of res.table) {
     const selected = Object.fromEntries(
       Object.entries(item.parcel).filter(([k, v]) => columns.includes(k))
@@ -75,7 +78,7 @@ const run = async ({ county }) => {
     }
 
     await wait(3000)
-  } while (res && res.offset < res.count - 200 && page < 6)
+  } while (res && res.offset < res.count - 200)
 }
 
 export default run
