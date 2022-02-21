@@ -64,11 +64,11 @@ const requestParcels = async ({ county, columns, page }) => {
   return res
 }
 
-const run = async ({ county }) => {
+const run = async ({ county, start = 1, end = Infinity }) => {
   const columns = Object.keys(await db('parcels').columnInfo())
   log(`importing parcels for ${county}`)
 
-  let page = 1
+  let page = start
   let res
   do {
     res = await requestParcels({ county, columns, page })
@@ -78,7 +78,7 @@ const run = async ({ county }) => {
     }
 
     await wait(3000)
-  } while (res && res.offset < res.count - 200)
+  } while (res && res.offset < res.count - 200 && page < end)
 }
 
 export default run
@@ -90,7 +90,7 @@ const main = async () => {
       console.log('missing --county path')
       process.exit()
     }
-    await run({ county: argv.county })
+    await run({ county: argv.county, start: argv.start, end: argv.end })
   } catch (err) {
     error = err
     console.log(error)
