@@ -77,7 +77,7 @@ const run = async ({ county, start = 1, end = Infinity }) => {
       page += 1
     }
 
-    await wait(3000)
+    await wait(10000)
   } while (res && res.offset < res.count - 200 && page < end)
 }
 
