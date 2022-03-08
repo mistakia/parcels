@@ -23,7 +23,16 @@ const requestParcels = async ({ county, columns, page }) => {
   const qs = queryString.stringify(params)
   const url = `${config.import_base_url}${county}/blexts.json?${qs}`
 
-  log({ county, page })
+  const now = new Date()
+  const offsetMs = now.getTimezoneOffset() * 60 * 1000
+  const dateLocal = new Date(now.getTime() - offsetMs)
+  const date = dateLocal
+    .toISOString()
+    .slice(0, 19)
+    .replace(/-/g, '/')
+    .replace('T', ' - ')
+
+  log({ county, page, date })
 
   let res
   try {
