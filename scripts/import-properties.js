@@ -12,6 +12,7 @@ const log = debug('import-properties')
 debug.enable('import-properties')
 
 const formatProperty = ({ stats, property }) => ({
+  sqmi: stats.numeric.sqmi,
   num_parcels: stats.numeric.num_parcels,
   num_owners: stats.numeric.num_owners,
   ogc_fid: property.ogc_fid,

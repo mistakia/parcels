@@ -7,6 +7,7 @@ CREATE TABLE `properties` (
   `classes` varchar(30),
   `headline` varchar(30),
   `path` varchar(100),
+  `sqmi` decimal(20, 8),
   `num_parcels` int,
   `num_owners` int,
   PRIMARY KEY (`ogc_fid`),
