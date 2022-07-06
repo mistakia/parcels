@@ -52,7 +52,15 @@ const getProperties = async (path = '/us') => {
       return []
     }
 
-    const { features } = data.children.admin.geojson
+    let features = []
+
+    if (data.children.admin) {
+      features = features.concat(data.children.admin.geojson.features)
+    }
+
+    if (data.children.neighborhoods) {
+      features = features.concat(data.children.neighborhoods.geojson.features)
+    }
 
     const properties = []
     for (const feature of features) {
