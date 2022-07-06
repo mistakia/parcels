@@ -81,8 +81,13 @@ const importProperty = async (property) => {
   }
 }
 
-const importProperties = async (path = '/us') => {
-  const properties = await getProperties(path)
+const importProperties = async ({ path = '/us', start } = {}) => {
+  let properties = await getProperties(path)
+
+  if (start) {
+    const index = properties.findIndex(p => p.path === start)
+    properties = properties.slice(index)
+  }
 
   for (const property of properties) {
     await importProperty(property)
@@ -95,7 +100,7 @@ export default importProperties
 const main = async () => {
   let error
   try {
-    await importProperties(argv.path)
+    await importProperties({ path: argv.path, start: argv.start })
   } catch (err) {
     error = err
     console.log(error)
