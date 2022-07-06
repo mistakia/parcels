@@ -5,7 +5,7 @@ CREATE TABLE `properties` (
   `name` varchar(30),
   `postal` varchar(10),
   `classes` varchar(30),
-  `headline` varchar(30),
+  `headline` varchar(50),
   `path` varchar(100),
   `sqmi` decimal(20, 8),
   `num_parcels` int,
