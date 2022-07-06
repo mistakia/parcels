@@ -6,7 +6,7 @@ CREATE TABLE `properties` (
   `postal` varchar(10),
   `classes` varchar(30),
   `headline` varchar(30),
-  `path` varchar(20),
+  `path` varchar(100),
   `num_parcels` int,
   `num_owners` int,
   PRIMARY KEY (`ogc_fid`),
