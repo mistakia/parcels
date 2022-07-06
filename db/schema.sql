@@ -1,3 +1,18 @@
+DROP TABLE IF EXISTS `properties`;
+
+CREATE TABLE `properties` (
+  `ogc_fid` serial comment 'object id',
+  `name` varchar(30),
+  `postal` varchar(10),
+  `classes` varchar(30),
+  `headline` varchar(30),
+  `path` varchar(20),
+  `num_parcels` int,
+  `num_owners` int,
+  PRIMARY KEY (`ogc_fid`),
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `parcels`;
 
 CREATE TABLE `parcels` (
