@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `properties`;
 
 CREATE TABLE `properties` (
   `ogc_fid` serial comment 'object id',
-  `name` varchar(30),
+  `name` varchar(50),
   `postal` varchar(10),
   `classes` varchar(30),
   `headline` varchar(50),
