@@ -6,7 +6,7 @@ import { isMain } from '../common/index.js'
 import importCounty from './import-county.js'
 
 const log = debug('importer')
-debug.enable('importer,import-county')
+debug.enable('importer,import-county,knex*')
 
 const getParcelCount = async (path) => {
   const re = await db('parcels')
