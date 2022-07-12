@@ -73,7 +73,7 @@ const requestParcels = async ({ county, columns, page }) => {
   return res
 }
 
-const run = async ({ county, start = 1, end = Infinity }) => {
+const importCounty = async ({ county, start = 1, end = Infinity }) => {
   const columns = Object.keys(await db('parcels').columnInfo())
   log(`importing parcels for ${county}`)
 
@@ -90,7 +90,7 @@ const run = async ({ county, start = 1, end = Infinity }) => {
   } while (res && res.offset < res.count - 200 && page < end)
 }
 
-export default run
+export default importCounty
 
 const main = async () => {
   let error
@@ -99,7 +99,11 @@ const main = async () => {
       console.log('missing --county path')
       process.exit()
     }
-    await run({ county: argv.county, start: argv.start, end: argv.end })
+    await importCounty({
+      county: argv.county,
+      start: argv.start,
+      end: argv.end
+    })
   } catch (err) {
     error = err
     console.log(error)
@@ -115,6 +119,6 @@ const main = async () => {
   process.exit()
 }
 
-if (isMain) {
+if (isMain(import.meta.url)) {
   main()
 }

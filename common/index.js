@@ -26,5 +26,5 @@ export const request = async ({ url, ...options }) => {
   }
 }
 
-export const isMain = () => process.argv[1] === fileURLToPath(import.meta.url)
+export const isMain = (p) => process.argv[1] === fileURLToPath(p)
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))

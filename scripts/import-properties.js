@@ -93,7 +93,7 @@ const importProperties = async ({ path = '/us', start } = {}) => {
   let properties = await getProperties(path)
 
   if (start) {
-    const index = properties.findIndex(p => p.path === start)
+    const index = properties.findIndex((p) => p.path === start)
     properties = properties.slice(index)
   }
 
@@ -124,6 +124,6 @@ const main = async () => {
   process.exit()
 }
 
-if (isMain) {
+if (isMain(import.meta.url)) {
   main()
 }
