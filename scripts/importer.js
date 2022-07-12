@@ -36,7 +36,7 @@ const importer = async () => {
       continue
     }
     log({ count, path: item.path })
-    const start = Math.max(1, Math.round(count / 200))
+    const start = Math.max(1, Math.floor(count / 200))
     await importCounty({ county: item.path, start })
   }
 }
