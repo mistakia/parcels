@@ -35,7 +35,7 @@ const importer = async () => {
       log(`skipping ${item.path}, already imported`)
       continue
     }
-    await importCounty({ county: item.path })
+    await importCounty({ county: item.path, start })
   }
 }
 
