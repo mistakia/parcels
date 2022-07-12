@@ -8,7 +8,7 @@ import importCounty from './import-county.js'
 const log = debug('importer')
 debug.enable('importer,import-county')
 
-const getStart = async (path) => {
+const getParcelCount = async (path) => {
   const re = await db('parcels')
     .where('path', 'like', `${path}%`)
     .count('* as count')
@@ -30,12 +30,12 @@ const importer = async () => {
   const items = property_areas.slice(0, 10)
 
   for (const item of items) {
-    const start = await getStart(item.path)
-    if (start === item.num_parcels) {
+    const count = await getParcelCount(item.path)
+    if (count === item.num_parcels) {
       log(`skipping ${item.path}, already imported`)
       continue
     }
-    await importCounty({ county: item.path, start })
+    await importCounty({ county: item.path, start: Math.round(count / 200) })
   }
 }
 
