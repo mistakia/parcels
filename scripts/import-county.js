@@ -49,7 +49,7 @@ const requestParcels = async ({ county, columns, page }) => {
   }
 
   if (!res) {
-    return
+    return false
   }
 
   const parcels = []
