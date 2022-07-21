@@ -93,7 +93,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
     const count = await getParcelCount(county)
     if (count === property.num_parcels) {
       log('all parcels imported')
-      return
+      return true
     }
 
     if (res) {
@@ -102,6 +102,8 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
 
     await wait(10000)
   } while (res && res.offset < res.count - 200 && page < end)
+
+    return true
 }
 
 export default importCounty
