@@ -2,18 +2,11 @@ import debug from 'debug'
 
 import db from '../db/index.js'
 // import config from '../config.js'
-import { isMain } from '../common/index.js'
+import { isMain, getParcelCount } from '../common/index.js'
 import importCounty from './import-county.js'
 
 const log = debug('importer')
 debug.enable('importer,import-county')
-
-const getParcelCount = async (path) => {
-  const re = await db('parcels')
-    .where('path', 'like', `${path}%`)
-    .count('* as count')
-  return re[0].count
-}
 
 const importer = async () => {
   let property_areas = await db('properties')

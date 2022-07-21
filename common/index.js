@@ -3,6 +3,8 @@ import fs from 'fs-extra'
 import path, { dirname } from 'path'
 import { fetch, CookieJar } from 'node-fetch-cookies'
 
+import db from '../db/index.js'
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const jarPath = path.resolve(__dirname, '../jar.json')
 if (!fs.pathExistsSync(jarPath)) {
@@ -28,3 +30,13 @@ export const request = async ({ url, ...options }) => {
 
 export const isMain = (p) => process.argv[1] === fileURLToPath(p)
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+export const getParcelCount = async (path) => {
+  const re = await db('parcels')
+    .where('path', 'like', `${path}%`)
+    .count('* as count')
+  return re[0].count
+}
+export const getProperty = async (path) => {
+  const re = await db('properties').where({ path })
+  return re[0]
+}

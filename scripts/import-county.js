@@ -5,7 +5,13 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '../db/index.js'
 import config from '../config.js'
-import { isMain, request, wait } from '../common/index.js'
+import {
+  isMain,
+  request,
+  wait,
+  getProperty,
+  getParcelCount
+} from '../common/index.js'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-county')
@@ -77,10 +83,18 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
   const columns = Object.keys(await db('parcels').columnInfo())
   log(`importing parcels for ${county}`)
 
+  const property = await getProperty(county)
+
   let page = start
   let res
   do {
     res = await requestParcels({ county, columns, page })
+
+    const count = await getParcelCount(county)
+    if (count === property.num_parcels) {
+      log('all parcels imported')
+      return
+    }
 
     if (res) {
       page += 1
