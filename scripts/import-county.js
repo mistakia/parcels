@@ -88,6 +88,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
   let page = start
   let res
   do {
+    res = null
     res = await requestParcels({ county, columns, page })
 
     const count = await getParcelCount(county)
@@ -103,7 +104,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
     await wait(10000)
   } while (res && res.offset < res.count - 200 && page < end)
 
-    return res
+    return Boolean(res)
 }
 
 export default importCounty
