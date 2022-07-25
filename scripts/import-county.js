@@ -104,7 +104,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
     await wait(10000)
   } while (res && res.offset < res.count - 200 && page < end)
 
-    return Boolean(res)
+  return Boolean(res)
 }
 
 export default importCounty

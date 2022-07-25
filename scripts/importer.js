@@ -1,14 +1,17 @@
 import debug from 'debug'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
 import db from '../db/index.js'
 // import config from '../config.js'
 import { isMain, getParcelCount } from '../common/index.js'
 import importCounty from './import-county.js'
 
+const argv = yargs(hideBin(process.argv)).argv
 const log = debug('importer')
 debug.enable('importer,import-county')
 
-const importer = async () => {
+const importer = async ({ max = Infinity } = {}) => {
   let property_areas = await db('properties')
   property_areas = property_areas
     .filter((p) => p.num_parcels && p.sqmi)
@@ -28,6 +31,14 @@ const importer = async () => {
       log(`skipping ${item.path}, already imported`)
       continue
     }
+
+    if (max !== Infinity && item.num_parcels > max) {
+      log(
+        `skipping ${item.path}, parcel count (${item.num_parcels}) is greater than max limit (${max})`
+      )
+      continue
+    }
+
     log({ count, path: item.path })
     const start = Math.max(1, Math.floor(count / 200))
     const result = await importCounty({ county: item.path, start })
@@ -43,7 +54,7 @@ export default importer
 const main = async () => {
   let error
   try {
-    await importer()
+    await importer({ max: argv.max })
   } catch (err) {
     error = err
     console.log(error)
