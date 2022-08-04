@@ -26,7 +26,7 @@ const importer = async ({ max = Infinity } = {}) => {
   const items = property_areas.slice(0, 100)
 
   for (const item of items) {
-    const count = await getParcelCount(item.path)
+    let count = await getParcelCount(item.path)
     if (count === item.num_parcels) {
       log(`skipping ${item.path}, already imported`)
       continue
@@ -45,6 +45,16 @@ const importer = async ({ max = Infinity } = {}) => {
     if (!result) {
       log('importer ending, received no result')
       return
+    }
+
+    count = await getParcelCount(item.path)
+    if (count !== item.num_parcels) {
+      log(`restarting import of ${item.path}, still missing parcels`)
+      const result = await importCounty({ county: item.path, start: 1 })
+      if (!result) {
+        log('importer ending, received no result')
+        return
+      }
     }
   }
 }
