@@ -27,7 +27,7 @@ const importer = async ({ max = Infinity } = {}) => {
 
   for (const item of items) {
     let count = await getParcelCount(item.path)
-    if (count === item.num_parcels) {
+    if (count >= item.num_parcels) {
       log(`skipping ${item.path}, already imported`)
       continue
     }
@@ -48,7 +48,7 @@ const importer = async ({ max = Infinity } = {}) => {
     }
 
     count = await getParcelCount(item.path)
-    if (count !== item.num_parcels) {
+    if (count <= item.num_parcels) {
       log(`restarting import of ${item.path}, still missing parcels`)
       const result = await importCounty({ county: item.path, start: 1 })
       if (!result) {

@@ -92,7 +92,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
     res = await requestParcels({ county, columns, page })
 
     const count = await getParcelCount(county)
-    if (count === property.num_parcels) {
+    if (count >= property.num_parcels) {
       log('all parcels imported')
       return true
     }
