@@ -81,7 +81,7 @@ const requestParcels = async ({ county, columns, page }) => {
 
 const importCounty = async ({ county, start = 1, end = Infinity }) => {
   const columns = Object.keys(await db('parcels').columnInfo())
-  log(`importing parcels for ${county}`)
+  log(`importing parcels for ${county}, start ${start}`)
 
   const property = await getProperty(county)
 
