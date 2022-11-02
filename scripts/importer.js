@@ -4,7 +4,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '../db/index.js'
 // import config from '../config.js'
-import { isMain, getParcelCount } from '../common/index.js'
+import { isMain, getParcelCount, getProperty } from '../common/index.js'
 import importCounty from './import-county.js'
 
 const argv = yargs(hideBin(process.argv)).argv
@@ -40,7 +40,8 @@ const importer = async ({ max = Infinity } = {}) => {
     }
 
     log({ count, path: item.path })
-    const start = Math.max(1, Math.floor(count / 200))
+    const prop = await getProperty(item.path)
+    const start = prop ? prop.import_cursor : Math.max(1, Math.floor(count / 200))
     const result = await importCounty({ county: item.path, start })
     if (!result) {
       log('importer ending, received no result')

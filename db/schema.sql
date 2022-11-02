@@ -10,6 +10,7 @@ CREATE TABLE `properties` (
   `sqmi` decimal(20, 8),
   `num_parcels` int,
   `num_owners` int,
+  `import_cursor` int,
   PRIMARY KEY (`ogc_fid`),
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
