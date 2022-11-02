@@ -102,7 +102,7 @@ const importCounty = async ({ county, start = 1, end = Infinity }) => {
 
       await db('properties')
         .update({
-          cursor: page
+          import_cursor: page
         })
         .where({
           path: county
