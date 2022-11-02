@@ -39,7 +39,7 @@ const importer = async ({ max = Infinity } = {}) => {
       continue
     }
 
-    log({ count, path: item.path })
+    log({ count, path: item.path, parcels: item.num_parcels })
     const prop = await getProperty(item.path)
     const start = (prop && prop.import_cursor) ||  Math.max(1, Math.floor(count / 200))
     const result = await importCounty({ county: item.path, start })
