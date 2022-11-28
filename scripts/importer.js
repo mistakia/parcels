@@ -1,4 +1,5 @@
 import debug from 'debug'
+import path from 'path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
@@ -6,6 +7,7 @@ import db from '../db/index.js'
 // import config from '../config.js'
 import { isMain, getParcelCount, getProperty } from '../common/index.js'
 import importCounty from './import-county.js'
+import { savePropertyStats, getProperties } from './import-properties.js'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('importer')
@@ -26,6 +28,9 @@ const importer = async ({ max = Infinity } = {}) => {
   const items = property_areas.slice(0, 300)
 
   for (const item of items) {
+    const properties_a = await getProperties(path.dirname(item.path))
+    const property = properties_a.find((p) => p.path === item.path)
+    await savePropertyStats(property)
     let count = await getParcelCount(item.path)
     if (count >= item.num_parcels) {
       log(`skipping ${item.path}, already imported`)
@@ -41,7 +46,8 @@ const importer = async ({ max = Infinity } = {}) => {
 
     log({ count, path: item.path, parcels: item.num_parcels })
     const prop = await getProperty(item.path)
-    const start = (prop && prop.import_cursor) ||  Math.max(1, Math.floor(count / 200))
+    const start =
+      (prop && prop.import_cursor) || Math.max(1, Math.floor(count / 200))
     const result = await importCounty({ county: item.path, start })
     if (!result) {
       log('importer ending, received no result')

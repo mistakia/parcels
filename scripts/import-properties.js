@@ -1,5 +1,6 @@
 import debug from 'debug'
 import fetch from 'node-fetch'
+import path from 'path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
@@ -36,7 +37,7 @@ const getStats = async (path = '/us') => {
   return data
 }
 
-const getProperties = async (path = '/us') => {
+export const getProperties = async (path = '/us') => {
   log(`getting properties for ${path}`)
   try {
     const url = `${config.import_base_url}${path}/boundaries.json`
@@ -74,13 +75,17 @@ const getProperties = async (path = '/us') => {
   }
 }
 
-const importProperty = async (property) => {
-  log(`importing property ${property.path}`)
+export const savePropertyStats = async (property) => {
   const stats = await getStats(property.path)
   await db('properties')
     .insert(formatProperty({ stats, property }))
     .onConflict()
     .merge()
+}
+
+const importProperty = async (property) => {
+  log(`importing property ${property.path}`)
+  await savePropertyStats(property)
 
   const sub_properties = await getProperties(property.path)
   for (property of sub_properties) {
@@ -89,8 +94,13 @@ const importProperty = async (property) => {
   }
 }
 
-const importProperties = async ({ path = '/us', start } = {}) => {
-  let properties = await getProperties(path)
+const importProperties = async ({ property_path = '/us', start } = {}) => {
+  const properties_a = await getProperties(path.dirname(property_path))
+  const property = properties_a.find((p) => p.path === property_path)
+  if (property) {
+    await savePropertyStats(property)
+  }
+  let properties = await getProperties(property_path)
 
   if (start) {
     const index = properties.findIndex((p) => p.path === start)
@@ -108,7 +118,7 @@ export default importProperties
 const main = async () => {
   let error
   try {
-    await importProperties({ path: argv.path, start: argv.start })
+    await importProperties({ property_path: argv.path, start: argv.start })
   } catch (err) {
     error = err
     console.log(error)
