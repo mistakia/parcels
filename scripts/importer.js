@@ -28,9 +28,6 @@ const importer = async ({ max = Infinity } = {}) => {
   const items = property_areas.slice(0, 300)
 
   for (const item of items) {
-    const properties_a = await getProperties(path.dirname(item.path))
-    const property = properties_a.find((p) => p.path === item.path)
-    await savePropertyStats(property)
     let count = await getParcelCount(item.path)
     if (count >= item.num_parcels) {
       log(`skipping ${item.path}, already imported`)
@@ -41,6 +38,22 @@ const importer = async ({ max = Infinity } = {}) => {
       log(
         `skipping ${item.path}, parcel count (${item.num_parcels}) is greater than max limit (${max})`
       )
+      continue
+    }
+
+    // update property count before import
+    const properties_a = await getProperties(path.dirname(item.path))
+    const property = properties_a.find((p) => p.path === item.path)
+    if (!property) {
+      log(`unable to get property info for ${item.path}`)
+      continue
+    }
+    await savePropertyStats(property)
+
+    // check count after update
+    count = await getParcelCount(item.path)
+    if (count >= item.num_parcels) {
+      log(`skipping ${item.path}, already imported`)
       continue
     }
 
