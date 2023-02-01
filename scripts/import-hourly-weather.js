@@ -24,6 +24,7 @@ debug.enable('import-hourly-weather')
 
 const last_100_execution_times = []
 const queue = new PQueue({ concurrency: 1 })
+const import_queue = new PQueue({ concurrency: 1 })
 
 const average = (array) => array.reduce((a, b) => a + b) / array.length
 const estimate_time_remaining = async () => {
@@ -37,7 +38,7 @@ const estimate_time_remaining = async () => {
   }
 
   const avg_import = average(last_100_execution_times)
-  log(`average import time: ${average.toFixed(1)} secs`)
+  log(`average import time: ${avg_import.toFixed(1)} secs`)
   log(
     `estimated time remaining: ${(
       (remaining * avg_import) /
@@ -198,7 +199,16 @@ const save_weather_data = ({ data, parcel }) =>
     }
   })
 
-const get_random_parcel_with_missing_hourly_weather_data = async () => {
+const populate_import_queue = async () => {
+  if (stopped) {
+    return
+  }
+
+  if (queue.size > 5) {
+    await wait(1000)
+    return populate_import_queue()
+  }
+
   const parcels_query = db('parcels')
     .select('parcels.lat', 'parcels.lon')
     .leftJoin('coordinates', function () {
@@ -210,41 +220,46 @@ const get_random_parcel_with_missing_hourly_weather_data = async () => {
     })
     .whereNull('coordinates.elevation')
     .orderByRaw('RAND()')
-    .limit(1)
+    .limit(100)
 
   const parcels = await parcels_query
 
-  return parcels[0]
+  if (!parcels.length) {
+    log('found no parcels with missing data')
+  }
+
+  parcels.forEach((parcel) => import_weather_for_parcel({ parcel }))
 }
 
 let stopped = false
 
-const import_hourly_weather = async () => {
-  const start_time = process.hrtime.bigint()
-  if (queue.size > 5) {
-    await wait(1000)
-    return import_hourly_weather()
-  }
-
-  const throttle_timer = wait(8000)
-  const parcel = await get_random_parcel_with_missing_hourly_weather_data()
-  if (!parcel) {
-    log('found no parcels with missing data')
-    return
-  }
-
-  estimate_time_remaining()
-  const hourly_weather_data = await get_hourly_weather({
-    latitude: parcel.lat,
-    longitude: parcel.lon
+const import_weather_for_parcel = ({ parcel }) =>
+  import_queue.add(async () => {
+    if (stopped) return
+    const start_time = process.hrtime.bigint()
+    const throttle_timer = wait(8000)
+    estimate_time_remaining()
+    const hourly_weather_data = await get_hourly_weather({
+      latitude: parcel.lat,
+      longitude: parcel.lon
+    })
+    await save_weather_data({ data: hourly_weather_data, parcel })
+    await throttle_timer
+    const end_time = process.hrtime.bigint()
+    const elapsed_time = Number(end_time - start_time) / 1000000000
+    last_100_execution_times.push(elapsed_time)
+    if (last_100_execution_times > 100) last_100_execution_times.shift()
   })
-  await save_weather_data({ data: hourly_weather_data, parcel })
-  await throttle_timer
-  const end_time = process.hrtime.bigint()
-  const elapsed_time = Number(end_time - start_time) / 1000000000
-  last_100_execution_times.push(elapsed_time)
-  if (last_100_execution_times > 100) last_100_execution_times.shift()
-  if (!stopped) await import_hourly_weather()
+
+const import_hourly_weather = async () => {
+  import_queue.on('completed', async () => {
+    if (import_queue.size < 2) {
+      await populate_import_queue()
+    }
+  })
+
+  await populate_import_queue()
+  await import_queue.onIdle()
 }
 
 before_shutdown(async () => {
