@@ -22,7 +22,31 @@ const weather_db = root_db.openDB('weather')
 const log = debug('import-hourly-weather')
 debug.enable('import-hourly-weather')
 
+const last_100_execution_times = []
 const queue = new PQueue({ concurrency: 1 })
+
+const average = (array) => array.reduce((a, b) => a + b) / array.length
+const estimate_time_remaining = async () => {
+  const coordinates_count_re = await db('coordinates').count('* as count')
+  const parcels_count_re = await db('parcels').count('* as count')
+
+  const remaining = parcels_count_re[0].count - coordinates_count_re[0].count
+
+  if (!last_100_execution_times.length) {
+    return log(`remaining ${remaining}`)
+  }
+
+  const avg_import = average(last_100_execution_times)
+  log(`average import time: ${average.toFixed(1)} secs`)
+  log(
+    `estimated time remaining: ${(
+      (remaining * avg_import) /
+      60 /
+      60 /
+      24
+    ).toFixed(2)} days`
+  )
+}
 
 const get_hourly_weather = async ({
   latitude,
@@ -77,8 +101,8 @@ const get_hourly_weather = async ({
   const url = `${config.weather_api_url}?${query_string}`
   const res = await fetch(url)
   const data = await res.json()
-  log(`API response size: ${sizeof(data)}`)
   console.timeEnd('api-response-time')
+  log(`API response size: ${sizeof(data)}`)
   return data
 }
 
@@ -196,7 +220,7 @@ const get_random_parcel_with_missing_hourly_weather_data = async () => {
 let stopped = false
 
 const import_hourly_weather = async () => {
-  console.time('parcel-import')
+  const start_time = process.hrtime.bigint()
   if (queue.size > 5) {
     await wait(1000)
     return import_hourly_weather()
@@ -209,13 +233,17 @@ const import_hourly_weather = async () => {
     return
   }
 
+  estimate_time_remaining()
   const hourly_weather_data = await get_hourly_weather({
     latitude: parcel.lat,
     longitude: parcel.lon
   })
   await save_weather_data({ data: hourly_weather_data, parcel })
   await throttle_timer
-  console.timeEnd('parcel-import')
+  const end_time = process.hrtime.bigint()
+  const elapsed_time = Number(end_time - start_time) / 1000000000
+  last_100_execution_times.push(elapsed_time)
+  if (last_100_execution_times > 100) last_100_execution_times.shift()
   if (!stopped) await import_hourly_weather()
 }
 
