@@ -29,7 +29,8 @@ const import_queue = new PQueue({ concurrency: 1 })
 const average = (array) => array.reduce((a, b) => a + b) / array.length
 const estimate_time_remaining = async () => {
   const coordinates_count_re = await db('coordinates').count('* as count')
-  const parcels_count_re = await db('parcels').count('* as count')
+  const query = get_parcels_query()
+  const parcels_count_re = await query.count('* as count')
 
   const remaining = parcels_count_re[0].count - coordinates_count_re[0].count
 
@@ -199,7 +200,7 @@ const save_weather_data = ({ data, parcel }) =>
     }
   })
 
-const get_parcels = async ({ min_acre = 5 } = {}) => {
+const get_parcels_query = ({ min_acre = 5 } = {}) => {
   const parcels_query = db('parcels')
     .select('parcels.lat', 'parcels.lon')
     .leftJoin('coordinates', function () {
@@ -215,12 +216,13 @@ const get_parcels = async ({ min_acre = 5 } = {}) => {
 
   parcels_query.where('parcels.gisacre', '>=', min_acre)
 
-  const ownership_desc = ['No constraints — private ownership', 'Public restrictions']
+  const ownership_desc = [
+    'No constraints — private ownership',
+    'Public restrictions'
+  ]
   parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
 
-  const parcels = await parcels_query
-
-  return parcels
+  return parcels_query
 }
 
 const populate_import_queue = async (params) => {
@@ -233,7 +235,7 @@ const populate_import_queue = async (params) => {
     return populate_import_queue(params)
   }
 
-  const parcels = await get_parcels(params)
+  const parcels = await get_parcels_query(params)
 
   if (!parcels.length) {
     log('found no parcels with missing data')
