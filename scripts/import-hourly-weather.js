@@ -199,16 +199,7 @@ const save_weather_data = ({ data, parcel }) =>
     }
   })
 
-const populate_import_queue = async () => {
-  if (stopped) {
-    return
-  }
-
-  if (queue.size > 5) {
-    await wait(1000)
-    return populate_import_queue()
-  }
-
+const get_parcels = async ({ min_acre = 5 } = {}) => {
   const parcels_query = db('parcels')
     .select('parcels.lat', 'parcels.lon')
     .leftJoin('coordinates', function () {
@@ -222,7 +213,27 @@ const populate_import_queue = async () => {
     .orderByRaw('RAND()')
     .limit(100)
 
+  parcels_query.where('parcels.gisacre', '>=', min_acre)
+
+  const ownership_desc = ['No constraints — private ownership', 'Public restrictions']
+  parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
+
   const parcels = await parcels_query
+
+  return parcels
+}
+
+const populate_import_queue = async (params) => {
+  if (stopped) {
+    return
+  }
+
+  if (queue.size > 5) {
+    await wait(1000)
+    return populate_import_queue(params)
+  }
+
+  const parcels = await get_parcels(params)
 
   if (!parcels.length) {
     log('found no parcels with missing data')
