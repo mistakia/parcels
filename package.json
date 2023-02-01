@@ -4,13 +4,24 @@
     "prettier": "prettier --write ."
   },
   "type": "module",
+  "imports": {
+    "#config": "./config.js",
+    "#db": "./db/index.js",
+    "#db/*": "./db/*",
+    "#utils": "./utils/index.js",
+    "#common": "./common/index.js",
+    "#scripts/*": "./scripts/*"
+  },
   "dependencies": {
     "debug": "^4.3.3",
     "fs-extra": "^10.0.0",
     "knex": "^1.0.3",
+    "lmdb": "^2.7.7",
     "mysql2": "^2.3.3",
     "node-fetch": "^3.2.0",
     "node-fetch-cookies": "^2.0.4",
+    "object-sizeof": "^2.4.1",
+    "p-queue": "^7.3.0",
     "query-string": "^7.1.1",
     "yargs": "^17.3.1"
   },

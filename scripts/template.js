@@ -2,9 +2,9 @@ import debug from 'debug'
 // import yargs from 'yargs'
 // import { hideBin } from 'yargs/helpers'
 
-// import db from '../db/index.js'
-// import config from '../config.js'
-import { isMain } from '../common/index.js'
+// import db from '#db'
+// import config from '#config'
+import { isMain } from '#common'
 
 // const argv = yargs(hideBin(process.argv)).argv
 // const log = debug('template')

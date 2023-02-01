@@ -3,9 +3,12 @@ import fs from 'fs-extra'
 import path, { dirname } from 'path'
 import { fetch, CookieJar } from 'node-fetch-cookies'
 
-import db from '../db/index.js'
+import db from '#db'
+
+export { default as before_shutdown } from './before-shutdown.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+export const lmdb_data_path = path.resolve(__dirname, '../lmdb-data')
 const jarPath = path.resolve(__dirname, '../jar.json')
 if (!fs.pathExistsSync(jarPath)) {
   fs.writeJsonSync(jarPath, [{}])

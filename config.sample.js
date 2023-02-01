@@ -1,5 +1,6 @@
 export default {
   import_base_url: '',
+  weather_api_url: '',
   cookie: '',
   mysql: {
     client: 'mysql2',

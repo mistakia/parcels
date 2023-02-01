@@ -218,3 +218,12 @@ CREATE TABLE `parcels` (
   `qoz_tract` text comment 'Qualified Opportunity Zone Tract Number',
   PRIMARY KEY (`ogc_fid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `coordinates`;
+
+CREATE TABLE `coordinates` (
+  `lat` DECIMAL(8,6) comment 'latitude decimal coordinate',
+  `lon` DECIMAL(9,6) comment 'longitude decimal coordinate',
+  `elevation` text comment 'Estimated 90 meter digital elevation model is used',
+  UNIQUE (`lat`, `lon`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

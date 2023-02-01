@@ -3,9 +3,9 @@ import path from 'path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
-import db from '../db/index.js'
-// import config from '../config.js'
-import { isMain, getParcelCount, getProperty } from '../common/index.js'
+import db from '#db'
+// import config from '#config'
+import { isMain, getParcelCount, getProperty } from '#common'
 import importCounty from './import-county.js'
 import { savePropertyStats, getProperties } from './import-properties.js'
 
