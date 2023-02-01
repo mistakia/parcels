@@ -196,7 +196,7 @@ const get_random_parcel_with_missing_hourly_weather_data = async () => {
 let stopped = false
 
 const import_hourly_weather = async () => {
-  log(`db insert queue size: ${queue.size}`)
+  console.time('parcel-import')
   if (queue.size > 5) {
     await wait(1000)
     return import_hourly_weather()
@@ -215,6 +215,7 @@ const import_hourly_weather = async () => {
   })
   await save_weather_data({ data: hourly_weather_data, parcel })
   await throttle_timer
+  console.timeEnd('parcel-import')
   if (!stopped) await import_hourly_weather()
 }
 
