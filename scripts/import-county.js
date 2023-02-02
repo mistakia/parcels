@@ -5,7 +5,14 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 import config from '#config'
-import { isMain, request, wait, getProperty, getParcelCount } from '#common'
+import {
+  isMain,
+  request,
+  wait,
+  getProperty,
+  getParcelCount,
+  USER_AGENT
+} from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-county')
@@ -39,8 +46,7 @@ const requestParcels = async ({ county, columns, page }) => {
     res = await request({
       url,
       headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
+        'User-Agent': USER_AGENT,
         cookie: config.cookie
       }
     })

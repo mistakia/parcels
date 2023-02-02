@@ -6,7 +6,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 import config from '#config'
-import { isMain, wait } from '#common'
+import { isMain, wait, USER_AGENT } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-properties')
@@ -29,8 +29,7 @@ const getStats = async (path = '/us') => {
   const url = `${config.import_base_url}${path}/stats.json`
   const response = await fetch(url, {
     headers: {
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
+      'User-Agent': USER_AGENT
     }
   })
   const data = await response.json()
@@ -43,8 +42,7 @@ export const getProperties = async (path = '/us') => {
     const url = `${config.import_base_url}${path}/boundaries.json`
     const response = await fetch(url, {
       headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
+        'User-Agent': USER_AGENT
       }
     })
     const data = await response.json()
