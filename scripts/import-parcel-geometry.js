@@ -23,6 +23,9 @@ const import_parcel_geometry = async ({ path }) => {
     })
   } catch (err) {
     log(err)
+    if (err.message.includes('Not Found')) {
+      return true
+    }
   }
 
   if (!res) {
@@ -47,6 +50,7 @@ const import_parcel_geometry = async ({ path }) => {
 
 const get_importer_parcels_query = () => {
   const parcels_query = get_parcels_query()
+  parcels_query.orderByRaw('RAND()')
   parcels_query.select('parcels.path')
   parcels_query
     .leftJoin('parcels_geometry', 'parcels_geometry.path', 'parcels.path')
