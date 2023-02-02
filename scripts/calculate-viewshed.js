@@ -3,14 +3,14 @@ import fetch from 'node-fetch'
 import path from 'path'
 import fs from 'fs-extra'
 import * as turf from '@turf/turf'
-// import yargs from 'yargs'
-// import { hideBin } from 'yargs/helpers'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
 // import db from '#db'
 // import config from '#config'
 import { isMain, data_path } from '#common'
 
-// const argv = yargs(hideBin(process.argv)).argv
+const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-view')
 debug.enable('calculate-view')
 
@@ -111,12 +111,65 @@ const get_elevation = async (coordinates) => {
       'Content-Type': 'application/json'
     }
   })
-  const data = await res.json()
   // console.timeEnd('api-response-time')
-  return data
+  return res.json()
 }
 
-const calculate_view = async () => {
+const calculate_viewshed_index = async (start_point) => {
+  console.time('calculate-viewshed-index')
+  let viewshed_index = 0
+
+  for (let degree = 0; degree < 360; degree++) {
+    const distance = 100 // kilometers
+    const end_point = get_coordinate(start_point, degree, distance)
+
+    const steps = (distance * 1000) / 50
+    const view_line_intermediate_points = generate_intermediate_points(
+      start_point,
+      end_point,
+      steps
+    )
+
+    const view_line_coordinates = view_line_intermediate_points.map((p) => [
+      p.latitude,
+      p.longitude
+    ])
+    const view_line_intermediate_elevations = await get_elevation(
+      view_line_coordinates
+    )
+    view_line_intermediate_elevations.forEach((elevation, index) => {
+      if (index === 0) {
+        start_point.elevation = elevation
+      }
+      view_line_intermediate_points[index].elevation = elevation
+    })
+
+    const view_line_visibility = []
+    view_line_intermediate_points.forEach((target_point, index) => {
+      const intermediate_points = view_line_intermediate_points.slice(0, index)
+      const is_visible = has_line_of_sight(
+        start_point,
+        target_point,
+        intermediate_points
+      )
+      view_line_visibility.push({
+        point: target_point,
+        is_visible
+      })
+    })
+
+    const view_line_viewshed_index = view_line_visibility.filter(
+      (i) => i.is_visible
+    ).length
+
+    viewshed_index += view_line_viewshed_index
+  }
+
+  console.timeEnd('calculate-viewshed-index')
+  return viewshed_index
+}
+
+const calculate_viewshed_index_for_united_states = async () => {
   const nation_geojson = fs.readJsonSync(
     path.resolve(data_path, './us_continental_counties_500k.geo.json')
   )
@@ -136,68 +189,34 @@ const calculate_view = async () => {
       longitude: point.geometry.coordinates[0]
     }
 
-    let cumulative_visibility_index = 0
-
-    for (let degree = 0; degree < 360; degree++) {
-      const end_point = get_coordinate(start_point, degree, 300)
-
-      const view_line_intermediate_points = generate_intermediate_points(
-        start_point,
-        end_point,
-        100
-      )
-
-      const view_line_coordinates = view_line_intermediate_points.map((p) => [
-        p.latitude,
-        p.longitude
-      ])
-      const view_line_intermediate_elevations = await get_elevation(
-        view_line_coordinates
-      )
-      view_line_intermediate_elevations.forEach((elevation, index) => {
-        if (index === 0) {
-          start_point.elevation = elevation
-        }
-        view_line_intermediate_points[index].elevation = elevation
-      })
-
-      const view_line_visibility = []
-      view_line_intermediate_points.forEach((target_point, index) => {
-        const intermediate_points = view_line_intermediate_points.slice(
-          0,
-          index
-        )
-        const is_visible = has_line_of_sight(
-          start_point,
-          target_point,
-          intermediate_points
-        )
-        view_line_visibility.push({
-          point: target_point,
-          is_visible
-        })
-      })
-
-      const visibility_index = view_line_visibility.filter(
-        (i) => i.is_visible
-      ).length
-
-      cumulative_visibility_index += visibility_index
-    }
+    const viewshed_index = await calculate_viewshed_index(start_point)
 
     log({
       start_point,
-      cumulative_visibility_index
+      viewshed_index
     })
   }
 }
 
-export default calculate_view
+export default calculate_viewshed_index
 
 const main = async () => {
   let error
   try {
-    await calculate_view()
+    if (argv.lat && argv.lon) {
+      const point = {
+        latitude: argv.lat,
+        longitude: argv.lon
+      }
+
+      const viewshed_index = await calculate_viewshed_index(point)
+      log({
+        point,
+        viewshed_index
+      })
+    } else {
+      await calculate_viewshed_index_for_united_states()
+    }
   } catch (err) {
     error = err
     console.log(error)
