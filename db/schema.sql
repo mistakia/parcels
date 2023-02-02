@@ -227,3 +227,11 @@ CREATE TABLE `coordinates` (
   `elevation` text comment 'Estimated 90 meter digital elevation model is used',
   UNIQUE (`lat`, `lon`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_geometry`;
+
+CREATE TABLE `parcels_geometry` (
+  `path` varchar(300) NOT NULL,
+  `coordinates` json NOT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

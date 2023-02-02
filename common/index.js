@@ -47,3 +47,17 @@ export const getProperty = async (path) => {
 
 export const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
+
+export const get_parcels_query = ({ min_acre = 5 } = {}) => {
+  const parcels_query = db('parcels')
+
+  parcels_query.where('parcels.gisacre', '>=', min_acre)
+
+  const ownership_desc = [
+    'No constraints — private ownership',
+    'Public restrictions'
+  ]
+  parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
+
+  return parcels_query
+}

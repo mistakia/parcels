@@ -9,7 +9,33 @@ import { open } from 'lmdb'
 
 import db from '#db'
 import config from '#config'
-import { isMain, wait, before_shutdown, lmdb_data_path } from '#common'
+import {
+  isMain,
+  wait,
+  before_shutdown,
+  lmdb_data_path,
+  get_parcels_query
+} from '#common'
+
+const get_weather_parcels_query = () => {
+  const parcels_query = get_parcels_query()
+
+  parcels_query
+    .leftJoin('coordinates', function () {
+      this.on('coordinates.lat', '=', 'parcels.lat').andOn(
+        'coordinates.lon',
+        '=',
+        'parcels.lon'
+      )
+    })
+    .whereNull('coordinates.elevation')
+
+  parcels_query.orderByRaw('RAND()')
+  parcels_query.limit(100)
+  parcels_query.select('parcels.lat', 'parcels.lon')
+
+  return parcels_query
+}
 
 const root_db = open({
   path: lmdb_data_path,
@@ -29,7 +55,7 @@ const import_queue = new PQueue({ concurrency: 1 })
 const average = (array) => array.reduce((a, b) => a + b) / array.length
 const estimate_time_remaining = async () => {
   const coordinates_count_re = await db('coordinates').count('* as count')
-  const query = get_parcels_query()
+  const query = get_weather_parcels_query()
   const parcels_count_re = await query.count('* as count')
 
   const remaining = parcels_count_re[0].count - coordinates_count_re[0].count
@@ -200,31 +226,6 @@ const save_weather_data = ({ data, parcel }) =>
     }
   })
 
-const get_parcels_query = ({ min_acre = 5 } = {}) => {
-  const parcels_query = db('parcels')
-    .select('parcels.lat', 'parcels.lon')
-    .leftJoin('coordinates', function () {
-      this.on('coordinates.lat', '=', 'parcels.lat').andOn(
-        'coordinates.lon',
-        '=',
-        'parcels.lon'
-      )
-    })
-    .whereNull('coordinates.elevation')
-    .orderByRaw('RAND()')
-    .limit(100)
-
-  parcels_query.where('parcels.gisacre', '>=', min_acre)
-
-  const ownership_desc = [
-    'No constraints — private ownership',
-    'Public restrictions'
-  ]
-  parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
-
-  return parcels_query
-}
-
 const populate_import_queue = async (params) => {
   if (stopped) {
     return
@@ -235,7 +236,7 @@ const populate_import_queue = async (params) => {
     return populate_import_queue(params)
   }
 
-  const parcels = await get_parcels_query(params)
+  const parcels = await get_weather_parcels_query(params)
 
   if (!parcels.length) {
     log('found no parcels with missing data')
