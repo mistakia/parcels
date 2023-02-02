@@ -8,6 +8,7 @@ import db from '#db'
 export { default as before_shutdown } from './before-shutdown.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+export const data_path = path.resolve(__dirname, '../data')
 export const lmdb_data_path = path.resolve(__dirname, '../lmdb-data')
 const jarPath = path.resolve(__dirname, '../jar.json')
 if (!fs.pathExistsSync(jarPath)) {

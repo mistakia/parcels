@@ -13,6 +13,7 @@
     "#scripts/*": "./scripts/*"
   },
   "dependencies": {
+    "@turf/turf": "^6.5.0",
     "debug": "^4.3.3",
     "fs-extra": "^10.0.0",
     "knex": "^1.0.3",
