@@ -14,16 +14,43 @@ import { isMain, data_path } from '#common'
 const log = debug('calculate-view')
 debug.enable('calculate-view')
 
-function toRadians(degree) {
+function to_radians(degree) {
   return (degree * Math.PI) / 180
+}
+
+// returns a coordinate given a starting coordinate, degree direction and distance
+function get_coordinate(start, degree, distance) {
+  const earth_radius = 6371 // Earth's mean radius in kilometers
+
+  const lat1 = to_radians(start.latitude)
+  const lon1 = to_radians(start.longitude)
+  const brng = to_radians(degree)
+
+  const lat2 = Math.asin(
+    Math.sin(lat1) * Math.cos(distance / earth_radius) +
+      Math.cos(lat1) * Math.sin(distance / earth_radius) * Math.cos(brng)
+  )
+
+  const lon2 =
+    lon1 +
+    Math.atan2(
+      Math.sin(brng) * Math.sin(distance / earth_radius) * Math.cos(lat1),
+      Math.cos(distance / earth_radius) - Math.sin(lat1) * Math.sin(lat2)
+    )
+
+  return {
+    latitude: (lat2 * 180) / Math.PI,
+    longitude: (lon2 * 180) / Math.PI,
+    distance
+  }
 }
 
 function generate_intermediate_points(start_point, end_point, steps) {
   const coordinates = []
-  const startLat = toRadians(start_point.latitude)
-  const startLng = toRadians(start_point.longitude)
-  const endLat = toRadians(end_point.latitude)
-  const endLng = toRadians(end_point.longitude)
+  const startLat = to_radians(start_point.latitude)
+  const startLng = to_radians(start_point.longitude)
+  const endLat = to_radians(end_point.latitude)
+  const endLng = to_radians(end_point.longitude)
   const delta = (endLat - startLat) / steps
 
   coordinates.push({
@@ -75,7 +102,7 @@ const is_point_in_continential_united_states = ({ point, nation_geojson }) => {
 
 const get_elevation = async (coordinates) => {
   // log(`getting elevation data for coorindates: ${latitude},${longitude}`)
-  console.time('api-response-time')
+  // console.time('api-response-time')
   const url = 'http://192.168.1.100:3000'
   const res = await fetch(url, {
     method: 'POST',
@@ -85,7 +112,7 @@ const get_elevation = async (coordinates) => {
     }
   })
   const data = await res.json()
-  console.timeEnd('api-response-time')
+  // console.timeEnd('api-response-time')
   return data
 }
 
@@ -109,52 +136,58 @@ const calculate_view = async () => {
       longitude: point.geometry.coordinates[0]
     }
 
-    const end_point = {
-      latitude: point.geometry.coordinates[1] + 0.1,
-      longitude: point.geometry.coordinates[0]
-    }
+    let cumulative_visibility_index = 0
 
-    const view_line_intermediate_points = generate_intermediate_points(
-      start_point,
-      end_point,
-      100
-    )
+    for (let degree = 0; degree < 360; degree++) {
+      const end_point = get_coordinate(start_point, degree, 300)
 
-    const view_line_coordinates = view_line_intermediate_points.map((p) => [
-      p.latitude,
-      p.longitude
-    ])
-    const view_line_intermediate_elevations = await get_elevation(
-      view_line_coordinates
-    )
-    view_line_intermediate_elevations.forEach((elevation, index) => {
-      if (index === 0) {
-        start_point.elevation = elevation
-      }
-      view_line_intermediate_points[index].elevation = elevation
-    })
-
-    const view_line_visibility = []
-    view_line_intermediate_points.forEach((target_point, index) => {
-      const intermediate_points = view_line_intermediate_points.slice(0, index)
-      const is_visible = has_line_of_sight(
+      const view_line_intermediate_points = generate_intermediate_points(
         start_point,
-        target_point,
-        intermediate_points
+        end_point,
+        100
       )
-      view_line_visibility.push({
-        point: target_point,
-        is_visible
-      })
-    })
 
-    const visibility_index = view_line_visibility.filter(
-      (i) => i.is_visible
-    ).length
+      const view_line_coordinates = view_line_intermediate_points.map((p) => [
+        p.latitude,
+        p.longitude
+      ])
+      const view_line_intermediate_elevations = await get_elevation(
+        view_line_coordinates
+      )
+      view_line_intermediate_elevations.forEach((elevation, index) => {
+        if (index === 0) {
+          start_point.elevation = elevation
+        }
+        view_line_intermediate_points[index].elevation = elevation
+      })
+
+      const view_line_visibility = []
+      view_line_intermediate_points.forEach((target_point, index) => {
+        const intermediate_points = view_line_intermediate_points.slice(
+          0,
+          index
+        )
+        const is_visible = has_line_of_sight(
+          start_point,
+          target_point,
+          intermediate_points
+        )
+        view_line_visibility.push({
+          point: target_point,
+          is_visible
+        })
+      })
+
+      const visibility_index = view_line_visibility.filter(
+        (i) => i.is_visible
+      ).length
+
+      cumulative_visibility_index += visibility_index
+    }
 
     log({
       start_point,
-      visibility_index
+      cumulative_visibility_index
     })
   }
 }
