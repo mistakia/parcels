@@ -15,6 +15,14 @@ const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-view')
 debug.enable('calculate-view')
 
+/* eslint-disable no-extra-semi */
+const group_by = (xs, key) =>
+  xs.reduce((rv, x) => {
+    ;(rv[x[key]] = rv[x[key]] || []).push(x)
+    return rv
+  }, {})
+/* eslint-enable no-extra-semi */
+
 function to_radians(degree) {
   return (degree * Math.PI) / 180
 }
@@ -106,7 +114,7 @@ const is_point_in_continential_united_states = ({ point, nation_geojson }) => {
 }
 
 const get_elevation = async (coordinates) => {
-  // log(`getting elevation data for coorindates: ${latitude},${longitude}`)
+  // log(`getting elevation data for ${coordinates.length} coorindates`)
   // console.time('get_elevation')
   const url = 'http://192.168.1.100:3000'
   const res = await fetch(url, {
@@ -268,18 +276,111 @@ const calculate_viewshed_index_for_united_states = async () => {
   }
 }
 
+const find_item_with_highest_value = (array, prop) => {
+  let maxItem = array[0]
+  for (let i = 1; i < array.length; i++) {
+    if (array[i][prop] > maxItem[prop]) {
+      maxItem = array[i]
+    }
+  }
+  return maxItem
+}
+
+const find_highest_elevation_within_polygon = async (feature_polygon) => {
+  const bbox = turf.bbox(feature_polygon)
+  const points = []
+  const point_grid = turf.pointGrid(bbox, 0.03)
+  turf.featureEach(point_grid, (point, point_index) => {
+    if (turf.booleanPointInPolygon(point, feature_polygon)) {
+      const coordinates = turf.getCoord(point)
+      points.push({
+        lon_lat_coordinates: coordinates,
+        lat_lon_coordinates: [coordinates[1], coordinates[0]]
+      })
+    }
+  })
+
+  const point_coordinates = points.map((p) => p.lat_lon_coordinates)
+  const elevations = await get_elevation(point_coordinates)
+  elevations.forEach((elevation, index) => {
+    points[index].elevation = elevation
+  })
+  const highest_point = find_item_with_highest_value(points, 'elevation')
+
+  return highest_point
+}
+
+const find_high_elevation_points_within_polygon = async (
+  feature_polygon,
+  cell_size = 0.1
+) => {
+  const parcel_bbox = turf.bbox(feature_polygon)
+  const parcel_square_grid = turf.squareGrid(parcel_bbox, cell_size)
+  const points = []
+
+  turf.featureEach(parcel_square_grid, (square_polygon, grid_index) => {
+    const square_bbox = turf.bbox(square_polygon)
+    const point_grid = turf.pointGrid(square_bbox, 0.03)
+    turf.featureEach(point_grid, (point, point_index) => {
+      if (turf.booleanPointInPolygon(point, feature_polygon)) {
+        const coordinates = turf.getCoord(point)
+        points.push({
+          grid_index,
+          lon_lat_coordinates: coordinates,
+          lat_lon_coordinates: [coordinates[1], coordinates[0]]
+        })
+      }
+    })
+  })
+
+  const point_coordinates = points.map((p) => p.lat_lon_coordinates)
+  log(`getting elevation for ${point_coordinates.length} points`)
+  const elevations = await get_elevation(point_coordinates)
+  elevations.forEach((elevation, index) => {
+    points[index].elevation = elevation
+  })
+
+  const highest_points = []
+
+  const points_by_grid_index = group_by(points, 'grid_index')
+  for (const grid_index in points_by_grid_index) {
+    const points = points_by_grid_index[grid_index]
+    const highest_point = find_item_with_highest_value(points, 'elevation')
+    highest_points.push(highest_point)
+  }
+
+  if (!highest_points.length) {
+    const highest_point = await find_highest_elevation_within_polygon(
+      feature_polygon
+    )
+    highest_points.push(highest_point)
+  }
+
+  /* const collection = turf.featureCollection([
+   *   feature_polygon,
+   *   ...parcel_square_grid.features,
+   *   ...highest_points.map(p => turf.point(p.lon_lat_coordinates))
+   * ])
+   * fs.writeJsonSync('./test.geo.json', collection)
+   */
+  return highest_points
+}
+
 const calculate_viewshed_index_for_parcel = async (parcel) => {
-  console.time('calculate-viewshed-parcel')
   const parcel_feature = turf.polygon([parcel.coordinates])
-  const parcel_bbox = turf.bbox(parcel_feature)
-  const point_grid = turf.pointGrid(parcel_bbox, 0.03)
+  const points = await find_high_elevation_points_within_polygon(parcel_feature)
   log(
-    `generated point grid for ${parcel.path}: ${point_grid.features.length} points`
+    `generated ${points.length} points for viewshed analysis in ${parcel.path}`
   )
 
   const inserts = []
-  for (const point of point_grid.features) {
+  for (const point_item of points) {
+    const point = turf.point(point_item.lon_lat_coordinates)
+
+    // TODO - check no longer needed
     if (!turf.booleanPointInPolygon(point, parcel_feature)) {
+      log('found point outside parcel polygon')
+      process.exit()
       continue
     }
 
@@ -302,7 +403,6 @@ const calculate_viewshed_index_for_parcel = async (parcel) => {
     log(`saving ${inserts.length} viewshed points for parcel`)
     await db('parcels_viewshed').insert(inserts).onConflict().merge()
   }
-  console.timeEnd('calculate-viewshed-parcel')
 }
 
 const get_viewshed_parcels = async () => {
@@ -316,6 +416,8 @@ const get_viewshed_parcels = async () => {
   parcels_query
     .leftJoin('parcels_viewshed', 'parcels_viewshed.path', 'parcels.path')
     .whereNull('parcels_viewshed.viewshed_index')
+
+  parcels_query.orderByRaw('RAND()')
 
   return parcels_query
 }
@@ -341,7 +443,15 @@ const main = async () => {
       log(`parcels missing viewshed: ${parcels.length}`)
       // get parcel geometries with missing viewshed_indexes
       for (const parcel of parcels) {
-        await calculate_viewshed_index_for_parcel(parcel)
+        console.time('calculate-viewshed-parcel')
+        try {
+          await calculate_viewshed_index_for_parcel(parcel)
+        } catch (err) {
+          log(`Unable to generate viewshed for ${parcel.path}`)
+          log(err)
+        } finally {
+          console.timeEnd('calculate-viewshed-parcel')
+        }
       }
     } else {
       await calculate_viewshed_index_for_united_states()
