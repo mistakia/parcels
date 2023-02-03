@@ -235,3 +235,28 @@ CREATE TABLE `parcels_geometry` (
   `coordinates` json NOT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_viewshed`;
+
+CREATE TABLE `parcels_viewshed` (
+  `path` varchar(300) NOT NULL,
+
+  `latitude` DECIMAL(8,6) comment 'latitude decimal coordinate',
+  `longitude` DECIMAL(9,6) comment 'longitude decimal coordinate',
+
+  `viewshed_percentage` DECIMAL(5,2) NOT NULL,
+  `viewshed_index` SMALLINT unsigned NOT NULL,
+  `viewshed_index_under_2km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_2km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_5km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_10km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_20km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_50km` SMALLINT unsigned NOT NULL,
+  `viewshed_index_75km` SMALLINT unsigned NOT NULL,
+
+  `viewshed_nw` SMALLINT unsigned NOT NULL,
+  `viewshed_sw` SMALLINT unsigned NOT NULL,
+  `viewshed_se` SMALLINT unsigned NOT NULL,
+  `viewshed_ne` SMALLINT unsigned NOT NULL,
+  UNIQUE (`latitude`, `longitude`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
