@@ -265,3 +265,11 @@ CREATE TABLE `parcels_viewshed` (
   `viewshed_w` SMALLINT unsigned NOT NULL,
   UNIQUE (`latitude`, `longitude`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_coastline`;
+
+CREATE TABLE `parcels_coastline` (
+  `path` varchar(300) NOT NULL,
+  `distance_km` MEDIUMINT unsigned NOT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
