@@ -149,6 +149,11 @@ const calculate_viewshed_index = async (start_point) => {
   let viewshed_se = 0
   let viewshed_ne = 0
 
+  let viewshed_n = 0
+  let viewshed_e = 0
+  let viewshed_s = 0
+  let viewshed_w = 0
+
   const viewshed_distance = 100 // kilometers
   const number_of_intermediate_points = (viewshed_distance * 1000) / 50
   const max_points = number_of_intermediate_points * 360
@@ -199,6 +204,18 @@ const calculate_viewshed_index = async (start_point) => {
           viewshed_sw += 1
         } else {
           viewshed_nw += 1
+        }
+
+        if (degree < 45) {
+          viewshed_n += 1
+        } else if (degree < 135) {
+          viewshed_e += 1
+        } else if (degree < 225) {
+          viewshed_s += 1
+        } else if (degree < 315) {
+          viewshed_w += 1
+        } else {
+          viewshed_n += 1
         }
 
         if (target_point.distance < 2) {
@@ -263,7 +280,12 @@ const calculate_viewshed_index = async (start_point) => {
     viewshed_nw,
     viewshed_sw,
     viewshed_se,
-    viewshed_ne
+    viewshed_ne,
+
+    viewshed_n,
+    viewshed_e,
+    viewshed_s,
+    viewshed_w
   }
 }
 

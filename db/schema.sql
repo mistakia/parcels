@@ -258,5 +258,10 @@ CREATE TABLE `parcels_viewshed` (
   `viewshed_sw` SMALLINT unsigned NOT NULL,
   `viewshed_se` SMALLINT unsigned NOT NULL,
   `viewshed_ne` SMALLINT unsigned NOT NULL,
+
+  `viewshed_n` SMALLINT unsigned NOT NULL,
+  `viewshed_e` SMALLINT unsigned NOT NULL,
+  `viewshed_s` SMALLINT unsigned NOT NULL,
+  `viewshed_w` SMALLINT unsigned NOT NULL,
   UNIQUE (`latitude`, `longitude`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
