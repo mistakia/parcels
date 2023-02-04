@@ -52,7 +52,10 @@ export const USER_AGENT =
 export const get_parcels_query = ({ min_acre = 5 } = {}) => {
   const parcels_query = db('parcels')
 
-  parcels_query.where('parcels.gisacre', '>=', min_acre)
+  parcels_query.where(function () {
+    this.where('parcels.gisacre', '>=', min_acre)
+    this.orWhere('parcels.ll_gisacre', '>=', min_acre)
+  })
 
   const ownership_desc = [
     'No constraints — private ownership',
