@@ -4,7 +4,7 @@ import { hideBin } from 'yargs/helpers'
 import * as turf from '@turf/turf'
 
 import db from '#db'
-import config from '#config'
+// import config from '#config'
 import { isMain, open_geojson_io } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
@@ -15,13 +15,16 @@ const open_parcel_on_geojson_io = async (path) => {
   const parcel_query_results = await db('parcels_geometry').where({ path })
   const parcel = parcel_query_results[0]
 
-  if (parcel) {
-    const parcel_feature = turf.feature({
-      type: 'Polygon',
-      coordinates: [parcel.coordinates]
-    })
-    open_geojson_io(parcel_feature)
+  if (!parcel) {
+    log(`unable to find parcel for ${path}`)
+    return
   }
+
+  const parcel_feature = turf.feature({
+    type: 'Polygon',
+    coordinates: [parcel.coordinates]
+  })
+  open_geojson_io(parcel_feature)
 }
 
 export default open_parcel_on_geojson_io

@@ -15,6 +15,12 @@ const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-view')
 debug.enable('calculate-view')
 
+const earth_radius = 6371 // Earth's mean radius in kilometers
+
+/* const every_n_items = (array, n) =>
+ *   array.filter((element, index) => index % n === n - 1)
+ *  */
+
 /* eslint-disable no-extra-semi */
 const group_by = (xs, key) =>
   xs.reduce((rv, x) => {
@@ -30,7 +36,6 @@ function to_radians(degree) {
 // returns a coordinate given a starting coordinate, degree direction and distance
 function get_coordinate(start, degree, distance) {
   // console.time('get_coordinates')
-  const earth_radius = 6371 // Earth's mean radius in kilometers
 
   const lat1 = to_radians(start.latitude)
   const lon1 = to_radians(start.longitude)
@@ -86,15 +91,15 @@ function generate_intermediate_points(start_point, end_point, steps) {
   return coordinates
 }
 
-function has_line_of_sight(start_point, target_point, intermediate_points) {
-  const slope =
-    (target_point.elevation - start_point.elevation) / target_point.distance
+function has_line_of_sight(start, end, intermediate) {
+  const start_point_elevation = start.elevation + 5 // add 5 meters
+  const slope = (end.elevation - start_point_elevation) / end.distance
 
   let visible = true
-  for (const intermediate_point of intermediate_points) {
-    const elevation =
-      start_point.elevation + slope * intermediate_point.distance
-    if (intermediate_point.elevation > elevation) {
+  for (const intermediate_point of intermediate) {
+    const line_of_sight_elevation =
+      slope * intermediate_point.distance + start_point_elevation
+    if (intermediate_point.elevation > line_of_sight_elevation) {
       visible = false
       break
     }
@@ -148,6 +153,8 @@ const calculate_viewshed_index = async (start_point) => {
   const number_of_intermediate_points = (viewshed_distance * 1000) / 50
   const max_points = number_of_intermediate_points * 360
 
+  let visible_points = []
+
   for (let degree = 0; degree < 360; degree = degree + 10) {
     const end_point = get_coordinate(start_point, degree, viewshed_distance)
 
@@ -185,13 +192,13 @@ const calculate_viewshed_index = async (start_point) => {
         viewshed_index += 1
 
         if (degree < 90) {
-          viewshed_nw += 1
-        } else if (degree < 180) {
-          viewshed_sw += 1
-        } else if (degree < 270) {
-          viewshed_se += 1
-        } else {
           viewshed_ne += 1
+        } else if (degree < 180) {
+          viewshed_se += 1
+        } else if (degree < 270) {
+          viewshed_sw += 1
+        } else {
+          viewshed_nw += 1
         }
 
         if (target_point.distance < 2) {
@@ -212,18 +219,31 @@ const calculate_viewshed_index = async (start_point) => {
       }
     })
 
-    /* if (degree === 90) {
+    visible_points = visible_points.concat(
+      view_line_intermediate_points.filter((p) => p.is_visible)
+    )
+
+    visible_points.push(
+      view_line_intermediate_points[view_line_intermediate_points.length - 1]
+    )
+
+    /* if (degree === 300) {
      *   console.log(end_point)
-     *   function every_n_items(array, n) {
-     *     return array.filter((element, index) => index % n === n - 1)
-     *   }
      *   console.log(
-     *     asciichart.plot(every_n_items(view_line_intermediate_elevations, 15), {
+     *     asciichart.plot(every_n_items(view_line_intermediate_elevations, 25), {
      *       height: 10
      *     })
      *   )
      * } */
   }
+
+  /* const geojson_data = turf.featureCollection([
+   *   turf.point([start_point.longitude, start_point.latitude]),
+   *   ...visible_points.map((p) => turf.point([p.longitude, p.latitude]))
+   * ])
+   * fs.writeJsonSync('./test.geo.json', geojson_data)
+   * await open_geojson_io(geojson_data)
+   */
 
   console.timeEnd('calculate-viewshed-index')
   return {
