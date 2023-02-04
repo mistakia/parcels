@@ -6,6 +6,7 @@ import { fetch, CookieJar } from 'node-fetch-cookies'
 import db from '#db'
 
 export { default as before_shutdown } from './before-shutdown.js'
+export { default as open_geojson_io } from './open-geojson-io.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')

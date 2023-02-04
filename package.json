@@ -23,6 +23,7 @@
     "node-fetch": "^3.2.0",
     "node-fetch-cookies": "^2.0.4",
     "object-sizeof": "^2.4.1",
+    "open": "^8.4.0",
     "p-queue": "^7.3.0",
     "query-string": "^7.1.1",
     "yargs": "^17.3.1"
