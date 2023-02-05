@@ -273,3 +273,26 @@ CREATE TABLE `parcels_coastline` (
   `distance_km` MEDIUMINT unsigned NOT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_airport`;
+
+CREATE TABLE `parcels_airport` (
+  `path` varchar(300) NOT NULL,
+  `distance_km` MEDIUMINT unsigned NOT NULL,
+  `abbrev` varchar(10) DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `airports`;
+
+CREATE TABLE `airports` (
+  `latitude` DECIMAL(8,6) comment 'latitude decimal coordinate',
+  `longitude` DECIMAL(9,6) comment 'longitude decimal coordinate',
+  `type` varchar(100) DEFAULT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `abbrev` varchar(10) DEFAULT NULL,
+  `gps_code` varchar(10) DEFAULT NULL,
+  `iata_code` varchar(10) DEFAULT NULL,
+  `wikipedia` varchar(300) DEFAULT NULL,
+  UNIQUE KEY `abbrev` (`abbrev`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
