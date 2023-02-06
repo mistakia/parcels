@@ -13,3 +13,6 @@ yarn-error.log
 config.js
 jar.json
 lmdb-data
+
+# large data
+data/north_american_roads.geo.json

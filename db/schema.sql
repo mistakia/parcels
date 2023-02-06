@@ -311,3 +311,11 @@ CREATE TABLE `parcels_elevation` (
   `median` SMALLINT unsigned NOT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_road`;
+
+CREATE TABLE `parcels_road` (
+  `path` varchar(300) NOT NULL,
+  `distance_km` DECIMAL(8,4) unsigned NOT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
