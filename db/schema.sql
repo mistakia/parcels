@@ -296,3 +296,18 @@ CREATE TABLE `airports` (
   `wikipedia` varchar(300) DEFAULT NULL,
   UNIQUE KEY `abbrev` (`abbrev`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_elevation`;
+
+CREATE TABLE `parcels_elevation` (
+  `path` varchar(300) NOT NULL,
+  `min` SMALLINT unsigned NOT NULL,
+  `p10` SMALLINT unsigned NOT NULL,
+  `p25` SMALLINT unsigned NOT NULL,
+  `p50` SMALLINT unsigned NOT NULL,
+  `p75` SMALLINT unsigned NOT NULL,
+  `p90` SMALLINT unsigned NOT NULL,
+  `max` SMALLINT unsigned NOT NULL,
+  `median` SMALLINT unsigned NOT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

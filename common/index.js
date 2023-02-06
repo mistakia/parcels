@@ -2,6 +2,8 @@ import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import path, { dirname } from 'path'
 import { fetch, CookieJar } from 'node-fetch-cookies'
+import regular_fetch from 'node-fetch'
+import * as turf from '@turf/turf'
 
 import db from '#db'
 
@@ -64,4 +66,37 @@ export const get_parcels_query = ({ min_acre = 5 } = {}) => {
   parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
 
   return parcels_query
+}
+
+export const get_elevation = async (coordinates) => {
+  // console.time('get_elevation')
+  const url = 'http://192.168.1.100:3000'
+  const res = await regular_fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(coordinates),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  // console.timeEnd('get_elevation')
+  return res.json()
+}
+
+export const average = (array) => array.reduce((a, b) => a + b) / array.length
+
+export const median = (array) => {
+  array.sort((a, b) => a - b)
+  const middle_index = Math.floor(array.length / 2)
+  if (array.length % 2 === 0) {
+    return (array[middle_index - 1] + array[middle_index]) / 2
+  }
+  return array[middle_index]
+}
+
+export const get_parcel_polygon = (parcel_coordinates) => {
+  if (Array.isArray(parcel_coordinates[0][0])) {
+    return turf.multiPolygon([parcel_coordinates])
+  } else {
+    return turf.polygon([parcel_coordinates])
+  }
 }

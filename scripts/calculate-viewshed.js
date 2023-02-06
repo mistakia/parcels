@@ -1,5 +1,4 @@
 import debug from 'debug'
-import fetch from 'node-fetch'
 import path from 'path'
 import fs from 'fs-extra'
 import * as turf from '@turf/turf'
@@ -9,7 +8,13 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, data_path, get_parcels_query } from '#common'
+import {
+  isMain,
+  data_path,
+  get_parcels_query,
+  get_elevation,
+  get_parcel_polygon
+} from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-view')
@@ -116,21 +121,6 @@ const is_point_in_continential_united_states = ({ point, nation_geojson }) => {
   }
 
   return false
-}
-
-const get_elevation = async (coordinates) => {
-  // log(`getting elevation data for ${coordinates.length} coorindates`)
-  // console.time('get_elevation')
-  const url = 'http://192.168.1.100:3000'
-  const res = await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(coordinates),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  // console.timeEnd('get_elevation')
-  return res.json()
 }
 
 const calculate_viewshed_index = async (start_point) => {
@@ -409,7 +399,7 @@ const find_high_elevation_points_within_polygon = async (
 }
 
 const calculate_viewshed_index_for_parcel = async (parcel) => {
-  const parcel_feature = turf.polygon([parcel.coordinates])
+  const parcel_feature = get_parcel_polygon(parcel.coordinates)
   const points = await find_high_elevation_points_within_polygon(parcel_feature)
   log(
     `generated ${points.length} points for viewshed analysis in ${parcel.path}`

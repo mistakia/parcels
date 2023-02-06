@@ -14,7 +14,8 @@ import {
   wait,
   before_shutdown,
   lmdb_data_path,
-  get_parcels_query
+  get_parcels_query,
+  average
 } from '#common'
 
 const get_weather_parcels_query = () => {
@@ -52,7 +53,6 @@ const last_100_execution_times = []
 const queue = new PQueue({ concurrency: 1 })
 const import_queue = new PQueue({ concurrency: 1 })
 
-const average = (array) => array.reduce((a, b) => a + b) / array.length
 const estimate_time_remaining = async () => {
   const coordinates_count_re = await db('coordinates').count('* as count')
   const query = get_weather_parcels_query()
