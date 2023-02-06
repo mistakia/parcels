@@ -36,10 +36,15 @@ const import_parcel_geometry = async ({ path }) => {
     return false
   }
 
+  let coordinates = res.geometry.coordinates[0]
+  if (coordinates.length === 1) {
+    coordinates = coordinates[0]
+  }
+
   await db('parcels_geometry')
     .insert({
       path,
-      coordinates: JSON.stringify(res.geometry.coordinates[0])
+      coordinates: JSON.stringify(coordinates)
     })
     .onConflict()
     .merge()
