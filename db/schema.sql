@@ -319,3 +319,17 @@ CREATE TABLE `parcels_road` (
   `distance_km` DECIMAL(8,4) unsigned NOT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `roads`;
+
+CREATE TABLE `roads` (
+  `number` SMALLINT unsigned DEFAULT NULL,
+  `road_class` varchar(16) DEFAULT NULL,
+  `type` varchar(16) DEFAULT NULL,
+  `divided` varchar(16) DEFAULT NULL,
+  `country` varchar(36) DEFAULT NULL,
+  `state` varchar(60) DEFAULT NULL,
+  `length` DECIMAL(9,3) DEFAULT NULL,
+  `continent` varchar(16) DEFAULT NULL,
+  `lineString` json DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
