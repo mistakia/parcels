@@ -337,3 +337,12 @@ CREATE TABLE `roads` (
   `lineString` json DEFAULT NULL,
   KEY `type` (`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_meta`;
+
+CREATE TABLE `parcels_meta` (
+  `path` varchar(300) NOT NULL,
+  `public` tinyint DEFAULT NULL,
+  `tribal` tinyint DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

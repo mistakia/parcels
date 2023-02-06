@@ -56,6 +56,8 @@ const get_importer_parcels_query = () => {
     .leftJoin('parcels_geometry', 'parcels_geometry.path', 'parcels.path')
     .whereNull('parcels_geometry.coordinates')
 
+  parcels_query.limit(100000)
+
   return parcels_query
 }
 

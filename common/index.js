@@ -51,19 +51,44 @@ export const getProperty = async (path) => {
 export const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
 
-export const get_parcels_query = ({ min_acre = 5 } = {}) => {
+export const get_parcels_query = ({ min_acre = 5, max_acre = 400 } = {}) => {
   const parcels_query = db('parcels')
+
+  parcels_query.leftJoin('parcels_meta', 'parcels_meta.path', 'parcels.path')
+  parcels_query.where(function () {
+    this.where('parcels_meta.public', false)
+    this.orWhereNull('parcels_meta.public')
+  })
+
+  parcels_query.where(function () {
+    this.where('parcels_meta.tribal', false)
+    this.orWhereNull('parcels_meta.tribal')
+  })
 
   parcels_query.where(function () {
     this.where('parcels.gisacre', '>=', min_acre)
     this.orWhere('parcels.ll_gisacre', '>=', min_acre)
   })
 
+  parcels_query.where(function () {
+    this.where('parcels.gisacre', '<=', max_acre)
+    this.andWhere('parcels.ll_gisacre', '<=', max_acre)
+  })
+
+  parcels_query.whereRaw('lower(parcels.owner) not like "%city of%"')
+  parcels_query.whereRaw('lower(parcels.owner) not like "state of%"')
+  parcels_query.whereRaw('lower(parcels.owner) not like "% state of%"')
+  parcels_query.whereRaw('lower(parcels.owner) not like "%federal%"')
+  parcels_query.whereRaw('lower(parcels.owner) not like "%bureau of%"')
+
   const ownership_desc = [
     'No constraints — private ownership',
     'Public restrictions'
   ]
-  parcels_query.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
+  parcels_query.where(function () {
+    this.whereIn('parcels.lbcs_ownership_desc', ownership_desc)
+    this.orWhereNull('parcels.lbcs_ownership_desc')
+  })
 
   return parcels_query
 }

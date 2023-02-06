@@ -138,8 +138,13 @@ const calculate_road_distances_for_parcels = async (parcels) => {
       }
     }
 
+    const highway_radius = 300
+    const highway_parcel_circle = turf.circle(
+      turf.getCoord(parcel_point),
+      highway_radius
+    )
     const highway_result = highway_index.search(
-      parcel_circle,
+      highway_parcel_circle,
       highway_collection
     )
     for (const road_feature of highway_result.features) {
