@@ -316,7 +316,10 @@ DROP TABLE IF EXISTS `parcels_road`;
 
 CREATE TABLE `parcels_road` (
   `path` varchar(300) NOT NULL,
-  `distance_km` DECIMAL(8,4) unsigned NOT NULL,
+  `road_km` DECIMAL(9,5) unsigned NOT NULL,
+  `paved_km` DECIMAL(9,5) unsigned NOT NULL,
+  `high_traffic_km` DECIMAL(9,5) unsigned NOT NULL,
+  `highway_km` DECIMAL(9,5) unsigned NOT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -331,5 +334,6 @@ CREATE TABLE `roads` (
   `state` varchar(60) DEFAULT NULL,
   `length` DECIMAL(9,3) DEFAULT NULL,
   `continent` varchar(16) DEFAULT NULL,
-  `lineString` json DEFAULT NULL
+  `lineString` json DEFAULT NULL,
+  KEY `type` (`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
