@@ -68,6 +68,7 @@ const save_inserts = async (inserts) => {
 }
 
 const calculate_elevation_distances_for_parcels = async (parcels) => {
+  log(`parcels missing elevation: ${parcels.length}`)
   let inserts = []
 
   for (const parcel of parcels) {
