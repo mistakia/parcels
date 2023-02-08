@@ -44,6 +44,7 @@ CREATE TABLE `parcels` (
   `taxyear` text comment 'A county provided attribute indicating the tax year the assessor data applies to',
   `owntype` text comment 'Owner Type',
   `owner` text comment 'Owner Name',
+  `owner_index` varchar(200) DEFAULT NULL,
   `ownfrst` text comment 'Owner First Name',
   `ownlast` text comment 'Owner Last Name',
   `owner2` text comment 'Second Owner Name',
@@ -346,5 +347,292 @@ CREATE TABLE `parcels_meta` (
   `path` varchar(300) NOT NULL,
   `public` tinyint DEFAULT NULL,
   `tribal` tinyint DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_density`;
+
+CREATE TABLE `parcels_density` (
+  `path` varchar(300) NOT NULL,
+
+  -- geological_features metrics
+
+  `geological_features_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_geological_features_name` varchar(300) DEFAULT NULL,
+  `closest_geological_features_distance` varchar(300) DEFAULT NULL,
+  `closest_geological_features_tags` varchar(300) DEFAULT NULL,
+  `closest_geological_features_items` json DEFAULT NULL,
+
+  `geological_features_1km` json DEFAULT NULL,
+  `geological_features_count_1km` SMALLINT unsigned DEFAULT NULL,
+
+  `geological_features_5km` json DEFAULT NULL,
+  `geological_features_count_5km` SMALLINT unsigned DEFAULT NULL,
+
+  `geological_features_10km` json DEFAULT NULL,
+  `geological_features_count_10km` SMALLINT unsigned DEFAULT NULL,
+
+  `geological_features_25km` json DEFAULT NULL,
+  `geological_features_count_25km` SMALLINT unsigned DEFAULT NULL,
+
+  -- healthcare metrics
+
+  `healthcare_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_healthcare_name` varchar(300) DEFAULT NULL,
+  `closest_healthcare_distance` varchar(300) DEFAULT NULL,
+  `closest_healthcare_tags` varchar(300) DEFAULT NULL,
+  `closest_healthcare_items` json DEFAULT NULL,
+
+  `healthcare_1km` json DEFAULT NULL,
+  `healthcare_count_1km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_5km` json DEFAULT NULL,
+  `healthcare_count_5km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_10km` json DEFAULT NULL,
+  `healthcare_count_10km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_25km` json DEFAULT NULL,
+  `healthcare_count_25km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_50km` json DEFAULT NULL,
+  `healthcare_count_50km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_100km` json DEFAULT NULL,
+  `healthcare_count_100km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_150km` json DEFAULT NULL,
+  `healthcare_count_150km` SMALLINT unsigned DEFAULT NULL,
+
+  `healthcare_200km` json DEFAULT NULL,
+  `healthcare_count_200km` SMALLINT unsigned DEFAULT NULL,
+
+  -- library metrics
+
+  `library_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_library_name` varchar(300) DEFAULT NULL,
+  `closest_library_distance` varchar(300) DEFAULT NULL,
+  `closest_library_tags` varchar(300) DEFAULT NULL,
+  `closest_library_items` json DEFAULT NULL,
+
+  `library_1km` json DEFAULT NULL,
+  `library_count_1km` SMALLINT unsigned DEFAULT NULL,
+
+  `library_5km` json DEFAULT NULL,
+  `library_count_5km` SMALLINT unsigned DEFAULT NULL,
+
+  `library_10km` json DEFAULT NULL,
+  `library_count_10km` SMALLINT unsigned DEFAULT NULL,
+
+  `library_25km` json DEFAULT NULL,
+  `library_count_25km` SMALLINT unsigned DEFAULT NULL,
+
+  `library_50km` json DEFAULT NULL,
+  `library_count_50km` SMALLINT unsigned DEFAULT NULL,
+
+  -- military metrics
+
+  `military_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_military_name` varchar(300) DEFAULT NULL,
+  `closest_military_distance` varchar(300) DEFAULT NULL,
+  `closest_military_tags` varchar(300) DEFAULT NULL,
+  `closest_military_items` json DEFAULT NULL,
+
+  `military_1km` json DEFAULT NULL,
+  `military_count_1km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_5km` json DEFAULT NULL,
+  `military_count_5km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_10km` json DEFAULT NULL,
+  `military_count_10km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_25km` json DEFAULT NULL,
+  `military_count_25km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_50km` json DEFAULT NULL,
+  `military_count_50km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_100km` json DEFAULT NULL,
+  `military_count_100km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_150km` json DEFAULT NULL,
+  `military_count_150km` SMALLINT unsigned DEFAULT NULL,
+
+  `military_200km` json DEFAULT NULL,
+  `military_count_200km` SMALLINT unsigned DEFAULT NULL,
+
+  -- natural metrics
+
+  `natural_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_natural_name` varchar(300) DEFAULT NULL,
+  `closest_natural_distance` varchar(300) DEFAULT NULL,
+  `closest_natural_tags` varchar(300) DEFAULT NULL,
+  `closest_natural_items` json DEFAULT NULL,
+
+  `natural_1km` json DEFAULT NULL,
+  `natural_count_1km` SMALLINT unsigned DEFAULT NULL,
+  `natural_density_1km` DECIMAL(8,7) DEFAULT NULL,
+
+  `natural_5km` json DEFAULT NULL,
+  `natural_count_5km` SMALLINT unsigned DEFAULT NULL,
+  `natural_density_5km` DECIMAL(8,7) DEFAULT NULL,
+
+  `natural_10km` json DEFAULT NULL,
+  `natural_count_10km` SMALLINT unsigned DEFAULT NULL,
+  `natural_density_10km` DECIMAL(8,7) DEFAULT NULL,
+
+  `natural_25km` json DEFAULT NULL,
+  `natural_count_25km` SMALLINT unsigned DEFAULT NULL,
+  `natural_density_25km` DECIMAL(8,7) DEFAULT NULL,
+
+  -- pollution metrics
+
+  `pollution_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_pollution_name` varchar(300) DEFAULT NULL,
+  `closest_pollution_distance` varchar(300) DEFAULT NULL,
+  `closest_pollution_tags` varchar(300) DEFAULT NULL,
+  `closest_pollution_items` json DEFAULT NULL,
+
+  `pollution_1km` json DEFAULT NULL,
+  `pollution_count_1km` SMALLINT unsigned DEFAULT NULL,
+  `pollution_density_1km` DECIMAL(8,7) DEFAULT NULL,
+
+  `pollution_5km` json DEFAULT NULL,
+  `pollution_count_5km` SMALLINT unsigned DEFAULT NULL,
+  `pollution_density_5km` DECIMAL(8,7) DEFAULT NULL,
+
+  `pollution_10km` json DEFAULT NULL,
+  `pollution_count_10km` SMALLINT unsigned DEFAULT NULL,
+  `pollution_density_10km` DECIMAL(8,7) DEFAULT NULL,
+
+  `pollution_25km` json DEFAULT NULL,
+  `pollution_count_25km` SMALLINT unsigned DEFAULT NULL,
+  `pollution_density_25km` DECIMAL(8,7) DEFAULT NULL,
+
+  -- public_land metrics
+
+  `public_land_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_public_land_name` varchar(300) DEFAULT NULL,
+  `closest_public_land_distance` varchar(300) DEFAULT NULL,
+  `closest_public_land_tags` varchar(300) DEFAULT NULL,
+  `closest_public_land_items` json DEFAULT NULL,
+
+  `public_land_1km` json DEFAULT NULL,
+  `public_land_count_1km` SMALLINT unsigned DEFAULT NULL,
+  `public_land_density_1km` DECIMAL(8,7) DEFAULT NULL,
+
+  `public_land_5km` json DEFAULT NULL,
+  `public_land_count_5km` SMALLINT unsigned DEFAULT NULL,
+  `public_land_density_5km` DECIMAL(8,7) DEFAULT NULL,
+
+  `public_land_10km` json DEFAULT NULL,
+  `public_land_count_10km` SMALLINT unsigned DEFAULT NULL,
+  `public_land_density_10km` DECIMAL(8,7) DEFAULT NULL,
+
+  `public_land_25km` json DEFAULT NULL,
+  `public_land_count_25km` SMALLINT unsigned DEFAULT NULL,
+  `public_land_density_25km` DECIMAL(8,7) DEFAULT NULL,
+
+  -- religious metrics
+
+  `religious_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_religious_name` varchar(300) DEFAULT NULL,
+  `closest_religious_distance` varchar(300) DEFAULT NULL,
+  `closest_religious_tags` varchar(300) DEFAULT NULL,
+  `closest_religious_items` json DEFAULT NULL,
+
+  `religion_1km` json DEFAULT NULL,
+  `religion_count_1km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_1km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_5km` json DEFAULT NULL,
+  `religion_count_5km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_5km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_10km` json DEFAULT NULL,
+  `religion_count_10km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_10km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_25km` json DEFAULT NULL,
+  `religion_count_25km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_25km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_50km` json DEFAULT NULL,
+  `religion_count_50km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_50km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_100km` json DEFAULT NULL,
+  `religion_count_100km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_100km` DECIMAL(8,7) DEFAULT NULL,
+
+  `religion_150km` json DEFAULT NULL,
+  `religion_count_150km` SMALLINT unsigned DEFAULT NULL,
+  `religion_density_150km` DECIMAL(8,7) DEFAULT NULL,
+
+  -- spring metrics
+
+  `spring_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_spring_name` varchar(300) DEFAULT NULL,
+  `closest_spring_distance` varchar(300) DEFAULT NULL,
+  `closest_spring_tags` varchar(300) DEFAULT NULL,
+  `closest_spring_items` json DEFAULT NULL,
+
+  `spring_1km` json DEFAULT NULL,
+  `spring_count_1km` SMALLINT unsigned DEFAULT NULL,
+
+  `spring_5km` json DEFAULT NULL,
+  `spring_count_5km` SMALLINT unsigned DEFAULT NULL,
+
+  `spring_10km` json DEFAULT NULL,
+  `spring_count_10km` SMALLINT unsigned DEFAULT NULL,
+
+  `spring_25km` json DEFAULT NULL,
+  `spring_count_25km` SMALLINT unsigned DEFAULT NULL,
+
+  `spring_50km` json DEFAULT NULL,
+  `spring_count_50km` SMALLINT unsigned DEFAULT NULL,
+
+  `spring_100km` json DEFAULT NULL,
+  `spring_count_100km` SMALLINT unsigned DEFAULT NULL,
+
+  -- water metrics
+
+  `water_updated` int(11) unsigned DEFAULT NULL,
+
+  `closest_water_name` varchar(300) DEFAULT NULL,
+  `closest_water_distance` varchar(300) DEFAULT NULL,
+  `closest_water_tags` varchar(300) DEFAULT NULL,
+  `closest_water_items` json DEFAULT NULL,
+
+  `water_1km` json DEFAULT NULL,
+  `water_count_1km` SMALLINT unsigned DEFAULT NULL,
+  `water_density_1km` DECIMAL(8,7) DEFAULT NULL,
+
+  `water_5km` json DEFAULT NULL,
+  `water_count_5km` SMALLINT unsigned DEFAULT NULL,
+  `water_density_5km` DECIMAL(8,7) DEFAULT NULL,
+
+  `water_10km` json DEFAULT NULL,
+  `water_count_10km` SMALLINT unsigned DEFAULT NULL,
+  `water_density_10km` DECIMAL(8,7) DEFAULT NULL,
+
+  `water_25km` json DEFAULT NULL,
+  `water_count_25km` SMALLINT unsigned DEFAULT NULL,
+  `water_density_25km` DECIMAL(8,7) DEFAULT NULL,
+
+  `water_50km` json DEFAULT NULL,
+  `water_count_50km` SMALLINT unsigned DEFAULT NULL,
+  `water_density_50km` DECIMAL(8,7) DEFAULT NULL,
+
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

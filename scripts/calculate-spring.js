@@ -7,16 +7,15 @@ import db, { postgres } from '#db'
 import { isMain, calculate_density_for_query, get_parcels_query } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
-const log = debug('calculate-public-land')
-debug.enable('calculate-public-land,calculate-density')
+const log = debug('calculate-spring')
+debug.enable('calculate-spring,calculate-density')
 
-const calculate_public_land = async ({ longitude, latitude }) => {
+const calculate_spring = async ({ longitude, latitude }) => {
   const point_string = `ST_SetSRID(ST_Point(${longitude}, ${latitude}), 4326)::geography`
 
-  const query = postgres('planet_osm_polygon')
-  query.select('leisure')
-  query.select('boundary')
-  query.select('landuse')
+  const query = postgres('planet_osm_point')
+  query.select('natural')
+  query.select('amenity')
   query.select('name')
   query.select(
     postgres.raw(
@@ -27,16 +26,13 @@ const calculate_public_land = async ({ longitude, latitude }) => {
     postgres.raw('ST_AsGeoJSON(ST_Transform(way, 4326)::geography) as geometry')
   )
 
-  const distance = 25 * 1000 // in meters
+  const distance = 100 * 1000 // in meters
   query.whereRaw(
     `ST_DWithin(${point_string},ST_Transform(way, 4326)::geography,${distance})`
   )
   query.where(function () {
-    this.where('leisure', 'park')
-    this.orWhere('leisure', 'nature_reserve')
-    this.orWhere('boundary', 'national_park')
-    this.orWhere('boundary', 'protected_area')
-    this.orWhere('landuse', 'recreation_ground')
+    this.where('natural', 'hot_spring')
+    this.orWhere('natural', 'spring')
   })
   query.orderBy('distance', 'asc')
 
@@ -44,77 +40,77 @@ const calculate_public_land = async ({ longitude, latitude }) => {
 
   const result = await calculate_density_for_query({
     query,
-    name: 'public_land',
+    name: 'spring',
     distance,
     latitude,
     longitude,
-    is_point: false
+    is_point: true
   })
   // log(result)
 
   return result
 }
 
-const get_filtered_public_land_parcels = async () => {
+const get_filtered_spring_parcels = async () => {
   const parcels_query = get_parcels_query()
   parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
 
   parcels_query
     .leftJoin('parcels_density', 'parcels_density.path', 'parcels.path')
-    .whereNull('parcels_density.public_land_updated')
+    .whereNull('parcels_density.spring_updated')
 
   return parcels_query
 }
 
-const save_public_land = async (inserts) => {
+const save_spring = async (inserts) => {
   await db('parcels_density').insert(inserts).onConflict().merge()
-  log(`inserted ${inserts.length} parcel public_land density metrics`)
+  log(`inserted ${inserts.length} parcel spring density metrics`)
 }
 
-const calculate_public_land_for_parcels = async (parcels) => {
+const calculate_spring_for_parcels = async (parcels) => {
   const timestamp = Math.round(Date.now() / 1000)
   let inserts = []
-  log(`parcels missing public_land density: ${parcels.length}`)
+  log(`parcels missing spring density: ${parcels.length}`)
   for (const parcel of parcels) {
     const { path } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
-    const data = await calculate_public_land({ longitude, latitude })
+    const data = await calculate_spring({ longitude, latitude })
 
     inserts.push({
       path,
-      public_land_updated: timestamp,
+      spring_updated: timestamp,
       ...data
     })
 
     if (inserts.length >= 1000) {
-      await save_public_land(inserts)
+      await save_spring(inserts)
       inserts = []
     }
   }
 
   if (inserts.length) {
-    await save_public_land(inserts)
+    await save_spring(inserts)
   }
 }
 
-const calculate_filtered_public_land_parcels = async () => {
-  const parcels = await get_filtered_public_land_parcels()
-  await calculate_public_land_for_parcels(parcels)
+const calculate_filtered_spring_parcels = async () => {
+  const parcels = await get_filtered_spring_parcels()
+  await calculate_spring_for_parcels(parcels)
 }
 
-export default calculate_public_land
+export default calculate_spring
 
 const main = async () => {
   let error
   try {
     if (argv.parcels) {
-      await calculate_filtered_public_land_parcels()
+      await calculate_filtered_spring_parcels()
     } else {
       const longitude = -80.3517
       const latitude = 38.2242
 
-      await calculate_public_land({ longitude, latitude })
+      await calculate_spring({ longitude, latitude })
     }
   } catch (err) {
     error = err

@@ -9,6 +9,9 @@ import db from '#db'
 
 export { default as before_shutdown } from './before-shutdown.js'
 export { default as open_geojson_io } from './open-geojson-io.js'
+export { default as calculate_density_for_query } from './calculate-density-for-query.js'
+export { default as within_distance } from './within-distance.js'
+export { default as generate_raster_points_within_radius } from './generate-raster-points-within-radius.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')
@@ -125,3 +128,17 @@ export const get_parcel_polygon = (parcel_coordinates) => {
     return turf.polygon([parcel_coordinates])
   }
 }
+
+/* const closest_distance_from_point_to_polygon = (point, polygon) => {
+ *   let closestDistance = Infinity
+ *   for (let i = 0; i < polygon.geometry.coordinates[0].length - 1; i++) {
+ *     const line = turf.lineString([
+ *       polygon.geometry.coordinates[0][i],
+ *       polygon.geometry.coordinates[0][i + 1]
+ *     ])
+ *     const distance = turf.pointToLineDistance(point, line)
+ *     closestDistance = Math.min(closestDistance, distance)
+ *   }
+ *   return closestDistance
+ * }
+ *  */

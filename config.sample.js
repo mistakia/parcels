@@ -2,6 +2,14 @@ export default {
   import_base_url: '',
   weather_api_url: '',
   cookie: '',
+  postgres: {
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      user: 'postgres',
+      database: 'osm'
+    }
+  },
   mysql: {
     client: 'mysql2',
     connection: {
