@@ -146,7 +146,7 @@ export default async function ({
     [`closest_${name}_name`]: closest_name,
     [`closest_${name}_distance`]: closest_distance,
     [`closest_${name}_tags`]: JSON.stringify(format_tags(closest_tags)),
-    closest_10_items: JSON.stringify(
+    [`closest_${name}_items`]: JSON.stringify(
       query_results
         .slice(0, 10)
         .map(({ name, distance, area, geometry, ...tags }) => {
