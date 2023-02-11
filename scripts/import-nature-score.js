@@ -31,6 +31,7 @@ const save_nature_score = async (inserts) => {
 }
 
 const import_nature_score_for_parcels = async (parcels) => {
+  log(`parcels missing nature scores: ${parcels.length}`)
   const timestamp = Math.round(Date.now() / 1000)
   let inserts = []
   for (const parcel of parcels) {
@@ -51,7 +52,7 @@ const import_nature_score_for_parcels = async (parcels) => {
       })
     }
 
-    if (inserts.length >= 100) {
+    if (inserts.length >= 1) {
       await save_nature_score(inserts)
       inserts = []
     }
@@ -69,6 +70,8 @@ const get_filtered_nature_parcels = async () => {
   parcels_query
     .leftJoin('parcels_nature', 'parcels_nature.path', 'parcels.path')
     .whereNull('parcels_nature.nature_updated')
+
+  parcels_query.limit(1000)
 
   return parcels_query
 }
