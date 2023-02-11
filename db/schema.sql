@@ -216,7 +216,9 @@ CREATE TABLE `parcels` (
   `polyid` text comment 'Polygon ID',
   `qoz` text comment 'Federal Qualified Opportunity Zone',
   `qoz_tract` text comment 'Qualified Opportunity Zone Tract Number',
-  PRIMARY KEY (`ogc_fid`)
+  UNIQUE KEY `path` (`path`),
+  KEY `gisacre` (`gisacre`),
+  KEY `ll_gisacre` (`ll_gisacre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `coordinates`;

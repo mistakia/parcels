@@ -27,6 +27,7 @@ const group = async ({ column, threshold = 0 } = {}) => {
 const filtered_parcels = async () => {
   const parcels_query = get_parcels_query()
   parcels_query.count('* as count')
+  log(parcels_query.toString())
   const result = await parcels_query
 
   log(`filtered parcels: ${result[0].count}`)
