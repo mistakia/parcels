@@ -142,7 +142,6 @@ export default async function ({
       .join(',')
 
   const return_value = {
-    point,
     [`closest_${name}_name`]: closest_name,
     [`closest_${name}_distance`]: closest_distance,
     [`closest_${name}_tags`]: JSON.stringify(format_tags(closest_tags)),
