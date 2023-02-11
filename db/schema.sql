@@ -636,3 +636,12 @@ CREATE TABLE `parcels_density` (
 
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_nature`;
+
+CREATE TABLE `parcels_nature` (
+  `path` varchar(300) NOT NULL,
+  `nature_score` decimal(5,2) DEFAULT NULL,
+  `leaf_rating` tinyint unsigned DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -1,6 +1,8 @@
 export default {
   import_base_url: '',
   weather_api_url: '',
+  nature_api_url: '',
+  nature_api_key: '',
   cookie: '',
   postgres: {
     client: 'pg',
