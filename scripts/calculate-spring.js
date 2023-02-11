@@ -83,7 +83,7 @@ const calculate_spring_for_parcels = async (parcels) => {
       ...data
     })
 
-    if (inserts.length >= 1000) {
+    if (inserts.length >= 10) {
       await save_spring(inserts)
       inserts = []
     }

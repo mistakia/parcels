@@ -87,7 +87,7 @@ const calculate_public_land_for_parcels = async (parcels) => {
       ...data
     })
 
-    if (inserts.length >= 1000) {
+    if (inserts.length >= 10) {
       await save_public_land(inserts)
       inserts = []
     }

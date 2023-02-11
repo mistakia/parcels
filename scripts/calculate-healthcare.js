@@ -79,7 +79,7 @@ const calculate_healthcare_for_parcels = async (parcels) => {
       ...data
     })
 
-    if (inserts.length >= 1000) {
+    if (inserts.length >= 10) {
       await save_healthcare(inserts)
       inserts = []
     }

@@ -145,29 +145,31 @@ export default async function ({
     point,
     [`closest_${name}_name`]: closest_name,
     [`closest_${name}_distance`]: closest_distance,
-    [`closest_${name}_tags`]: format_tags(closest_tags),
-    closest_10_items: query_results
-      .slice(0, 10)
-      .map(({ name, distance, area, geometry, ...tags }) => {
-        const item = {
-          name,
-          distance,
-          tags: format_tags(tags)
-        }
+    [`closest_${name}_tags`]: JSON.stringify(format_tags(closest_tags)),
+    closest_10_items: JSON.stringify(
+      query_results
+        .slice(0, 10)
+        .map(({ name, distance, area, geometry, ...tags }) => {
+          const item = {
+            name,
+            distance,
+            tags: format_tags(tags)
+          }
 
-        if (!is_point) {
-          item.area = turf.area(JSON.parse(geometry))
-        }
+          if (!is_point) {
+            item.area = turf.area(JSON.parse(geometry))
+          }
 
-        return item
-      })
+          return item
+        })
+    )
   }
 
   for (const d of distances) {
     const items = calculations[`items_${d}km`]
-    return_value[`${name}_${d}km`] = [
+    return_value[`${name}_${d}km`] = JSON.stringify([
       ...new Set(items.map((i) => i.name).filter((name) => Boolean(name)))
-    ]
+    ])
     return_value[`${name}_count_${d}km`] = items.length
 
     if (!is_point) {

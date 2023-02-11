@@ -98,7 +98,7 @@ const calculate_water_for_parcels = async (parcels) => {
       ...data
     })
 
-    if (inserts.length >= 1000) {
+    if (inserts.length >= 10) {
       await save_water(inserts)
       inserts = []
     }
