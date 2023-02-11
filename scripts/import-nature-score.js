@@ -39,12 +39,11 @@ const import_nature_score_for_parcels = async (parcels) => {
     let res
     try {
       res = await get_nature_score_for_parcel({ longitude, latitude })
-      await wait(5000)
     } catch (err) {
       log(err)
     }
 
-    if (res && res.score) {
+    if (res && res.nature_score) {
       inserts.push({
         path,
         nature_updated: timestamp,
@@ -52,10 +51,12 @@ const import_nature_score_for_parcels = async (parcels) => {
       })
     }
 
-    if (inserts.length >= 1) {
+    if (inserts.length >= 10) {
       await save_nature_score(inserts)
       inserts = []
     }
+
+    await wait(5000)
   }
 
   if (inserts.length) {
@@ -79,6 +80,10 @@ const get_filtered_nature_parcels = async () => {
 const import_nature_score_for_filtered_parcels = async () => {
   const parcels = await get_filtered_nature_parcels()
   await import_nature_score_for_parcels(parcels)
+
+  if (parcels.length === 1000) {
+    await import_nature_score_for_filtered_parcels()
+  }
 }
 
 export default get_nature_score_for_parcel
