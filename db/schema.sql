@@ -323,7 +323,8 @@ CREATE TABLE `parcels_road` (
   `paved_km` DECIMAL(9,5) unsigned NOT NULL,
   `high_traffic_km` DECIMAL(9,5) unsigned NOT NULL,
   `highway_km` DECIMAL(9,5) unsigned NOT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`path`),
+  KEY `highway_km` (`highway_km`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `roads`;
