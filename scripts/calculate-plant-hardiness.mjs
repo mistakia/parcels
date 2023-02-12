@@ -99,6 +99,10 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
     const state = get_state_from_path(path)
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
+    if (!indexes[state]) {
+      log(`no index for state: ${state}`)
+      continue
+    }
     const { index, collection } = indexes[state]
     const point = turf.point([longitude, latitude])
     const features = index.search(point, collection)
