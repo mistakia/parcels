@@ -646,3 +646,25 @@ CREATE TABLE `parcels_nature` (
   `leaf_rating` tinyint unsigned DEFAULT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `plant_hardiness_zones`;
+
+CREATE TABLE `plant_hardiness_zones` (
+  `statefp` varchar(2) NOT NULL,
+  `stusps` varchar(2) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `temp` tinyint NOT NULL,
+  `zone` varchar(2) NOT NULL,
+  `coordinates` json NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_agriculture`;
+
+CREATE TABLE `parcels_agriculture` (
+  `path` varchar(300) NOT NULL,
+  `plant_hardiness_updated` int(11) unsigned DEFAULT NULL,
+  `hardiness_zone` varchar(2) DEFAULT NULL,
+  `hardiness_temp` tinyint DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

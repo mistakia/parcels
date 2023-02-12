@@ -127,11 +127,11 @@ export const median = (array) => {
   return array[middle_index]
 }
 
-export const get_parcel_polygon = (parcel_coordinates) => {
+export const get_parcel_polygon = (parcel_coordinates, properties) => {
   if (Array.isArray(parcel_coordinates[0][0])) {
-    return turf.multiPolygon([parcel_coordinates])
+    return turf.multiPolygon([parcel_coordinates], properties)
   } else {
-    return turf.polygon([parcel_coordinates])
+    return turf.polygon([parcel_coordinates], properties)
   }
 }
 
@@ -148,3 +148,12 @@ export const get_parcel_polygon = (parcel_coordinates) => {
  *   return closestDistance
  * }
  *  */
+
+/* eslint-disable no-extra-semi */
+export const group_by = (xs, key) => {
+  return xs.reduce((rv, x) => {
+    ;(rv[x[key]] = rv[x[key]] || []).push(x)
+    return rv
+  }, {})
+}
+/* eslint-enable no-extra-semi */
