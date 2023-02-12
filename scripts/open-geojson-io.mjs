@@ -13,16 +13,30 @@ debug.enable('open-geojson-io')
 
 const open_parcel_on_geojson_io = async (path) => {
   const parcel_query_results = await db('parcels_geometry').where({ path })
-  const parcel = parcel_query_results[0]
+  const parcel_geo = parcel_query_results[0]
 
-  if (!parcel) {
+  if (!parcel_geo) {
     log(`unable to find parcel for ${path}`)
-    return
+    const parcel_query_results = await db('parcels')
+      .select('lon', 'lat')
+      .where({ path })
+    const parcel = parcel_query_results[0]
+
+    if (!parcel) {
+      log(`unable to find parcel for ${path}`)
+      return
+    }
+
+    const parcel_feature = turf.feature({
+      type: 'Point',
+      coordinates: [Number(parcel.lon), Number(parcel.lat)]
+    })
+    open_geojson_io(parcel_feature)
   }
 
   const parcel_feature = turf.feature({
     type: 'Polygon',
-    coordinates: [parcel.coordinates]
+    coordinates: [parcel_geo.coordinates]
   })
   open_geojson_io(parcel_feature)
 }
