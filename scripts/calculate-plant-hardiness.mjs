@@ -22,6 +22,17 @@ const get_state_from_path = (path) => path.split('/')[2].toUpperCase()
 
 const calculate_plant_hardiness = async ({ longitude, latitude, state }) => {}
 
+const get_all_plant_hardiness_parcels = async () => {
+  const parcels_query = db('parcels')
+  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+
+  parcels_query
+    .leftJoin('parcels_agriculture', 'parcels_agriculture.path', 'parcels.path')
+    .whereNull('parcels_agriculture.plant_hardiness_updated')
+
+  return parcels_query
+}
+
 const get_filtered_plant_hardiness_parcels = async () => {
   const parcels_query = get_parcels_query()
   parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
@@ -114,7 +125,7 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
        * log('outputted json') */
     }
 
-    if (inserts.length >= 100) {
+    if (inserts.length >= 10000) {
       await save_plant_hardiness(inserts)
       inserts = []
     }
@@ -123,6 +134,11 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
   if (inserts.length) {
     await save_plant_hardiness(inserts)
   }
+}
+
+const calculate_all_plant_hardiness_parcels = async () => {
+  const parcels = await get_all_plant_hardiness_parcels()
+  await calculate_plant_hardiness_for_parcels(parcels)
 }
 
 const calculate_filtered_plant_hardiness_parcels = async () => {
@@ -135,7 +151,9 @@ export default calculate_plant_hardiness
 const main = async () => {
   let error
   try {
-    if (argv.parcels) {
+    if (argv.all) {
+      await calculate_all_plant_hardiness_parcels()
+    } else if (argv.parcels) {
       await calculate_filtered_plant_hardiness_parcels()
     } else {
       const path = '/us/tn/monroe/vonore/1232886'
