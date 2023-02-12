@@ -1,5 +1,6 @@
 import debug from 'debug'
 import yargs from 'yargs'
+// import fs from 'fs-extra'
 import { hideBin } from 'yargs/helpers'
 import GeojsonFlatbush from 'geojson-flatbush'
 import * as turf from '@turf/turf'
@@ -32,6 +33,17 @@ const get_filtered_plant_hardiness_parcels = async () => {
   return parcels_query
 }
 
+/* const get_polygon = (point, collection) => {
+ *   for (const feature of collection.features) {
+ *     if (turf.booleanPointInPolygon(point, feature.geometry)) {
+ *       return feature
+ *     }
+ *   }
+ *
+ *   return null
+ * }
+ *  */
+
 const save_plant_hardiness = async (inserts) => {
   await db('parcels_agriculture').insert(inserts).onConflict().merge()
   log(`inserted ${inserts.length} parcel plant_hardiness metrics`)
@@ -54,7 +66,7 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
 
     const features = items.map((item) => {
       const { coordinates, ...rest } = item
-      return get_parcel_polygon(coordinates, rest)
+      return get_parcel_polygon(coordinates[0], rest)
     })
     const collection = turf.featureCollection(features)
 
@@ -91,6 +103,15 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
       inserts.push(insert)
     } else {
       log(`no result for: ${path}/${longitude},${latitude}`)
+
+      /* fs.writeJsonSync(
+       *   './test.geo.json',
+       *   turf.featureCollection([
+       *     point,
+       *     ...collection.features
+       *   ])
+       * )
+       * log('outputted json') */
     }
 
     if (inserts.length >= 100) {
@@ -117,11 +138,12 @@ const main = async () => {
     if (argv.parcels) {
       await calculate_filtered_plant_hardiness_parcels()
     } else {
-      const longitude = -80.3517
-      const latitude = 38.2242
-      const state = 'VA'
+      const path = '/us/tn/monroe/vonore/1232886'
+      const parcels = await db('parcels')
+        .select('path', 'lon', 'lat')
+        .where({ path })
 
-      await calculate_plant_hardiness({ longitude, latitude, state })
+      await calculate_plant_hardiness_for_parcels(parcels)
     }
   } catch (err) {
     error = err
