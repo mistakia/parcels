@@ -2,8 +2,8 @@ import debug from 'debug'
 import * as turf from '@turf/turf'
 // import fs from 'fs-extra'
 
-import within_distance from './within-distance.js'
-import generate_raster_points_within_radius from './generate-raster-points-within-radius.js'
+import within_distance from './within-distance.mjs'
+import generate_raster_points_within_radius from './generate-raster-points-within-radius.mjs'
 
 const log = debug('calculate-density')
 

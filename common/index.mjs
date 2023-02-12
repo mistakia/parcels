@@ -7,11 +7,11 @@ import * as turf from '@turf/turf'
 
 import db from '#db'
 
-export { default as before_shutdown } from './before-shutdown.js'
-export { default as open_geojson_io } from './open-geojson-io.js'
-export { default as calculate_density_for_query } from './calculate-density-for-query.js'
-export { default as within_distance } from './within-distance.js'
-export { default as generate_raster_points_within_radius } from './generate-raster-points-within-radius.js'
+export { default as before_shutdown } from './before-shutdown.mjs'
+export { default as open_geojson_io } from './open-geojson-io.mjs'
+export { default as calculate_density_for_query } from './calculate-density-for-query.mjs'
+export { default as within_distance } from './within-distance.mjs'
+export { default as generate_raster_points_within_radius } from './generate-raster-points-within-radius.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')

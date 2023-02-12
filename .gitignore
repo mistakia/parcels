@@ -10,7 +10,8 @@ yarn-error.log
 
 # App specific
 #
-config.js
+build/*
+config.mjs
 jar.json
 lmdb-data
 

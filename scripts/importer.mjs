@@ -6,8 +6,8 @@ import { hideBin } from 'yargs/helpers'
 import db from '#db'
 // import config from '#config'
 import { isMain, getParcelCount, getProperty } from '#common'
-import importCounty from './import-county.js'
-import { savePropertyStats, getProperties } from './import-properties.js'
+import importCounty from './import-county.mjs'
+import { savePropertyStats, getProperties } from './import-properties.mjs'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('importer')
