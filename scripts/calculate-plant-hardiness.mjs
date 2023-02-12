@@ -81,14 +81,17 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
     const features = index.search(point, collection)
     const first_result = features.features[0]
 
-    const insert = {
-      path,
-      plant_hardiness_updated: timestamp,
-      hardiness_zone: first_result.properties.zone,
-      hardiness_temp: first_result.properties.temp
+    if (first_result) {
+      const insert = {
+        path,
+        plant_hardiness_updated: timestamp,
+        hardiness_zone: first_result.properties.zone,
+        hardiness_temp: first_result.properties.temp
+      }
+      inserts.push(insert)
+    } else {
+      log(`no result for: ${path}/${longitude},${latitude}`)
     }
-
-    inserts.push(insert)
 
     if (inserts.length >= 100) {
       await save_plant_hardiness(inserts)
