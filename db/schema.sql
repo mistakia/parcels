@@ -668,3 +668,21 @@ CREATE TABLE `parcels_agriculture` (
   `hardiness_temp` tinyint DEFAULT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `broadband_availability`;
+
+CREATE TABLE `broadband_availability` (
+  `frn` int(10) NOT NULL,
+  `provider_id` int NOT NULL,
+  `brand_name` varchar(200) NOT NULL,
+  `location_id` varchar(200) NOT NULL,
+  `technology` tinyint unsigned NOT NULL,
+  `max_advertised_download_speed` MEDIUMINT NOT NULL,
+  `max_advertised_upload_speed` MEDIUMINT NOT NULL,
+  `low_latency` tinyint NOT NULL,
+  `business_residential_code` varchar(1) NOT NULL,
+  `state_usps` varchar(2) NOT NULL,
+  `block_geoid` varchar(15) NOT NULL,
+  `h3_res8_id` varchar(16) NOT NULL,
+  UNIQUE (`provider_id`, `technology`, `h3_res8_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

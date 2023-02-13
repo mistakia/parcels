@@ -7,7 +7,7 @@ import * as turf from '@turf/turf'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, data_path } from '#common'
+import { isMain, data_path, chunk_inserts } from '#common'
 
 // const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-roads')
@@ -33,14 +33,6 @@ const format_roads = ({
   continent
 })
 
-function get_chunks(array, size) {
-  const chunks = []
-  for (let i = 0; i < array.length; i += size) {
-    chunks.push(array.slice(i, i + size))
-  }
-  return chunks
-}
-
 const import_roads = async () => {
   const roads_geojson = fs.readJsonSync(
     path.resolve(data_path, './north_american_roads.geo.json')
@@ -55,12 +47,14 @@ const import_roads = async () => {
   })
 
   if (inserts.length) {
-    const chunk_size = 1000
-    const chunks = get_chunks(inserts, chunk_size)
-    for (const chunk of chunks) {
-      await db('roads').insert(chunk).onConflict().merge()
-      log(`inserted ${chunk.length} roads`)
-    }
+    await chunk_inserts({
+      chunk_size: 1000,
+      inserts,
+      save: async (chunk) => {
+        await db('roads').insert(chunk).onConflict().merge()
+        log(`inserted ${chunk.length} roads`)
+      }
+    })
   }
 
   /* const unpaved_roads = inserts.filter(i => i.type === 'Trail')
