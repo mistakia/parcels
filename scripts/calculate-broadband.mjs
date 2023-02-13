@@ -143,6 +143,10 @@ const calculate_broadband_for_parcels = async (parcels) => {
 const calculate_filtered_broadband_parcels = async () => {
   const parcels = await get_filtered_broadband_parcels()
   await calculate_broadband_for_parcels(parcels)
+
+  if (parcels.length) {
+    await calculate_filtered_broadband_parcels()
+  }
 }
 
 export default calculate_broadband
