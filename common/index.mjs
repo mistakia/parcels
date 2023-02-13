@@ -13,7 +13,7 @@ export { default as calculate_density_for_query } from './calculate-density-for-
 export { default as within_distance } from './within-distance.mjs'
 export { default as generate_raster_points_within_radius } from './generate-raster-points-within-radius.mjs'
 export { default as get_file_paths } from './get-file-paths.mjs'
-export { default as read_csv } from './read-csv.mjs'
+export { default as import_csv } from './import-csv.mjs'
 export { default as chunk_inserts } from './chunk-inserts.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))

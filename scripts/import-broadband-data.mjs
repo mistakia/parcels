@@ -4,7 +4,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, get_file_paths, read_csv, chunk_inserts } from '#common'
+import { isMain, get_file_paths, import_csv } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-broadband-data')
@@ -57,13 +57,13 @@ const import_broadband_data = async ({ path }) => {
       continue
     }
 
-    const inserts = await read_csv(file_path)
-    await chunk_inserts({
-      inserts,
-      chunk_size: 5000,
+    log(file_path)
+    await import_csv({
+      file_path,
+      chunk_size: 10000,
       save: async (chunk) => {
         await db('broadband_availability').insert(chunk).onConflict().merge()
-        log(`inserts ${chunk.length} broadband availability rows`)
+        log(`inserted ${chunk.length} broadband availability data`)
       }
     })
   }

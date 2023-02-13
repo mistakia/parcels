@@ -663,7 +663,7 @@ DROP TABLE IF EXISTS `parcels_agriculture`;
 
 CREATE TABLE `parcels_agriculture` (
   `path` varchar(300) NOT NULL,
-  `plant_hardiness_updated` int(11) unsigned DEFAULT NULL,
+  `plant_hardiness_updated` int(11) unsigned NOT NULL,
   `hardiness_zone` varchar(2) DEFAULT NULL,
   `hardiness_temp` tinyint DEFAULT NULL,
   UNIQUE (`path`)
@@ -685,4 +685,21 @@ CREATE TABLE `broadband_availability` (
   `block_geoid` varchar(15) NOT NULL,
   `h3_res8_id` varchar(16) NOT NULL,
   UNIQUE (`provider_id`, `technology`, `h3_res8_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_internet`;
+
+CREATE TABLE `parcels_internet` (
+  `path` varchar(300) DEFAULT NULL,
+  `broadband_updated` int(11) unsigned NOT NULL,
+  `max_download_speed` MEDIUMINT DEFAULT NULL,
+  `max_upload_speed` MEDIUMINT DEFAULT NULL,
+  `low_latency` tinyint DEFAULT NULL,
+  `closest_provider_h3_res8_id` varchar(16) DEFAULT NULL,
+  `closest_provider_distance` int unsigned DEFAULT NULL,
+  `nearby_max_download_speed` MEDIUMINT DEFAULT NULL,
+  `nearby_max_upload_speed` MEDIUMINT DEFAULT NULL,
+  `surrounding_providers` json DEFAULT NULL,
+  `surrounding_coverage_density` DECIMAL(6,5) DEFAULT NULL,
+  UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
