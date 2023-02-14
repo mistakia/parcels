@@ -15,6 +15,8 @@ export { default as generate_raster_points_within_radius } from './generate-rast
 export { default as get_file_paths } from './get-file-paths.mjs'
 export { default as import_csv } from './import-csv.mjs'
 export { default as chunk_inserts } from './chunk-inserts.mjs'
+export { default as fetch_with_proxy } from './fetch-with-proxy.mjs'
+export { default as get_proxy_urls } from './get-proxy-urls.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')

@@ -4,6 +4,7 @@ export default {
   weather_api_url: '',
   nature_api_url: '',
   nature_api_key: '',
+  proxy_urls_api: '',
   cookie: '',
   postgres: {
     client: 'pg',

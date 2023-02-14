@@ -1,24 +1,42 @@
 import debug from 'debug'
 import yargs from 'yargs'
-import fetch from 'node-fetch'
 import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 import config from '#config'
-import { isMain, get_parcels_query, wait } from '#common'
+import {
+  isMain,
+  get_parcels_query,
+  wait,
+  fetch_with_proxy,
+  get_proxy_urls
+} from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-nature-score')
 debug.enable('import-nature-score')
 
+let proxy_urls = []
+
 const get_nature_score_for_parcel = async ({ longitude, latitude }) => {
+  if (!proxy_urls.length) {
+    proxy_urls = await get_proxy_urls()
+  }
+
+  if (!proxy_urls.length) {
+    throw new Error('unable to retrieve proxy urls')
+  }
+
+  const proxy_url = proxy_urls.shift()
+  proxy_urls.push(proxy_url)
+
   const url = `${config.nature_api_url}?latitude=${latitude}&longitude=${longitude}`
-  const res = await fetch(url, {
+  const options = {
     headers: {
       'x-api-key': config.nature_api_key
     }
-  })
-  const data = await res.json()
+  }
+  const data = await fetch_with_proxy({ proxy_url, url, options })
   return {
     nature_score: data.score,
     leaf_rating: data.leaf_rating.rating
