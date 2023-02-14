@@ -9,7 +9,8 @@ import {
   get_parcels_query,
   wait,
   fetch_with_proxy,
-  get_proxy_urls
+  get_proxy_urls,
+  USER_AGENT
 } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
@@ -33,7 +34,8 @@ const get_nature_score_for_parcel = async ({ longitude, latitude }) => {
   const url = `${config.nature_api_url}?latitude=${latitude}&longitude=${longitude}`
   const options = {
     headers: {
-      'x-api-key': config.nature_api_key
+      'x-api-key': config.nature_api_key,
+      'user-anget': USER_AGENT
     }
   }
   const data = await fetch_with_proxy({ proxy_url, url, options })
@@ -69,12 +71,12 @@ const import_nature_score_for_parcels = async (parcels) => {
       })
     }
 
-    if (inserts.length >= 10) {
+    if (inserts.length >= 1) {
       await save_nature_score(inserts)
       inserts = []
     }
 
-    await wait(5000)
+    await wait(1000)
   }
 
   if (inserts.length) {
