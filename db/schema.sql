@@ -439,7 +439,7 @@ CREATE TABLE `parcels_density` (
   `military_updated` int(11) unsigned DEFAULT NULL,
 
   `closest_military_name` varchar(300) DEFAULT NULL,
-  `closest_military_distance` varchar(300) DEFAULT NULL,
+  `closest_military_distance` decimal(12,2) DEFAULT NULL,
   `closest_military_tags` varchar(300) DEFAULT NULL,
   `closest_military_items` json DEFAULT NULL,
 
@@ -584,7 +584,7 @@ CREATE TABLE `parcels_density` (
   `spring_updated` int(11) unsigned DEFAULT NULL,
 
   `closest_spring_name` varchar(300) DEFAULT NULL,
-  `closest_spring_distance` varchar(300) DEFAULT NULL,
+  `closest_spring_distance` DECIMAL(12,2) DEFAULT NULL,
   `closest_spring_tags` varchar(300) DEFAULT NULL,
   `closest_spring_items` json DEFAULT NULL,
 
@@ -701,5 +701,24 @@ CREATE TABLE `parcels_internet` (
   `nearby_max_upload_speed` MEDIUMINT DEFAULT NULL,
   `surrounding_providers` json DEFAULT NULL,
   `surrounding_coverage_density` DECIMAL(6,5) DEFAULT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_rank`;
+
+CREATE TABLE `parcels_rank` (
+  `path` varchar(300) DEFAULT NULL,
+  `hardiness_temp_rank` TINYINT DEFAULT NULL,
+  `max_download_speed_rank` TINYINT DEFAULT NULL,
+  `closest_military_distance_rank` TINYINT DEFAULT NULL,
+  `closest_spring_distance_rank` TINYINT DEFAULT NULL,
+  `military_count_25km_rank` TINYINT DEFAULT NULL,
+  `military_count_50km_rank` TINYINT DEFAULT NULL,
+  `military_count_200km_rank` TINYINT DEFAULT NULL,
+  `spring_count_1km_rank` TINYINT DEFAULT NULL,
+  `spring_count_5km_rank` TINYINT DEFAULT NULL,
+  `spring_count_10km_rank` TINYINT DEFAULT NULL,
+  `spring_count_50km_rank` TINYINT DEFAULT NULL,
+  `spring_count_100km_rank` TINYINT DEFAULT NULL,
   UNIQUE (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
