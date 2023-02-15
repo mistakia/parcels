@@ -10,7 +10,7 @@ import { isMain, request, USER_AGENT, get_parcels_query, wait } from '#common'
 const log = debug('import_parcel_geometry')
 debug.enable('import_parcel_geometry')
 
-const import_parcel_geometry = async ({ path }) => {
+const import_parcel_geometry = async ({ path, ll_uuid }) => {
   const url = `${config.import_base_url}${path}.json`
   let res
   try {
@@ -38,7 +38,7 @@ const import_parcel_geometry = async ({ path }) => {
 
   await db('parcels_geometry')
     .insert({
-      path,
+      ll_uuid,
       coordinates: JSON.stringify(res.geometry.coordinates[0])
     })
     .onConflict()
@@ -51,9 +51,9 @@ const import_parcel_geometry = async ({ path }) => {
 const get_importer_parcels_query = () => {
   const parcels_query = get_parcels_query()
   parcels_query.orderByRaw('RAND()')
-  parcels_query.select('parcels.path')
+  parcels_query.select('parcels.path', 'parcels.ll_uuid')
   parcels_query
-    .leftJoin('parcels_geometry', 'parcels_geometry.path', 'parcels.path')
+    .leftJoin('parcels_geometry', 'parcels_geometry.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_geometry.coordinates')
 
   parcels_query.limit(100000)

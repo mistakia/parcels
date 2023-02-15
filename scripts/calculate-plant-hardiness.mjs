@@ -24,10 +24,19 @@ const calculate_plant_hardiness = async ({ longitude, latitude, state }) => {}
 
 const get_all_plant_hardiness_parcels = async () => {
   const parcels_query = db('parcels')
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select(
+    'parcels.ll_uuid',
+    'parcels.lon',
+    'parcels.lat',
+    'parcels.path'
+  )
 
   parcels_query
-    .leftJoin('parcels_agriculture', 'parcels_agriculture.path', 'parcels.path')
+    .leftJoin(
+      'parcels_agriculture',
+      'parcels_agriculture.ll_uuid',
+      'parcels.ll_uuid'
+    )
     .whereNull('parcels_agriculture.plant_hardiness_updated')
 
   return parcels_query
@@ -35,10 +44,19 @@ const get_all_plant_hardiness_parcels = async () => {
 
 const get_filtered_plant_hardiness_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select(
+    'parcels.ll_uuid',
+    'parcels.lon',
+    'parcels.lat',
+    'parcels.path'
+  )
 
   parcels_query
-    .leftJoin('parcels_agriculture', 'parcels_agriculture.path', 'parcels.path')
+    .leftJoin(
+      'parcels_agriculture',
+      'parcels_agriculture.ll_uuid',
+      'parcels.ll_uuid'
+    )
     .whereNull('parcels_agriculture.plant_hardiness_updated')
 
   return parcels_query
@@ -95,7 +113,7 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
   let inserts = []
   log(`parcels missing plant_hardiness: ${parcels.length}`)
   for (const parcel of parcels) {
-    const { path } = parcel
+    const { ll_uuid, path } = parcel
     const state = get_state_from_path(path)
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
@@ -110,14 +128,14 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
 
     if (first_result) {
       const insert = {
-        path,
+        ll_uuid,
         plant_hardiness_updated: timestamp,
         hardiness_zone: first_result.properties.zone,
         hardiness_temp: first_result.properties.temp
       }
       inserts.push(insert)
     } else {
-      log(`no result for: ${path}/${longitude},${latitude}`)
+      log(`no result for: ${ll_uuid}/${longitude},${latitude}`)
 
       /* fs.writeJsonSync(
        *   './test.geo.json',
@@ -162,7 +180,7 @@ const main = async () => {
     } else {
       const path = '/us/tn/monroe/vonore/1232886'
       const parcels = await db('parcels')
-        .select('path', 'lon', 'lat')
+        .select('path', 'lon', 'lat', 'll_uuid')
         .where({ path })
 
       await calculate_plant_hardiness_for_parcels(parcels)

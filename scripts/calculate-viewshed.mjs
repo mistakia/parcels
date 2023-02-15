@@ -398,12 +398,13 @@ const find_high_elevation_points_within_polygon = async (
   return highest_points
 }
 
-const calculate_viewshed_index_for_parcel = async (parcel) => {
-  const parcel_feature = get_parcel_polygon(parcel.coordinates)
+const calculate_viewshed_index_for_parcel = async ({
+  coordinates,
+  ll_uuid
+}) => {
+  const parcel_feature = get_parcel_polygon(coordinates)
   const points = await find_high_elevation_points_within_polygon(parcel_feature)
-  log(
-    `generated ${points.length} points for viewshed analysis in ${parcel.path}`
-  )
+  log(`generated ${points.length} points for viewshed analysis in ${ll_uuid}`)
 
   const inserts = []
   for (const point_item of points) {
@@ -424,7 +425,7 @@ const calculate_viewshed_index_for_parcel = async (parcel) => {
     })
 
     inserts.push({
-      path: parcel.path,
+      ll_uuid,
       latitude,
       longitude,
       ...viewshed_index
@@ -439,14 +440,14 @@ const calculate_viewshed_index_for_parcel = async (parcel) => {
 
 const get_viewshed_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels_geometry.coordinates')
+  parcels_query.select('parcels_geometry.coordinates', 'parcels.ll_uuid')
   parcels_query.join(
     'parcels_geometry',
-    'parcels_geometry.path',
-    'parcels.path'
+    'parcels_geometry.ll_uuid',
+    'parcels.ll_uuid'
   )
   parcels_query
-    .leftJoin('parcels_viewshed', 'parcels_viewshed.path', 'parcels.path')
+    .leftJoin('parcels_viewshed', 'parcels_viewshed.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_viewshed.viewshed_index')
 
   parcels_query.orderByRaw('RAND()')
@@ -479,7 +480,7 @@ const main = async () => {
         try {
           await calculate_viewshed_index_for_parcel(parcel)
         } catch (err) {
-          log(`Unable to generate viewshed for ${parcel.path}`)
+          log(`Unable to generate viewshed for ${parcel.ll_uuid}`)
           log(err)
         } finally {
           console.timeEnd('calculate-viewshed-parcel')

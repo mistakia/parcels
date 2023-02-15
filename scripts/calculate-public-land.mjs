@@ -57,10 +57,10 @@ const calculate_public_land = async ({ longitude, latitude }) => {
 
 const get_filtered_public_land_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_density', 'parcels_density.path', 'parcels.path')
+    .leftJoin('parcels_density', 'parcels_density.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_density.public_land_updated')
 
   return parcels_query
@@ -76,13 +76,13 @@ const calculate_public_land_for_parcels = async (parcels) => {
   let inserts = []
   log(`parcels missing public_land density: ${parcels.length}`)
   for (const parcel of parcels) {
-    const { path } = parcel
+    const { ll_uuid } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
     const data = await calculate_public_land({ longitude, latitude })
 
     inserts.push({
-      path,
+      ll_uuid,
       public_land_updated: timestamp,
       ...data
     })

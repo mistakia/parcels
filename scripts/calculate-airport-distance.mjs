@@ -13,10 +13,10 @@ debug.enable('calculate-airport-distance')
 
 const get_all_airport_parcels = async () => {
   const parcels_query = db('parcels')
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_airport', 'parcels_airport.path', 'parcels.path')
+    .leftJoin('parcels_airport', 'parcels_airport.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_airport.distance_km')
 
   return parcels_query
@@ -24,10 +24,10 @@ const get_all_airport_parcels = async () => {
 
 const get_filtered_airport_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_airport', 'parcels_airport.path', 'parcels.path')
+    .leftJoin('parcels_airport', 'parcels_airport.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_airport.distance_km')
 
   return parcels_query
@@ -69,7 +69,7 @@ const calculate_airport_distances_for_parcels = async (parcels) => {
     }
 
     inserts.push({
-      path: parcel.path,
+      ll_uuid: parcel.ll_uuid,
       distance_km: closest_airport.distance,
       abbrev: closest_airport.airport.abbrev
     })

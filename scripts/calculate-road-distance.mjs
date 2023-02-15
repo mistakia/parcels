@@ -14,10 +14,10 @@ debug.enable('calculate-road-distance')
 
 const get_all_road_parcels = async () => {
   const parcels_query = db('parcels')
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_road', 'parcels_road.path', 'parcels.path')
+    .leftJoin('parcels_road', 'parcels_road.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_road.road_km')
 
   return parcels_query
@@ -25,10 +25,10 @@ const get_all_road_parcels = async () => {
 
 const get_filtered_road_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_road', 'parcels_road.path', 'parcels.path')
+    .leftJoin('parcels_road', 'parcels_road.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_road.road_km')
 
   return parcels_query
@@ -155,7 +155,7 @@ const calculate_road_distances_for_parcels = async (parcels) => {
     }
 
     const insert = {
-      path: parcel.path,
+      ll_uuid: parcel.ll_uuid,
       ...closest_road
     }
     inserts.push(insert)

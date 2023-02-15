@@ -217,9 +217,10 @@ CREATE TABLE `parcels` (
   `polyid` text comment 'Polygon ID',
   `qoz` text comment 'Federal Qualified Opportunity Zone',
   `qoz_tract` text comment 'Qualified Opportunity Zone Tract Number',
-  UNIQUE KEY `path` (`path`),
+  UNIQUE KEY `ll_uuid` (`ll_uuid`),
   KEY `gisacre` (`gisacre`),
-  KEY `ll_gisacre` (`ll_gisacre`)
+  KEY `ll_gisacre` (`ll_gisacre`),
+  KEY `path` (`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `coordinates`;
@@ -234,15 +235,15 @@ CREATE TABLE `coordinates` (
 DROP TABLE IF EXISTS `parcels_geometry`;
 
 CREATE TABLE `parcels_geometry` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `coordinates` json NOT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_viewshed`;
 
 CREATE TABLE `parcels_viewshed` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
 
   `latitude` DECIMAL(8,6) comment 'latitude decimal coordinate',
   `longitude` DECIMAL(9,6) comment 'longitude decimal coordinate',
@@ -272,18 +273,18 @@ CREATE TABLE `parcels_viewshed` (
 DROP TABLE IF EXISTS `parcels_coastline`;
 
 CREATE TABLE `parcels_coastline` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `distance_km` MEDIUMINT unsigned NOT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_airport`;
 
 CREATE TABLE `parcels_airport` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `distance_km` MEDIUMINT unsigned NOT NULL,
   `abbrev` varchar(10) DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `airports`;
@@ -303,7 +304,7 @@ CREATE TABLE `airports` (
 DROP TABLE IF EXISTS `parcels_elevation`;
 
 CREATE TABLE `parcels_elevation` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `min` SMALLINT unsigned NOT NULL,
   `p10` SMALLINT unsigned NOT NULL,
   `p25` SMALLINT unsigned NOT NULL,
@@ -312,18 +313,18 @@ CREATE TABLE `parcels_elevation` (
   `p90` SMALLINT unsigned NOT NULL,
   `max` SMALLINT unsigned NOT NULL,
   `median` SMALLINT unsigned NOT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_road`;
 
 CREATE TABLE `parcels_road` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `road_km` DECIMAL(9,5) unsigned NOT NULL,
   `paved_km` DECIMAL(9,5) unsigned NOT NULL,
   `high_traffic_km` DECIMAL(9,5) unsigned NOT NULL,
   `highway_km` DECIMAL(9,5) unsigned NOT NULL,
-  UNIQUE (`path`),
+  UNIQUE (`ll_uuid`),
   KEY `highway_km` (`highway_km`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -345,16 +346,16 @@ CREATE TABLE `roads` (
 DROP TABLE IF EXISTS `parcels_meta`;
 
 CREATE TABLE `parcels_meta` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `public` tinyint DEFAULT NULL,
   `tribal` tinyint DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_density`;
 
 CREATE TABLE `parcels_density` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
 
   -- geological_features metrics
 
@@ -635,16 +636,16 @@ CREATE TABLE `parcels_density` (
   `water_count_50km` SMALLINT unsigned DEFAULT NULL,
   `water_density_50km` DECIMAL(8,7) DEFAULT NULL,
 
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_nature`;
 
 CREATE TABLE `parcels_nature` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `nature_score` decimal(5,2) DEFAULT NULL,
   `leaf_rating` tinyint unsigned DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -662,11 +663,11 @@ CREATE TABLE `plant_hardiness_zones` (
 DROP TABLE IF EXISTS `parcels_agriculture`;
 
 CREATE TABLE `parcels_agriculture` (
-  `path` varchar(300) NOT NULL,
+  `ll_uuid` varchar(36) NOT NULL,
   `plant_hardiness_updated` int(11) unsigned NOT NULL,
   `hardiness_zone` varchar(2) DEFAULT NULL,
   `hardiness_temp` tinyint DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `broadband_availability`;
@@ -690,7 +691,7 @@ CREATE TABLE `broadband_availability` (
 DROP TABLE IF EXISTS `parcels_internet`;
 
 CREATE TABLE `parcels_internet` (
-  `path` varchar(300) DEFAULT NULL,
+  `ll_uuid` varchar(36) DEFAULT NULL,
   `broadband_updated` int(11) unsigned NOT NULL,
   `max_download_speed` MEDIUMINT DEFAULT NULL,
   `max_upload_speed` MEDIUMINT DEFAULT NULL,
@@ -701,13 +702,13 @@ CREATE TABLE `parcels_internet` (
   `nearby_max_upload_speed` MEDIUMINT DEFAULT NULL,
   `surrounding_providers` json DEFAULT NULL,
   `surrounding_coverage_density` DECIMAL(6,5) DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `parcels_rank`;
 
 CREATE TABLE `parcels_rank` (
-  `path` varchar(300) DEFAULT NULL,
+  `ll_uuid` varchar(36) DEFAULT NULL,
   `hardiness_temp_rank` TINYINT DEFAULT NULL,
   `max_download_speed_rank` TINYINT DEFAULT NULL,
   `closest_military_distance_rank` TINYINT DEFAULT NULL,
@@ -720,5 +721,5 @@ CREATE TABLE `parcels_rank` (
   `spring_count_10km_rank` TINYINT DEFAULT NULL,
   `spring_count_50km_rank` TINYINT DEFAULT NULL,
   `spring_count_100km_rank` TINYINT DEFAULT NULL,
-  UNIQUE (`path`)
+  UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

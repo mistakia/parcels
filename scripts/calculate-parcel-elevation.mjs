@@ -23,19 +23,23 @@ const default_percentiles = [0, 10, 25, 50, 75, 90, 100]
 const get_all_elevation_parcels = async () => {
   const parcels_query = db('parcels')
   parcels_query.select(
-    'parcels.path',
+    'parcels.ll_uuid',
     'parcels.lat',
     'parcels.lon',
     'parcels_geometry.coordinates'
   )
   parcels_query.join(
     'parcels_geometry',
-    'parcels_geometry.path',
-    'parcels.path'
+    'parcels_geometry.ll_uuid',
+    'parcels.ll_uuid'
   )
 
   parcels_query
-    .leftJoin('parcels_elevation', 'parcels_elevation.path', 'parcels.path')
+    .leftJoin(
+      'parcels_elevation',
+      'parcels_elevation.ll_uuid',
+      'parcels.ll_uuid'
+    )
     .whereNull('parcels_elevation.p50')
 
   return parcels_query
@@ -44,19 +48,23 @@ const get_all_elevation_parcels = async () => {
 const get_filtered_elevation_parcels = async () => {
   const parcels_query = get_parcels_query()
   parcels_query.select(
-    'parcels.path',
+    'parcels.ll_uuid',
     'parcels.lat',
     'parcels.lon',
     'parcels_geometry.coordinates'
   )
   parcels_query.join(
     'parcels_geometry',
-    'parcels_geometry.path',
-    'parcels.path'
+    'parcels_geometry.ll_uuid',
+    'parcels.ll_uuid'
   )
 
   parcels_query
-    .leftJoin('parcels_elevation', 'parcels_elevation.path', 'parcels.path')
+    .leftJoin(
+      'parcels_elevation',
+      'parcels_elevation.ll_uuid',
+      'parcels.ll_uuid'
+    )
     .whereNull('parcels_elevation.p50')
 
   return parcels_query
@@ -106,7 +114,7 @@ const calculate_elevation_distances_for_parcels = async (parcels) => {
     const p_results = percentile(default_percentiles, elevations)
 
     inserts.push({
-      path: parcel.path,
+      ll_uuid: parcel.ll_uuid,
       min: p_results[0],
       p10: p_results[1],
       p25: p_results[2],

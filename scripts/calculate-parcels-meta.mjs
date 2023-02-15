@@ -325,7 +325,7 @@ const process_parcels = async (parcels) => {
   const inserts = []
   for (const parcel of parcels) {
     inserts.push({
-      path: parcel.path,
+      ll_uuid: parcel.ll_uuid,
       public: is_public(parcel),
       tribal: is_tribal(parcel)
     })

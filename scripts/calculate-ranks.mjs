@@ -13,7 +13,7 @@ debug.enable('calculate-ranks')
 
 const handle_rows = async ({ field, sorted_rows }) => {
   const inserts = sorted_rows.map((row, index) => ({
-    path: row.path,
+    ll_uuid: row.ll_uuid,
     [`${field}_rank`]: Math.round((index / sorted_rows.length) * 100) - 50
   }))
   await chunk_inserts({
@@ -30,7 +30,7 @@ const calculate_hardiness_temp_rank = async () => {
   const field = 'hardiness_temp'
   console.time(field)
   const rows = await db('parcels_agriculture')
-    .select('path', field)
+    .select('ll_uuid', field)
     .whereNotNull(field)
   log(`query response size: ${sizeof(rows)}`)
   const sorted_rows = rows.sort((a, b) => a[field] - b[field])
@@ -42,7 +42,7 @@ const calculate_broadband_max_download_speed_rank = async () => {
   const field = 'max_download_speed'
   console.time(field)
   const rows = await db('parcels_internet')
-    .select('path', field)
+    .select('ll_uuid', field)
     .whereNotNull(field)
   const sorted_rows = rows.sort((a, b) => a[field] - b[field])
   await handle_rows({ field, sorted_rows })
@@ -53,7 +53,7 @@ const calculate_closest_military_distance_rank = async () => {
   const field = 'closest_military_distance'
   console.time(field)
   const rows = await db('parcels_density')
-    .select('path', field)
+    .select('ll_uuid', field)
     .whereNotNull(field)
   const sorted_rows = rows.sort((a, b) => a[field] - b[field])
   await handle_rows({ field, sorted_rows })
@@ -69,7 +69,7 @@ const calculate_military_density_ranks = async () => {
   for (const field of fields) {
     console.time(field)
     const rows = await db('parcels_density')
-      .select('path', field)
+      .select('ll_uuid', field)
       .whereNotNull(field)
     const sorted_rows = rows.sort((a, b) => b[field] - a[field])
     log(sorted_rows[0])
@@ -83,7 +83,7 @@ const calculate_closest_spring_distance_rank = async () => {
   const field = 'closest_spring_distance'
   console.time(field)
   const rows = await db('parcels_density')
-    .select('path', field)
+    .select('ll_uuid', field)
     .whereNotNull(field)
   const sorted_rows = rows.sort((a, b) => b[field] - a[field])
   await handle_rows({ field, sorted_rows })
@@ -101,7 +101,7 @@ const calculate_spring_density_ranks = async () => {
   for (const field of fields) {
     console.time(field)
     const rows = await db('parcels_density')
-      .select('path', field)
+      .select('ll_uuid', field)
       .whereNotNull(field)
     const sorted_rows = rows.sort((a, b) => a[field] - b[field])
     log(sorted_rows[0])

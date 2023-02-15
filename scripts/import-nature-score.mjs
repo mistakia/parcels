@@ -55,7 +55,7 @@ const import_nature_score_for_parcels = async (parcels) => {
   const timestamp = Math.round(Date.now() / 1000)
   let inserts = []
   for (const parcel of parcels) {
-    const { lon: longitude, lat: latitude, path } = parcel
+    const { lon: longitude, lat: latitude, ll_uuid } = parcel
     let res
     try {
       res = await get_nature_score_for_parcel({ longitude, latitude })
@@ -65,7 +65,7 @@ const import_nature_score_for_parcels = async (parcels) => {
 
     if (res && res.nature_score) {
       inserts.push({
-        path,
+        ll_uuid,
         nature_updated: timestamp,
         ...res
       })
@@ -86,10 +86,10 @@ const import_nature_score_for_parcels = async (parcels) => {
 
 const get_filtered_nature_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_nature', 'parcels_nature.path', 'parcels.path')
+    .leftJoin('parcels_nature', 'parcels_nature.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_nature.nature_updated')
 
   parcels_query.limit(1000)

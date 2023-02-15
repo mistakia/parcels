@@ -91,10 +91,10 @@ const calculate_broadband = async ({ longitude, latitude }) => {
 
 const get_filtered_broadband_parcels = async () => {
   const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.path', 'parcels.lon', 'parcels.lat')
+  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_internet', 'parcels_internet.path', 'parcels.path')
+    .leftJoin('parcels_internet', 'parcels_internet.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_internet.broadband_updated')
 
   parcels_query.limit(1000)
@@ -112,7 +112,7 @@ const calculate_broadband_for_parcels = async (parcels) => {
   let inserts = []
   log(`parcels missing broadband: ${parcels.length}`)
   for (const parcel of parcels) {
-    const { path } = parcel
+    const { ll_uuid } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
     const { surrounding_providers, ...data } = await calculate_broadband({
@@ -121,7 +121,7 @@ const calculate_broadband_for_parcels = async (parcels) => {
     })
 
     inserts.push({
-      path,
+      ll_uuid,
       broadband_updated: timestamp,
       surrounding_providers: surrounding_providers.length
         ? JSON.stringify(surrounding_providers)

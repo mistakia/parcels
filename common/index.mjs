@@ -62,7 +62,7 @@ export const USER_AGENT =
 export const get_parcels_query = ({ min_acre = 5, max_acre = 400 } = {}) => {
   const parcels_query = db('parcels')
 
-  parcels_query.leftJoin('parcels_meta', 'parcels_meta.path', 'parcels.path')
+  parcels_query.leftJoin('parcels_meta', 'parcels_meta.ll_uuid', 'parcels.ll_uuid')
   parcels_query.where(function () {
     this.where('parcels_meta.public', false)
     this.orWhereNull('parcels_meta.public')
@@ -98,7 +98,7 @@ export const get_parcels_query = ({ min_acre = 5, max_acre = 400 } = {}) => {
     this.orWhereNull('parcels.lbcs_ownership_desc')
   })
 
-  parcels_query.leftJoin('parcels_road', 'parcels_road.path', 'parcels.path')
+  parcels_query.leftJoin('parcels_road', 'parcels_road.ll_uuid', 'parcels.ll_uuid')
   parcels_query.where(function () {
     this.where('parcels_road.highway_km', '>', 2.5)
     this.orWhereNull('parcels_road.highway_km')
