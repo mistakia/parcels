@@ -174,9 +174,8 @@ const importer = async () => {
         if (!tiles_set.has(key)) {
           continue
         }
-        const timer = wait(7000)
         const res = await import_tile({ x, y, z })
-        await timer
+        await wait(10000)
         if (!res) {
           await exit('unable to retrieve tile, exiting')
           process.exit()
