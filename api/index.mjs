@@ -12,8 +12,8 @@ import compression from 'compression'
 import debug from 'debug'
 import serveStatic from 'serve-static'
 import cors from 'cors'
-// import favicon from 'express-favicon'
-// import robots from 'express-robots-txt'
+import favicon from 'express-favicon'
+import robots from 'express-robots-txt'
 
 import config from '#config'
 import db from '#db'
@@ -44,11 +44,15 @@ api.use(
   })
 )
 
+api.use(robots(path.join(__dirname, '..', 'resources', 'robots.txt')))
+api.use(favicon(path.join(__dirname, '..', 'resources', 'favicon.ico')))
 api.use((req, res, next) => {
   res.set('Cache-Control', 'no-cache, must-revalidate, proxy-revalidate')
   next()
 })
 
+const resourcesPath = path.join(__dirname, '..', 'resources')
+api.use('/resources', serveStatic(resourcesPath))
 api.use('/api/parcels', routes.parcels)
 
 if (IS_DEV) {

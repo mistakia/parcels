@@ -1,0 +1,1 @@
+export { getParcels } from './sagas'
