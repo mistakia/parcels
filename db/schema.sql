@@ -723,3 +723,36 @@ CREATE TABLE `parcels_rank` (
   `spring_count_100km_rank` TINYINT DEFAULT NULL,
   UNIQUE (`ll_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `parcels_geometry_extra`;
+
+CREATE TABLE `parcels_geometry_extra` (
+  `path` varchar(300) NOT NULL,
+  `ogc_fid` serial comment 'object id',
+  `owner` text comment 'Owner Name',
+  `parcelnumb` text comment 'Parcel ID',
+  `address` text comment 'Parcel Address',
+  `coordinates` json NOT NULL,
+  UNIQUE (`path`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `importers`;
+
+CREATE TABLE `importers` (
+  `name` varchar(20) NOT NULL,
+  `running` varchar(100) DEFAULT NULL,
+  `last_error` text DEFAULT NULL,
+  `timestamp` int(11) DEFAULT NULL,
+  `data` json DEFAULT NULL,
+  UNIQUE (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tiles`;
+
+CREATE TABLE `tiles` (
+  `count` smallint NOT NULL,
+  `z` tinyint unsigned NOT NULL,
+  `y` smallint unsigned NOT NULL,
+  `x` smallint unsigned NOT NULL,
+  UNIQUE KEY `tile` (`z`,`y`,`x`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -61,7 +61,7 @@ const get_importer_parcels_query = () => {
   return parcels_query
 }
 
-const importer = async (parcel) => {
+const importer = async () => {
   const parcels_query = get_importer_parcels_query()
   const parcels = await parcels_query
   log(`parcels missing geometry: ${parcels.length}`)

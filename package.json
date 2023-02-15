@@ -17,6 +17,7 @@
     "#scripts/*": "./scripts/*"
   },
   "dependencies": {
+    "@mapbox/tile-cover": "^3.0.2",
     "@turf/turf": "^6.5.0",
     "asciichart": "^1.5.25",
     "compression": "^1.7.4",

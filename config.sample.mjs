@@ -1,6 +1,7 @@
 export default {
   port: 8080, // api port
   import_base_url: '',
+  import_tile_url: '',
   weather_api_url: '',
   nature_api_url: '',
   nature_api_key: '',
