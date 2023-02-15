@@ -116,7 +116,7 @@ CREATE TABLE `parcels` (
   `revisedate` date comment 'The last date of last revision as provided by the county assessors office if available',
   `path` text comment 'Lovelands human-readable identifier for this parcel. Not guaranteed to be stable between updates',
   `ll_stable_id` text comment 'Stable ID Status',
-  `ll_uuid` varchar(36) comment 'Uniquely identifies a single parcel with a v4 uuid. A stable parcel id across county data refreshes. This field should be used for tracking indiviual parcels.',
+  `ll_uuid` varchar(36) NOT NULL comment 'Uniquely identifies a single parcel with a v4 uuid. A stable parcel id across county data refreshes. This field should be used for tracking indiviual parcels.',
   `ll_updated_at` timestamp comment 'Timestamp of last update of any kind to this row, internal changes to row, and/or county updates',
   `dpv_status` text comment 'USPS Delivary Point Validation',
   `dpv_codes` text comment 'Delivery Point Validation Codes',
