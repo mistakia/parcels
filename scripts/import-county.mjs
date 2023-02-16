@@ -12,7 +12,7 @@ import {
   getProperty,
   getParcelCount,
   USER_AGENT
-} from '#common'
+} from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-county')

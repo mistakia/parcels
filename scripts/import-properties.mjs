@@ -6,7 +6,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 import config from '#config'
-import { isMain, wait, USER_AGENT } from '#common'
+import { isMain, wait, USER_AGENT } from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-properties')

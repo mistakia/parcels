@@ -5,7 +5,7 @@ import * as turf from '@turf/turf'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, open_geojson_io } from '#common'
+import { isMain, open_geojson_io } from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('open-geojson-io')

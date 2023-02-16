@@ -16,7 +16,7 @@ import {
   lmdb_data_path,
   get_parcels_query,
   average
-} from '#common'
+} from '#utils'
 
 const get_weather_parcels_query = () => {
   const parcels_query = get_parcels_query()

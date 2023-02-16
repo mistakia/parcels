@@ -5,7 +5,7 @@ import sizeof from 'object-sizeof'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, chunk_inserts } from '#common'
+import { isMain, chunk_inserts } from '#utils'
 
 // const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-ranks')

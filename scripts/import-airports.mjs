@@ -7,7 +7,7 @@ import * as turf from '@turf/turf'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, data_path } from '#common'
+import { isMain, data_path } from '#utils'
 
 // const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-airports')

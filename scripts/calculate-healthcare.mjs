@@ -4,7 +4,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db, { postgres } from '#db'
 // import config from '#config'
-import { isMain, calculate_density_for_query, get_parcels_query } from '#common'
+import { isMain, calculate_density_for_query, get_parcels_query } from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-healthcare')

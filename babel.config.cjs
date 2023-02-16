@@ -15,6 +15,7 @@ module.exports = {
       {
         root: ['./'],
         alias: {
+          '@common': './common/index.mjs',
           '@views': './client/views',
           '@pages': './client/views/pages',
           '@core': './client/core',

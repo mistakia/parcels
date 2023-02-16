@@ -7,6 +7,12 @@ router.get('/?', async (req, res) => {
   try {
     const parcels_query = db('parcels')
 
+    parcels_query.leftJoin(
+      'parcels_geometry',
+      'parcels.ll_uuid',
+      'parcels_geometry.ll_uuid'
+    )
+
     parcels_query.limit(100)
 
     const parcels = await parcels_query

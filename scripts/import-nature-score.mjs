@@ -11,7 +11,7 @@ import {
   fetch_with_proxy,
   get_proxy_urls,
   USER_AGENT
-} from '#common'
+} from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-nature-score')

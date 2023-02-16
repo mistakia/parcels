@@ -8,13 +8,8 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import {
-  isMain,
-  data_path,
-  get_parcels_query,
-  get_elevation,
-  get_parcel_polygon
-} from '#common'
+import { isMain, data_path, get_parcels_query, get_elevation } from '#utils'
+import { get_parcel_polygon } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-view')

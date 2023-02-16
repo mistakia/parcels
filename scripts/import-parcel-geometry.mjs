@@ -4,7 +4,7 @@ import debug from 'debug'
 
 import db from '#db'
 import config from '#config'
-import { isMain, request, USER_AGENT, get_parcels_query, wait } from '#common'
+import { isMain, request, USER_AGENT, get_parcels_query, wait } from '#utils'
 
 // const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import_parcel_geometry')

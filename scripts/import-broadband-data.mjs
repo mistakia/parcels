@@ -4,7 +4,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, get_file_paths, import_csv } from '#common'
+import { isMain, get_file_paths, import_csv } from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import-broadband-data')

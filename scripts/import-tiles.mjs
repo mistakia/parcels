@@ -17,7 +17,7 @@ import {
   get_importer_data,
   before_shutdown,
   data_path
-} from '#common'
+} from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('import_parcel_geometry')

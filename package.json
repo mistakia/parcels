@@ -14,6 +14,7 @@
     "#db/*": "./db/*",
     "#utils": "./utils/index.mjs",
     "#common": "./common/index.mjs",
+    "#utils": "./utils/index.mjs",
     "#scripts/*": "./scripts/*"
   },
   "dependencies": {

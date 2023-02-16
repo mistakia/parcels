@@ -4,7 +4,7 @@ import debug from 'debug'
 
 import db from '#db'
 // import config from '#config'
-import { isMain } from '#common'
+import { isMain } from '#utils'
 
 // const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-parcels-meta')

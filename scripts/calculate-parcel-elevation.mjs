@@ -6,13 +6,8 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import {
-  isMain,
-  get_parcels_query,
-  get_elevation,
-  median,
-  get_parcel_polygon
-} from '#common'
+import { isMain, get_parcels_query, get_elevation, median } from '#utils'
+import { get_parcel_polygon } from '#common'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-parcel-elevation')

@@ -5,7 +5,7 @@ import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, getParcelCount, getProperty } from '#common'
+import { isMain, getParcelCount, getProperty } from '#utils'
 import importCounty from './import-county.mjs'
 import { savePropertyStats, getProperties } from './import-properties.mjs'
 

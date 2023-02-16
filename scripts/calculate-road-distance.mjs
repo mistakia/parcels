@@ -6,7 +6,7 @@ import GeojsonFlatbush from 'geojson-flatbush'
 
 import db from '#db'
 // import config from '#config'
-import { isMain, get_parcels_query } from '#common'
+import { isMain, get_parcels_query } from '#utils'
 
 const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-road-distance')

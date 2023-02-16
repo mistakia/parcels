@@ -7,6 +7,10 @@ import { store, history } from '@core/store.js'
 import storeRegistry from '@core/store-registry'
 import App from '@components/app'
 
+import 'leaflet/dist/leaflet.css'
+import '@styles/normalize.css'
+import '@styles/typography.styl'
+
 storeRegistry.register(store)
 
 const theme = createTheme({
