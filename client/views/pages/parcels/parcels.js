@@ -14,7 +14,7 @@ export default function ParcelsPage({ parcels }) {
   return (
     <>
       <h1>{parcels.size} Parcels loaded</h1>
-      <MapContainer style={{ height: '200px' }}>
+      <MapContainer style={{ height: '300px' }}>
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         <ParcelsMap />
       </MapContainer>

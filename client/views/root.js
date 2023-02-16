@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { HistoryRouter as Router } from 'redux-first-history/rr6'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import L from 'leaflet'
 
 import { store, history } from '@core/store.js'
 import storeRegistry from '@core/store-registry'
@@ -10,6 +11,16 @@ import App from '@components/app'
 import 'leaflet/dist/leaflet.css'
 import '@styles/normalize.css'
 import '@styles/typography.styl'
+
+import markerIcon from '../../node_modules/leaflet/dist/images/marker-icon.png'
+import markerIcon2x from '../../node_modules/leaflet/dist/images/marker-icon-2x.png'
+import markerShadow from '../../node_modules/leaflet/dist/images/marker-shadow.png'
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow
+})
 
 storeRegistry.register(store)
 
