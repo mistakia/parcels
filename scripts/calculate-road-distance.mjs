@@ -30,6 +30,8 @@ const get_filtered_road_parcels = async () => {
   parcels_query
     .whereNull('parcels_road.road_km')
 
+  parcels_query.limit(1000)
+
   return parcels_query
 }
 
@@ -173,6 +175,10 @@ const calculate_road_distances_for_parcels = async (parcels) => {
 const calculate_all_road_distances = async () => {
   const parcels = await get_all_road_parcels()
   await calculate_road_distances_for_parcels(parcels)
+
+  if (parcels.length === 1000) {
+    await calculate_all_road_distances()
+  }
 }
 
 const calculate_filtered_road_distance = async () => {
