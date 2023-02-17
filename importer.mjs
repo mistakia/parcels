@@ -1,4 +1,4 @@
-import import_hourly_weather from '#scripts/import-hourly-weather.js'
+import import_hourly_weather from '#scripts/import-hourly-weather.mjs'
 
 const main = async () => {
   await import_hourly_weather()
