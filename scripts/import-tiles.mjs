@@ -48,10 +48,6 @@ const import_tile = async ({ x, y, z = 12 }) => {
     })
   } catch (err) {
     log(err)
-    if (err.message.includes('invalid json response body')) {
-      await db('tiles').insert({ x, y, z, count: 0 }).onConflict().merge()
-      return true
-    }
   }
 
   if (!res) {
