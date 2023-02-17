@@ -17,7 +17,6 @@ const get_all_road_parcels = async () => {
   parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_road', 'parcels_road.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_road.road_km')
 
   return parcels_query
@@ -28,7 +27,6 @@ const get_filtered_road_parcels = async () => {
   parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
   parcels_query
-    .leftJoin('parcels_road', 'parcels_road.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_road.road_km')
 
   return parcels_query
