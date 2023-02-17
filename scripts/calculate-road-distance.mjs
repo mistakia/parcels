@@ -172,6 +172,7 @@ const calculate_road_distances_for_parcels = async (parcels) => {
   }
 }
 
+// TODO - refactor so roads are not loaded and indexed on every batch
 const calculate_all_road_distances = async () => {
   const parcels = await get_all_road_parcels()
   await calculate_road_distances_for_parcels(parcels)
