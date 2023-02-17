@@ -128,6 +128,9 @@ const importer = async () => {
   let y = options.y || options.min_y
   const z = 12
 
+  log(options)
+  log({ x, y, z })
+
   const us_outline_feature_collection = fs.readJsonSync(
     path.resolve(data_path, './us_continental_counties_500k.geo.json')
   )
