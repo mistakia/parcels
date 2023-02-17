@@ -166,8 +166,6 @@ const importer = async () => {
 
   try {
     for (; x <= options.max_x; x++) {
-      y = options.min_y
-
       for (; y <= options.max_y; y++) {
         const key = `${x},${y},${z}`
         if (!tiles_set.has(key)) {
@@ -180,6 +178,8 @@ const importer = async () => {
           process.exit()
         }
       }
+
+      y = options.min_y
     }
   } catch (err) {
     log(err)
