@@ -27,8 +27,7 @@ const get_filtered_road_parcels = async () => {
   const parcels_query = get_parcels_query()
   parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
 
-  parcels_query
-    .whereNull('parcels_road.road_km')
+  parcels_query.whereNull('parcels_road.road_km')
 
   parcels_query.limit(1000)
 

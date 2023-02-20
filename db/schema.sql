@@ -756,3 +756,15 @@ CREATE TABLE `tiles` (
   `x` smallint unsigned NOT NULL,
   UNIQUE KEY `tile` (`z`,`y`,`x`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `coverage`;
+
+CREATE TABLE `coverage` (
+  `column_name` varchar(40) NOT NULL,
+  `table_name` varchar(30) NOT NULL,
+  `total_rows` INT unsigned NOT NULL,
+  `covered_rows` INT unsigned NOT NULL,
+  `coverage_percentage` DECIMAL(5,2) NOT NULL,
+  `updated` INT(11) unsigned NOT NULL,
+  UNIQUE KEY `column_name` (`column_name`, `table_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
