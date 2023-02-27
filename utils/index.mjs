@@ -5,6 +5,7 @@ import { fetch, CookieJar } from 'node-fetch-cookies'
 import regular_fetch from 'node-fetch'
 
 import db from '#db'
+import config from '#config'
 
 export { default as before_shutdown } from './before-shutdown.mjs'
 export { default as open_geojson_io } from './open-geojson-io.mjs'
@@ -119,7 +120,7 @@ export const get_parcels_query = ({ min_acre = 5, max_acre = 400 } = {}) => {
 
 export const get_elevation = async (coordinates) => {
   // console.time('get_elevation')
-  const url = 'http://192.168.1.100:3000'
+  const url = `${config.elevation_api_url}`
   const res = await regular_fetch(url, {
     method: 'POST',
     body: JSON.stringify(coordinates),
