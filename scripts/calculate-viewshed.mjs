@@ -446,8 +446,30 @@ const get_viewshed_parcels = async () => {
     .whereNull('parcels_viewshed.viewshed_index')
 
   parcels_query.orderByRaw('RAND()')
+  parcels_query.limit(100)
 
   return parcels_query
+}
+
+const calculate_viewshed_for_parcels = async () => {
+  const parcels = await get_viewshed_parcels()
+  log(`parcels missing viewshed: ${parcels.length}`)
+  // get parcel geometries with missing viewshed_indexes
+  for (const parcel of parcels) {
+    console.time('calculate-viewshed-parcel')
+    try {
+      await calculate_viewshed_index_for_parcel(parcel)
+    } catch (err) {
+      log(`Unable to generate viewshed for ${parcel.ll_uuid}`)
+      log(err)
+    } finally {
+      console.timeEnd('calculate-viewshed-parcel')
+    }
+  }
+
+  if (parcels.length === 100) {
+    await calculate_viewshed_for_parcels()
+  }
 }
 
 export default calculate_viewshed_index
@@ -467,20 +489,7 @@ const main = async () => {
         viewshed_index
       })
     } else if (argv.parcels) {
-      const parcels = await get_viewshed_parcels()
-      log(`parcels missing viewshed: ${parcels.length}`)
-      // get parcel geometries with missing viewshed_indexes
-      for (const parcel of parcels) {
-        console.time('calculate-viewshed-parcel')
-        try {
-          await calculate_viewshed_index_for_parcel(parcel)
-        } catch (err) {
-          log(`Unable to generate viewshed for ${parcel.ll_uuid}`)
-          log(err)
-        } finally {
-          console.timeEnd('calculate-viewshed-parcel')
-        }
-      }
+      await calculate_viewshed_for_parcels()
     } else {
       await calculate_viewshed_index_for_united_states()
     }
