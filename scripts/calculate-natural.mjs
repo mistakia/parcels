@@ -105,6 +105,9 @@ const get_filtered_natural_parcels = async () => {
     .leftJoin('parcels_density', 'parcels_density.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_density.natural_updated')
 
+  parcels_query.limit(100)
+  parcels_query.orderByRaw('RAND()')
+
   return parcels_query
 }
 
@@ -143,6 +146,10 @@ const calculate_natural_for_parcels = async (parcels) => {
 const calculate_filtered_natural_parcels = async () => {
   const parcels = await get_filtered_natural_parcels()
   await calculate_natural_for_parcels(parcels)
+
+  if (parcels.length === 100) {
+    await calculate_filtered_natural_parcels()
+  }
 }
 
 export default calculate_natural
