@@ -55,6 +55,9 @@ const get_filtered_healthcare_parcels = async () => {
     .leftJoin('parcels_density', 'parcels_density.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_density.healthcare_updated')
 
+  parcels_query.limit(1000)
+  parcels_query.orderByRaw('RAND()')
+
   return parcels_query
 }
 
@@ -93,6 +96,10 @@ const calculate_healthcare_for_parcels = async (parcels) => {
 const calculate_filtered_healthcare_parcels = async () => {
   const parcels = await get_filtered_healthcare_parcels()
   await calculate_healthcare_for_parcels(parcels)
+
+  if (parcels.length === 1000) {
+    await calculate_filtered_healthcare_parcels()
+  }
 }
 
 export default calculate_healthcare
