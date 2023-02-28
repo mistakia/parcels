@@ -73,6 +73,9 @@ const get_filtered_pollution_parcels = async () => {
     .leftJoin('parcels_density', 'parcels_density.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_density.pollution_updated')
 
+  parcels_query.limit(100)
+  parcels_query.orderByRaw('RAND()')
+
   return parcels_query
 }
 
@@ -111,6 +114,10 @@ const calculate_pollution_for_parcels = async (parcels) => {
 const calculate_filtered_pollution_parcels = async () => {
   const parcels = await get_filtered_pollution_parcels()
   await calculate_pollution_for_parcels(parcels)
+
+  if (parcels.length === 100) {
+    await calculate_filtered_pollution_parcels()
+  }
 }
 
 export default calculate_pollution
