@@ -7,6 +7,7 @@ export default {
   nature_api_url: '',
   nature_api_key: '',
   proxy_urls_api: '',
+  weather_data_path: '',
   cookie: '',
   postgres: {
     client: 'pg',

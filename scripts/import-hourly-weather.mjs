@@ -39,7 +39,7 @@ const get_weather_parcels_query = () => {
 }
 
 const root_db = open({
-  path: lmdb_data_path,
+  path: config.weather_data_path,
   // any options go here, we can turn on compression like this:
   compression: true
 })
