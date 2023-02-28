@@ -59,6 +59,9 @@ const get_filtered_geological_features_parcels = async () => {
     .leftJoin('parcels_density', 'parcels_density.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_density.geological_features_updated')
 
+  parcels_query.limit(1000)
+  parcels_query.orderByRaw('RAND()')
+
   return parcels_query
 }
 
@@ -97,6 +100,10 @@ const calculate_geological_features_for_parcels = async (parcels) => {
 const calculate_filtered_geological_features_parcels = async () => {
   const parcels = await get_filtered_geological_features_parcels()
   await calculate_geological_features_for_parcels(parcels)
+
+  if (parcels.length === 1000) {
+    await calculate_filtered_geological_features_parcels()
+  }
 }
 
 export default calculate_geological_features
