@@ -267,6 +267,10 @@ const import_weather_for_parcel = ({ parcel }) =>
   })
 
 const import_hourly_weather = async () => {
+  // list number of keys in weather_db
+  const key_count = await weather_db.getKeysCount()
+  log(`weather_db key count: ${key_count}`)
+
   import_queue.on('completed', async () => {
     if (import_queue.size < 2) {
       await populate_import_queue()
