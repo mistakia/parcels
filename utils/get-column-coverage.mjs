@@ -1,9 +1,8 @@
 import db from '#db'
 
-export default async function ({ column_name, table_name }) {
+export default async function ({ column_name, table_name, use_cache = true }) {
   const past_results = await db('coverage').where({ column_name, table_name })
-
-  if (past_results.length) {
+  if (past_results.length && use_cache) {
     return past_results[0]
   }
 
@@ -25,7 +24,7 @@ export default async function ({ column_name, table_name }) {
     ...(result.length ? result[0] : {}),
     column_name,
     table_name,
-    updated: Math.round(Date.now() / 1000)
+    coverage_updated: Math.round(Date.now() / 1000)
   }
 
   if (result.length) {

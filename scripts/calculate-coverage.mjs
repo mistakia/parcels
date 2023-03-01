@@ -1,4 +1,5 @@
 import debug from 'debug'
+import dayjs from 'dayjs'
 // import yargs from 'yargs'
 // import { hideBin } from 'yargs/helpers'
 
@@ -27,11 +28,12 @@ const calculate_coverage = async () => {
     'parcels_viewshed'
   ]
 
-  const time_cutoff = Math.round(Date.now() / 1000) - 864000 // 10 days ago
   const columns = await db('INFORMATION_SCHEMA.COLUMNS')
     .select(
       'INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME as column_name',
-      'INFORMATION_SCHEMA.COLUMNS.TABLE_NAME as table_name'
+      'INFORMATION_SCHEMA.COLUMNS.TABLE_NAME as table_name',
+      'coverage.coverage_updated',
+      'coverage.column_updated'
     )
     .whereIn('INFORMATION_SCHEMA.COLUMNS.TABLE_NAME', tables)
     .leftJoin('coverage', function () {
@@ -46,15 +48,27 @@ const calculate_coverage = async () => {
         'INFORMATION_SCHEMA.COLUMNS.TABLE_NAME'
       )
     })
-    .where(function () {
-      this.where('coverage.updated', '<', time_cutoff)
-      this.orWhereNull('coverage.updated')
-    })
-
-  log(`${columns.length} columns need coverage calculations`)
 
   for (const column of columns) {
-    await get_column_coverage(column)
+    const coverage_updated = dayjs.unix(column.coverage_updated)
+    const cutoff = dayjs().subtract('1', 'day')
+
+    if (column.column_updated) {
+      const column_updated = dayjs(column.column_updated)
+      if (coverage_updated.isAfter(column_updated)) {
+        log(
+          `skipping ${column.column_name} in ${column.table_name} because it was last modified on ${column_updated} and coverage was last calculated on ${coverage_updated}`
+        )
+        continue
+      }
+    } else if (coverage_updated.isAfter(cutoff)) {
+      log(
+        `skipping ${column.column_name} in ${column.table_name} because coverage was last calculated on ${coverage_updated}`
+      )
+      continue
+    }
+
+    await get_column_coverage({ use_cache: false, ...column })
     log(`calculated coverage for ${column.column_name} in ${column.table_name}`)
   }
 }

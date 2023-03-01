@@ -13,7 +13,6 @@ import {
   isMain,
   wait,
   before_shutdown,
-  lmdb_data_path,
   get_parcels_query,
   average
 } from '#utils'

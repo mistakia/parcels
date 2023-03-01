@@ -23,7 +23,6 @@ export { default as get_column_coverage } from './get-column-coverage.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')
-export const lmdb_data_path = path.resolve(__dirname, '../lmdb-data')
 const jarPath = path.resolve(__dirname, '../jar.json')
 if (!fs.pathExistsSync(jarPath)) {
   fs.writeJsonSync(jarPath, [{}])
