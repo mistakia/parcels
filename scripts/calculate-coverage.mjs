@@ -51,7 +51,6 @@ const calculate_coverage = async () => {
 
   for (const column of columns) {
     const coverage_updated = dayjs.unix(column.coverage_updated)
-    const cutoff = dayjs().subtract('1', 'day')
 
     if (column.column_updated) {
       const column_updated = dayjs(column.column_updated)
@@ -61,7 +60,7 @@ const calculate_coverage = async () => {
         )
         continue
       }
-    } else if (coverage_updated.isAfter(cutoff)) {
+    } else if (column.coverage_updated) {
       log(
         `skipping ${column.column_name} in ${column.table_name} because coverage was last calculated on ${coverage_updated}`
       )
