@@ -73,7 +73,7 @@ CREATE TABLE parcels_production.broadband_availability (
     technology smallint NOT NULL,
     max_advertised_download_speed integer NOT NULL,
     max_advertised_upload_speed integer NOT NULL,
-    low_latency smallint NOT NULL,
+    low_latency boolean NOT NULL,
     business_residential_code character varying(1) NOT NULL,
     state_usps character varying(2) NOT NULL,
     block_geoid character varying(15) NOT NULL,
@@ -2082,7 +2082,7 @@ CREATE TABLE parcels_production.parcels_internet (
     broadband_updated bigint NOT NULL,
     max_download_speed integer,
     max_upload_speed integer,
-    low_latency smallint,
+    low_latency boolean,
     closest_provider_h3_res8_id character varying(16),
     closest_provider_distance bigint,
     nearby_max_download_speed integer,
@@ -2100,8 +2100,8 @@ ALTER TABLE parcels_production.parcels_internet OWNER TO pgloader_pg;
 --
 
 CREATE TABLE parcels_production.parcels_meta (
-    public smallint,
-    tribal smallint,
+    public boolean,
+    tribal boolean,
     ll_uuid character varying(36) NOT NULL
 );
 
@@ -2479,4 +2479,3 @@ CREATE UNIQUE INDEX idx_536375_z ON parcels_production.tiles USING btree (z, y, 
 --
 -- PostgreSQL database dump complete
 --
-
