@@ -49,7 +49,7 @@ export const isMain = (p) => process.argv[1] === fileURLToPath(p)
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 export const getParcelCount = async (path) => {
   const re = await db('parcels')
-    .where('path', 'like', `${path}%`)
+    .whereILike('path', `${path}%`)
     .count('* as count')
   return re[0].count
 }
@@ -89,11 +89,11 @@ export const get_parcels_query = ({ min_acre = 5, max_acre = 400 } = {}) => {
     this.andWhere('parcels.ll_gisacre', '<=', max_acre)
   })
 
-  parcels_query.whereRaw('lower(parcels.owner) not like "%city of%"')
-  parcels_query.whereRaw('lower(parcels.owner) not like "state of%"')
-  parcels_query.whereRaw('lower(parcels.owner) not like "% state of%"')
-  parcels_query.whereRaw('lower(parcels.owner) not like "%federal%"')
-  parcels_query.whereRaw('lower(parcels.owner) not like "%bureau of%"')
+  parcels_query.whereRaw('"parcels"."owner" NOT ILIKE \'%city of%\'')
+  parcels_query.whereRaw('"parcels"."owner" NOT ILIKE \'state of%\'')
+  parcels_query.whereRaw('"parcels"."owner" NOT ILIKE \'% state of%\'')
+  parcels_query.whereRaw('"parcels"."owner" NOT ILIKE \'%federal%\'')
+  parcels_query.whereRaw('"parcels"."owner" NOT ILIKE \'%bureau of%\'')
 
   const ownership_desc = [
     'No constraints — private ownership',
