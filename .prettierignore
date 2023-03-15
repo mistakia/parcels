@@ -2,3 +2,4 @@
 data
 jar.json
 *.json
+db/schema.postgres.sql
