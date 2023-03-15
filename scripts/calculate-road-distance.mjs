@@ -35,7 +35,7 @@ const get_filtered_road_parcels = async () => {
 }
 
 const save_distances = async (inserts) => {
-  await db('parcels_road').insert(inserts).onConflict().merge()
+  await db('parcels_road').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel road distances`)
 }
 

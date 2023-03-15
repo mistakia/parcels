@@ -62,7 +62,10 @@ const import_broadband_data = async ({ path }) => {
       file_path,
       chunk_size: 10000,
       save: async (chunk) => {
-        await db('broadband_availability').insert(chunk).onConflict().merge()
+        await db('broadband_availability')
+          .insert(chunk)
+          .onConflict(['provider_id', 'technology', 'h3_res8_id'])
+          .merge()
         log(`inserted ${chunk.length} broadband availability data`)
       }
     })

@@ -59,7 +59,7 @@ const get_filtered_military_parcels = async () => {
 }
 
 const save_military = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel military density metrics`)
 }
 

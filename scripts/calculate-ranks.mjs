@@ -20,7 +20,7 @@ const handle_rows = async ({ field, sorted_rows }) => {
     inserts,
     chunk_size: 10000,
     save: async (chunk) => {
-      await db('parcels_rank').insert(chunk).onConflict().merge()
+      await db('parcels_rank').insert(chunk).onConflict('ll_uuid').merge()
       log(`inserted ${chunk.length} ${field} ranks`)
     }
   })

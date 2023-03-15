@@ -112,7 +112,7 @@ const get_filtered_natural_parcels = async () => {
 }
 
 const save_natural = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel natural density metrics`)
 }
 

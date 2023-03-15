@@ -103,7 +103,7 @@ const get_filtered_broadband_parcels = async () => {
 }
 
 const save_broadband = async (inserts) => {
-  await db('parcels_internet').insert(inserts).onConflict().merge()
+  await db('parcels_internet').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel broadband metrics`)
 }
 

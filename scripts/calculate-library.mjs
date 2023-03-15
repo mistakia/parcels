@@ -62,7 +62,7 @@ const get_filtered_library_parcels = async () => {
 }
 
 const save_library = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel library density metrics`)
 }
 

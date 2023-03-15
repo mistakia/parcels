@@ -43,7 +43,7 @@ const import_airports = async () => {
     })
   })
 
-  await db('airports').insert(inserts).onConflict().merge()
+  await db('airports').insert(inserts).onConflict('abbrev').merge()
   log(`inserted ${inserts.length} airports`)
 }
 

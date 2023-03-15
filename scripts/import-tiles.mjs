@@ -88,7 +88,7 @@ const import_tile = async ({ x, y, z = 12 }) => {
   if (parcels_geometry_inserts.length) {
     await db('parcels_geometry')
       .insert(parcels_geometry_inserts)
-      .onConflict()
+      .onConflict('ll_uuid')
       .merge()
     log(`saved ${parcels_geometry_inserts.length} parcel geometry`)
   }
@@ -96,7 +96,7 @@ const import_tile = async ({ x, y, z = 12 }) => {
   if (parcels_geometry_extra_inserts.length) {
     await db('parcels_geometry_extra')
       .insert(parcels_geometry_extra_inserts)
-      .onConflict()
+      .onConflict('ll_uuid')
       .merge()
 
     log(`saved ${parcels_geometry_extra_inserts.length} parcel geometry extra`)
@@ -104,7 +104,7 @@ const import_tile = async ({ x, y, z = 12 }) => {
 
   await db('tiles')
     .insert({ x, y, z, count: items.length })
-    .onConflict()
+    .onConflict(['z', 'y', 'x'])
     .merge()
 
   log(`imported data for tile ${z}/${x}/${y}`)
@@ -152,7 +152,7 @@ const importer = async () => {
           y
         })
       })
-      .onConflict()
+      .onConflict('name')
       .merge()
     log('saved importer status')
   }

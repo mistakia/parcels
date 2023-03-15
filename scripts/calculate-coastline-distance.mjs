@@ -44,7 +44,7 @@ const get_filtered_coastline_parcels = async () => {
 }
 
 const save_distances = async (inserts) => {
-  await db('parcels_coastline').insert(inserts).onConflict().merge()
+  await db('parcels_coastline').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel coastline distances`)
 }
 

@@ -77,7 +77,7 @@ export const savePropertyStats = async (property) => {
   const stats = await getStats(property.path)
   await db('properties')
     .insert(formatProperty({ stats, property }))
-    .onConflict()
+    .onConflict('path')
     .merge()
 }
 

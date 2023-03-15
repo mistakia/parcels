@@ -429,7 +429,10 @@ const calculate_viewshed_index_for_parcel = async ({
 
   if (inserts.length) {
     log(`saving ${inserts.length} viewshed points for parcel`)
-    await db('parcels_viewshed').insert(inserts).onConflict().merge()
+    await db('parcels_viewshed')
+      .insert(inserts)
+      .onConflict(['latitude', 'longitude'])
+      .merge()
   }
 }
 

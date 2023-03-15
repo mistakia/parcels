@@ -66,7 +66,7 @@ const get_filtered_geological_features_parcels = async () => {
 }
 
 const save_geological_features = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel geological_features density metrics`)
 }
 

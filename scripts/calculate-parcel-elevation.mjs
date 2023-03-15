@@ -66,7 +66,7 @@ const get_filtered_elevation_parcels = async () => {
 }
 
 const save_inserts = async (inserts) => {
-  await db('parcels_elevation').insert(inserts).onConflict().merge()
+  await db('parcels_elevation').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel elevation info`)
 }
 

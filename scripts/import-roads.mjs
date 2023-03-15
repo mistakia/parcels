@@ -51,7 +51,8 @@ const import_roads = async () => {
       chunk_size: 1000,
       inserts,
       save: async (chunk) => {
-        await db('roads').insert(chunk).onConflict().merge()
+        // TODO - figure out how to handle duplicates
+        await db('roads').insert(chunk)
         log(`inserted ${chunk.length} roads`)
       }
     })

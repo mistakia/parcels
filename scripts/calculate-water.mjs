@@ -78,7 +78,7 @@ const get_filtered_water_parcels = async () => {
 }
 
 const save_water = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel water density metrics`)
 }
 

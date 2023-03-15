@@ -332,7 +332,7 @@ const process_parcels = async (parcels) => {
   }
 
   if (inserts.length) {
-    await db('parcels_meta').insert(inserts).onConflict().merge()
+    await db('parcels_meta').insert(inserts).onConflict('ll_uuid').merge()
     log(`inserted ${inserts.length} parcel meta rows`)
   }
 }

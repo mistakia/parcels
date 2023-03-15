@@ -221,7 +221,10 @@ const save_weather_data = ({ data, parcel }) =>
       weather_db.put(`${key}/wind`, wind_inserts)
       weather_db.put(`${key}/soil_temperature`, soil_temperature_inserts)
       weather_db.put(`${key}/soil_moisture`, soil_moisture_inserts)
-      await db('coordinates').insert(location).onConflict().merge()
+      await db('coordinates')
+        .insert(location)
+        .onConflict(['lat', 'lon'])
+        .merge()
     }
   })
 

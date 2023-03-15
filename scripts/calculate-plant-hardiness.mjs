@@ -70,7 +70,7 @@ const get_filtered_plant_hardiness_parcels = async () => {
  *  */
 
 const save_plant_hardiness = async (inserts) => {
-  await db('parcels_agriculture').insert(inserts).onConflict().merge()
+  await db('parcels_agriculture').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel plant_hardiness metrics`)
 }
 

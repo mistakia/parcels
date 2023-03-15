@@ -34,7 +34,7 @@ const get_filtered_airport_parcels = async () => {
 }
 
 const save_distances = async (inserts) => {
-  await db('parcels_airport').insert(inserts).onConflict().merge()
+  await db('parcels_airport').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel airport distances`)
 }
 

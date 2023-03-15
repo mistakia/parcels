@@ -73,7 +73,7 @@ const requestParcels = async ({ county, columns, page }) => {
 
   if (parcels.length) {
     log(`saving ${parcels.length} parcels`)
-    await db('parcels').insert(parcels).onConflict().merge()
+    await db('parcels').insert(parcels).onConflict('ll_uuid').merge()
   }
 
   return res

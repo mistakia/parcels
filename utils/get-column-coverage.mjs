@@ -28,7 +28,10 @@ export default async function ({ column_name, table_name, use_cache = true }) {
   }
 
   if (result.length) {
-    await db('coverage').insert(item).onConflict().merge()
+    await db('coverage')
+      .insert(item)
+      .onConflict(['column_name', 'table_name'])
+      .merge()
   }
 
   return item

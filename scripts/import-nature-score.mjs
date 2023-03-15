@@ -46,7 +46,7 @@ const get_nature_score_for_parcel = async ({ longitude, latitude }) => {
 }
 
 const save_nature_score = async (inserts) => {
-  await db('parcels_nature').insert(inserts).onConflict().merge()
+  await db('parcels_nature').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel nature scores`)
 }
 

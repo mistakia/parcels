@@ -80,7 +80,7 @@ const get_filtered_pollution_parcels = async () => {
 }
 
 const save_pollution = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel pollution density metrics`)
 }
 

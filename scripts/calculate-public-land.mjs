@@ -70,7 +70,7 @@ const get_filtered_public_land_parcels = async () => {
 }
 
 const save_public_land = async (inserts) => {
-  await db('parcels_density').insert(inserts).onConflict().merge()
+  await db('parcels_density').insert(inserts).onConflict('ll_uuid').merge()
   log(`inserted ${inserts.length} parcel public_land density metrics`)
 }
 

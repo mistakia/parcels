@@ -41,7 +41,7 @@ const import_parcel_geometry = async ({ path, ll_uuid }) => {
       ll_uuid,
       coordinates: JSON.stringify(res.geometry.coordinates[0])
     })
-    .onConflict()
+    .onConflict('ll_uuid')
     .merge()
 
   log(`imported geometry for ${path}`)
