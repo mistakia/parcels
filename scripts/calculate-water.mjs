@@ -2,7 +2,7 @@ import debug from 'debug'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
-import db, { postgres } from '#db'
+import db, { osm_db } from '#db'
 // import config from '#config'
 import { isMain, calculate_density_for_query, get_parcels_query } from '#utils'
 
@@ -13,19 +13,19 @@ debug.enable('calculate-public-land,calculate-density')
 const calculate_water = async ({ longitude, latitude }) => {
   const point_string = `ST_SetSRID(ST_Point(${longitude}, ${latitude}), 4326)::geography`
 
-  const query = postgres('planet_osm_polygon')
+  const query = osm_db('planet_osm_polygon')
   query.select('name')
   query.select('natural')
   query.select(
-    postgres.raw(
+    osm_db.raw(
       `ST_Distance(${point_string},ST_Transform(way, 4326)::geography) as distance`
     )
   )
   query.select(
-    postgres.raw('ST_AsGeoJSON(ST_Transform(way, 4326)::geography) as geometry')
+    osm_db.raw('ST_AsGeoJSON(ST_Transform(way, 4326)::geography) as geometry')
   )
-  // query.select(postgres.raw('ST_Y(ST_Transform(way, 4326)) as latitude'))
-  // query.select(postgres.raw('ST_X(ST_Transform(way, 4326)) as longitude'))
+  // query.select(osm_db.raw('ST_Y(ST_Transform(way, 4326)) as latitude'))
+  // query.select(osm_db.raw('ST_X(ST_Transform(way, 4326)) as longitude'))
 
   const distance = 50 * 1000 // in meters
   query.whereRaw(

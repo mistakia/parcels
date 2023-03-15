@@ -2,7 +2,7 @@ import debug from 'debug'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
-import db, { postgres } from '#db'
+import db, { osm_db } from '#db'
 // import config from '#config'
 import { isMain, calculate_density_for_query, get_parcels_query } from '#utils'
 
@@ -13,17 +13,17 @@ debug.enable('calculate-spring,calculate-density')
 const calculate_spring = async ({ longitude, latitude }) => {
   const point_string = `ST_SetSRID(ST_Point(${longitude}, ${latitude}), 4326)::geography`
 
-  const query = postgres('planet_osm_point')
+  const query = osm_db('planet_osm_point')
   query.select('natural')
   query.select('amenity')
   query.select('name')
   query.select(
-    postgres.raw(
+    osm_db.raw(
       `ST_Distance(${point_string},ST_Transform(way, 4326)::geography) as distance`
     )
   )
   query.select(
-    postgres.raw('ST_AsGeoJSON(ST_Transform(way, 4326)::geography) as geometry')
+    osm_db.raw('ST_AsGeoJSON(ST_Transform(way, 4326)::geography) as geometry')
   )
 
   const distance = 100 * 1000 // in meters

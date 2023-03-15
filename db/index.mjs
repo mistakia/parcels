@@ -1,10 +1,10 @@
 import Knex from 'knex'
 import config from '#config'
 
-const mysql = Knex(config.mysql)
+const parcels_db = Knex(config.parcels_db)
 
-const postgres = Knex(config.postgres)
+const osm_db = Knex(config.osm_db)
 
-export { postgres }
+export { osm_db }
 
-export default mysql
+export default parcels_db
