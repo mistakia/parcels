@@ -106,7 +106,7 @@ const get_filtered_natural_parcels = async () => {
     .whereNull('parcels_density.natural_updated')
 
   parcels_query.limit(100)
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
 
   return parcels_query
 }

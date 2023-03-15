@@ -30,7 +30,7 @@ const get_weather_parcels_query = () => {
     })
     .whereNull('coordinates.elevation')
 
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
   parcels_query.limit(100)
   parcels_query.select('parcels.lat', 'parcels.lon')
 

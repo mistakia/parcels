@@ -60,7 +60,7 @@ const get_filtered_geological_features_parcels = async () => {
     .whereNull('parcels_density.geological_features_updated')
 
   parcels_query.limit(1000)
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
 
   return parcels_query
 }

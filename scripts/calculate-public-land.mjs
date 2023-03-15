@@ -64,7 +64,7 @@ const get_filtered_public_land_parcels = async () => {
     .whereNull('parcels_density.public_land_updated')
 
   parcels_query.limit(100)
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
 
   return parcels_query
 }

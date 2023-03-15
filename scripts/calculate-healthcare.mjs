@@ -56,7 +56,7 @@ const get_filtered_healthcare_parcels = async () => {
     .whereNull('parcels_density.healthcare_updated')
 
   parcels_query.limit(1000)
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
 
   return parcels_query
 }

@@ -448,7 +448,7 @@ const get_viewshed_parcels = async () => {
     .leftJoin('parcels_viewshed', 'parcels_viewshed.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_viewshed.viewshed_index')
 
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
   parcels_query.limit(100)
 
   return parcels_query

@@ -50,7 +50,7 @@ const import_parcel_geometry = async ({ path, ll_uuid }) => {
 
 const get_importer_parcels_query = () => {
   const parcels_query = get_parcels_query()
-  parcels_query.orderByRaw('RAND()')
+  parcels_query.orderByRaw('RANDOM()')
   parcels_query.select('parcels.path', 'parcels.ll_uuid')
   parcels_query
     .leftJoin('parcels_geometry', 'parcels_geometry.ll_uuid', 'parcels.ll_uuid')
