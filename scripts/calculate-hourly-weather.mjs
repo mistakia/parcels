@@ -53,7 +53,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
 
   const weather_data_by_year = weather_hours.reduce(
     (acc, weather_hour, index) => {
-      const temp = weather_hour.apparent_temperature_2m
+      const temp = weather_hour.apparent_temperature
       const cloudcover = cloudcover_weather_hours[index].cloudcover
       const wind_speed = wind_weather_hours[index].windspeed_10m
 
@@ -65,6 +65,11 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
       const local_time = new Date(local_time_string)
       const year = local_time.getFullYear()
       const hour = local_time.getHours()
+
+      // hardcoded fix for timezone adjustment resulting in a few hours of 2014 data
+      if (year === 2014) {
+        return acc
+      }
 
       const local_time_date_string = local_time.toISOString().slice(0, 10)
       if (sun_times_cache.key !== local_time_date_string) {
@@ -119,60 +124,14 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         }
       }
 
-      if (temp < 0) {
-        acc[year].hrs_below_0_c_apparent_temperature += 1
-
-        if (cloudcover >= 10) {
-          acc[year].daytime_hours_above_10_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 20) {
-          acc[year].daytime_hours_above_20_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 30) {
-          acc[year].daytime_hours_above_30_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 40) {
-          acc[year].daytime_hours_above_40_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 50) {
-          acc[year].daytime_hours_above_50_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 60) {
-          acc[year].daytime_hours_above_60_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 70) {
-          acc[year].daytime_hours_above_70_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 80) {
-          acc[year].daytime_hours_above_80_pct_cloud_cover += 1
-        }
-        if (cloudcover >= 90) {
-          acc[year].daytime_hours_above_90_pct_cloud_cover += 1
-        }
-
-        if (
-          local_time >= sun_times_cache.value.dawn &&
-          local_time <= sun_times_cache.value.dusk
-        ) {
-          acc[year].daytime_hrs_below_0_c_apparent_temperature += 1
-        }
-      } else if (temp < 5) {
-        acc[year].hrs_below_5_c_apparent_temperature += 1
-
-        if (
-          local_time >= sun_times_cache.value.dawn &&
-          local_time <= sun_times_cache.value.dusk
-        ) {
-          acc[year].daytime_hrs_below_5_c_apparent_temperature += 1
-        }
-      } else if (temp < 10) {
+      // temp metrics
+      if (temp < 10) {
         acc[year].hrs_below_10_c_apparent_temperature += 1
-
-        if (
-          local_time >= sun_times_cache.value.dawn &&
-          local_time <= sun_times_cache.value.dusk
-        ) {
-          acc[year].daytime_hrs_below_10_c_apparent_temperature += 1
+        if (temp < 5) {
+          acc[year].hrs_below_5_c_apparent_temperature += 1
+          if (temp < 0) {
+            acc[year].hrs_below_0_c_apparent_temperature += 1
+          }
         }
       }
 
@@ -182,6 +141,46 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         local_time <= sun_times_cache.value.dusk
       ) {
         acc[year].daytime_hours += 1
+
+        // daytime temp metrics
+        if (temp < 10) {
+          acc[year].daytime_hrs_below_10_c_apparent_temperature += 1
+          if (temp < 5) {
+            acc[year].daytime_hrs_below_5_c_apparent_temperature += 1
+            if (temp < 0) {
+              acc[year].daytime_hrs_below_0_c_apparent_temperature += 1
+            }
+          }
+        }
+
+        // daytime cloud cover metrics
+        if (cloudcover >= 10) {
+          acc[year].daytime_hours_above_10_pct_cloud_cover += 1
+          if (cloudcover >= 20) {
+            acc[year].daytime_hours_above_20_pct_cloud_cover += 1
+            if (cloudcover >= 30) {
+              acc[year].daytime_hours_above_30_pct_cloud_cover += 1
+              if (cloudcover >= 40) {
+                acc[year].daytime_hours_above_40_pct_cloud_cover += 1
+                if (cloudcover >= 50) {
+                  acc[year].daytime_hours_above_50_pct_cloud_cover += 1
+                  if (cloudcover >= 60) {
+                    acc[year].daytime_hours_above_60_pct_cloud_cover += 1
+                    if (cloudcover >= 70) {
+                      acc[year].daytime_hours_above_70_pct_cloud_cover += 1
+                      if (cloudcover >= 80) {
+                        acc[year].daytime_hours_above_80_pct_cloud_cover += 1
+                        if (cloudcover >= 90) {
+                          acc[year].daytime_hours_above_90_pct_cloud_cover += 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
 
         // calculate fair days
         const fair_day_already_exists =
