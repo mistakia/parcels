@@ -470,6 +470,8 @@ const get_filtered_parcels = async () => {
     .leftJoin('parcels_weather', 'parcels_weather.ll_uuid', 'parcels.ll_uuid')
     .whereNull('parcels_weather.updated')
 
+  parcels_query.orderByRaw('RANDOM()')
+
   parcels_query.limit(100)
 
   return parcels_query
