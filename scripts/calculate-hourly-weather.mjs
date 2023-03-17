@@ -30,6 +30,9 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
   const cloudcover_weather_hours = await weather_db.get(`${key}/cloudcover`)
   const wind_weather_hours = await weather_db.get(`${key}/wind`)
 
+  // TODO: fix typo in db, move to `percipitation`
+  const percipitation_hours = await weather_db.get(`${key}/percipation`)
+
   // get timezone from coordinates
   const tz = find(latitude, longitude)[0]
 
@@ -86,6 +89,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         at_least_5_hours_with_cloud_cover_under_75: {}
       }
 
+      // initialize accumulator for year
       if (!acc[year]) {
         acc[year] = {
           dates: {
@@ -125,10 +129,13 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
       }
 
       // temp metrics
+      // check if under 10°C (50°F)
       if (temp < 10) {
         acc[year].hrs_below_10_c_apparent_temperature += 1
+        // check if under 5°C (41°F)
         if (temp < 5) {
           acc[year].hrs_below_5_c_apparent_temperature += 1
+          // check if under 0°C (32°F)
           if (temp < 0) {
             acc[year].hrs_below_0_c_apparent_temperature += 1
           }
@@ -143,10 +150,13 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         acc[year].daytime_hours += 1
 
         // daytime temp metrics
+        // check if under 10°C (50°F)
         if (temp < 10) {
           acc[year].daytime_hrs_below_10_c_apparent_temperature += 1
+          // check if under 5°C (41°F)
           if (temp < 5) {
             acc[year].daytime_hrs_below_5_c_apparent_temperature += 1
+            // check if under 0°C (32°F)
             if (temp < 0) {
               acc[year].daytime_hrs_below_0_c_apparent_temperature += 1
             }
@@ -182,20 +192,145 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
           }
         }
 
+        // calculate dinner outside days
+        const dinner_outside_day_already_exists =
+          acc[year].dates.dinner_outside_days[local_time_date_string]
+        if (!dinner_outside_day_already_exists && hour >= 18 && hour <= 21) {
+          // temp between 60°F (15.5°C) and 80°F (26.7°C)
+          if (temp >= 15.5 && temp <= 26.7) {
+            // wind speed below 24mph (38.6 km/h)
+            if (wind_speed <= 38.6) {
+              acc[year].dates.dinner_outside_days[local_time_date_string] = true
+              acc[year].dinner_outside_days += 1
+            }
+          }
+        }
+
+        // calculate indoor day for today if it hasn't been calculated yet
+        if (cache.indoor_day[local_time_date_string] === undefined) {
+          // check if snowed any hour today
+          const percipitation_hours_for_today = percipitation_hours.slice(
+            index - hour,
+            index + (24 - hour)
+          )
+          const snowed_today = percipitation_hours_for_today.some((h) =>
+            Boolean(h.snowfall)
+          )
+
+          // not an indoor day if it snowed today
+          // stop checking for indoor day if it snowed today
+          if (!snowed_today) {
+            // get daytime hours
+            const dawn_hour = sun_times_cache.value.dawn.getHours()
+            const dusk_hour = sun_times_cache.value.dusk.getHours()
+            const weather_hours_for_daytime_hours = weather_hours.slice(
+              index - (hour - dawn_hour),
+              index + (dusk_hour - hour)
+            )
+
+            // indoor day if under 24°f (-4.4°c) more than 25% of daytime hours
+            const cold_hours = weather_hours_for_daytime_hours.filter(
+              (h) => h.apparent_temperature < -4.4
+            )
+            const cold_day =
+              cold_hours.length / weather_hours_for_daytime_hours.length > 0.25
+            if (cold_day) {
+              cache.indoor_day[local_time_date_string] = true
+              acc[year].dates.indoor_days[local_time_date_string] = true
+              acc[year].indoor_days += 1
+
+              // dont calculate fair, perfect, active days on an indoor day
+              return acc
+            }
+
+            // indoor day if above 80°f (26.7°c) more than 25% of daytime hours
+            const hot_hours = weather_hours_for_daytime_hours.filter(
+              (h) => h.apparent_temperature > 26.7
+            )
+            const hot_day =
+              hot_hours.length / weather_hours_for_daytime_hours.length > 0.25
+            if (hot_day) {
+              cache.indoor_day[local_time_date_string] = true
+              acc[year].dates.indoor_days[local_time_date_string] = true
+              acc[year].indoor_days += 1
+
+              // dont calculate fair, perfect, active days on an indoor day
+              return acc
+            }
+
+            // indoor day if wind above 28mph (45km/s) more than 25% of daytime hours
+            const wind_hours_for_daytime_hours = wind_weather_hours.slice(
+              index - (hour - dawn_hour),
+              index + (dusk_hour - hour)
+            )
+            const windy_hours = wind_hours_for_daytime_hours.filter(
+              (h) => h.windspeed_10m > 45
+            )
+            const windy_day =
+              windy_hours.length / wind_hours_for_daytime_hours.length > 0.25
+            if (windy_day) {
+              cache.indoor_day[local_time_date_string] = true
+              acc[year].dates.indoor_days[local_time_date_string] = true
+              acc[year].indoor_days += 1
+
+              // dont calculate fair, perfect, active days on an indoor day
+              return acc
+            }
+
+            // indoor day if cloud cover above 70% and under 40°f (4.4°c) more than 25% of daytime hours
+            const cloud_hours_for_daytime_hours =
+              cloudcover_weather_hours.slice(
+                index - (hour - dawn_hour),
+                index + (dusk_hour - hour)
+              )
+            const cloudy_hours = cloud_hours_for_daytime_hours.filter(
+              (h) => h.cloudcover > 70
+            )
+            const cloudy_day =
+              cloudy_hours.length / cloud_hours_for_daytime_hours.length > 0.25
+
+            const coldish_hours = weather_hours_for_daytime_hours.filter(
+              (h) => h.apparent_temperature < 4.4
+            )
+            const coldish_day =
+              coldish_hours.length / weather_hours_for_daytime_hours.length >
+              0.25
+
+            if (cloudy_day && coldish_day) {
+              cache.indoor_day[local_time_date_string] = true
+              acc[year].dates.indoor_days[local_time_date_string] = true
+              acc[year].indoor_days += 1
+
+              // dont calculate fair, perfect, active days on an indoor day
+              return acc
+            }
+          }
+
+          cache.indoor_day[local_time_date_string] = false
+        }
+
+        if (cache.indoor_day[local_time_date_string]) {
+          // dont calculate fair, perfect, active days on an indoor day
+          return acc
+        }
+
         // calculate fair days
         const fair_day_already_exists =
           acc[year].dates.fair_days[local_time_date_string]
-        if (!fair_day_already_exists && temp >= 50 && temp <= 78) {
+        // temp between 10°C (50°F) and 26°C (79°F)
+        if (!fair_day_already_exists && temp >= 10 && temp <= 26) {
           if (index >= 3) {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 50 &&
-                h.apparent_temperature_2m <= 78
+                h.apparent_temperature_2m >= 10 &&
+                h.apparent_temperature_2m <= 26
             )
 
             if (
-              cache.at_least_5_hours_with_cloud_cover_under_75 === undefined
+              cache.at_least_5_hours_with_cloud_cover_under_75[
+                local_time_date_string
+              ] === undefined
             ) {
               // get all cloud cover hours for the day
               const dawn_hour = sun_times_cache.value.dawn.getHours()
@@ -231,13 +366,14 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         // calculate perfect days
         const perfect_day_already_exists =
           acc[year].dates.perfect_days[local_time_date_string]
-        if (!perfect_day_already_exists && temp >= 57 && temp <= 78) {
+        // temp between 13.8°C (56.8°F) and 25.5°C (78.9°F)
+        if (!perfect_day_already_exists && temp >= 13.8 && temp <= 25.5) {
           if (index >= 3) {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 57 &&
-                h.apparent_temperature_2m <= 78
+                h.apparent_temperature_2m >= 13.8 &&
+                h.apparent_temperature_2m <= 25.5
             )
 
             if (
@@ -279,30 +415,19 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         // calculate active days
         const active_day_already_exists =
           acc[year].dates.active_days[local_time_date_string]
-        if (!active_day_already_exists && temp >= 45 && temp <= 74) {
+        // temp between 7.2°C (45°F) and 23.3°C (74°F)
+        if (!active_day_already_exists && temp >= 7.2 && temp <= 23.3) {
           if (index >= 3) {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 45 &&
-                h.apparent_temperature_2m <= 74
+                h.apparent_temperature_2m >= 7.2 &&
+                h.apparent_temperature_2m <= 23.3
             )
 
             if (prev_hours_have_fair_temp) {
               acc[year].dates.active_days[local_time_date_string] = true
               acc[year].active_days += 1
-            }
-          }
-        }
-
-        // calculate dinner outside days
-        const dinner_outside_day_already_exists =
-          acc[year].dates.dinner_outside_days[local_time_date_string]
-        if (!dinner_outside_day_already_exists && hour >= 18 && hour <= 21) {
-          if (temp >= 60 && temp <= 80) {
-            if (wind_speed <= 24) {
-              acc[year].dates.dinner_outside_days[local_time_date_string] = true
-              acc[year].dinner_outside_days += 1
             }
           }
         }

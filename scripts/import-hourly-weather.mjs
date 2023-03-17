@@ -215,7 +215,10 @@ const save_weather_data = ({ data, parcel }) =>
     if (hourly_inserts.length) {
       log(`inserting ${hourly_inserts.length} hourly data points`)
       weather_db.put(key, hourly_inserts)
+
+      // TODO: fix typo in db, move to `percipitation`
       weather_db.put(`${key}/percipation`, percipitation_inserts)
+
       weather_db.put(`${key}/cloudcover`, cloudcover_inserts)
       weather_db.put(`${key}/radiation`, radiation_inserts)
       weather_db.put(`${key}/wind`, wind_inserts)
