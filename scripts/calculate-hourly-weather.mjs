@@ -86,7 +86,8 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
       // used to prevent calculating cloud cover for the same day multiple times
       const cache = {
         at_least_5_hours_with_cloud_cover_under_55: {},
-        at_least_5_hours_with_cloud_cover_under_75: {}
+        at_least_5_hours_with_cloud_cover_under_75: {},
+        indoor_days: {}
       }
 
       // initialize accumulator for year
@@ -207,7 +208,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
         }
 
         // calculate indoor day for today if it hasn't been calculated yet
-        if (cache.indoor_day[local_time_date_string] === undefined) {
+        if (cache.indoor_days[local_time_date_string] === undefined) {
           // check if snowed any hour today
           const percipitation_hours_for_today = percipitation_hours.slice(
             index - hour,
@@ -235,7 +236,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const cold_day =
               cold_hours.length / weather_hours_for_daytime_hours.length > 0.25
             if (cold_day) {
-              cache.indoor_day[local_time_date_string] = true
+              cache.indoor_days[local_time_date_string] = true
               acc[year].dates.indoor_days[local_time_date_string] = true
               acc[year].indoor_days += 1
 
@@ -250,7 +251,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const hot_day =
               hot_hours.length / weather_hours_for_daytime_hours.length > 0.25
             if (hot_day) {
-              cache.indoor_day[local_time_date_string] = true
+              cache.indoor_days[local_time_date_string] = true
               acc[year].dates.indoor_days[local_time_date_string] = true
               acc[year].indoor_days += 1
 
@@ -269,7 +270,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const windy_day =
               windy_hours.length / wind_hours_for_daytime_hours.length > 0.25
             if (windy_day) {
-              cache.indoor_day[local_time_date_string] = true
+              cache.indoor_days[local_time_date_string] = true
               acc[year].dates.indoor_days[local_time_date_string] = true
               acc[year].indoor_days += 1
 
@@ -297,7 +298,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
               0.25
 
             if (cloudy_day && coldish_day) {
-              cache.indoor_day[local_time_date_string] = true
+              cache.indoor_days[local_time_date_string] = true
               acc[year].dates.indoor_days[local_time_date_string] = true
               acc[year].indoor_days += 1
 
@@ -306,10 +307,10 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             }
           }
 
-          cache.indoor_day[local_time_date_string] = false
+          cache.indoor_days[local_time_date_string] = false
         }
 
-        if (cache.indoor_day[local_time_date_string]) {
+        if (cache.indoor_days[local_time_date_string]) {
           // dont calculate fair, perfect, active days on an indoor day
           return acc
         }
@@ -323,8 +324,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 10 &&
-                h.apparent_temperature_2m <= 26
+                h.apparent_temperature >= 10 && h.apparent_temperature <= 26
             )
 
             if (
@@ -372,8 +372,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 13.8 &&
-                h.apparent_temperature_2m <= 25.5
+                h.apparent_temperature >= 13.8 && h.apparent_temperature <= 25.5
             )
 
             if (
@@ -421,8 +420,7 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
             const prev_weather_hours = weather_hours.slice(index - 3, index)
             const prev_hours_have_fair_temp = prev_weather_hours.every(
               (h) =>
-                h.apparent_temperature_2m >= 7.2 &&
-                h.apparent_temperature_2m <= 23.3
+                h.apparent_temperature >= 7.2 && h.apparent_temperature <= 23.3
             )
 
             if (prev_hours_have_fair_temp) {
