@@ -44,13 +44,13 @@ const open_parcel_on_geojson_io = async ({ path, ll_uuid }) => {
       coordinates: [Number(parcel.lon), Number(parcel.lat)]
     })
     open_geojson_io(parcel_feature)
+  } else {
+    const parcel_feature = turf.feature({
+      type: 'Polygon',
+      coordinates: [parcel_geo.coordinates]
+    })
+    open_geojson_io(parcel_feature)
   }
-
-  const parcel_feature = turf.feature({
-    type: 'Polygon',
-    coordinates: [parcel_geo.coordinates]
-  })
-  open_geojson_io(parcel_feature)
 }
 
 export default open_parcel_on_geojson_io
