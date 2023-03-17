@@ -54,6 +54,13 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
     value: null
   }
 
+  // used to prevent calculating cloud cover for the same day multiple times
+  const cache = {
+    at_least_5_hours_with_cloud_cover_under_55: {},
+    at_least_5_hours_with_cloud_cover_under_75: {},
+    indoor_days: {}
+  }
+
   const weather_data_by_year = weather_hours.reduce(
     (acc, weather_hour, index) => {
       const temp = weather_hour.apparent_temperature
@@ -81,13 +88,6 @@ const calculate_hourly_weather = async ({ longitude, latitude }) => {
           latitude,
           longitude
         )
-      }
-
-      // used to prevent calculating cloud cover for the same day multiple times
-      const cache = {
-        at_least_5_hours_with_cloud_cover_under_55: {},
-        at_least_5_hours_with_cloud_cover_under_75: {},
-        indoor_days: {}
       }
 
       // initialize accumulator for year
