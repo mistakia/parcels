@@ -2129,6 +2129,11 @@ ALTER TABLE parcels_production.parcels_nature OWNER TO pgloader_pg;
 CREATE TABLE parcels_production.parcels_rank (
     hardiness_temp_rank smallint,
     max_download_speed_rank smallint,
+    max_upload_speed_rank smallint,
+    closest_provider_distance_rank smallint,
+    nearby_max_download_speed_rank smallint,
+    nearby_max_upload_speed_rank smallint,
+    surrounding_coverage_density_rank smallint,
     closest_military_distance_rank smallint,
     closest_spring_distance_rank smallint,
     military_count_25km_rank smallint,

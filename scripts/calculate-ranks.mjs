@@ -38,15 +38,24 @@ const calculate_hardiness_temp_rank = async () => {
   console.timeEnd('calculate_rank')
 }
 
-const calculate_broadband_max_download_speed_rank = async () => {
-  const field = 'max_download_speed'
-  console.time(field)
-  const rows = await db('parcels_internet')
-    .select('ll_uuid', field)
-    .whereNotNull(field)
-  const sorted_rows = rows.sort((a, b) => a[field] - b[field])
-  await handle_rows({ field, sorted_rows })
-  console.timeEnd(field)
+const calculate_broadband_ranks = async () => {
+  const fields = [
+    'max_download_speed',
+    'max_upload_speed',
+    'closest_provider_distance',
+    'nearby_max_download_speed',
+    'nearby_max_upload_speed',
+    'surrounding_coverage_density'
+  ]
+  for (const field of fields) {
+    console.time(field)
+    const rows = await db('parcels_internet')
+      .select('ll_uuid', field)
+      .whereNotNull(field)
+    const sorted_rows = rows.sort((a, b) => a[field] - b[field])
+    await handle_rows({ field, sorted_rows })
+    console.timeEnd(field)
+  }
 }
 
 const calculate_closest_military_distance_rank = async () => {
@@ -113,7 +122,7 @@ const calculate_spring_density_ranks = async () => {
 
 const calculate_ranks = async () => {
   await calculate_hardiness_temp_rank()
-  await calculate_broadband_max_download_speed_rank()
+  await calculate_broadband_ranks()
   await calculate_closest_military_distance_rank()
   await calculate_military_density_ranks()
   await calculate_closest_spring_distance_rank()
