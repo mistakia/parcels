@@ -96,7 +96,7 @@ const import_tile = async ({ x, y, z = 12 }) => {
   if (parcels_geometry_extra_inserts.length) {
     await db('parcels_geometry_extra')
       .insert(parcels_geometry_extra_inserts)
-      .onConflict('ll_uuid')
+      .onConflict('path')
       .merge()
 
     log(`saved ${parcels_geometry_extra_inserts.length} parcel geometry extra`)
