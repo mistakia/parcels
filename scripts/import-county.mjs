@@ -80,7 +80,8 @@ const requestParcels = async ({ county, columns, page }) => {
 }
 
 const importCounty = async ({ county, start = 1, end = Infinity }) => {
-  const columns = Object.keys(await db('parcels').columnInfo())
+  const column_results = await db('information_schema.columns').select('column_name').where('table_name', 'parcels')
+  const columns = column_results.map((r) => r.column_name)
   log(`importing parcels for ${county}, start ${start}`)
 
   const property = await getProperty(county)
