@@ -10,11 +10,12 @@ import { isMain } from '#utils'
 const log = debug('calculate-ranks')
 debug.enable('calculate-ranks')
 
-const calculate_rank_for_field = async ({ field, table_name }) => {
+const calculate_rank_for_field = async ({ field, table_name, order_by }) => {
+  const reverse = order_by === 'DESC'
   console.time(field)
   await db.raw(`
     INSERT INTO parcels_rank (ll_uuid, ${field}_rank)
-    SELECT pa.ll_uuid, (PERCENT_RANK() OVER (ORDER BY pa.${field}) * 100) - 50
+    SELECT pa.ll_uuid, ((${reverse ? '1' : '0'} - (PERCENT_RANK() OVER (ORDER BY pa.${field}))) * 100) - 50
     FROM ${table_name} pa
     WHERE pa.${field} IS NOT NULL
     ON CONFLICT (ll_uuid) DO UPDATE SET ${field}_rank = EXCLUDED.${field}_rank
@@ -26,71 +27,88 @@ const calculate_ranks = async () => {
   const items = [
     {
       field: 'hardiness_temp',
-      table_name: 'parcels_agriculture'
+      table_name: 'parcels_agriculture',
+      order_by: 'ASC'
     },
     {
       field: 'max_download_speed',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'ASC'
     },
     {
       field: 'max_upload_speed',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'ASC'
     },
     {
       field: 'closest_provider_distance',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'DESC'
     },
     {
       field: 'nearby_max_download_speed',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'ASC'
     },
     {
       field: 'nearby_max_upload_speed',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'ASC'
     },
     {
       field: 'surrounding_coverage_density',
-      table_name: 'parcels_internet'
+      table_name: 'parcels_internet',
+      order_by: 'ASC'
     },
     {
       field: 'closest_military_distance',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     },
     {
       field: 'military_count_25km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'DESC'
     },
     {
       field: 'military_count_50km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'DESC'
     },
     {
       field: 'military_count_200km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'DESC'
     },
     {
       field: 'closest_spring_distance',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'DESC'
     },
     {
       field: 'spring_count_1km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     },
     {
       field: 'spring_count_5km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     },
     {
       field: 'spring_count_10km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     },
     {
       field: 'spring_count_50km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     },
     {
       field: 'spring_count_100km',
-      table_name: 'parcels_density'
+      table_name: 'parcels_density',
+      order_by: 'ASC'
     }
   ]
 
