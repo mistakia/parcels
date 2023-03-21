@@ -227,8 +227,8 @@ CREATE TABLE parcels_production.parcels (
     lot text,
     neighborhood text,
     subdivision text,
-    lat text,
-    lon text,
+    lat numeric(10,8),
+    lon numeric(11,8),
     goz text,
     goz_tract text,
     census_tract text,
@@ -2205,6 +2205,226 @@ COMMENT ON COLUMN parcels_production.parcels_viewshed.longitude IS 'longitude de
 
 
 --
+-- Name: parcels_weather; Type: TABLE; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE TABLE parcels_production.parcels_weather (
+    ll_uuid character(36) NOT NULL,
+    updated bigint,
+    hrs_below_0_c_apparent_temperature_in_2015 smallint,
+    hrs_below_0_c_apparent_temperature_in_2016 smallint,
+    hrs_below_0_c_apparent_temperature_in_2017 smallint,
+    hrs_below_0_c_apparent_temperature_in_2018 smallint,
+    hrs_below_0_c_apparent_temperature_in_2019 smallint,
+    hrs_below_0_c_apparent_temperature_in_2020 smallint,
+    hrs_below_0_c_apparent_temperature_in_2021 smallint,
+    hrs_below_0_c_apparent_temperature_in_2022 smallint,
+    hrs_below_5_c_apparent_temperature_in_2015 smallint,
+    hrs_below_5_c_apparent_temperature_in_2016 smallint,
+    hrs_below_5_c_apparent_temperature_in_2017 smallint,
+    hrs_below_5_c_apparent_temperature_in_2018 smallint,
+    hrs_below_5_c_apparent_temperature_in_2019 smallint,
+    hrs_below_5_c_apparent_temperature_in_2020 smallint,
+    hrs_below_5_c_apparent_temperature_in_2021 smallint,
+    hrs_below_5_c_apparent_temperature_in_2022 smallint,
+    hrs_below_10_c_apparent_temperature_in_2015 smallint,
+    hrs_below_10_c_apparent_temperature_in_2016 smallint,
+    hrs_below_10_c_apparent_temperature_in_2017 smallint,
+    hrs_below_10_c_apparent_temperature_in_2018 smallint,
+    hrs_below_10_c_apparent_temperature_in_2019 smallint,
+    hrs_below_10_c_apparent_temperature_in_2020 smallint,
+    hrs_below_10_c_apparent_temperature_in_2021 smallint,
+    hrs_below_10_c_apparent_temperature_in_2022 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2015 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2016 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2017 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2018 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2019 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2020 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2021 smallint,
+    daytime_hrs_below_0_c_apparent_temperature_in_2022 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2015 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2016 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2017 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2018 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2019 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2020 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2021 smallint,
+    daytime_hrs_below_5_c_apparent_temperature_in_2022 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2015 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2016 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2017 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2018 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2019 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2020 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2021 smallint,
+    daytime_hrs_below_10_c_apparent_temperature_in_2022 smallint,
+    fair_days_in_2015 smallint,
+    fair_days_in_2016 smallint,
+    fair_days_in_2017 smallint,
+    fair_days_in_2018 smallint,
+    fair_days_in_2019 smallint,
+    fair_days_in_2020 smallint,
+    fair_days_in_2021 smallint,
+    fair_days_in_2022 smallint,
+    fair_days_dates_in_2015 character(10)[],
+    fair_days_dates_in_2016 character(10)[],
+    fair_days_dates_in_2017 character(10)[],
+    fair_days_dates_in_2018 character(10)[],
+    fair_days_dates_in_2019 character(10)[],
+    fair_days_dates_in_2020 character(10)[],
+    fair_days_dates_in_2021 character(10)[],
+    fair_days_dates_in_2022 character(10)[],
+    perfect_days_in_2015 smallint,
+    perfect_days_in_2016 smallint,
+    perfect_days_in_2017 smallint,
+    perfect_days_in_2018 smallint,
+    perfect_days_in_2019 smallint,
+    perfect_days_in_2020 smallint,
+    perfect_days_in_2021 smallint,
+    perfect_days_in_2022 smallint,
+    perfect_days_dates_in_2015 character(10)[],
+    perfect_days_dates_in_2016 character(10)[],
+    perfect_days_dates_in_2017 character(10)[],
+    perfect_days_dates_in_2018 character(10)[],
+    perfect_days_dates_in_2019 character(10)[],
+    perfect_days_dates_in_2020 character(10)[],
+    perfect_days_dates_in_2021 character(10)[],
+    perfect_days_dates_in_2022 character(10)[],
+    active_days_in_2015 smallint,
+    active_days_in_2016 smallint,
+    active_days_in_2017 smallint,
+    active_days_in_2018 smallint,
+    active_days_in_2019 smallint,
+    active_days_in_2020 smallint,
+    active_days_in_2021 smallint,
+    active_days_in_2022 smallint,
+    active_days_dates_in_2015 character(10)[],
+    active_days_dates_in_2016 character(10)[],
+    active_days_dates_in_2017 character(10)[],
+    active_days_dates_in_2018 character(10)[],
+    active_days_dates_in_2019 character(10)[],
+    active_days_dates_in_2020 character(10)[],
+    active_days_dates_in_2021 character(10)[],
+    active_days_dates_in_2022 character(10)[],
+    dinner_outside_days_in_2015 smallint,
+    dinner_outside_days_in_2016 smallint,
+    dinner_outside_days_in_2017 smallint,
+    dinner_outside_days_in_2018 smallint,
+    dinner_outside_days_in_2019 smallint,
+    dinner_outside_days_in_2020 smallint,
+    dinner_outside_days_in_2021 smallint,
+    dinner_outside_days_in_2022 smallint,
+    dinner_outside_days_dates_in_2015 character(10)[],
+    dinner_outside_days_dates_in_2016 character(10)[],
+    dinner_outside_days_dates_in_2017 character(10)[],
+    dinner_outside_days_dates_in_2018 character(10)[],
+    dinner_outside_days_dates_in_2019 character(10)[],
+    dinner_outside_days_dates_in_2020 character(10)[],
+    dinner_outside_days_dates_in_2021 character(10)[],
+    dinner_outside_days_dates_in_2022 character(10)[],
+    indoor_days_in_2015 smallint,
+    indoor_days_in_2016 smallint,
+    indoor_days_in_2017 smallint,
+    indoor_days_in_2018 smallint,
+    indoor_days_in_2019 smallint,
+    indoor_days_in_2020 smallint,
+    indoor_days_in_2021 smallint,
+    indoor_days_in_2022 smallint,
+    indoor_days_dates_in_2015 character(10)[],
+    indoor_days_dates_in_2016 character(10)[],
+    indoor_days_dates_in_2017 character(10)[],
+    indoor_days_dates_in_2018 character(10)[],
+    indoor_days_dates_in_2019 character(10)[],
+    indoor_days_dates_in_2020 character(10)[],
+    indoor_days_dates_in_2021 character(10)[],
+    daytime_hours_in_2015 smallint,
+    daytime_hours_in_2016 smallint,
+    daytime_hours_in_2017 smallint,
+    daytime_hours_in_2018 smallint,
+    daytime_hours_in_2019 smallint,
+    daytime_hours_in_2020 smallint,
+    daytime_hours_in_2021 smallint,
+    daytime_hours_in_2022 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_10_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_20_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_30_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_40_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_50_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_60_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_70_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_80_pct_cloud_cover_in_2022 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2015 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2016 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2017 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2018 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2019 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2020 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2021 smallint,
+    daytime_hours_above_90_pct_cloud_cover_in_2022 smallint,
+    indoor_days_dates_in_2022 character(10)[]
+);
+
+
+ALTER TABLE parcels_production.parcels_weather OWNER TO pgloader_pg;
+
+--
 -- Name: plant_hardiness_zones; Type: TABLE; Schema: parcels_production; Owner: pgloader_pg
 --
 
@@ -2288,194 +2508,384 @@ ALTER TABLE ONLY parcels_production.parcels_geometry_extra ALTER COLUMN ogc_fid 
 
 
 --
--- Name: idx_536287_abbrev; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650104_abbrev; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536287_abbrev ON parcels_production.airports USING btree (abbrev);
-
-
---
--- Name: idx_536292_provider_id; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536292_provider_id ON parcels_production.broadband_availability USING btree (provider_id, technology, h3_res8_id);
+CREATE UNIQUE INDEX idx_650104_abbrev ON parcels_production.airports USING btree (abbrev);
 
 
 --
--- Name: idx_536295_lat; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650109_provider_id; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536295_lat ON parcels_production.coordinates USING btree (lat, lon);
-
-
---
--- Name: idx_536300_column_name; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536300_column_name ON parcels_production.coverage USING btree (column_name, table_name);
+CREATE UNIQUE INDEX idx_650109_provider_id ON parcels_production.broadband_availability USING btree (provider_id, technology, h3_res8_id);
 
 
 --
--- Name: idx_536303_name; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650112_lat; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536303_name ON parcels_production.importers USING btree (name);
-
-
---
--- Name: idx_536308_gisacre; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE INDEX idx_536308_gisacre ON parcels_production.parcels USING btree (gisacre);
+CREATE UNIQUE INDEX idx_650112_lat ON parcels_production.coordinates USING btree (lat, lon);
 
 
 --
--- Name: idx_536308_ll_gisacre; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650117_column_name; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE INDEX idx_536308_ll_gisacre ON parcels_production.parcels USING btree (ll_gisacre);
-
-
---
--- Name: idx_536308_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536308_ll_uuid ON parcels_production.parcels USING btree (ll_uuid);
+CREATE UNIQUE INDEX idx_650117_column_name ON parcels_production.coverage USING btree (column_name, table_name);
 
 
 --
--- Name: idx_536308_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650120_name; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE INDEX idx_536308_path ON parcels_production.parcels USING btree (path);
-
-
---
--- Name: idx_536313_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536313_ll_uuid ON parcels_production.parcels_agriculture USING btree (ll_uuid);
+CREATE UNIQUE INDEX idx_650120_name ON parcels_production.importers USING btree (name);
 
 
 --
--- Name: idx_536316_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650125_gisacre; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536316_ll_uuid ON parcels_production.parcels_airport USING btree (ll_uuid);
-
-
---
--- Name: idx_536319_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536319_ll_uuid ON parcels_production.parcels_coastline USING btree (ll_uuid);
+CREATE INDEX idx_650125_gisacre ON parcels_production.parcels USING btree (gisacre);
 
 
 --
--- Name: idx_536322_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650125_ll_gisacre; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536322_ll_uuid ON parcels_production.parcels_density USING btree (ll_uuid);
-
-
---
--- Name: idx_536327_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536327_ll_uuid ON parcels_production.parcels_elevation USING btree (ll_uuid);
+CREATE INDEX idx_650125_ll_gisacre ON parcels_production.parcels USING btree (ll_gisacre);
 
 
 --
--- Name: idx_536330_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650125_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536330_ll_uuid ON parcels_production.parcels_geometry USING btree (ll_uuid);
-
-
---
--- Name: idx_536336_ogc_fid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536336_ogc_fid ON parcels_production.parcels_geometry_extra USING btree (ogc_fid);
+CREATE UNIQUE INDEX idx_650125_ll_uuid ON parcels_production.parcels USING btree (ll_uuid);
 
 
 --
--- Name: idx_536336_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650125_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536336_path ON parcels_production.parcels_geometry_extra USING btree (path);
-
-
---
--- Name: idx_536342_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536342_ll_uuid ON parcels_production.parcels_internet USING btree (ll_uuid);
+CREATE INDEX idx_650125_path ON parcels_production.parcels USING btree (path);
 
 
 --
--- Name: idx_536347_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650130_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536347_ll_uuid ON parcels_production.parcels_meta USING btree (ll_uuid);
-
-
---
--- Name: idx_536350_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536350_ll_uuid ON parcels_production.parcels_nature USING btree (ll_uuid);
+CREATE UNIQUE INDEX idx_650130_ll_uuid ON parcels_production.parcels_agriculture USING btree (ll_uuid);
 
 
 --
--- Name: idx_536353_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650133_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536353_ll_uuid ON parcels_production.parcels_rank USING btree (ll_uuid);
-
-
---
--- Name: idx_536356_highway_km; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE INDEX idx_536356_highway_km ON parcels_production.parcels_road USING btree (highway_km);
+CREATE UNIQUE INDEX idx_650133_ll_uuid ON parcels_production.parcels_airport USING btree (ll_uuid);
 
 
 --
--- Name: idx_536356_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650136_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536356_ll_uuid ON parcels_production.parcels_road USING btree (ll_uuid);
-
-
---
--- Name: idx_536359_latitude; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_536359_latitude ON parcels_production.parcels_viewshed USING btree (latitude, longitude);
+CREATE UNIQUE INDEX idx_650136_ll_uuid ON parcels_production.parcels_coastline USING btree (ll_uuid);
 
 
 --
--- Name: idx_536367_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650139_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536367_path ON parcels_production.properties USING btree (path);
-
-
---
--- Name: idx_536370_type; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE INDEX idx_536370_type ON parcels_production.roads USING btree (type);
+CREATE UNIQUE INDEX idx_650139_ll_uuid ON parcels_production.parcels_density USING btree (ll_uuid);
 
 
 --
--- Name: idx_536375_z; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+-- Name: idx_650144_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
-CREATE UNIQUE INDEX idx_536375_z ON parcels_production.tiles USING btree (z, y, x);
+CREATE UNIQUE INDEX idx_650144_ll_uuid ON parcels_production.parcels_elevation USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650147_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650147_ll_uuid ON parcels_production.parcels_geometry USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650153_ogc_fid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650153_ogc_fid ON parcels_production.parcels_geometry_extra USING btree (ogc_fid);
+
+
+--
+-- Name: idx_650153_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650153_path ON parcels_production.parcels_geometry_extra USING btree (path);
+
+
+--
+-- Name: idx_650159_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650159_ll_uuid ON parcels_production.parcels_internet USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650164_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650164_ll_uuid ON parcels_production.parcels_meta USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650167_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650167_ll_uuid ON parcels_production.parcels_nature USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650170_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650170_ll_uuid ON parcels_production.parcels_rank USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650173_highway_km; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE INDEX idx_650173_highway_km ON parcels_production.parcels_road USING btree (highway_km);
+
+
+--
+-- Name: idx_650173_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650173_ll_uuid ON parcels_production.parcels_road USING btree (ll_uuid);
+
+
+--
+-- Name: idx_650176_latitude; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650176_latitude ON parcels_production.parcels_viewshed USING btree (latitude, longitude);
+
+
+--
+-- Name: idx_650184_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650184_path ON parcels_production.properties USING btree (path);
+
+
+--
+-- Name: idx_650187_type; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE INDEX idx_650187_type ON parcels_production.roads USING btree (type);
+
+
+--
+-- Name: idx_650192_z; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_650192_z ON parcels_production.tiles USING btree (z, y, x);
+
+
+--
+-- Name: idx_parcels_weather_ll_uuid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE UNIQUE INDEX idx_parcels_weather_ll_uuid ON parcels_production.parcels_weather USING btree (ll_uuid);
+
+
+--
+-- Name: SCHEMA parcels_production; Type: ACL; Schema: -; Owner: pgloader_pg
+--
+
+GRANT ALL ON SCHEMA parcels_production TO parcelsuser;
+
+
+--
+-- Name: TABLE airports; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.airports TO parcelsuser;
+
+
+--
+-- Name: TABLE broadband_availability; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.broadband_availability TO parcelsuser;
+
+
+--
+-- Name: TABLE coordinates; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.coordinates TO parcelsuser;
+
+
+--
+-- Name: TABLE coverage; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.coverage TO parcelsuser;
+
+
+--
+-- Name: TABLE importers; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.importers TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_agriculture; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_agriculture TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_airport; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_airport TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_coastline; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_coastline TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_density; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_density TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_elevation; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_elevation TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_geometry; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_geometry TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_geometry_extra; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_geometry_extra TO parcelsuser;
+
+
+--
+-- Name: SEQUENCE parcels_geometry_extra_ogc_fid_seq; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON SEQUENCE parcels_production.parcels_geometry_extra_ogc_fid_seq TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_internet; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_internet TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_meta; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_meta TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_nature; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_nature TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_rank; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_rank TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_road; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_road TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_viewshed; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_viewshed TO parcelsuser;
+
+
+--
+-- Name: TABLE parcels_weather; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.parcels_weather TO parcelsuser;
+
+
+--
+-- Name: TABLE plant_hardiness_zones; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.plant_hardiness_zones TO parcelsuser;
+
+
+--
+-- Name: TABLE properties; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.properties TO parcelsuser;
+
+
+--
+-- Name: TABLE roads; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.roads TO parcelsuser;
+
+
+--
+-- Name: TABLE tiles; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.tiles TO parcelsuser;
 
 
 --
 -- PostgreSQL database dump complete
 --
+
