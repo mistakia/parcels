@@ -21,7 +21,8 @@ module.exports = {
           '@core': './client/core',
           '@components': './client/views/components',
           '@styles': './client/styles',
-          '@config': './config.mjs'
+          '@config': './config.mjs',
+          '@images_svg': './client/views/images_svg'
         }
       }
     ],

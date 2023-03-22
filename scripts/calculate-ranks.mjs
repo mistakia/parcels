@@ -15,7 +15,9 @@ const calculate_rank_for_field = async ({ field, table_name, order_by }) => {
   console.time(field)
   await db.raw(`
     INSERT INTO parcels_rank (ll_uuid, ${field}_rank)
-    SELECT pa.ll_uuid, ((${reverse ? '1' : '0'} - (PERCENT_RANK() OVER (ORDER BY pa.${field}))) * 100) - 50
+    SELECT pa.ll_uuid, ((${
+      reverse ? '1' : '0'
+    } - (PERCENT_RANK() OVER (ORDER BY pa.${field}))) * 100) - 50
     FROM ${table_name} pa
     WHERE pa.${field} IS NOT NULL
     ON CONFLICT (ll_uuid) DO UPDATE SET ${field}_rank = EXCLUDED.${field}_rank
