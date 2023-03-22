@@ -19,6 +19,34 @@ export default function ParcelsPage({ parcels }) {
       footer_label: `Count ${data.length}`,
       data_type: TABLE_DATA_TYPES.TEXT
     }),
+    columnHelper.accessor('owner', {
+      header_label: 'Owner',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
+    columnHelper.accessor('ll_gisacre', {
+      header_label: 'Acreage',
+      data_type: TABLE_DATA_TYPES.NUMBER
+    }),
+    columnHelper.accessor('address', {
+      header_label: 'Address',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
+    columnHelper.accessor('usecode', {
+      header_label: 'Use Code',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
+    columnHelper.accessor('usedesc', {
+      header_label: 'Use Description',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
+    columnHelper.accessor('zoning', {
+      header_label: 'Zoning',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
+    columnHelper.accessor('zoning_description', {
+      header_label: 'Zoning Description',
+      data_type: TABLE_DATA_TYPES.TEXT
+    }),
     columnHelper.accessor('lat', {
       header_label: 'Latitude',
       data_type: TABLE_DATA_TYPES.NUMBER
@@ -35,10 +63,13 @@ export default function ParcelsPage({ parcels }) {
         display: 'flex',
         flexDirection: 'column'
       }}>
-      <MapContainer style={{ height: '300px' }}>
-        <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-        <ParcelsMap />
-      </MapContainer>
+      <div style={{ position: 'sticky', left: '0', width: '1px' }}>
+        <MapContainer
+          style={{ height: '300px', width: `${window.innerWidth}px` }}>
+          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+          <ParcelsMap />
+        </MapContainer>
+      </div>
       <Table columns={columns} data={data} />
     </div>
   )
