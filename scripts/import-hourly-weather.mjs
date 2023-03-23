@@ -3,7 +3,7 @@ import debug from 'debug'
 // import { hideBin } from 'yargs/helpers'
 import fetch from 'node-fetch'
 import sizeof from 'object-sizeof'
-import queryString from 'query-string'
+import qs from 'qs'
 import PQueue from 'p-queue'
 import { open } from 'lmdb'
 
@@ -122,7 +122,7 @@ const get_hourly_weather = async ({
     end_date,
     hourly
   }
-  const query_string = queryString.stringify(query_params, {
+  const query_string = qs.stringify(query_params, {
     arrayFormat: 'comma'
   })
   const url = `${config.weather_api_url}?${query_string}`

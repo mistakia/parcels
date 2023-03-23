@@ -10,7 +10,11 @@ import { TABLE_DATA_TYPES } from '@core/constants'
 
 const columnHelper = createColumnHelper()
 
-export default function ParcelsPage({ parcels }) {
+export default function ParcelsPage({
+  parcels,
+  selected_parcel_view,
+  set_parcels_view_table_state
+}) {
   const data = parcels.toList().toJS()
 
   const columns = [
@@ -57,6 +61,12 @@ export default function ParcelsPage({ parcels }) {
     })
   ]
 
+  const on_table_change = (table_state) =>
+    set_parcels_view_table_state({
+      view_id: selected_parcel_view.id,
+      view_table_state: table_state
+    })
+
   return (
     <div
       style={{
@@ -70,12 +80,19 @@ export default function ParcelsPage({ parcels }) {
           <ParcelsMap />
         </MapContainer>
       </div>
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={data}
+        on_table_change={on_table_change}
+        table_state={selected_parcel_view.table_state}
+      />
     </div>
   )
 }
 
 ParcelsPage.propTypes = {
   parcels: ImmutablePropTypes.map,
-  parcels_bounding_box: PropTypes.array
+  parcels_bounding_box: PropTypes.array,
+  selected_parcel_view: ImmutablePropTypes.record,
+  set_parcels_view_table_state: PropTypes.func
 }

@@ -1,6 +1,6 @@
 /* global AbortController, fetch */
 
-// import queryString from 'query-string'
+import qs from 'qs'
 import merge from 'merge-options'
 
 import { API_URL } from '@core/constants'
@@ -15,8 +15,8 @@ import { API_URL } from '@core/constants'
  *  */
 
 export const api = {
-  getParcels() {
-    const url = `${API_URL}/parcels`
+  getParcels(params) {
+    const url = `${API_URL}/parcels?${qs.stringify(params)}`
     return { url }
   }
 }

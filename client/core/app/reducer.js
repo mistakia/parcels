@@ -1,10 +1,12 @@
 import { Record } from 'immutable'
 
 import { appActions } from './actions'
+import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
 
 const initialState = new Record({
   isLoaded: false,
-  publicKey: null
+  publicKey: null,
+  selected_parcel_view_id: DEFAULT_PARCEL_VIEW_ID
 })
 
 export function appReducer(state = initialState(), { payload, type }) {

@@ -1,8 +1,22 @@
 import express from 'express'
+import Validator from 'fastest-validator'
 
 import { get_column_coverage } from '#utils'
 
+const v = new Validator({ haltOnFirstError: true })
 const router = express.Router()
+
+const sort_schema = {
+  type: 'array',
+  items: {
+    type: 'object',
+    props: {
+      id: { type: 'string' },
+      desc: { type: 'boolean' }
+    }
+  }
+}
+const sort_validator = v.compile(sort_schema)
 
 router.get('/?', async (req, res) => {
   const { log, db } = req.app.locals
@@ -16,6 +30,18 @@ router.get('/?', async (req, res) => {
     )
 
     parcels_query.limit(100)
+
+    if (req.query.sorting) {
+      if (!sort_validator(req.query.sorting)) {
+        return res.status(400).send({ error: 'invalid sort query param' })
+      }
+
+      for (const sort of req.query.sorting) {
+        // convert sort.desc to boolean
+        sort.desc = sort.desc === 'true'
+        parcels_query.orderBy(sort.id, sort.desc ? 'desc' : 'asc')
+      }
+    }
 
     const parcels = await parcels_query
 

@@ -11,6 +11,7 @@ import App from '@components/app'
 import 'leaflet/dist/leaflet.css'
 import '@styles/normalize.css'
 import '@styles/typography.styl'
+import '@styles/mui-unstyled-popper.styl'
 
 import markerIcon from '../../node_modules/leaflet/dist/images/marker-icon.png'
 import markerIcon2x from '../../node_modules/leaflet/dist/images/marker-icon-2x.png'

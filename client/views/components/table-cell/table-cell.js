@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 
 export default function TableCell({ getValue, column }) {
   const value = getValue()
+  const is_sorted = column.getIsSorted()
   return (
     <div
       {...{
         className: 'cell',
         style: {
-          width: column.getSize()
+          width: column.getSize(),
+          background: is_sorted ? '#f5f5f5' : 'transparent'
         }
       }}>
       <div

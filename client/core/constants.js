@@ -15,3 +15,5 @@ export const TABLE_DATA_TYPES = {
   TEXT: 1,
   SELECT: 2
 }
+
+export const DEFAULT_PARCEL_VIEW_ID = 0

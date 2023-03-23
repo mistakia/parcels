@@ -39,8 +39,9 @@ api.use(morgan('api', 'combined'))
 api.use(bodyParser.json())
 api.use(
   cors({
-    origin: true,
-    credentials: true
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
   })
 )
 

@@ -1,6 +1,6 @@
 import debug from 'debug'
 import yargs from 'yargs'
-import queryString from 'query-string'
+import qs from 'qs'
 import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
@@ -27,8 +27,8 @@ const requestParcels = async ({ county, columns, page }) => {
       path: county
     })
   }
-  const qs = queryString.stringify(params)
-  const url = `${config.import_base_url}${county}/blexts.json?${qs}`
+  const query = qs.stringify(params)
+  const url = `${config.import_base_url}${county}/blexts.json?${query}`
 
   const now = new Date()
   const offsetMs = now.getTimezoneOffset() * 60 * 1000
