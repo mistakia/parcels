@@ -2618,13 +2618,6 @@ CREATE UNIQUE INDEX idx_650147_ll_uuid ON parcels_production.parcels_geometry US
 
 
 --
--- Name: idx_650153_ogc_fid; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
---
-
-CREATE UNIQUE INDEX idx_650153_ogc_fid ON parcels_production.parcels_geometry_extra USING btree (ogc_fid);
-
-
---
 -- Name: idx_650153_path; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
@@ -2893,4 +2886,3 @@ GRANT ALL ON TABLE parcels_production.tiles TO parcelsuser;
 --
 -- PostgreSQL database dump complete
 --
-
