@@ -25,7 +25,8 @@ const calculate_coverage = async () => {
     'parcels_nature',
     'parcels_rank',
     'parcels_road',
-    'parcels_viewshed'
+    'parcels_viewshed',
+    'parcels_weather'
   ]
 
   const columns = await db('INFORMATION_SCHEMA.COLUMNS')
