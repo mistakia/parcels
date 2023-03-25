@@ -48,8 +48,7 @@ export default function TableHeader({ header, column, table }) {
             ref: anchor_el,
             onClick: () => set_popper_open(!popper_open),
             style: {
-              width: header.getSize(),
-              background: is_sorted ? '#f5f5f5' : 'transparent'
+              width: header.getSize()
             }
           }}>
           <div className='cell-content'>
@@ -57,7 +56,8 @@ export default function TableHeader({ header, column, table }) {
               style={{
                 display: 'flex ',
                 alignItems: 'center',
-                height: '100%'
+                height: '100%',
+                background: is_sorted ? '#f5f5f5' : 'transparent'
               }}>
               <div className='header-icon'>
                 <HeaderIcon data_type={column.columnDef.data_type} />

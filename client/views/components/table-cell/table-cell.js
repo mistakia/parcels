@@ -9,13 +9,16 @@ export default function TableCell({ getValue, column }) {
       {...{
         className: 'cell',
         style: {
-          width: column.getSize(),
-          background: is_sorted ? '#f5f5f5' : 'transparent'
+          width: column.getSize()
         }
       }}>
       <div
         className='cell-content'
-        style={{ padding: '5px 8px 6px', minHeight: '32px' }}>
+        style={{
+          padding: '5px 8px 6px',
+          minHeight: '32px',
+          backgroundColor: is_sorted ? '#f5f5f5' : 'transparent'
+        }}>
         {value}
       </div>
     </div>
