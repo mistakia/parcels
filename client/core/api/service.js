@@ -18,6 +18,10 @@ export const api = {
   getParcels(params) {
     const url = `${API_URL}/parcels?${qs.stringify(params)}`
     return { url }
+  },
+  get_parcel_columns() {
+    const url = `${API_URL}/parcels/columns`
+    return { url }
   }
 }
 

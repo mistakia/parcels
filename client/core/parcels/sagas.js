@@ -14,7 +14,14 @@ export function* load_parcels() {
     'table_state',
     new ParcelViewTableState()
   )
-  yield call(getParcels, view_table_state.toJS())
+  const params = view_table_state.toJS()
+  if (params.columns) {
+    params.columns = params.columns.map(({ column_name, table_name }) => ({
+      column_name,
+      table_name
+    }))
+  }
+  yield call(getParcels, params)
 }
 
 //= ====================================

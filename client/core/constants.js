@@ -10,10 +10,4 @@ export const WEBSOCKET_URL = IS_DEV
   ? 'ws://localhost:8080'
   : config.production_wss
 
-export const TABLE_DATA_TYPES = {
-  NUMBER: 0,
-  TEXT: 1,
-  SELECT: 2
-}
-
 export const DEFAULT_PARCEL_VIEW_ID = 0

@@ -2,65 +2,16 @@ import React from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { createColumnHelper } from '@tanstack/react-table'
 
 import ParcelsMap from '@components/parcels-map'
 import Table from '@components/table/table'
-import { TABLE_DATA_TYPES } from '@core/constants'
-
-const columnHelper = createColumnHelper()
 
 export default function ParcelsPage({
   parcels,
   selected_parcel_view,
-  set_parcels_view_table_state
+  set_parcels_view_table_state,
+  parcel_columns
 }) {
-  const data = parcels.toList().toJS()
-
-  const columns = [
-    columnHelper.accessor('path', {
-      header_label: 'Path',
-      footer_label: `Count ${data.length}`,
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('owner', {
-      header_label: 'Owner',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('ll_gisacre', {
-      header_label: 'Acreage',
-      data_type: TABLE_DATA_TYPES.NUMBER
-    }),
-    columnHelper.accessor('address', {
-      header_label: 'Address',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('usecode', {
-      header_label: 'Use Code',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('usedesc', {
-      header_label: 'Use Description',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('zoning', {
-      header_label: 'Zoning',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('zoning_description', {
-      header_label: 'Zoning Description',
-      data_type: TABLE_DATA_TYPES.TEXT
-    }),
-    columnHelper.accessor('lat', {
-      header_label: 'Latitude',
-      data_type: TABLE_DATA_TYPES.NUMBER
-    }),
-    columnHelper.accessor('lon', {
-      header_label: 'Longitude',
-      data_type: TABLE_DATA_TYPES.NUMBER
-    })
-  ]
-
   const on_table_change = (table_state) =>
     set_parcels_view_table_state({
       view_id: selected_parcel_view.id,
@@ -81,18 +32,19 @@ export default function ParcelsPage({
         </MapContainer>
       </div>
       <Table
-        columns={columns}
-        data={data}
+        data={parcels.toJS()}
         on_table_change={on_table_change}
         table_state={selected_parcel_view.table_state}
+        all_columns={parcel_columns}
       />
     </div>
   )
 }
 
 ParcelsPage.propTypes = {
-  parcels: ImmutablePropTypes.map,
+  parcels: ImmutablePropTypes.list,
   parcels_bounding_box: PropTypes.array,
   selected_parcel_view: ImmutablePropTypes.record,
-  set_parcels_view_table_state: PropTypes.func
+  set_parcels_view_table_state: PropTypes.func,
+  parcel_columns: ImmutablePropTypes.list
 }

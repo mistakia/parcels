@@ -2,9 +2,44 @@ import express from 'express'
 import Validator from 'fastest-validator'
 
 import { get_column_coverage } from '#utils'
+import { constants } from '#common'
 
 const v = new Validator({ haltOnFirstError: true })
 const router = express.Router()
+const { TABLE_DATA_TYPES } = constants
+
+const get_data_type = (column_data_type) => {
+  switch (column_data_type) {
+    case 'integer':
+    case 'bigint':
+    case 'numeric':
+    case 'real':
+    case 'double precision':
+    case 'smallint':
+    case 'smallserial':
+    case 'serial':
+    case 'bigserial':
+      return TABLE_DATA_TYPES.NUMBER
+
+    case 'character varying':
+    case 'text':
+      return TABLE_DATA_TYPES.TEXT
+
+    case 'json':
+      return TABLE_DATA_TYPES.JSON
+
+    case 'boolean':
+      return TABLE_DATA_TYPES.BOOLEAN
+
+    case 'date':
+    case 'timestamp without time zone':
+    case 'timestamp with time zone':
+      return TABLE_DATA_TYPES.DATE
+
+    default:
+      return null
+  }
+}
 
 const sort_schema = {
   type: 'array',
@@ -18,16 +53,36 @@ const sort_schema = {
 }
 const sort_validator = v.compile(sort_schema)
 
+const columns_schema = {
+  type: 'array',
+  items: {
+    type: 'object',
+    props: {
+      column_name: { type: 'string' },
+      table_name: { type: 'string' }
+    }
+  }
+}
+const columns_validator = v.compile(columns_schema)
+
 router.get('/?', async (req, res) => {
   const { log, db } = req.app.locals
   try {
     const parcels_query = db('parcels')
+
+    const default_parcel_tables = ['parcels', 'parcels_geometry']
+    const default_parcel_columns = ['path', 'll_uuid', 'lat', 'lon']
+
+    for (const column of default_parcel_columns) {
+      parcels_query.select(`parcels.${column}`)
+    }
 
     parcels_query.leftJoin(
       'parcels_geometry',
       'parcels.ll_uuid',
       'parcels_geometry.ll_uuid'
     )
+    parcels_query.select('parcels_geometry.coordinates')
 
     parcels_query.limit(100)
 
@@ -37,11 +92,42 @@ router.get('/?', async (req, res) => {
       }
 
       for (const sort of req.query.sorting) {
-        // convert sort.desc to boolean
         sort.desc = sort.desc === 'true'
-        parcels_query.orderBy(sort.id, sort.desc ? 'desc' : 'asc')
+        parcels_query.orderByRaw(
+          `${sort.id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
+        )
       }
     }
+
+    if (req.query.columns) {
+      if (!columns_validator(req.query.columns)) {
+        return res.status(400).send({ error: 'invalid columns query param' })
+      }
+
+      const table_name_index = {}
+      for (const column of req.query.columns) {
+        if (default_parcel_columns.includes(column.column_name)) {
+          continue
+        }
+
+        // if we haven't joined this table yet, join it
+        if (
+          !table_name_index[column.table_name] &&
+          !default_parcel_tables.includes(column.table_name)
+        ) {
+          table_name_index[column.table_name] = true
+          parcels_query.leftJoin(
+            column.table_name,
+            'parcels.ll_uuid',
+            `${column.table_name}.ll_uuid`
+          )
+        }
+
+        parcels_query.select(`${column.table_name}.${column.column_name}`)
+      }
+    }
+
+    log(parcels_query.toString())
 
     const parcels = await parcels_query
 
@@ -87,6 +173,56 @@ router.get('/coverage', async (req, res) => {
 
     const result = await get_column_coverage(matching_column)
     res.status(200).send(result)
+  } catch (err) {
+    log(err)
+    res.status(500).send({ error: err.toString() })
+  }
+})
+
+router.get('/columns', async (req, res) => {
+  const { log, db } = req.app.locals
+  try {
+    const tables = [
+      'parcels',
+      'parcels_agriculture',
+      'parcels_airport',
+      'parcels_coastline',
+      'parcels_density',
+      'parcels_elevation',
+      'parcels_geometry',
+      'parcels_internet',
+      'parcels_meta',
+      'parcels_nature',
+      'parcels_rank',
+      'parcels_road',
+      'parcels_viewshed'
+    ]
+    const query_columns = await db('information_schema.columns')
+      .select('column_name', 'table_name', 'data_type')
+      .whereIn('table_name', tables)
+
+    const column_index = {}
+    const unique_columns = []
+    for (const column of query_columns) {
+      if (column_index[column.column_name]) {
+        continue
+      }
+
+      const data_type = get_data_type(column.data_type)
+      if (!data_type) {
+        log(`unknown data type: ${column.data_type}`)
+      }
+
+      column_index[column.column_name] = true
+      unique_columns.push({
+        ...column,
+        data_type,
+        accessorKey: column.column_name,
+        header_label: column.column_name
+      })
+    }
+
+    res.status(200).send(unique_columns)
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })

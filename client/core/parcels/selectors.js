@@ -6,21 +6,21 @@ export function get_parcels(state) {
 }
 
 export function get_parcel_features(state) {
-  const parcels = state.get('parcels').toList()
+  const parcels = state.get('parcels')
 
   return parcels
     .map((p) => {
-      if (p.coordinates) {
-        return get_parcel_polygon(p.coordinates)
+      if (p.get('coordinates')) {
+        return get_parcel_polygon(p.get('coordinates'))
       }
 
-      return turf.point([p.lon, p.lat])
+      return turf.point([p.get('lon'), p.get('lat')])
     })
     .toJS()
 }
 
 export function get_parcels_bounding_box(state) {
-  const parcels = state.get('parcels').toList()
+  const parcels = state.get('parcels')
   if (!parcels.size) {
     return [0, 0, 0, 0]
   }

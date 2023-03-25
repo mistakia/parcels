@@ -1,7 +1,8 @@
 import { Record } from 'immutable'
 
 export const ParcelViewTableState = new Record({
-  sorting: []
+  sorting: [],
+  columns: []
 })
 
 export const ParcelView = new Record({

@@ -1,4 +1,5 @@
 import * as turf from '@turf/turf'
+import * as constants from './constants.mjs'
 
 export const get_parcel_polygon = (parcel_coordinates, properties) => {
   if (Array.isArray(parcel_coordinates[0][0])) {
@@ -19,3 +20,5 @@ export const get_string_from_object = (obj) => {
   }
   return cls
 }
+
+export { constants }

@@ -1,1 +1,1 @@
-export { getParcels } from './sagas'
+export { getParcels, get_parcel_columns } from './sagas'

@@ -3,6 +3,7 @@ import { call, put, cancelled } from 'redux-saga/effects'
 
 import { api, apiRequest } from '@core/api/service'
 import { getParcelsActions } from '@core/parcels'
+import { get_parcel_column_actions } from '@core/parcel-columns'
 
 function* fetchAPI(apiFunction, actions, opts = {}) {
   const { abort, request } = apiRequest(apiFunction, opts)
@@ -32,3 +33,8 @@ function* fetch(...args) {
 }
 
 export const getParcels = fetch.bind(null, api.getParcels, getParcelsActions)
+export const get_parcel_columns = fetch.bind(
+  null,
+  api.get_parcel_columns,
+  get_parcel_column_actions
+)

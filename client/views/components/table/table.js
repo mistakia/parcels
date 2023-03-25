@@ -14,6 +14,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import TableCell from '@components/table-cell'
 import TableHeader from '@components/table-header'
 import TableFooter from '@components/table-footer'
+import TableColumnControls from '@components/table-column-controls'
 import { get_string_from_object } from '@common'
 
 import './table.styl'
@@ -28,7 +29,12 @@ const defaultColumn = {
   sortType: 'alphanumericFalsyLast'
 }
 
-export default function Table({ columns, data, on_table_change, table_state }) {
+export default function Table({
+  data,
+  on_table_change,
+  table_state,
+  all_columns
+}) {
   const set_sorting = (updater_fn) => {
     const new_sorting = updater_fn()
     const new_sort_item = new_sorting[0]
@@ -53,11 +59,38 @@ export default function Table({ columns, data, on_table_change, table_state }) {
       sorting.set(new_sort_item.id, new_sort_item)
     }
 
-    on_table_change({ sorting: Array.from(sorting.values()) })
+    on_table_change({
+      ...table_state.toJS(),
+      sorting: Array.from(sorting.values())
+    })
+  }
+
+  const set_column_hidden = (accessorKey) => {
+    const columns = []
+
+    for (const column of table_state.columns) {
+      if (column.accessorKey === accessorKey) {
+        continue
+      }
+      columns.push(column)
+    }
+
+    on_table_change({ ...table_state.toJS(), columns })
+  }
+
+  const set_column_visible = (column) => {
+    on_table_change({
+      ...table_state.toJS(),
+      columns: [...table_state.columns, column]
+    })
+  }
+
+  const set_all_columns_hidden = () => {
+    on_table_change({ ...table_state.toJS(), columns: [] })
   }
 
   const table = useReactTable({
-    columns,
+    columns: table_state.columns,
     data,
     defaultColumn,
     state: table_state.toJS(),
@@ -103,7 +136,18 @@ export default function Table({ columns, data, on_table_change, table_state }) {
       })}>
       <div className='panel'>
         <div className='state'>{state_items}</div>
-        <div className='controls'>{/* <FilterPopper /> */}</div>
+        <div className='controls'>
+          {/* <FilterPopper /> */}
+          <TableColumnControls
+            {...{
+              table_state,
+              all_columns,
+              set_column_hidden,
+              set_column_visible,
+              set_all_columns_hidden
+            }}
+          />
+        </div>
       </div>
       <div className='header'>
         {table.getHeaderGroups().map((headerGroup) => (
@@ -147,8 +191,8 @@ export default function Table({ columns, data, on_table_change, table_state }) {
 }
 
 Table.propTypes = {
-  columns: PropTypes.array,
   data: PropTypes.array,
   on_table_change: PropTypes.func,
-  table_state: ImmutablePropTypes.record
+  table_state: ImmutablePropTypes.record,
+  all_columns: ImmutablePropTypes.list
 }
