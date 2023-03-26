@@ -5,14 +5,14 @@ import ClickAwayListener from '@mui/base/ClickAwayListener'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
-import { get_string_from_object } from '@common'
+import { get_string_from_object, constants } from '@common'
 import DataTypeIcon from '@components/data-type-icon'
-import { constants } from '@common'
-
-const { TABLE_DATA_TYPES } = constants
 
 import './table-header.styl'
+
+const { TABLE_DATA_TYPES } = constants
 
 export default function TableHeader({ header, column, table }) {
   const anchor_el = React.useRef()
@@ -99,6 +99,16 @@ export default function TableHeader({ header, column, table }) {
           }
         ]}>
         <div style={{ paddingTop: '6px', paddingBottom: '6px' }}>
+          <div className='header-menu-item'>
+            <div
+              className='header-menu-item-button'
+              onClick={() => column.toggleVisibility(false)}>
+              <div className='header-menu-item-icon'>
+                <VisibilityOffIcon />
+              </div>
+              <div>Hide column</div>
+            </div>
+          </div>
           {is_sortable && (
             <>
               <div className='header-menu-item'>

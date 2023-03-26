@@ -65,6 +65,19 @@ export default function Table({
     })
   }
 
+  const set_column_visibility = (updater_fn) => {
+    const new_column_item = updater_fn()
+
+    // get first key of new_column_item
+    const column_name = Object.keys(new_column_item)[0]
+    const is_visible = new_column_item[column_name]
+    if (is_visible) {
+      set_column_visible(all_columns.find((c) => c.accessorKey === column_name))
+    } else {
+      set_column_hidden(column_name)
+    }
+  }
+
   const set_column_hidden = (accessorKey) => {
     const columns = []
 
@@ -96,6 +109,7 @@ export default function Table({
     state: table_state.toJS(),
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: set_sorting,
+    onColumnVisibilityChange: set_column_visibility,
     columnResizeMode: 'onChange'
   })
 
