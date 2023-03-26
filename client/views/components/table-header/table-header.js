@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AddIcon from '@mui/icons-material/Add'
 import PopperUnstyled from '@mui/base/PopperUnstyled'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
 
 import { get_string_from_object, constants } from '@common'
 import DataTypeIcon from '@components/data-type-icon'
@@ -14,7 +17,34 @@ import './table-header.styl'
 
 const { TABLE_DATA_TYPES } = constants
 
-export default function TableHeader({ header, column, table }) {
+export function AddColumnAction({ set_column_controls_popper_open }) {
+  return (
+    <div className='cell add-column-action'>
+      <div className='cell-content'>
+        <Tooltip title='Add Column'>
+          <IconButton onClick={() => set_column_controls_popper_open(true)}>
+            <AddIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
+    </div>
+  )
+}
+
+AddColumnAction.propTypes = {
+  set_column_controls_popper_open: PropTypes.func.isRequired
+}
+
+export default function TableHeader({
+  header,
+  column,
+  table,
+  set_column_controls_popper_open
+}) {
+  if (header.column.columnDef.id === 'add_column_action') {
+    return <AddColumnAction {...{ set_column_controls_popper_open }} />
+  }
+
   const anchor_el = React.useRef()
   const [popper_open, set_popper_open] = React.useState(false)
 
@@ -156,5 +186,6 @@ export default function TableHeader({ header, column, table }) {
 TableHeader.propTypes = {
   header: PropTypes.object,
   column: PropTypes.object,
-  table: PropTypes.object
+  table: PropTypes.object,
+  set_column_controls_popper_open: PropTypes.func.isRequired
 }

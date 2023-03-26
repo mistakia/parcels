@@ -3,7 +3,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import {
   useReactTable,
   flexRender,
-  getCoreRowModel
+  getCoreRowModel,
+  createColumnHelper
 } from '@tanstack/react-table'
 import PropTypes from 'prop-types'
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
@@ -19,6 +20,7 @@ import { get_string_from_object } from '@common'
 
 import './table.styl'
 
+const column_helper = createColumnHelper()
 const defaultColumn = {
   minWidth: 50,
   width: 150,
@@ -35,6 +37,9 @@ export default function Table({
   table_state,
   all_columns
 }) {
+  const [column_controls_popper_open, set_column_controls_popper_open] =
+    React.useState(false)
+
   const set_sorting = (updater_fn) => {
     const new_sorting = updater_fn()
     const new_sort_item = new_sorting[0]
@@ -103,7 +108,12 @@ export default function Table({
   }
 
   const table = useReactTable({
-    columns: table_state.columns,
+    columns: [
+      ...table_state.columns,
+      column_helper.display({
+        id: 'add_column_action'
+      })
+    ],
     data,
     defaultColumn,
     state: table_state.toJS(),
@@ -158,7 +168,9 @@ export default function Table({
               all_columns,
               set_column_hidden,
               set_column_visible,
-              set_all_columns_hidden
+              set_all_columns_hidden,
+              column_controls_popper_open,
+              set_column_controls_popper_open
             }}
           />
         </div>
@@ -169,10 +181,10 @@ export default function Table({
             {headerGroup.headers.map((header) =>
               header.isPlaceholder
                 ? null
-                : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )
+                : flexRender(header.column.columnDef.header, {
+                    ...header.getContext(),
+                    set_column_controls_popper_open
+                  })
             )}
           </div>
         ))}

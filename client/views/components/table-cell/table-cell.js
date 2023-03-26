@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function TableCell({ getValue, column }) {
+  if (column.columnDef.id === 'add_column_action') {
+    return null
+  }
+
   const value = getValue()
   const is_sorted = column.getIsSorted()
   return (

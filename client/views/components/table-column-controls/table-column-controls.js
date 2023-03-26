@@ -18,9 +18,10 @@ export default function TableColumnControls({
   all_columns,
   set_column_visible,
   set_column_hidden,
-  set_all_columns_hidden
+  set_all_columns_hidden,
+  column_controls_popper_open,
+  set_column_controls_popper_open
 }) {
-  const [popper_open, set_popper_open] = React.useState(false)
   const [filter_text_input, set_filter_text_input] = React.useState('')
 
   const shown_columns_index = {}
@@ -77,7 +78,7 @@ export default function TableColumnControls({
   }
 
   const handle_on_close = () => {
-    set_popper_open(false)
+    set_column_controls_popper_open(false)
     set_filter_text_input('')
   }
 
@@ -86,10 +87,15 @@ export default function TableColumnControls({
       <Button
         variant='text'
         size='small'
-        onClick={() => set_popper_open(!popper_open)}>
+        onClick={() =>
+          set_column_controls_popper_open(!column_controls_popper_open)
+        }>
         Columns
       </Button>
-      <Modal open={popper_open} onClose={handle_on_close} placement='bottom'>
+      <Modal
+        open={column_controls_popper_open}
+        onClose={handle_on_close}
+        placement='bottom'>
         <div className='table-column-controls'>
           <div className='filter-input'>
             <TextField
@@ -132,5 +138,7 @@ TableColumnControls.propTypes = {
   all_columns: ImmutablePropTypes.list,
   set_column_visible: PropTypes.func,
   set_column_hidden: PropTypes.func,
-  set_all_columns_hidden: PropTypes.func
+  set_all_columns_hidden: PropTypes.func,
+  column_controls_popper_open: PropTypes.bool,
+  set_column_controls_popper_open: PropTypes.func
 }
