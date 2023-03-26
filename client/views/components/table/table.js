@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   createColumnHelper
 } from '@tanstack/react-table'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import PropTypes from 'prop-types'
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
@@ -37,6 +38,7 @@ export default function Table({
   table_state,
   all_columns
 }) {
+  const table_container_ref = React.useRef()
   const [column_controls_popper_open, set_column_controls_popper_open] =
     React.useState(false)
 
@@ -109,6 +111,9 @@ export default function Table({
 
   const table = useReactTable({
     columns: [
+      column_helper.display({
+        id: 'column_index'
+      }),
       ...table_state.columns,
       column_helper.display({
         id: 'add_column_action'
@@ -122,6 +127,17 @@ export default function Table({
     onColumnVisibilityChange: set_column_visibility,
     columnResizeMode: 'onChange'
   })
+
+  const { rows } = table.getRowModel()
+
+  const row_virtualizer = useVirtualizer({
+    getScrollElement: () => table_container_ref.current,
+    estimateSize: () => 32,
+    parentRef: table_container_ref,
+    count: rows.length,
+    overscan: 10
+  })
+  const virtual_rows = row_virtualizer.getVirtualItems()
 
   function is_table_resizing() {
     for (const headerGroup of table.getHeaderGroups()) {
@@ -154,6 +170,7 @@ export default function Table({
 
   return (
     <div
+      ref={table_container_ref}
       className={get_string_from_object({
         table: true,
         noselect: is_table_resizing()
@@ -189,15 +206,18 @@ export default function Table({
           </div>
         ))}
       </div>
-      {table.getRowModel().rows.map((row) => (
-        <div key={row.id} className='row'>
-          {row
-            .getVisibleCells()
-            .map((cell) =>
-              flexRender(cell.column.columnDef.cell, cell.getContext())
-            )}
-        </div>
-      ))}
+      {virtual_rows.map((virtual_row) => {
+        const row = rows[virtual_row.index]
+        return (
+          <div key={row.id} className='row'>
+            {row
+              .getVisibleCells()
+              .map((cell) =>
+                flexRender(cell.column.columnDef.cell, cell.getContext())
+              )}
+          </div>
+        )
+      })}
       <div className='footer'>
         {table.getFooterGroups().map((footerGroup) => (
           <div key={footerGroup.id} className='row'>

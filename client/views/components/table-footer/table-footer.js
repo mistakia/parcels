@@ -6,6 +6,14 @@ export default function TableFooter({ column, header }) {
     return null
   }
 
+  if (column.columnDef.id === 'column_index') {
+    return (
+      <div className='cell column-index'>
+        <div className='cell-content' />
+      </div>
+    )
+  }
+
   return (
     <div
       {...{

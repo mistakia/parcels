@@ -1,9 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function TableCell({ getValue, column }) {
+export default function TableCell({ getValue, column, row }) {
   if (column.columnDef.id === 'add_column_action') {
     return null
+  }
+
+  if (column.columnDef.id === 'column_index') {
+    return (
+      <div className='cell column-index'>
+        <div className='cell-content'>{row.index + 1}</div>
+      </div>
+    )
   }
 
   const value = getValue()
@@ -31,5 +39,6 @@ export default function TableCell({ getValue, column }) {
 
 TableCell.propTypes = {
   getValue: PropTypes.func,
-  column: PropTypes.object
+  column: PropTypes.object,
+  row: PropTypes.object
 }

@@ -45,6 +45,14 @@ export default function TableHeader({
     return <AddColumnAction {...{ set_column_controls_popper_open }} />
   }
 
+  if (header.column.columnDef.id === 'column_index') {
+    return (
+      <div className='cell column-index'>
+        <div className='cell-content' />
+      </div>
+    )
+  }
+
   const anchor_el = React.useRef()
   const [popper_open, set_popper_open] = React.useState(false)
 

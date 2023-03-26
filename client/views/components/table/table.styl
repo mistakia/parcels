@@ -75,11 +75,11 @@
     position sticky
     top -1px
     z-index 1
-    background-color $backgroundColor
 
     .cell
       line-height 120%
       font-size 14px
+      background-color $backgroundColor
       border-bottom 1px solid $borderColor
       border-top 1px solid $borderColor
 
@@ -93,8 +93,9 @@
     position sticky
     bottom 0
     z-index 1
-    background-color $backgroundColor
-    border-top 1px solid $borderColor
+    .cell
+      border-top 1px solid $borderColor
+      background-color $backgroundColor
 
   .resizer
     display inline-block
@@ -125,3 +126,13 @@
       height 0.9em
       width 0.9em
       top 0.125rem
+
+  .cell.column-index
+    width 30px
+    font-size 9px
+    border-top none
+    border-bottom none
+    background transparent
+    .cell-content
+      display flex
+      align-items center
