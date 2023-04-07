@@ -1,19 +1,16 @@
 import { call, takeLatest, fork, select } from 'redux-saga/effects'
+import { Map } from 'immutable'
 
 import { appActions } from '@core/app'
 import { getParcels } from '@core/api'
 import {
   parcel_view_actions,
-  get_selected_parcel_view,
-  ParcelViewTableState
+  get_selected_parcel_view
 } from '@core/parcel-views'
 
 export function* load_parcels() {
   const parcel_view = yield select(get_selected_parcel_view)
-  const view_table_state = parcel_view.get(
-    'table_state',
-    new ParcelViewTableState()
-  )
+  const view_table_state = parcel_view.get('table_state', new Map())
   const params = view_table_state.toJS()
   if (params.columns) {
     params.columns = params.columns.map(({ column_name, table_name }) => ({

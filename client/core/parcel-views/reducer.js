@@ -1,17 +1,16 @@
 import { Map } from 'immutable'
 
 import { parcel_view_actions } from './actions'
-import { ParcelView, ParcelViewTableState } from './parcel-view'
 import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
 import { constants } from '@common'
 
 const { TABLE_DATA_TYPES } = constants
 
 const initial_state = new Map({
-  [DEFAULT_PARCEL_VIEW_ID]: new ParcelView({
+  [DEFAULT_PARCEL_VIEW_ID]: new Map({
     id: DEFAULT_PARCEL_VIEW_ID,
     name: 'View #1',
-    table_state: new ParcelViewTableState({
+    table_state: new Map({
       sorting: [],
       columns: [
         {
@@ -95,7 +94,7 @@ export function parcel_view_reducer(state = initial_state, { payload, type }) {
     case parcel_view_actions.SET_PARCELS_VIEW_TABLE_STATE:
       return state.setIn(
         [`${payload.view_id}`, 'table_state'],
-        new ParcelViewTableState(payload.view_table_state)
+        new Map(payload.view_table_state)
       )
 
     default:

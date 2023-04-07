@@ -1,10 +1,11 @@
 import React from 'react'
+import { List } from 'immutable'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ParcelsMap from '@components/parcels-map'
-import Table from '@components/table/table'
+import Table from '../../../../../react-table/index.js'
 
 export default function ParcelsPage({
   parcels,
@@ -18,6 +19,7 @@ export default function ParcelsPage({
       view_table_state: table_state
     })
 
+  const table_state = selected_parcel_view.get('table_state')
   return (
     <div
       style={{
@@ -34,8 +36,13 @@ export default function ParcelsPage({
       <Table
         data={parcels.toJS()}
         on_table_change={on_table_change}
-        table_state={selected_parcel_view.table_state}
+        table_state={table_state}
         all_columns={parcel_columns}
+        selected_view={selected_parcel_view}
+        select_view={(view) => {
+          console.log('select_view', view) // TODO: select view
+        }}
+        views={new List()}
       />
     </div>
   )
@@ -44,7 +51,7 @@ export default function ParcelsPage({
 ParcelsPage.propTypes = {
   parcels: ImmutablePropTypes.list,
   parcels_bounding_box: PropTypes.array,
-  selected_parcel_view: ImmutablePropTypes.record,
+  selected_parcel_view: ImmutablePropTypes.map,
   set_parcels_view_table_state: PropTypes.func,
   parcel_columns: ImmutablePropTypes.list
 }
