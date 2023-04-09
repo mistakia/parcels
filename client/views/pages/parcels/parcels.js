@@ -11,7 +11,8 @@ export default function ParcelsPage({
   parcels,
   selected_parcel_view,
   set_parcels_view_table_state,
-  parcel_columns
+  parcel_columns,
+  load_more_parcels
 }) {
   const on_table_change = (table_state) =>
     set_parcels_view_table_state({
@@ -19,12 +20,23 @@ export default function ParcelsPage({
       view_table_state: table_state
     })
 
+  React.useEffect(() => {
+    if (selected_parcel_view.size) {
+      const view_id = selected_parcel_view.get('id')
+      load_more_parcels({ view_id })
+    }
+  }, [])
+
   const table_state = selected_parcel_view.get('table_state')
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column'
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        overflowY: 'scroll'
       }}>
       <div style={{ position: 'sticky', left: '0', width: '1px' }}>
         <MapContainer
@@ -42,6 +54,9 @@ export default function ParcelsPage({
         select_view={(view) => {
           console.log('select_view', view) // TODO: select view
         }}
+        fetch_more={load_more_parcels}
+        total_fetched={parcels.size}
+        is_fetching={selected_parcel_view.get('is_fetching', false)}
         views={new List()}
       />
     </div>
@@ -53,5 +68,6 @@ ParcelsPage.propTypes = {
   parcels_bounding_box: PropTypes.array,
   selected_parcel_view: ImmutablePropTypes.map,
   set_parcels_view_table_state: PropTypes.func,
-  parcel_columns: ImmutablePropTypes.list
+  parcel_columns: ImmutablePropTypes.list,
+  load_more_parcels: PropTypes.func
 }

@@ -1,5 +1,4 @@
 import * as turf from '@turf/turf'
-import { get_parcel_polygon } from '@common'
 
 export function get_parcels(state) {
   return state.get('parcels')
@@ -11,7 +10,11 @@ export function get_parcel_features(state) {
   return parcels
     .map((p) => {
       if (p.get('coordinates')) {
-        return get_parcel_polygon(p.get('coordinates'))
+        try {
+          return turf.polygon(p.get('coordinates'))
+        } catch (e) {
+          console.log(e)
+        }
       }
 
       return turf.point([p.get('lon'), p.get('lat')])

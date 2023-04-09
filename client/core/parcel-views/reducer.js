@@ -1,5 +1,6 @@
 import { Map } from 'immutable'
 
+import { parcel_actions } from '@core/parcels'
 import { parcel_view_actions } from './actions'
 import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
 import { constants } from '@common'
@@ -10,6 +11,7 @@ const initial_state = new Map({
   [DEFAULT_PARCEL_VIEW_ID]: new Map({
     id: DEFAULT_PARCEL_VIEW_ID,
     name: 'View #1',
+    is_fetching: false,
     table_state: new Map({
       sorting: [],
       columns: [
@@ -96,6 +98,13 @@ export function parcel_view_reducer(state = initial_state, { payload, type }) {
         [`${payload.view_id}`, 'table_state'],
         new Map(payload.view_table_state)
       )
+
+    case parcel_actions.GET_PARCELS_PENDING:
+      return state.setIn([`${payload.view_id}`, 'is_fetching'], true)
+
+    case parcel_actions.GET_PARCELS_FAILED:
+    case parcel_actions.GET_PARCELS_FULFILLED:
+      return state.setIn([`${payload.opts.view_id}`, 'is_fetching'], false)
 
     default:
       return state

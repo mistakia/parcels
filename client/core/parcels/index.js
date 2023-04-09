@@ -1,4 +1,4 @@
-export { parcelActions, getParcelsActions } from './actions'
+export { parcel_actions, getParcelsActions } from './actions'
 export { parcelsReducer } from './reducer'
 export { parcelSagas } from './sagas'
 export {

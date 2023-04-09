@@ -65,6 +65,14 @@ const columns_schema = {
 }
 const columns_validator = v.compile(columns_schema)
 
+const offset_schema = {
+  type: 'number',
+  positive: true,
+  integer: true,
+  $$root: true
+}
+const offset_validator = v.compile(offset_schema)
+
 router.get('/?', async (req, res) => {
   const { log, db } = req.app.locals
   try {
@@ -84,7 +92,7 @@ router.get('/?', async (req, res) => {
     )
     parcels_query.select('parcels_geometry.coordinates')
 
-    parcels_query.limit(100)
+    parcels_query.limit(1000)
 
     if (req.query.sorting) {
       if (!sort_validator(req.query.sorting)) {
@@ -125,6 +133,14 @@ router.get('/?', async (req, res) => {
 
         parcels_query.select(`${column.table_name}.${column.column_name}`)
       }
+    }
+
+    if (req.query.offset) {
+      if (!offset_validator(req.query.offset)) {
+        return res.status(400).send({ error: 'invalid offset query param' })
+      }
+
+      parcels_query.offset(req.query.offset)
     }
 
     log(parcels_query.toString())
