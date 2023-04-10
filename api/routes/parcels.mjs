@@ -154,6 +154,38 @@ router.get('/?', async (req, res) => {
   }
 })
 
+router.get('/count', async (req, res) => {
+  const { log, db } = req.app.locals
+  try {
+    const parcels_query = db('parcels')
+
+    parcels_query.limit(1000)
+
+    if (req.query.sorting) {
+      if (!sort_validator(req.query.sorting)) {
+        return res.status(400).send({ error: 'invalid sort query param' })
+      }
+
+      for (const sort of req.query.sorting) {
+        sort.desc = sort.desc === 'true'
+        parcels_query.orderByRaw(
+          `${sort.id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
+        )
+      }
+    }
+
+    parcels_query.count('* as total_row_count')
+    parcels_query.first()
+
+    const data = await parcels_query
+
+    res.status(200).send(data)
+  } catch (err) {
+    log(err)
+    res.status(500).send({ error: err.toString() })
+  }
+})
+
 router.get('/coverage', async (req, res) => {
   const { log, db } = req.app.locals
   try {

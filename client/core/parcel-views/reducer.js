@@ -12,6 +12,7 @@ const initial_state = new Map({
     id: DEFAULT_PARCEL_VIEW_ID,
     name: 'View #1',
     is_fetching: false,
+    total_row_count: null,
     table_state: new Map({
       sorting: [],
       columns: [
@@ -100,11 +101,17 @@ export function parcel_view_reducer(state = initial_state, { payload, type }) {
       )
 
     case parcel_actions.GET_PARCELS_PENDING:
-      return state.setIn([`${payload.view_id}`, 'is_fetching'], true)
+      return state.setIn([`${payload.opts.view_id}`, 'is_fetching'], true)
 
     case parcel_actions.GET_PARCELS_FAILED:
     case parcel_actions.GET_PARCELS_FULFILLED:
       return state.setIn([`${payload.opts.view_id}`, 'is_fetching'], false)
+
+    case parcel_actions.GET_PARCELS_COUNT_FULFILLED:
+      return state.setIn(
+        [`${payload.opts.view_id}`, 'total_row_count'],
+        Number(payload.data.total_row_count)
+      )
 
     default:
       return state

@@ -1,4 +1,8 @@
-export { parcel_actions, getParcelsActions } from './actions'
+export {
+  parcel_actions,
+  get_parcels_actions,
+  get_parcels_count_actions
+} from './actions'
 export { parcelsReducer } from './reducer'
 export { parcelSagas } from './sagas'
 export {

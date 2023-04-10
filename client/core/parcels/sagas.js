@@ -1,7 +1,7 @@
 import { call, takeLatest, fork, select, takeLeading } from 'redux-saga/effects'
 import { Map } from 'immutable'
 
-import { getParcels } from '@core/api'
+import { get_parcels, get_parcels_count } from '@core/api'
 import {
   parcel_view_actions,
   get_selected_parcel_view
@@ -20,7 +20,12 @@ export function* load_parcels({ payload }) {
     params.offset = yield select((state) => state.get('parcels').size)
   }
   params.view_id = payload.view_id
-  yield call(getParcels, params)
+  yield call(get_parcels, params)
+
+  const total_row_count = parcel_view.get('total_row_count')
+  if (total_row_count === null) {
+    yield call(get_parcels_count, params)
+  }
 }
 
 //= ====================================

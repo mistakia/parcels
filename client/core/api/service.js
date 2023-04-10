@@ -15,8 +15,12 @@ import { API_URL } from '@core/constants'
  *  */
 
 export const api = {
-  getParcels(params) {
+  get_parcels(params) {
     const url = `${API_URL}/parcels?${qs.stringify(params)}`
+    return { url }
+  },
+  get_parcels_count(params) {
+    const url = `${API_URL}/parcels/count?${qs.stringify(params)}`
     return { url }
   },
   get_parcel_columns() {

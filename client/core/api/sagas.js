@@ -2,7 +2,7 @@ import { call, put, cancelled } from 'redux-saga/effects'
 // import { LOCATION_CHANGE } from 'redux-first-history'
 
 import { api, apiRequest } from '@core/api/service'
-import { getParcelsActions } from '@core/parcels'
+import { get_parcels_actions, get_parcels_count_actions } from '@core/parcels'
 import { get_parcel_column_actions } from '@core/parcel-columns'
 
 function* fetchAPI(apiFunction, actions, opts = {}) {
@@ -32,7 +32,16 @@ function* fetch(...args) {
   // yield race([call(fetchAPI.bind(null, ...args)), take(LOCATION_CHANGE)])
 }
 
-export const getParcels = fetch.bind(null, api.getParcels, getParcelsActions)
+export const get_parcels = fetch.bind(
+  null,
+  api.get_parcels,
+  get_parcels_actions
+)
+export const get_parcels_count = fetch.bind(
+  null,
+  api.get_parcels_count,
+  get_parcels_count_actions
+)
 export const get_parcel_columns = fetch.bind(
   null,
   api.get_parcel_columns,

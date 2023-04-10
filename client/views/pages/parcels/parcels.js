@@ -55,7 +55,8 @@ export default function ParcelsPage({
           console.log('select_view', view) // TODO: select view
         }}
         fetch_more={load_more_parcels}
-        total_fetched={parcels.size}
+        total_rows_fetched={parcels.size}
+        total_row_count={selected_parcel_view.get('total_row_count', null)}
         is_fetching={selected_parcel_view.get('is_fetching', false)}
         views={new List()}
       />
