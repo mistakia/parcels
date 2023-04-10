@@ -16,7 +16,7 @@ export default function ParcelsPage({
 }) {
   const on_table_change = (table_state) =>
     set_parcels_view_table_state({
-      view_id: selected_parcel_view.id,
+      view_id: selected_parcel_view.get('id'),
       view_table_state: table_state
     })
 
