@@ -25,6 +25,20 @@ CREATE SCHEMA parcels_production;
 
 ALTER SCHEMA parcels_production OWNER TO pgloader_pg;
 
+--
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -133,6 +147,25 @@ CREATE TABLE parcels_production.coverage (
 
 
 ALTER TABLE parcels_production.coverage OWNER TO pgloader_pg;
+
+--
+-- Name: database_table_views; Type: TABLE; Schema: parcels_production; Owner: pgloader_pg
+--
+
+CREATE TABLE parcels_production.database_table_views (
+    view_id uuid DEFAULT public.uuid_generate_v1() NOT NULL,
+    view_name character varying(30) NOT NULL,
+    view_description text,
+    table_name character varying(255) NOT NULL,
+    table_state json,
+    user_public_key character varying(64) NOT NULL,
+    user_signature character varying(64) NOT NULL,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE parcels_production.database_table_views OWNER TO pgloader_pg;
 
 --
 -- Name: importers; Type: TABLE; Schema: parcels_production; Owner: pgloader_pg
@@ -2129,11 +2162,6 @@ ALTER TABLE parcels_production.parcels_nature OWNER TO pgloader_pg;
 CREATE TABLE parcels_production.parcels_rank (
     hardiness_temp_rank smallint,
     max_download_speed_rank smallint,
-    max_upload_speed_rank smallint,
-    closest_provider_distance_rank smallint,
-    nearby_max_download_speed_rank smallint,
-    nearby_max_upload_speed_rank smallint,
-    surrounding_coverage_density_rank smallint,
     closest_military_distance_rank smallint,
     closest_spring_distance_rank smallint,
     military_count_25km_rank smallint,
@@ -2144,7 +2172,12 @@ CREATE TABLE parcels_production.parcels_rank (
     spring_count_10km_rank smallint,
     spring_count_50km_rank smallint,
     spring_count_100km_rank smallint,
-    ll_uuid character varying(36) NOT NULL
+    ll_uuid character varying(36) NOT NULL,
+    max_upload_speed_rank smallint,
+    closest_provider_distance_rank smallint,
+    nearby_max_download_speed_rank smallint,
+    nearby_max_upload_speed_rank smallint,
+    surrounding_coverage_density_rank smallint
 );
 
 
@@ -2513,6 +2546,22 @@ ALTER TABLE ONLY parcels_production.parcels_geometry_extra ALTER COLUMN ogc_fid 
 
 
 --
+-- Name: database_table_views database_table_views_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: pgloader_pg
+--
+
+ALTER TABLE ONLY parcels_production.database_table_views
+    ADD CONSTRAINT database_table_views_pkey PRIMARY KEY (view_id);
+
+
+--
+-- Name: database_table_views database_table_views_view_name_table_name_user_public_key_key; Type: CONSTRAINT; Schema: parcels_production; Owner: pgloader_pg
+--
+
+ALTER TABLE ONLY parcels_production.database_table_views
+    ADD CONSTRAINT database_table_views_view_name_table_name_user_public_key_key UNIQUE (view_name, table_name, user_public_key);
+
+
+--
 -- Name: idx_650104_abbrev; Type: INDEX; Schema: parcels_production; Owner: pgloader_pg
 --
 
@@ -2737,6 +2786,13 @@ GRANT ALL ON TABLE parcels_production.coverage TO parcelsuser;
 
 
 --
+-- Name: TABLE database_table_views; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
+--
+
+GRANT ALL ON TABLE parcels_production.database_table_views TO parcelsuser;
+
+
+--
 -- Name: TABLE importers; Type: ACL; Schema: parcels_production; Owner: pgloader_pg
 --
 
@@ -2886,3 +2942,4 @@ GRANT ALL ON TABLE parcels_production.tiles TO parcelsuser;
 --
 -- PostgreSQL database dump complete
 --
+

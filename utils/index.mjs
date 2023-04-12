@@ -20,6 +20,8 @@ export { default as get_proxy_urls } from './get-proxy-urls.mjs'
 export { default as get_parcel } from './get-parcel.mjs'
 export { default as get_importer_data } from './get-importer-data.mjs'
 export { default as get_column_coverage } from './get-column-coverage.mjs'
+export { default as get_data_type } from './get-data-type.mjs'
+export * as validators from './validators.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const data_path = path.resolve(__dirname, '../data')

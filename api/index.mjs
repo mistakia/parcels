@@ -55,6 +55,7 @@ api.use((req, res, next) => {
 const resourcesPath = path.join(__dirname, '..', 'resources')
 api.use('/resources', serveStatic(resourcesPath))
 api.use('/api/parcels', routes.parcels)
+api.use('/api/views', routes.views)
 
 if (IS_DEV) {
   api.get('*', (req, res) => {

@@ -3,9 +3,8 @@ import { Map } from 'immutable'
 import { parcel_actions } from '@core/parcels'
 import { parcel_view_actions } from './actions'
 import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
-import { constants } from '@common'
 
-const { TABLE_DATA_TYPES } = constants
+import * as table_constants from '../../../../react-table/src/constants.mjs'
 
 const initial_state = new Map({
   [DEFAULT_PARCEL_VIEW_ID]: new Map({
@@ -22,70 +21,70 @@ const initial_state = new Map({
           table_name: 'parcels',
           header_label: 'Path',
           // footer_label: `Count ${data.length}`,
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'owner',
           column_name: 'owner',
           table_name: 'parcels',
           header_label: 'Owner',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'll_gisacre',
           column_name: 'll_gisacre',
           table_name: 'parcels',
           header_label: 'Acreage',
-          data_type: TABLE_DATA_TYPES.NUMBER
+          data_type: table_constants.TABLE_DATA_TYPES.NUMBER
         },
         {
           accessorKey: 'address',
           column_name: 'address',
           table_name: 'parcels',
           header_label: 'Address',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'usecode',
           column_name: 'usecode',
           table_name: 'parcels',
           header_label: 'Use Code',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'usedesc',
           column_name: 'usedesc',
           table_name: 'parcels',
           header_label: 'Use Description',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'zoning',
           column_name: 'zoning',
           table_name: 'parcels',
           header_label: 'Zoning',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'zoning_description',
           column_name: 'zoning_description',
           table_name: 'parcels',
           header_label: 'Zoning Description',
-          data_type: TABLE_DATA_TYPES.TEXT
+          data_type: table_constants.TABLE_DATA_TYPES.TEXT
         },
         {
           accessorKey: 'lat',
           column_name: 'lat',
           table_name: 'parcels',
           header_label: 'Latitude',
-          data_type: TABLE_DATA_TYPES.NUMBER
+          data_type: table_constants.TABLE_DATA_TYPES.NUMBER
         },
         {
           accessorKey: 'lon',
           column_name: 'lon',
           table_name: 'parcels',
           header_label: 'Longitude',
-          data_type: TABLE_DATA_TYPES.NUMBER
+          data_type: table_constants.TABLE_DATA_TYPES.NUMBER
         }
       ]
     })

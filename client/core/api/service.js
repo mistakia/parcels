@@ -26,6 +26,10 @@ export const api = {
   get_parcel_columns() {
     const url = `${API_URL}/parcels/columns`
     return { url }
+  },
+  get_parcel_views() {
+    const url = `${API_URL}/views`
+    return { url }
   }
 }
 

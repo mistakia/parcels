@@ -1,77 +1,8 @@
 import express from 'express'
-import Validator from 'fastest-validator'
 
-import { get_column_coverage } from '#utils'
-import { constants } from '#common'
+import { get_column_coverage, get_data_type, validators } from '#utils'
 
-const v = new Validator({ haltOnFirstError: true })
 const router = express.Router()
-const { TABLE_DATA_TYPES } = constants
-
-const get_data_type = (column_data_type) => {
-  switch (column_data_type) {
-    case 'integer':
-    case 'bigint':
-    case 'numeric':
-    case 'real':
-    case 'double precision':
-    case 'smallint':
-    case 'smallserial':
-    case 'serial':
-    case 'bigserial':
-      return TABLE_DATA_TYPES.NUMBER
-
-    case 'character varying':
-    case 'text':
-      return TABLE_DATA_TYPES.TEXT
-
-    case 'json':
-      return TABLE_DATA_TYPES.JSON
-
-    case 'boolean':
-      return TABLE_DATA_TYPES.BOOLEAN
-
-    case 'date':
-    case 'timestamp without time zone':
-    case 'timestamp with time zone':
-      return TABLE_DATA_TYPES.DATE
-
-    default:
-      return null
-  }
-}
-
-const sort_schema = {
-  type: 'array',
-  items: {
-    type: 'object',
-    props: {
-      id: { type: 'string' },
-      desc: { type: 'boolean' }
-    }
-  }
-}
-const sort_validator = v.compile(sort_schema)
-
-const columns_schema = {
-  type: 'array',
-  items: {
-    type: 'object',
-    props: {
-      column_name: { type: 'string' },
-      table_name: { type: 'string' }
-    }
-  }
-}
-const columns_validator = v.compile(columns_schema)
-
-const offset_schema = {
-  type: 'number',
-  positive: true,
-  integer: true,
-  $$root: true
-}
-const offset_validator = v.compile(offset_schema)
 
 router.get('/?', async (req, res) => {
   const { log, db } = req.app.locals
@@ -95,7 +26,7 @@ router.get('/?', async (req, res) => {
     parcels_query.limit(1000)
 
     if (req.query.sorting) {
-      if (!sort_validator(req.query.sorting)) {
+      if (!validators.sort_validator(req.query.sorting)) {
         return res.status(400).send({ error: 'invalid sort query param' })
       }
 
@@ -108,7 +39,7 @@ router.get('/?', async (req, res) => {
     }
 
     if (req.query.columns) {
-      if (!columns_validator(req.query.columns)) {
+      if (!validators.columns_validator(req.query.columns)) {
         return res.status(400).send({ error: 'invalid columns query param' })
       }
 
@@ -136,7 +67,7 @@ router.get('/?', async (req, res) => {
     }
 
     if (req.query.offset) {
-      if (!offset_validator(req.query.offset)) {
+      if (!validators.offset_validator(req.query.offset)) {
         return res.status(400).send({ error: 'invalid offset query param' })
       }
 
@@ -162,7 +93,7 @@ router.get('/count', async (req, res) => {
     parcels_query.limit(1000)
 
     if (req.query.sorting) {
-      if (!sort_validator(req.query.sorting)) {
+      if (!validators.sort_validator(req.query.sorting)) {
         return res.status(400).send({ error: 'invalid sort query param' })
       }
 
