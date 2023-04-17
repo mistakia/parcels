@@ -23,9 +23,7 @@ const importer = async ({ max = Infinity } = {}) => {
     area.avg_sqmi = area.sqmi / area.num_parcels
   }
 
-  property_areas = property_areas.sort((a, b) => b.avg_sqmi - a.avg_sqmi)
-
-  const items = property_areas.slice(0, 300)
+  const items = property_areas.sort((a, b) => b.avg_sqmi - a.avg_sqmi)
 
   for (const item of items) {
     let count = await getParcelCount(item.path)
