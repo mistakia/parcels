@@ -1,4 +1,4 @@
-import * as table_constants from '../../react-table/src/constants.mjs'
+import * as table_constants from 'react-table/src/constants.mjs'
 
 export default function get_data_type(column_data_type) {
   switch (column_data_type) {

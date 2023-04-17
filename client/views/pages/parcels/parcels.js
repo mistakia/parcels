@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ParcelsMap from '@components/parcels-map'
-import Table from '../../../../../react-table/index.js'
+import Table from 'react-table/index.js'
 
 export default function ParcelsPage({
   parcels,

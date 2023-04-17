@@ -4,7 +4,7 @@ import { parcel_actions } from '@core/parcels'
 import { parcel_view_actions } from './actions'
 import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
 
-import * as table_constants from '../../../../react-table/src/constants.mjs'
+import * as table_constants from 'react-table/src/constants.mjs'
 
 const initial_state = new Map({
   [DEFAULT_PARCEL_VIEW_ID]: new Map({
