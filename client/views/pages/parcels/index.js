@@ -19,12 +19,17 @@ const mapStateToProps = createSelector(
   get_parcels_bounding_box,
   get_selected_parcel_view,
   get_parcel_columns,
-  (parcels, parcels_bounding_box, selected_parcel_view, parcel_columns) => ({
-    parcels,
-    parcels_bounding_box,
-    selected_parcel_view,
-    parcel_columns
-  })
+  (parcels, parcels_bounding_box, selected_parcel_view, parcel_columns) => {
+    const table_state = selected_parcel_view.get('table_state').toJS()
+
+    return {
+      parcels: parcels.toJS(),
+      parcels_bounding_box,
+      selected_parcel_view: selected_parcel_view.toJS(),
+      parcel_columns,
+      table_state
+    }
+  }
 )
 
 const mapDispatchToProps = {

@@ -1,6 +1,4 @@
 import React from 'react'
-import { List } from 'immutable'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
@@ -12,22 +10,22 @@ export default function ParcelsPage({
   selected_parcel_view,
   set_parcels_view_table_state,
   parcel_columns,
-  load_more_parcels
+  load_more_parcels,
+  table_state
 }) {
   const on_table_change = (table_state) =>
     set_parcels_view_table_state({
-      view_id: selected_parcel_view.get('id'),
+      view_id: selected_parcel_view.id,
       view_table_state: table_state
     })
 
   React.useEffect(() => {
-    if (selected_parcel_view.size) {
-      const view_id = selected_parcel_view.get('id')
+    const view_id = selected_parcel_view.id
+    if (view_id !== undefined) {
       load_more_parcels({ view_id })
     }
   }, [])
 
-  const table_state = selected_parcel_view.get('table_state')
   return (
     <div
       style={{
@@ -46,7 +44,7 @@ export default function ParcelsPage({
         </MapContainer>
       </div>
       <Table
-        data={parcels.toJS()}
+        data={parcels}
         on_table_change={on_table_change}
         table_state={table_state}
         all_columns={parcel_columns}
@@ -56,18 +54,19 @@ export default function ParcelsPage({
         }}
         fetch_more={load_more_parcels}
         total_rows_fetched={parcels.size}
-        total_row_count={selected_parcel_view.get('total_row_count', null)}
-        is_fetching={selected_parcel_view.get('is_fetching', false)}
-        views={new List()}
+        total_row_count={selected_parcel_view.total_row_count}
+        is_fetching={selected_parcel_view.is_fetching}
+        views={[]}
       />
     </div>
   )
 }
 
 ParcelsPage.propTypes = {
-  parcels: ImmutablePropTypes.list,
+  parcels: PropTypes.array,
   parcels_bounding_box: PropTypes.array,
-  selected_parcel_view: ImmutablePropTypes.map,
+  selected_parcel_view: PropTypes.object,
+  table_state: PropTypes.object,
   set_parcels_view_table_state: PropTypes.func,
   parcel_columns: PropTypes.array,
   load_more_parcels: PropTypes.func
