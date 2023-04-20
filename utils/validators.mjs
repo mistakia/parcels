@@ -26,6 +26,38 @@ const columns_schema = {
 }
 export const columns_validator = v.compile(columns_schema)
 
+const where_operator_schema = {
+  type: 'string',
+  enum: [
+    '=',
+    '!=',
+    '>',
+    '>=',
+    '<',
+    '<=',
+    'LIKE',
+    'NOT LIKE',
+    'IS NULL',
+    'IS NOT NULL',
+    'IN',
+    'NOT IN'
+  ]
+}
+
+const where_schema = {
+  type: 'array',
+  items: {
+    type: 'object',
+    props: {
+      column_name: { type: 'string' },
+      operator: where_operator_schema,
+      value: { type: 'string' }
+    }
+  }
+}
+
+export const where_validator = v.compile(where_schema)
+
 const offset_schema = {
   type: 'number',
   positive: true,

@@ -74,6 +74,48 @@ router.get('/?', async (req, res) => {
       parcels_query.offset(req.query.offset)
     }
 
+    if (req.query.where) {
+      if (!validators.where_validator(req.query.where)) {
+        return res.status(400).send({ error: 'invalid where query param' })
+      }
+
+      for (const where of req.query.where) {
+        if (where.operator === 'IS NULL') {
+          parcels_query.whereNull(`${where.table_name}.${where.column_name}`)
+        } else if (where.operator === 'IS NOT NULL') {
+          parcels_query.whereNotNull(`${where.table_name}.${where.column_name}`)
+        } else if (where.operator === 'IN') {
+          parcels_query.whereIn(
+            `${where.table_name}.${where.column_name}`,
+            where.value
+          )
+        } else if (where.operator === 'NOT IN') {
+          parcels_query.whereNotIn(
+            `${where.table_name}.${where.column_name}`,
+            where.value
+          )
+        } else if (where.operator === 'LIKE') {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            'LIKE',
+            `%${where.value}%`
+          )
+        } else if (where.operator === 'NOT LIKE') {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            'NOT LIKE',
+            `%${where.value}%`
+          )
+        } else if (where.value) {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            where.operator,
+            where.value
+          )
+        }
+      }
+    }
+
     log(parcels_query.toString())
 
     const parcels = await parcels_query

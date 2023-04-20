@@ -8,6 +8,7 @@ export function get_parcel_features(state) {
   const parcels = state.get('parcels')
 
   return parcels
+    .slice(0, 10)
     .map((p) => {
       if (p.get('coordinates')) {
         try {

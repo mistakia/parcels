@@ -69,6 +69,6 @@ ParcelsPage.propTypes = {
   parcels_bounding_box: PropTypes.array,
   selected_parcel_view: ImmutablePropTypes.map,
   set_parcels_view_table_state: PropTypes.func,
-  parcel_columns: ImmutablePropTypes.list,
+  parcel_columns: PropTypes.array,
   load_more_parcels: PropTypes.func
 }
