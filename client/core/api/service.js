@@ -5,14 +5,13 @@ import merge from 'merge-options'
 
 import { API_URL } from '@core/constants'
 
-/* const POST = (data) => ({
- *   method: 'POST',
- *   body: JSON.stringify(data),
- *   headers: {
- *     'Content-Type': 'application/json'
- *   }
- * })
- *  */
+const POST = (data) => ({
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
 
 export const api = {
   get_parcels(params) {
@@ -30,6 +29,10 @@ export const api = {
   get_parcel_views() {
     const url = `${API_URL}/views`
     return { url }
+  },
+  post_parcel_view(data) {
+    const url = `${API_URL}/views`
+    return { url, ...POST(data) }
   }
 }
 

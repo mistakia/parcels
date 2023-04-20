@@ -11,16 +11,18 @@ export default function ParcelsPage({
   set_parcels_view_table_state,
   parcel_columns,
   load_more_parcels,
-  table_state
+  table_state,
+  all_parcel_views,
+  set_selected_parcel_view_id
 }) {
   const on_table_change = (table_state) =>
     set_parcels_view_table_state({
-      view_id: selected_parcel_view.id,
+      view_id: selected_parcel_view.view_id,
       view_table_state: table_state
     })
 
   React.useEffect(() => {
-    const view_id = selected_parcel_view.id
+    const view_id = selected_parcel_view.view_id
     if (view_id !== undefined) {
       load_more_parcels({ view_id })
     }
@@ -49,14 +51,12 @@ export default function ParcelsPage({
         table_state={table_state}
         all_columns={parcel_columns}
         selected_view={selected_parcel_view}
-        select_view={(view) => {
-          console.log('select_view', view) // TODO: select view
-        }}
+        select_view={(view_id) => set_selected_parcel_view_id(view_id)}
         fetch_more={load_more_parcels}
         total_rows_fetched={parcels.size}
         total_row_count={selected_parcel_view.total_row_count}
         is_fetching={selected_parcel_view.is_fetching}
-        views={[]}
+        views={all_parcel_views}
       />
     </div>
   )
@@ -69,5 +69,7 @@ ParcelsPage.propTypes = {
   table_state: PropTypes.object,
   set_parcels_view_table_state: PropTypes.func,
   parcel_columns: PropTypes.array,
-  load_more_parcels: PropTypes.func
+  load_more_parcels: PropTypes.func,
+  all_parcel_views: PropTypes.array,
+  set_selected_parcel_view_id: PropTypes.func
 }

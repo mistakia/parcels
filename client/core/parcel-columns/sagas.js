@@ -1,7 +1,7 @@
 import { call, takeLatest, fork } from 'redux-saga/effects'
 
 import { get_parcel_columns } from '@core/api'
-import { appActions } from '@core/app'
+import { app_actions } from '@core/app'
 
 export function* load_parcel_columns() {
   yield call(get_parcel_columns)
@@ -12,7 +12,7 @@ export function* load_parcel_columns() {
 // -------------------------------------
 
 export function* watch_app_loaded() {
-  yield takeLatest(appActions.APP_LOADED, load_parcel_columns)
+  yield takeLatest(app_actions.APP_LOADED, load_parcel_columns)
 }
 
 //= ====================================

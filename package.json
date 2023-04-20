@@ -49,7 +49,7 @@
     "percentile": "^1.6.0",
     "pg": "^8.9.0",
     "query-string": "8.1.0",
-    "react-table": "mistakia/react-table#3dfc0e682b9f51aea326854df0f782a560dfe5b9",
+    "react-table": "mistakia/react-table#fa2f137bcb0d25c605693ad7fdbe1a5d56237f58",
     "simple-proxy-agent": "^1.1.0",
     "suncalc": "^1.9.0",
     "ws": "8.12.1",

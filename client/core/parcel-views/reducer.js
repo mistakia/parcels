@@ -8,8 +8,9 @@ import * as table_constants from 'react-table/src/constants.mjs'
 
 const initial_state = new Map({
   [DEFAULT_PARCEL_VIEW_ID]: new Map({
-    id: DEFAULT_PARCEL_VIEW_ID,
-    name: 'View #1',
+    view_id: DEFAULT_PARCEL_VIEW_ID,
+    view_name: 'View #1',
+    view_description: 'Default View',
     is_fetching: false,
     total_row_count: null,
     table_state: new Map({
@@ -111,6 +112,13 @@ export function parcel_view_reducer(state = initial_state, { payload, type }) {
         [`${payload.opts.view_id}`, 'total_row_count'],
         Number(payload.data.total_row_count)
       )
+
+    case parcel_view_actions.GET_VIEWS_FULFILLED:
+      return state.withMutations((map) => {
+        payload.data.forEach((view) => {
+          map.set(view.view_id, new Map(view))
+        })
+      })
 
     default:
       return state

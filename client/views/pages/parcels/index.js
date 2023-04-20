@@ -8,9 +8,11 @@ import {
 } from '@core/parcels'
 import {
   parcel_view_actions,
-  get_selected_parcel_view
+  get_selected_parcel_view,
+  get_all_parcel_views
 } from '@core/parcel-views'
 import { get_parcel_columns } from '@core/parcel-columns'
+import { app_actions } from '@core/app'
 
 import ParcelsPage from './parcels'
 
@@ -19,17 +21,21 @@ const mapStateToProps = createSelector(
   get_parcels_bounding_box,
   get_selected_parcel_view,
   get_parcel_columns,
-  (parcels, parcels_bounding_box, selected_parcel_view, parcel_columns) => {
-    const table_state = selected_parcel_view.get('table_state').toJS()
-
-    return {
-      parcels: parcels.toJS(),
-      parcels_bounding_box,
-      selected_parcel_view: selected_parcel_view.toJS(),
-      parcel_columns,
-      table_state
-    }
-  }
+  get_all_parcel_views,
+  (
+    parcels,
+    parcels_bounding_box,
+    selected_parcel_view,
+    parcel_columns,
+    all_parcel_views
+  ) => ({
+    parcels: parcels.toJS(),
+    parcels_bounding_box,
+    selected_parcel_view,
+    all_parcel_views: all_parcel_views.toList().toJS(),
+    parcel_columns,
+    table_state: selected_parcel_view.table_state
+  })
 )
 
 const mapDispatchToProps = {
@@ -37,7 +43,8 @@ const mapDispatchToProps = {
     parcel_view_actions.set_parcels_view_table_state,
   set_column_visible: parcel_view_actions.set_column_visible,
   set_column_hidden: parcel_view_actions.set_column_hidden,
-  load_more_parcels: parcel_actions.load_more_parcels
+  load_more_parcels: parcel_actions.load_more_parcels,
+  set_selected_parcel_view_id: app_actions.set_selected_parcel_view_id
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParcelsPage)
