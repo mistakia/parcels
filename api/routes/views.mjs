@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { get_data_type, validators } from '#utils'
+import { validators } from '#utils'
 
 const router = express.Router()
 
@@ -17,53 +17,9 @@ router.get('/?', async (req, res) => {
       })
     }
 
-    const tables = [
-      'parcels',
-      'parcels_agriculture',
-      'parcels_airport',
-      'parcels_coastline',
-      'parcels_density',
-      'parcels_elevation',
-      'parcels_geometry',
-      'parcels_internet',
-      'parcels_meta',
-      'parcels_nature',
-      'parcels_rank',
-      'parcels_road',
-      'parcels_viewshed'
-    ]
-    const query_columns = await db('information_schema.columns')
-      .select('column_name', 'table_name', 'data_type')
-      .whereIn('table_name', tables)
+    const views = await query
 
-    const column_index = {}
-    const unique_columns = []
-    for (const column of query_columns) {
-      if (column_index[column.column_name]) {
-        continue
-      }
-
-      const data_type = get_data_type(column.data_type)
-      if (!data_type) {
-        log(`unknown data type: ${column.data_type}`)
-      }
-
-      column_index[column.column_name] = true
-      unique_columns.push({
-        ...column,
-        data_type,
-        accessorKey: column.column_name,
-        header_label: column.column_name
-      })
-    }
-
-    const results = await query
-    const database_table_views = results.map((view) => ({
-      ...view,
-      all_columns: unique_columns
-    }))
-
-    res.status(200).send(database_table_views)
+    res.status(200).send(views)
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })

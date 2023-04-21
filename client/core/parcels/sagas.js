@@ -11,6 +11,11 @@ import { app_actions } from '@core/app'
 export function* load_parcels() {
   const parcel_view = yield select(get_selected_parcel_view)
   const params = parcel_view.table_state
+
+  if (!params) {
+    return
+  }
+
   if (params.columns) {
     params.columns = params.columns.map(({ column_name, table_name }) => ({
       column_name,
