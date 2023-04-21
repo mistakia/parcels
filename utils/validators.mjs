@@ -87,3 +87,13 @@ const table_state_schema = {
   columns: columns_schema
 }
 export const table_state_validator = v.compile(table_state_schema)
+
+const view_id_schema = {
+  $$root: true,
+  type: 'string',
+  format: {
+    type: 'uuid',
+    version: 1
+  }
+}
+export const view_id_validator = v.compile(view_id_schema)

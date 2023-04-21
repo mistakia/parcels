@@ -7,13 +7,32 @@ export const parcel_view_actions = {
   POST_PARCEL_VIEW_FAILED: 'POST_PARCEL_VIEW_FAILED',
   POST_PARCEL_VIEW_FULFILLED: 'POST_PARCEL_VIEW_FULFILLED',
 
-  SET_PARCELS_VIEW_TABLE_STATE: 'SET_PARCELS_VIEW_TABLE_STATE',
+  DELETE_PARCEL_VIEW_PENDING: 'DELETE_PARCEL_VIEW_PENDING',
+  DELETE_PARCEL_VIEW_FAILED: 'DELETE_PARCEL_VIEW_FAILED',
+  DELETE_PARCEL_VIEW_FULFILLED: 'DELETE_PARCEL_VIEW_FULFILLED',
 
-  set_parcels_view_table_state: ({ view_id, view_table_state }) => ({
-    type: parcel_view_actions.SET_PARCELS_VIEW_TABLE_STATE,
+  SET_PARCELS_VIEW: 'SET_PARCELS_VIEW',
+  DELETE_PARCELS_VIEW: 'DELETE_PARCELS_VIEW',
+
+  set_parcels_view: ({
+    view_id,
+    view_name,
+    view_description,
+    table_state
+  }) => ({
+    type: parcel_view_actions.SET_PARCELS_VIEW,
     payload: {
       view_id,
-      view_table_state
+      view_name,
+      view_description,
+      table_state
+    }
+  }),
+
+  delete_parcels_view: (view_id) => ({
+    type: parcel_view_actions.DELETE_PARCELS_VIEW,
+    payload: {
+      view_id
     }
   }),
 
@@ -61,6 +80,29 @@ export const parcel_view_actions = {
       opts,
       data
     }
+  }),
+
+  delete_parcel_view_pending: (opts) => ({
+    type: parcel_view_actions.DELETE_PARCEL_VIEW_PENDING,
+    payload: {
+      opts
+    }
+  }),
+
+  delete_parcel_view_failed: (opts, error) => ({
+    type: parcel_view_actions.DELETE_PARCEL_VIEW_FAILED,
+    payload: {
+      opts,
+      error
+    }
+  }),
+
+  delete_parcel_view_fulfilled: (opts, data) => ({
+    type: parcel_view_actions.DELETE_PARCEL_VIEW_FULFILLED,
+    payload: {
+      opts,
+      data
+    }
   })
 }
 
@@ -74,4 +116,10 @@ export const post_parcel_view_actions = {
   pending: parcel_view_actions.post_parcel_view_pending,
   failed: parcel_view_actions.post_parcel_view_failed,
   fulfilled: parcel_view_actions.post_parcel_view_fulfilled
+}
+
+export const delete_parcel_view_actions = {
+  pending: parcel_view_actions.delete_parcel_view_pending,
+  failed: parcel_view_actions.delete_parcel_view_failed,
+  fulfilled: parcel_view_actions.delete_parcel_view_fulfilled
 }

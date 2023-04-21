@@ -39,12 +39,12 @@ const mapStateToProps = createSelector(
 )
 
 const mapDispatchToProps = {
-  set_parcels_view_table_state:
-    parcel_view_actions.set_parcels_view_table_state,
+  set_parcels_view: parcel_view_actions.set_parcels_view,
   set_column_visible: parcel_view_actions.set_column_visible,
   set_column_hidden: parcel_view_actions.set_column_hidden,
   load_more_parcels: parcel_actions.load_more_parcels,
-  set_selected_parcel_view_id: app_actions.set_selected_parcel_view_id
+  set_selected_parcel_view_id: app_actions.set_selected_parcel_view_id,
+  delete_parcels_view: parcel_view_actions.delete_parcels_view
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParcelsPage)

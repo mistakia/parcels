@@ -6,7 +6,8 @@ import { get_parcels_actions, get_parcels_count_actions } from '@core/parcels'
 import { get_parcel_column_actions } from '@core/parcel-columns'
 import {
   get_parcel_views_actions,
-  post_parcel_view_actions
+  post_parcel_view_actions,
+  delete_parcel_view_actions
 } from '@core/parcel-views'
 
 function* fetchAPI(apiFunction, actions, opts = {}) {
@@ -60,4 +61,9 @@ export const post_parcel_view = fetch.bind(
   null,
   api.post_parcel_view,
   post_parcel_view_actions
+)
+export const delete_parcels_view = fetch.bind(
+  null,
+  api.delete_parcels_view,
+  delete_parcel_view_actions
 )

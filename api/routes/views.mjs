@@ -74,6 +74,7 @@ router.post('/?', async (req, res) => {
   const { log, db } = req.app.locals
   try {
     const {
+      view_id,
       view_name,
       table_state,
       view_description,
@@ -95,17 +96,30 @@ router.post('/?', async (req, res) => {
 
     // TODO check signature
 
-    await db('database_table_views')
-      .insert({
-        view_name,
-        view_description,
-        table_state: JSON.stringify(table_state),
-        table_name: 'parcels',
-        user_public_key,
-        user_signature
-      })
-      .onConflict(['view_name', 'table_name', 'user_public_key'])
-      .merge()
+    if (view_id) {
+      await db('database_table_views')
+        .where({
+          view_id
+        })
+        .update({
+          view_name,
+          view_description,
+          table_state: JSON.stringify(table_state),
+          user_signature
+        })
+    } else {
+      await db('database_table_views')
+        .insert({
+          view_name,
+          view_description,
+          table_state: JSON.stringify(table_state),
+          table_name: 'parcels',
+          user_public_key,
+          user_signature
+        })
+        .onConflict(['view_name', 'table_name', 'user_public_key'])
+        .merge()
+    }
 
     const view = await db('database_table_views')
       .where({
@@ -115,6 +129,34 @@ router.post('/?', async (req, res) => {
       .first()
 
     res.status(200).send(view)
+  } catch (err) {
+    log(err)
+    res.status(500).send({ error: err.toString() })
+  }
+})
+
+router.delete('/:view_id', async (req, res) => {
+  const { log, db } = req.app.locals
+  try {
+    const { view_id, user_signature } = req.params
+
+    if (!validators.view_id_validator(view_id)) {
+      return res.status(400).send({ error: 'invalid view_id' })
+    }
+
+    if (!user_signature) {
+      return res.status(400).send({ error: 'invalid user_signature' })
+    }
+
+    // TODO check signature
+
+    await db('database_table_views')
+      .where({
+        view_id
+      })
+      .del()
+
+    res.status(200).send({ success: true })
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })

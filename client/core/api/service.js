@@ -33,6 +33,10 @@ export const api = {
   post_parcel_view(data) {
     const url = `${API_URL}/views`
     return { url, ...POST(data) }
+  },
+  delete_parcels_view({ view_id }) {
+    const url = `${API_URL}/views/${view_id}`
+    return { url, method: 'DELETE' }
   }
 }
 
