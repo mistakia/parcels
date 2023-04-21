@@ -48,7 +48,7 @@ export default function ParcelsPage({
         selected_view={selected_parcel_view}
         select_view={(view_id) => set_selected_parcel_view_id(view_id)}
         fetch_more={load_more_parcels}
-        total_rows_fetched={parcels.size}
+        total_rows_fetched={parcels.length}
         total_row_count={selected_parcel_view.total_row_count}
         is_fetching={selected_parcel_view.is_fetching}
         views={all_parcel_views}

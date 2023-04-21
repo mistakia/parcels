@@ -27,7 +27,7 @@ export function* load_parcels() {
   yield call(get_parcels, params)
 
   const total_row_count = parcel_view.total_row_count
-  if (total_row_count === null) {
+  if (total_row_count === null || total_row_count === undefined) {
     yield call(get_parcels_count, params)
   }
 }

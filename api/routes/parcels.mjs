@@ -132,18 +132,45 @@ router.get('/count', async (req, res) => {
   try {
     const parcels_query = db('parcels')
 
-    parcels_query.limit(1000)
-
-    if (req.query.sorting) {
-      if (!validators.sort_validator(req.query.sorting)) {
-        return res.status(400).send({ error: 'invalid sort query param' })
+    if (req.query.where) {
+      if (!validators.where_validator(req.query.where)) {
+        return res.status(400).send({ error: 'invalid where query param' })
       }
 
-      for (const sort of req.query.sorting) {
-        sort.desc = sort.desc === 'true'
-        parcels_query.orderByRaw(
-          `${sort.id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
-        )
+      for (const where of req.query.where) {
+        if (where.operator === 'IS NULL') {
+          parcels_query.whereNull(`${where.table_name}.${where.column_name}`)
+        } else if (where.operator === 'IS NOT NULL') {
+          parcels_query.whereNotNull(`${where.table_name}.${where.column_name}`)
+        } else if (where.operator === 'IN') {
+          parcels_query.whereIn(
+            `${where.table_name}.${where.column_name}`,
+            where.value
+          )
+        } else if (where.operator === 'NOT IN') {
+          parcels_query.whereNotIn(
+            `${where.table_name}.${where.column_name}`,
+            where.value
+          )
+        } else if (where.operator === 'LIKE') {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            'LIKE',
+            `%${where.value}%`
+          )
+        } else if (where.operator === 'NOT LIKE') {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            'NOT LIKE',
+            `%${where.value}%`
+          )
+        } else if (where.value) {
+          parcels_query.where(
+            `${where.table_name}.${where.column_name}`,
+            where.operator,
+            where.value
+          )
+        }
       }
     }
 
