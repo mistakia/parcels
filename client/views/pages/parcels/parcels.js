@@ -24,15 +24,7 @@ export default function ParcelsPage({
   }, [])
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        width: '100%',
-        height: '100%',
-        overflowY: 'scroll'
-      }}>
+    <>
       <div style={{ position: 'sticky', left: '0', width: '1px' }}>
         <MapContainer
           style={{ height: '300px', width: `${window.innerWidth}px` }}>
@@ -54,7 +46,7 @@ export default function ParcelsPage({
         views={all_parcel_views}
         delete_view={delete_parcels_view}
       />
-    </div>
+    </>
   )
 }
 
