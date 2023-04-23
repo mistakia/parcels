@@ -38,7 +38,7 @@ export default function ParcelsPage({
         table_state={table_state}
         all_columns={parcel_columns}
         selected_view={selected_parcel_view}
-        select_view={(view_id) => set_selected_parcel_view_id(view_id)}
+        select_view={set_selected_parcel_view_id}
         fetch_more={load_more_parcels}
         total_rows_fetched={parcels.length}
         total_row_count={selected_parcel_view.total_row_count}

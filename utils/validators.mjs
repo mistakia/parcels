@@ -83,8 +83,10 @@ const view_description_schema = {
 export const view_description_validator = v.compile(view_description_schema)
 
 const table_state_schema = {
+  offset: offset_schema,
   sort: sort_schema,
-  columns: columns_schema
+  columns: columns_schema,
+  where: where_schema
 }
 export const table_state_validator = v.compile(table_state_schema)
 
