@@ -19,8 +19,10 @@
   },
   "dependencies": {
     "@mapbox/tile-cover": "^3.0.2",
+    "@trashman/ed25519-blake2b": "^0.0.3",
     "@turf/turf": "^6.5.0",
     "asciichart": "^1.5.25",
+    "blakejs": "^1.2.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
@@ -40,6 +42,7 @@
     "morgan": "^1.10.0",
     "morgan-debug": "^2.0.0",
     "mysql2": "3.2.0",
+    "nanocurrency-web": "^1.4.3",
     "node-cache": "^5.1.2",
     "node-fetch": "^3.2.0",
     "node-fetch-cookies": "^2.0.4",

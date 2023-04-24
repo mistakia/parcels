@@ -159,7 +159,7 @@ CREATE TABLE parcels_production.database_table_views (
     table_name character varying(255) NOT NULL,
     table_state json,
     user_public_key character varying(64) NOT NULL,
-    user_signature character varying(64) NOT NULL,
+    user_signature character varying(128) NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );

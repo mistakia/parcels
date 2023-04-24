@@ -1,12 +1,15 @@
 import { call, takeLatest, fork, put, select } from 'redux-saga/effects'
 import * as table_constants from 'react-table/src/constants.mjs'
+import Ed25519 from 'nanocurrency-web/dist/lib/ed25519'
+import Convert from 'nanocurrency-web/dist/lib/util/convert'
+import { blake2b } from 'blakejs'
 
 import {
   get_parcel_views,
   post_parcel_view,
   delete_parcels_view
 } from '@core/api'
-import { app_actions, getApp } from '@core/app'
+import { app_actions, get_app } from '@core/app'
 import { parcel_view_actions } from './actions'
 import { get_all_parcel_views } from './selectors'
 
@@ -97,16 +100,22 @@ export function* init_parcel_views({ payload }) {
             data_type: table_constants.TABLE_DATA_TYPES.NUMBER
           }
         ]
-      },
-      user_public_key: 0, // TODO
-      user_signature: 0 // TODO
+      }
     }
-    yield call(post_parcel_view, params)
+
+    const { public_key: user_public_key, private_key } = yield select(get_app)
+    const hash = blake2b(JSON.stringify(params), null, 32)
+    const user_signature = new Ed25519().sign(hash, Convert.hex2ab(private_key))
+    yield call(post_parcel_view, {
+      ...params,
+      user_public_key,
+      user_signature: Convert.ab2hex(user_signature)
+    })
   }
 }
 
 export function* set_selected_parcel_view({ payload }) {
-  const { selected_parcel_view_id } = yield select(getApp)
+  const { selected_parcel_view_id } = yield select(get_app)
   // if no selected parcel view id or on a new parcel view
   if (!selected_parcel_view_id || !payload.opts.view_id) {
     yield put(app_actions.set_selected_parcel_view_id(payload.data.view_id))
@@ -117,21 +126,28 @@ export function* save_parcel_view_table_state({ payload }) {
   const { view_id, view_name, view_description, table_state } = payload
 
   const params = {
-    view_id,
     view_name,
     view_description,
-    table_state,
-    user_public_key: 0, // TODO
-    user_signature: 0 // TODO
+    table_state
   }
-  yield call(post_parcel_view, params)
+
+  const { public_key: user_public_key, private_key } = yield select(get_app)
+  const hash = blake2b(JSON.stringify(params), null, 32)
+  const user_signature = new Ed25519().sign(hash, Convert.hex2ab(private_key))
+
+  yield call(post_parcel_view, {
+    ...params,
+    view_id,
+    user_public_key,
+    user_signature: Convert.ab2hex(user_signature)
+  })
 }
 
 export function* remove_parcels_view({ payload }) {
   const { view_id } = payload
 
   yield call(delete_parcels_view, { view_id })
-  const { selected_parcel_view_id } = yield select(getApp)
+  const { selected_parcel_view_id } = yield select(get_app)
   if (selected_parcel_view_id === view_id) {
     const parcel_views = yield select(get_all_parcel_views)
     if (parcel_views.size) {

@@ -1,4 +1,5 @@
 import express from 'express'
+import ed25519 from '@trashman/ed25519-blake2b'
 
 import { validators } from '#utils'
 
@@ -50,12 +51,26 @@ router.post('/?', async (req, res) => {
       return res.status(400).send({ error: 'invalid table_state' })
     }
 
-    // TODO check signature
+    if (!user_signature) {
+      return res.status(400).send({ error: 'missing signature' })
+    }
+
+    const data = {
+      view_name,
+      view_description,
+      table_state
+    }
+    const data_hash = ed25519.hash(JSON.stringify(data))
+    const is_valid = ed25519.verify(user_signature, data_hash, user_public_key)
+    if (!is_valid) {
+      return res.status(400).send({ error: 'invalid signature' })
+    }
 
     if (view_id) {
       await db('database_table_views')
         .where({
-          view_id
+          view_id,
+          user_public_key
         })
         .update({
           view_name,
@@ -94,21 +109,30 @@ router.post('/?', async (req, res) => {
 router.delete('/:view_id', async (req, res) => {
   const { log, db } = req.app.locals
   try {
-    const { view_id, user_signature } = req.params
+    const { view_id, user_signature, user_public_key } = req.params
 
     if (!validators.view_id_validator(view_id)) {
       return res.status(400).send({ error: 'invalid view_id' })
     }
 
     if (!user_signature) {
-      return res.status(400).send({ error: 'invalid user_signature' })
+      return res.status(400).send({ error: 'missing user_signature' })
     }
 
-    // TODO check signature
+    if (!user_public_key) {
+      return res.status(400).send({ error: 'missing user_public_key' })
+    }
+
+    const data_hash = ed25519.hash(view_id)
+    const is_valid = ed25519.verify(user_signature, data_hash, user_public_key)
+    if (!is_valid) {
+      return res.status(400).send({ error: 'invalid signature' })
+    }
 
     await db('database_table_views')
       .where({
-        view_id
+        view_id,
+        user_public_key
       })
       .del()
 

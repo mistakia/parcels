@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Routes, Route, Navigate } from 'react-router-dom'
 import LinearProgress from '@mui/material/LinearProgress'
 import Box from '@mui/material/Box'
 
-import ParcelsPage from '@pages/parcels'
+import Routes from '@views/routes'
 
 export default function App({ load, is_loaded }) {
   React.useEffect(() => {
@@ -23,10 +22,7 @@ export default function App({ load, is_loaded }) {
 
   return (
     <>
-      <Routes>
-        <Route path='/parcels' element={<ParcelsPage />} />
-        <Route path='/' element={<Navigate to='/parcels' />} />
-      </Routes>
+      <Routes />
     </>
   )
 }

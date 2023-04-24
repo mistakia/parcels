@@ -4,6 +4,10 @@ export const app_actions = {
 
   SET_SELECTED_PARCEL_VIEW_ID: 'SET_SELECTED_PARCEL_VIEW_ID',
 
+  LOAD_FROM_NEW_KEYPAIR: 'LOAD_FROM_NEW_KEYPAIR',
+  LOAD_FROM_PRIVATE_KEY: 'LOAD_FROM_PRIVATE_KEY',
+  LOAD_KEYS: 'LOAD_KEYS',
+
   set_selected_parcel_view_id: (selected_parcel_view_id) => ({
     type: app_actions.SET_SELECTED_PARCEL_VIEW_ID,
     payload: { selected_parcel_view_id }
@@ -15,5 +19,29 @@ export const app_actions = {
 
   loaded: () => ({
     type: app_actions.APP_LOADED
+  }),
+
+  load_keys: ({ public_key, private_key }) => ({
+    type: app_actions.LOAD_KEYS,
+    payload: {
+      public_key,
+      private_key
+    }
+  }),
+
+  load_from_new_keypair: ({ public_key, private_key }) => ({
+    type: app_actions.LOAD_FROM_NEW_KEYPAIR,
+    payload: {
+      public_key,
+      private_key
+    }
+  }),
+
+  load_from_private_key: ({ public_key, private_key }) => ({
+    type: app_actions.LOAD_FROM_PRIVATE_KEY,
+    payload: {
+      public_key,
+      private_key
+    }
   })
 }

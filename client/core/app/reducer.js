@@ -5,7 +5,8 @@ import { DEFAULT_PARCEL_VIEW_ID } from '@core/constants'
 
 const initialState = new Record({
   isLoaded: false,
-  publicKey: null,
+  public_key: null,
+  private_key: null,
   selected_parcel_view_id: DEFAULT_PARCEL_VIEW_ID
 })
 
@@ -18,6 +19,14 @@ export function appReducer(state = initialState(), { payload, type }) {
       const { selected_parcel_view_id } = payload
       return state.merge({ selected_parcel_view_id })
     }
+
+    case app_actions.LOAD_KEYS:
+    case app_actions.LOAD_FROM_PRIVATE_KEY:
+    case app_actions.LOAD_FROM_NEW_KEYPAIR:
+      return state.merge({
+        public_key: payload.public_key,
+        private_key: payload.private_key
+      })
 
     default:
       return state
