@@ -137,7 +137,21 @@ router.get('/count', async (req, res) => {
         return res.status(400).send({ error: 'invalid where query param' })
       }
 
+      const table_name_index = {}
       for (const where of req.query.where) {
+        // if we haven't joined this table yet, join it
+        if (
+          !table_name_index[where.table_name] &&
+          where.table_name !== 'parcels'
+        ) {
+          table_name_index[where.table_name] = true
+          parcels_query.leftJoin(
+            where.table_name,
+            'parcels.ll_uuid',
+            `${where.table_name}.ll_uuid`
+          )
+        }
+
         if (where.operator === 'IS NULL') {
           parcels_query.whereNull(`${where.table_name}.${where.column_name}`)
         } else if (where.operator === 'IS NOT NULL') {
