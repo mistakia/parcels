@@ -33,7 +33,7 @@ export default function HeatmapLayer({ heatmap_cells, load_heatmap_tile }) {
       }
     }
     const color = `hsl(${median_hardiness_temp_rank}, 100%, 50%)`
-    const opacity = median_hardiness_temp_rank / 100
+    const opacity = median_hardiness_temp_rank * 0.006
     return (
       <GeoJSON
         data={feature}
