@@ -4,5 +4,6 @@ export {
   get_parcel_columns,
   get_parcel_views,
   post_parcel_view,
-  delete_parcels_view
+  delete_parcels_view,
+  get_heatmap_tile
 } from './sagas'

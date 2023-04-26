@@ -152,7 +152,6 @@ export function* remove_parcels_view({ payload }) {
     const parcel_views = yield select(get_all_parcel_views)
     if (parcel_views.size) {
       const view = parcel_views.first()
-      console.log(view.toJS())
       yield put(app_actions.set_selected_parcel_view_id(view.get('view_id')))
     }
   }

@@ -37,6 +37,10 @@ export const api = {
   delete_parcels_view({ view_id }) {
     const url = `${API_URL}/views/${view_id}`
     return { url, method: 'DELETE' }
+  },
+  get_heatmap_tile(params) {
+    const url = `${API_URL}/heatmaps?${qs.stringify(params)}`
+    return { url }
   }
 }
 
