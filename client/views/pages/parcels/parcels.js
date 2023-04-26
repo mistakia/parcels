@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ParcelsMap from '@components/parcels-map'
+import HeatmapLayer from '@components/heatmap-layer'
 import Table from 'react-table/index.js'
 
 export default function ParcelsPage({
@@ -29,6 +30,7 @@ export default function ParcelsPage({
         <MapContainer
           style={{ height: '300px', width: `${window.innerWidth}px` }}>
           <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+          <HeatmapLayer />
           <ParcelsMap />
         </MapContainer>
       </div>
