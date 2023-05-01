@@ -120,7 +120,18 @@ const calculate_plant_hardiness_for_parcels = async (parcels) => {
     const { index, collection } = indexes[state]
     const point = turf.point([longitude, latitude])
     const features = index.search(point, collection)
-    const first_result = features.features[0]
+    let first_result = features.features[0]
+
+    if (!first_result) {
+      // if enclosing polygon not found, try nearest neighbor
+      const nearest_neighbor_features = index.neighbors(
+        point,
+        1,
+        Infinity,
+        collection
+      )
+      first_result = nearest_neighbor_features.features[0]
+    }
 
     if (first_result) {
       const insert = {
