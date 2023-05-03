@@ -87,10 +87,12 @@ router.get('/?', async (req, res) => {
         )
         .join(' + ')
       const total_weight = req.query.rank_aggregation.reduce(
-        (acc, rank_aggregation) => acc + rank_aggregation.weight,
+        (acc, rank_aggregation) => acc + Number(rank_aggregation.weight),
         0
       )
-      parcels_query.select(db.raw(`(${sum_string}) / ${total_weight} as rank_aggregation`))
+      parcels_query.select(
+        db.raw(`(${sum_string}) / ${total_weight} as rank_aggregation`)
+      )
     }
 
     if (req.query.offset) {

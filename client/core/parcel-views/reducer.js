@@ -5,11 +5,11 @@ import { parcel_view_actions } from './actions'
 
 export function parcel_view_reducer(state = new Map(), { payload, type }) {
   switch (type) {
-    // case parcel_view_actions.SET_PARCELS_VIEW:
-    //   return state.setIn(
-    //     [`${payload.view_id}`, 'table_state'],
-    //     new Map(payload.table_state)
-    //   )
+    case parcel_view_actions.SET_PARCELS_VIEW:
+      return state.mergeIn([`${payload.view_id}`], {
+        ...payload,
+        table_state: new Map(payload.table_state)
+      })
 
     case parcel_actions.GET_PARCELS_PENDING:
       return state.setIn([`${payload.opts.view_id}`, 'is_fetching'], true)
