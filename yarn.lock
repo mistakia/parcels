@@ -9035,9 +9035,9 @@ react-router@6.8.1:
   dependencies:
     "@remix-run/router" "1.3.2"
 
-react-table@mistakia/react-table#afc246432d7829e63cd4255e5900d72f17c22571:
+react-table@mistakia/react-table#e380f1212456b2c7f88e9e24b93345eadf70b97f:
   version "0.0.1"
-  resolved "https://codeload.github.com/mistakia/react-table/tar.gz/afc246432d7829e63cd4255e5900d72f17c22571"
+  resolved "https://codeload.github.com/mistakia/react-table/tar.gz/e380f1212456b2c7f88e9e24b93345eadf70b97f"
   dependencies:
     "@tanstack/react-table" "^8.8.5"
     "@tanstack/react-virtual" beta

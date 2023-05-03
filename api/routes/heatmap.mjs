@@ -26,8 +26,6 @@ router.get('/?', async (req, res) => {
     // Convert the polygon to H3 res4 ids
     const h3_res4_ids = h3.polygonToCells(polygon, 4)
 
-    log(`h3_res4_ids: ${h3_res4_ids}`)
-
     // Query the heatmaps table for all rows with an h3_res4_id that matches any of the ids in h3_res4_ids
     const rows = await db('heatmaps').whereIn('h3_res4_id', h3_res4_ids)
 

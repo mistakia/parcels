@@ -21,9 +21,11 @@ export function* load_parcels() {
       column_name,
       table_name
     }))
-    params.offset = yield select((state) => state.get('parcels').size)
   }
+
+  params.offset = yield select((state) => state.get('parcels').size)
   params.view_id = parcel_view.view_id
+
   yield call(get_parcels, params)
 
   const total_row_count = parcel_view.total_row_count

@@ -58,6 +58,19 @@ const where_schema = {
 
 export const where_validator = v.compile(where_schema)
 
+const rank_aggregation_schema = {
+  type: 'array',
+  items: {
+    type: 'object',
+    props: {
+      column_name: { type: 'string' },
+      table_name: { type: 'string' },
+      weight: { type: 'number', positive: true }
+    }
+  }
+}
+export const rank_aggregation_validator = v.compile(rank_aggregation_schema)
+
 const offset_schema = {
   type: 'number',
   positive: true,

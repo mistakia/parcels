@@ -38,32 +38,59 @@ router.get('/?', async (req, res) => {
       }
     }
 
+    const table_name_index = {}
+    const join_table = (table_name) => {
+      // if we haven't joined this table yet, join it
+      if (
+        !table_name_index[table_name] &&
+        !default_parcel_tables.includes(table_name)
+      ) {
+        table_name_index[table_name] = true
+        parcels_query.leftJoin(
+          table_name,
+          'parcels.ll_uuid',
+          `${table_name}.ll_uuid`
+        )
+      }
+    }
+
     if (req.query.columns) {
       if (!validators.columns_validator(req.query.columns)) {
         return res.status(400).send({ error: 'invalid columns query param' })
       }
 
-      const table_name_index = {}
       for (const column of req.query.columns) {
         if (default_parcel_columns.includes(column.column_name)) {
           continue
         }
 
-        // if we haven't joined this table yet, join it
-        if (
-          !table_name_index[column.table_name] &&
-          !default_parcel_tables.includes(column.table_name)
-        ) {
-          table_name_index[column.table_name] = true
-          parcels_query.leftJoin(
-            column.table_name,
-            'parcels.ll_uuid',
-            `${column.table_name}.ll_uuid`
-          )
-        }
-
+        join_table(column.table_name)
         parcels_query.select(`${column.table_name}.${column.column_name}`)
       }
+    }
+
+    if (req.query.rank_aggregation) {
+      if (!validators.rank_aggregation_validator(req.query.rank_aggregation)) {
+        return res
+          .status(400)
+          .send({ error: 'invalid rank_aggregation query param' })
+      }
+
+      for (const rank_aggregation of req.query.rank_aggregation) {
+        join_table(rank_aggregation.table_name)
+      }
+
+      const sum_string = req.query.rank_aggregation
+        .map(
+          (rank_aggregation) =>
+            `(${rank_aggregation.weight} * ${rank_aggregation.table_name}.${rank_aggregation.column_name})`
+        )
+        .join(' + ')
+      const total_weight = req.query.rank_aggregation.reduce(
+        (acc, rank_aggregation) => acc + rank_aggregation.weight,
+        0
+      )
+      parcels_query.select(db.raw(`(${sum_string}) / ${total_weight} as rank_aggregation`))
     }
 
     if (req.query.offset) {
