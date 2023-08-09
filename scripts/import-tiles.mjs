@@ -55,6 +55,17 @@ const import_tile = async ({ x, y, z = 12 }) => {
   }
 
   if (!res.data) {
+    if (res.status && res.status >= 200 && res.status < 300) {
+      await db('tiles')
+        .insert({ x, y, z, count: 0 })
+        .onConflict(['z', 'y', 'x'])
+        .merge()
+
+      log(`saved tile ${z}/${x}/${y}`)
+
+      return true
+    }
+
     return false
   }
 

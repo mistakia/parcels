@@ -38,7 +38,12 @@ export const request = async ({ url, ...options }) => {
 
   if (response.status >= 200 && response.status < 300) {
     await cookieJar.save()
-    return response.json()
+    try {
+      const json = await response.json()
+      return json
+    } catch (err) {
+      return response
+    }
   } else {
     const res = await response.json()
     const error = new Error(res.error || response.statusText)
