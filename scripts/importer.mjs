@@ -23,6 +23,8 @@ const importer = async ({ max = Infinity } = {}) => {
     area.avg_sqmi = area.sqmi / area.num_parcels
   }
 
+  log(`found ${property_areas.length} property areas`)
+
   const items = property_areas.sort((a, b) => b.avg_sqmi - a.avg_sqmi)
 
   for (const item of items) {
