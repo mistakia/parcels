@@ -6,7 +6,7 @@ import {
   get_selected_parcel_view
 } from '@core/parcel-views'
 import { parcel_actions } from './actions'
-import { app_actions } from '@core/app'
+import { app_actions } from '@core/app/actions'
 
 export function* load_parcels() {
   const parcel_view = yield select(get_selected_parcel_view)

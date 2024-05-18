@@ -2,13 +2,16 @@ import { call, put, cancelled } from 'redux-saga/effects'
 // import { LOCATION_CHANGE } from 'redux-first-history'
 
 import { api, apiRequest } from '@core/api/service'
-import { get_parcels_actions, get_parcels_count_actions } from '@core/parcels'
-import { get_parcel_column_actions } from '@core/parcel-columns'
+import {
+  get_parcels_actions,
+  get_parcels_count_actions
+} from '@core/parcels/actions'
+import { get_parcel_column_actions } from '@core/parcel-columns/actions'
 import {
   get_parcel_views_actions,
   post_parcel_view_actions,
   delete_parcel_view_actions
-} from '@core/parcel-views'
+} from '@core/parcel-views/actions'
 import { get_heatmap_tile_actions } from '@core/heatmaps/actions'
 
 function* fetchAPI(apiFunction, actions, opts = {}) {

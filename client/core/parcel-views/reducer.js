@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 
-import { parcel_actions } from '@core/parcels'
+import { parcel_actions } from '@core/parcels/actions'
 import { parcel_view_actions } from './actions'
 
 export function parcel_view_reducer(state = new Map(), { payload, type }) {
