@@ -58,7 +58,7 @@ ParcelsPage.propTypes = {
   selected_parcel_view: PropTypes.object,
   table_state: PropTypes.object,
   set_parcels_view: PropTypes.func,
-  parcel_columns: PropTypes.array,
+  parcel_columns: PropTypes.object,
   load_more_parcels: PropTypes.func,
   all_parcel_views: PropTypes.array,
   set_selected_parcel_view_id: PropTypes.func,
