@@ -61,17 +61,25 @@ router.post('/?', async (req, res) => {
       table_state
     }
     const data_hash = ed25519.hash(JSON.stringify(data))
-    const is_valid = ed25519.verify(user_signature, data_hash, user_public_key)
-    if (!is_valid) {
-      return res.status(400).send({ error: 'invalid signature' })
-    }
+
+    let is_valid = false
 
     if (view_id) {
+      const existing_view = await db('database_table_views')
+        .where({ view_id })
+        .first()
+
+      if (!existing_view) {
+        return res.status(404).send({ error: 'view_id not found' })
+      }
+
+      is_valid = ed25519.verify(user_signature, data_hash, existing_view.user_public_key)
+      if (!is_valid) {
+        return res.status(400).send({ error: 'invalid signature' })
+      }
+
       await db('database_table_views')
-        .where({
-          view_id,
-          user_public_key
-        })
+        .where({ view_id })
         .update({
           view_name,
           view_description,
@@ -79,6 +87,11 @@ router.post('/?', async (req, res) => {
           user_signature
         })
     } else {
+      is_valid = ed25519.verify(user_signature, data_hash, user_public_key)
+      if (!is_valid) {
+        return res.status(400).send({ error: 'invalid signature' })
+      }
+
       await db('database_table_views')
         .insert({
           view_name,
@@ -99,13 +112,16 @@ router.post('/?', async (req, res) => {
       })
       .first()
 
+    if (!view) {
+      return res.status(404).send({ error: 'view not found' })
+    }
+
     res.status(200).send(view)
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })
   }
 })
-
 router.delete('/:view_id', async (req, res) => {
   const { log, db } = req.app.locals
   try {
