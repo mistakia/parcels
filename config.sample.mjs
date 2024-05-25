@@ -1,5 +1,6 @@
 export default {
   port: 8080, // api port
+  url: '',
   elevation_api_url: '',
   import_base_url: '',
   import_tile_url: '',

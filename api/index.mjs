@@ -48,7 +48,17 @@ api.use(
 api.use(robots(path.join(__dirname, '..', 'resources', 'robots.txt')))
 api.use(favicon(path.join(__dirname, '..', 'resources', 'favicon.ico')))
 api.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', req.headers.origin || config.url)
+  res.set('Access-Control-Allow-Credentials', 'true')
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS, PUT')
+  res.set(
+    'Access-Control-Allow-Headers',
+    'Authorization, Origin, X-Requested-With, Content-Type, Accept'
+  )
   res.set('Cache-Control', 'no-cache, must-revalidate, proxy-revalidate')
+  res.set('Expires', '0')
+  res.set('Pragma', 'no-cache')
+  res.set('Surrogate-Control', 'no-store')
   next()
 })
 
@@ -60,7 +70,7 @@ api.use('/api/heatmaps', routes.heatmap)
 
 if (IS_DEV) {
   api.get('*', (req, res) => {
-    res.redirect(307, `http://localhost:8081${req.path}`)
+    res.redirect(307, `http://localhost:8082${req.path}`)
   })
 } else {
   const buildPath = path.join(__dirname, '..', 'build')

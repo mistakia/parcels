@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "concurrently \"yarn start\" \"yarn start:api\"",
-    "start": "webpack serve --mode=development --config webpack/webpack.dev.babel.mjs --port 8081 --history-api-fallback",
+    "start": "webpack serve --mode=development --config webpack/webpack.dev.babel.mjs --port 8082 --history-api-fallback",
     "start:api": "NODE_ENV=development node server.mjs",
     "lint": "eslint . --ext js,mjs",
     "prettier": "prettier --write .",
