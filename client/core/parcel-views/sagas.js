@@ -26,7 +26,7 @@ export function* init_parcel_views({ payload }) {
       view_name: 'Default View',
       view_description: 'Default View',
       table_state: {
-        sorting: [],
+        sort: [],
         columns: [
           {
             accessorKey: 'path',

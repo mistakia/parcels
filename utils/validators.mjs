@@ -7,7 +7,7 @@ const sort_schema = {
   items: {
     type: 'object',
     props: {
-      id: { type: 'string' },
+      column_id: { type: 'string' },
       desc: { type: 'boolean' }
     }
   }

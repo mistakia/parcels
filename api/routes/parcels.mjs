@@ -25,15 +25,15 @@ router.get('/?', async (req, res) => {
 
     parcels_query.limit(1000)
 
-    if (req.query.sorting) {
-      if (!validators.sort_validator(req.query.sorting)) {
+    if (req.query.sort) {
+      if (!validators.sort_validator(req.query.sort)) {
         return res.status(400).send({ error: 'invalid sort query param' })
       }
 
-      for (const sort of req.query.sorting) {
+      for (const sort of req.query.sort) {
         sort.desc = sort.desc === 'true'
         parcels_query.orderByRaw(
-          `${sort.id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
+          `${sort.column_id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
         )
       }
     }
