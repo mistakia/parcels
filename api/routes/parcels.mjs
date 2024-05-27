@@ -1,6 +1,7 @@
 import express from 'express'
 
-import { get_column_coverage, get_data_type, validators } from '#utils'
+import { get_column_coverage, validators } from '#utils'
+import { column_definitions } from '#common'
 
 const router = express.Router()
 
@@ -60,12 +61,30 @@ router.get('/?', async (req, res) => {
       }
 
       for (const column of req.query.columns) {
-        if (default_parcel_columns.includes(column.column_name)) {
+        let column_name, table_name
+
+        if (typeof column === 'string') {
+          const column_definition = column_definitions.find(
+            (def) => def.column_id === column
+          )
+          if (!column_definition) {
+            return res
+              .status(400)
+              .send({ error: `invalid column id: ${column}` })
+          }
+          column_name = column_definition.column_id
+          table_name = column_definition.table_name
+        } else {
+          column_name = column.column_name
+          table_name = column.table_name
+        }
+
+        if (default_parcel_columns.includes(column_name)) {
           continue
         }
 
-        join_table(column.table_name)
-        parcels_query.select(`${column.table_name}.${column.column_name}`)
+        join_table(table_name)
+        parcels_query.select(`${table_name}.${column_name}`)
       }
     }
 
@@ -271,49 +290,9 @@ router.get('/coverage', async (req, res) => {
 })
 
 router.get('/columns', async (req, res) => {
-  const { log, db } = req.app.locals
+  const { log } = req.app.locals
   try {
-    const tables = [
-      'parcels',
-      'parcels_agriculture',
-      'parcels_airport',
-      'parcels_coastline',
-      'parcels_density',
-      'parcels_elevation',
-      'parcels_geometry',
-      'parcels_internet',
-      'parcels_meta',
-      'parcels_nature',
-      'parcels_rank',
-      'parcels_road',
-      'parcels_viewshed'
-    ]
-    const query_columns = await db('information_schema.columns')
-      .select('column_name', 'table_name', 'data_type')
-      .whereIn('table_name', tables)
-
-    const column_index = {}
-    const unique_columns = []
-    for (const column of query_columns) {
-      if (column_index[column.column_name]) {
-        continue
-      }
-
-      const data_type = get_data_type(column.data_type)
-      if (!data_type) {
-        log(`unknown data type: ${column.data_type}`)
-      }
-
-      column_index[column.column_name] = true
-      unique_columns.push({
-        ...column,
-        data_type,
-        accessorKey: column.column_name,
-        header_label: column.column_name
-      })
-    }
-
-    res.status(200).send(unique_columns)
+    res.status(200).send(column_definitions)
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })

@@ -73,7 +73,11 @@ router.post('/?', async (req, res) => {
         return res.status(404).send({ error: 'view_id not found' })
       }
 
-      is_valid = ed25519.verify(user_signature, data_hash, existing_view.user_public_key)
+      is_valid = ed25519.verify(
+        user_signature,
+        data_hash,
+        existing_view.user_public_key
+      )
       if (!is_valid) {
         return res.status(400).send({ error: 'invalid signature' })
       }

@@ -17,10 +17,16 @@ export function* load_parcels() {
   }
 
   if (params.columns) {
-    params.columns = params.columns.map(({ column_name, table_name }) => ({
-      column_name,
-      table_name
-    }))
+    params.columns = params.columns.map((column) => {
+      if (typeof column === 'string') {
+        return column
+      } else {
+        return {
+          column_name: column.column_name,
+          table_name: column.table_name
+        }
+      }
+    })
   }
 
   params.offset = yield select((state) => state.get('parcels').size)

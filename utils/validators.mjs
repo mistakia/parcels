@@ -16,13 +16,18 @@ export const sort_validator = v.compile(sort_schema)
 
 const columns_schema = {
   type: 'array',
-  items: {
-    type: 'object',
-    props: {
-      column_name: { type: 'string' },
-      table_name: { type: 'string' }
+  items: [
+    {
+      type: 'object',
+      props: {
+        column_name: { type: 'string' },
+        table_name: { type: 'string' }
+      }
+    },
+    {
+      type: 'string'
     }
-  }
+  ]
 }
 export const columns_validator = v.compile(columns_schema)
 
