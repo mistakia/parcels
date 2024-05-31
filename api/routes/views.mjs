@@ -70,7 +70,25 @@ router.post('/?', async (req, res) => {
         .first()
 
       if (!existing_view) {
-        return res.status(404).send({ error: 'view_id not found' })
+        is_valid = ed25519.verify(user_signature, data_hash, user_public_key)
+        if (!is_valid) {
+          return res.status(400).send({ error: 'invalid signature' })
+        }
+
+        await db('database_table_views').insert({
+          view_id,
+          view_name,
+          view_description,
+          table_state: JSON.stringify(table_state),
+          table_name: 'parcels',
+          user_public_key,
+          user_signature
+        })
+
+        const new_view = await db('database_table_views')
+          .where({ view_id })
+          .first()
+        return res.status(201).send(new_view)
       }
 
       is_valid = ed25519.verify(
