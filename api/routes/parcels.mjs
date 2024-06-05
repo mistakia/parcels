@@ -128,35 +128,47 @@ router.get('/?', async (req, res) => {
       }
 
       for (const where of req.query.where) {
+        let column_name
+        let table_name
+        if (where.column_id) {
+          const column_definition = column_definitions.find(
+            (def) => def.column_id === where.column_id
+          )
+          if (!column_definition) {
+            return res
+              .status(400)
+              .send({ error: `invalid column id: ${where.column_id}` })
+          }
+          column_name = column_definition.column_name
+          table_name = column_definition.table_name
+        } else {
+          column_name = where.column_name
+          table_name = where.table_name
+        }
+
         if (where.operator === 'IS NULL') {
-          parcels_query.whereNull(`${where.table_name}.${where.column_name}`)
+          parcels_query.whereNull(`${table_name}.${column_name}`)
         } else if (where.operator === 'IS NOT NULL') {
-          parcels_query.whereNotNull(`${where.table_name}.${where.column_name}`)
+          parcels_query.whereNotNull(`${table_name}.${column_name}`)
         } else if (where.operator === 'IN') {
-          parcels_query.whereIn(
-            `${where.table_name}.${where.column_name}`,
-            where.value
-          )
+          parcels_query.whereIn(`${table_name}.${column_name}`, where.value)
         } else if (where.operator === 'NOT IN') {
-          parcels_query.whereNotIn(
-            `${where.table_name}.${where.column_name}`,
-            where.value
-          )
+          parcels_query.whereNotIn(`${table_name}.${column_name}`, where.value)
         } else if (where.operator === 'LIKE') {
           parcels_query.where(
-            `${where.table_name}.${where.column_name}`,
+            `${table_name}.${column_name}`,
             'LIKE',
             `%${where.value}%`
           )
         } else if (where.operator === 'NOT LIKE') {
           parcels_query.where(
-            `${where.table_name}.${where.column_name}`,
+            `${table_name}.${column_name}`,
             'NOT LIKE',
             `%${where.value}%`
           )
         } else if (where.value) {
           parcels_query.where(
-            `${where.table_name}.${where.column_name}`,
+            `${table_name}.${column_name}`,
             where.operator,
             where.value
           )
