@@ -1,4 +1,5 @@
 import * as table_constants from 'react-table/src/constants.mjs'
+import column_categories from './column-categories.mjs'
 
 export const column_definitions = [
   {
@@ -7,7 +8,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2017_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2017_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2020_rank',
@@ -15,7 +17,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2020_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2020_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2021_rank',
@@ -23,7 +26,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2021_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2021_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2022_rank',
@@ -31,7 +35,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2022_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2022_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2015_rank',
@@ -39,7 +44,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2015_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2015_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2016_rank',
@@ -47,7 +53,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2016_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2016_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2017_rank',
@@ -55,7 +62,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2017_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2017_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2018_rank',
@@ -63,7 +71,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2018_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2018_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2019_rank',
@@ -71,7 +80,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2019_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2019_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2020_rank',
@@ -79,7 +89,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2020_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2020_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2021_rank',
@@ -87,7 +98,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2021_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2021_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_5_c_apparent_temperature_in_2022_rank',
@@ -95,7 +107,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_5_c_apparent_temperature_in_2022_rank',
-    header_label: 'hrs_below_5_c_apparent_temperature_in_2022_rank'
+    header_label: 'hrs_below_5_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2015_rank',
@@ -103,7 +116,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2015_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2015_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2016_rank',
@@ -111,7 +125,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2016_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2016_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2017_rank',
@@ -119,7 +134,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2017_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2017_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2018_rank',
@@ -127,7 +143,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2018_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2018_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2019_rank',
@@ -135,7 +152,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2019_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2019_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2020_rank',
@@ -143,7 +161,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2020_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2020_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2021_rank',
@@ -151,7 +170,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2021_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2021_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_10_c_apparent_temperature_in_2022_rank',
@@ -159,7 +179,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_10_c_apparent_temperature_in_2022_rank',
-    header_label: 'hrs_below_10_c_apparent_temperature_in_2022_rank'
+    header_label: 'hrs_below_10_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2015_rank',
@@ -167,7 +188,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2015_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2015_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2016_rank',
@@ -175,7 +197,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2016_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2016_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2017_rank',
@@ -183,7 +206,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2017_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2017_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2018_rank',
@@ -191,7 +215,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2018_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2018_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2019_rank',
@@ -199,7 +224,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2019_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2019_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2020_rank',
@@ -207,7 +233,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2020_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2020_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2021_rank',
@@ -215,7 +242,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2021_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2021_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_0_c_apparent_temperature_in_2022_rank',
@@ -223,7 +251,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_0_c_apparent_temperature_in_2022_rank',
-    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2022_rank'
+    header_label: 'daytime_hrs_below_0_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2015_rank',
@@ -231,7 +260,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2015_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2015_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2016_rank',
@@ -239,7 +269,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2016_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2016_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'ogc_fid',
@@ -247,7 +278,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'ogc_fid',
-    header_label: 'ogc_fid'
+    header_label: 'ogc_fid',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2018_rank',
@@ -255,7 +287,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2018_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2018_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2019_rank',
@@ -263,7 +296,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2019_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2019_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2020_rank',
@@ -271,7 +305,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2020_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2020_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2021_rank',
@@ -279,7 +314,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2021_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2021_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2022_rank',
@@ -287,7 +323,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_5_c_apparent_temperature_in_2022_rank',
-    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2022_rank'
+    header_label: 'daytime_hrs_below_5_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2015_rank',
@@ -295,7 +332,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2015_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2015_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2016_rank',
@@ -303,7 +341,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2016_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2016_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2017_rank',
@@ -311,7 +350,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2017_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2017_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2018_rank',
@@ -319,7 +359,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2018_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2018_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2019_rank',
@@ -327,7 +368,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2019_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2019_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2020_rank',
@@ -335,7 +377,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2020_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2020_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2021_rank',
@@ -343,7 +386,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2021_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2021_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'daytime_hrs_below_10_c_apparent_temperature_in_2022_rank',
@@ -351,7 +395,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hrs_below_10_c_apparent_temperature_in_2022_rank',
-    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2022_rank'
+    header_label: 'daytime_hrs_below_10_c_apparent_temperature_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'fair_days_in_2015_rank',
@@ -359,7 +404,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2015_rank',
-    header_label: 'fair_days_in_2015_rank'
+    header_label: 'fair_days_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'fair_days_in_2016_rank',
@@ -367,7 +413,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2016_rank',
-    header_label: 'fair_days_in_2016_rank'
+    header_label: 'fair_days_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'fair_days_in_2017_rank',
@@ -375,7 +422,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2017_rank',
-    header_label: 'fair_days_in_2017_rank'
+    header_label: 'fair_days_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'fair_days_in_2018_rank',
@@ -383,7 +431,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2018_rank',
-    header_label: 'fair_days_in_2018_rank'
+    header_label: 'fair_days_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2015_rank',
@@ -391,7 +440,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2015_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2015_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'fair_days_in_2020_rank',
@@ -399,7 +449,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2020_rank',
-    header_label: 'fair_days_in_2020_rank'
+    header_label: 'fair_days_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'fair_days_in_2021_rank',
@@ -407,7 +458,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2021_rank',
-    header_label: 'fair_days_in_2021_rank'
+    header_label: 'fair_days_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'fair_days_in_2022_rank',
@@ -415,7 +467,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2022_rank',
-    header_label: 'fair_days_in_2022_rank'
+    header_label: 'fair_days_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2015_rank',
@@ -423,7 +476,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2016_rank',
@@ -431,7 +485,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2017_rank',
@@ -439,7 +494,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2018_rank',
@@ -447,7 +503,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2019_rank',
@@ -455,7 +512,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2020_rank',
@@ -463,7 +521,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2021_rank',
@@ -471,7 +530,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_50_pct_cloud_cover_in_2022_rank',
@@ -479,7 +539,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_50_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_50_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2015_rank',
@@ -487,7 +548,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2016_rank',
@@ -495,7 +557,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2017_rank',
@@ -503,7 +566,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2018_rank',
@@ -511,7 +575,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2019_rank',
@@ -519,7 +584,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2020_rank',
@@ -527,7 +593,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2021_rank',
@@ -535,7 +602,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_60_pct_cloud_cover_in_2022_rank',
@@ -543,7 +611,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_60_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_60_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2015_rank',
@@ -551,7 +620,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2016_rank',
@@ -559,7 +629,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2017_rank',
@@ -567,7 +638,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2018_rank',
@@ -575,7 +647,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2019_rank',
@@ -583,7 +656,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2020_rank',
@@ -591,7 +665,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2021_rank',
@@ -599,7 +674,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_70_pct_cloud_cover_in_2022_rank',
@@ -607,7 +683,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_70_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_70_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2015_rank',
@@ -615,7 +692,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2016_rank',
@@ -623,7 +701,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2017_rank',
@@ -631,7 +710,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2018_rank',
@@ -639,7 +719,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2019_rank',
@@ -647,7 +728,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2020_rank',
@@ -655,7 +737,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2021_rank',
@@ -663,7 +746,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_80_pct_cloud_cover_in_2022_rank',
@@ -671,7 +755,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_80_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_80_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2015_rank',
@@ -679,7 +764,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2016_rank',
@@ -687,7 +773,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2017_rank',
@@ -695,7 +782,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2018_rank',
@@ -703,7 +791,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2019_rank',
@@ -711,7 +800,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2020_rank',
@@ -719,7 +809,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2021_rank',
@@ -727,7 +818,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_90_pct_cloud_cover_in_2022_rank',
@@ -735,7 +827,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_90_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_90_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'perfect_days_in_2015_rank',
@@ -743,7 +836,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2015_rank',
-    header_label: 'perfect_days_in_2015_rank'
+    header_label: 'perfect_days_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2016_rank',
@@ -751,7 +845,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2016_rank',
-    header_label: 'perfect_days_in_2016_rank'
+    header_label: 'perfect_days_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2017_rank',
@@ -759,7 +854,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2017_rank',
-    header_label: 'perfect_days_in_2017_rank'
+    header_label: 'perfect_days_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2018_rank',
@@ -767,7 +863,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2018_rank',
-    header_label: 'perfect_days_in_2018_rank'
+    header_label: 'perfect_days_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2019_rank',
@@ -775,7 +872,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2019_rank',
-    header_label: 'perfect_days_in_2019_rank'
+    header_label: 'perfect_days_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2020_rank',
@@ -783,7 +881,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2020_rank',
-    header_label: 'perfect_days_in_2020_rank'
+    header_label: 'perfect_days_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2021_rank',
@@ -791,7 +890,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2021_rank',
-    header_label: 'perfect_days_in_2021_rank'
+    header_label: 'perfect_days_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'perfect_days_in_2022_rank',
@@ -799,7 +899,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'perfect_days_in_2022_rank',
-    header_label: 'perfect_days_in_2022_rank'
+    header_label: 'perfect_days_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2015_rank',
@@ -807,7 +908,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2015_rank',
-    header_label: 'active_days_in_2015_rank'
+    header_label: 'active_days_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2016_rank',
@@ -815,7 +917,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2016_rank',
-    header_label: 'active_days_in_2016_rank'
+    header_label: 'active_days_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2017_rank',
@@ -823,7 +926,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2017_rank',
-    header_label: 'active_days_in_2017_rank'
+    header_label: 'active_days_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2018_rank',
@@ -831,7 +935,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2018_rank',
-    header_label: 'active_days_in_2018_rank'
+    header_label: 'active_days_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2019_rank',
@@ -839,7 +944,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2019_rank',
-    header_label: 'active_days_in_2019_rank'
+    header_label: 'active_days_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2020_rank',
@@ -847,7 +953,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2020_rank',
-    header_label: 'active_days_in_2020_rank'
+    header_label: 'active_days_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2021_rank',
@@ -855,7 +962,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2021_rank',
-    header_label: 'active_days_in_2021_rank'
+    header_label: 'active_days_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'active_days_in_2022_rank',
@@ -863,7 +971,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'active_days_in_2022_rank',
-    header_label: 'active_days_in_2022_rank'
+    header_label: 'active_days_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2015_rank',
@@ -871,7 +980,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2015_rank',
-    header_label: 'dinner_outside_days_in_2015_rank'
+    header_label: 'dinner_outside_days_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2016_rank',
@@ -879,7 +989,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2016_rank',
-    header_label: 'dinner_outside_days_in_2016_rank'
+    header_label: 'dinner_outside_days_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2017_rank',
@@ -887,7 +998,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2017_rank',
-    header_label: 'dinner_outside_days_in_2017_rank'
+    header_label: 'dinner_outside_days_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2018_rank',
@@ -895,7 +1007,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2018_rank',
-    header_label: 'dinner_outside_days_in_2018_rank'
+    header_label: 'dinner_outside_days_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2019_rank',
@@ -903,7 +1016,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2019_rank',
-    header_label: 'dinner_outside_days_in_2019_rank'
+    header_label: 'dinner_outside_days_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2020_rank',
@@ -911,7 +1025,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2020_rank',
-    header_label: 'dinner_outside_days_in_2020_rank'
+    header_label: 'dinner_outside_days_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2021_rank',
@@ -919,7 +1034,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2021_rank',
-    header_label: 'dinner_outside_days_in_2021_rank'
+    header_label: 'dinner_outside_days_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'dinner_outside_days_in_2022_rank',
@@ -927,7 +1043,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'dinner_outside_days_in_2022_rank',
-    header_label: 'dinner_outside_days_in_2022_rank'
+    header_label: 'dinner_outside_days_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2015_rank',
@@ -935,7 +1052,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2015_rank',
-    header_label: 'indoor_days_in_2015_rank'
+    header_label: 'indoor_days_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2016_rank',
@@ -943,7 +1061,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2016_rank',
-    header_label: 'indoor_days_in_2016_rank'
+    header_label: 'indoor_days_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2017_rank',
@@ -951,7 +1070,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2017_rank',
-    header_label: 'indoor_days_in_2017_rank'
+    header_label: 'indoor_days_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2018_rank',
@@ -959,7 +1079,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2018_rank',
-    header_label: 'indoor_days_in_2018_rank'
+    header_label: 'indoor_days_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2019_rank',
@@ -967,7 +1088,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2019_rank',
-    header_label: 'indoor_days_in_2019_rank'
+    header_label: 'indoor_days_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2020_rank',
@@ -975,7 +1097,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2020_rank',
-    header_label: 'indoor_days_in_2020_rank'
+    header_label: 'indoor_days_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2021_rank',
@@ -983,7 +1106,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2021_rank',
-    header_label: 'indoor_days_in_2021_rank'
+    header_label: 'indoor_days_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'indoor_days_in_2022_rank',
@@ -991,7 +1115,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'indoor_days_in_2022_rank',
-    header_label: 'indoor_days_in_2022_rank'
+    header_label: 'indoor_days_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2015_rank',
@@ -999,7 +1124,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2015_rank',
-    header_label: 'daytime_hours_in_2015_rank'
+    header_label: 'daytime_hours_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2016_rank',
@@ -1007,7 +1133,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2016_rank',
-    header_label: 'daytime_hours_in_2016_rank'
+    header_label: 'daytime_hours_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2017_rank',
@@ -1015,7 +1142,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2017_rank',
-    header_label: 'daytime_hours_in_2017_rank'
+    header_label: 'daytime_hours_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2018_rank',
@@ -1023,7 +1151,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2018_rank',
-    header_label: 'daytime_hours_in_2018_rank'
+    header_label: 'daytime_hours_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2019_rank',
@@ -1031,7 +1160,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2019_rank',
-    header_label: 'daytime_hours_in_2019_rank'
+    header_label: 'daytime_hours_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2020_rank',
@@ -1039,7 +1169,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2020_rank',
-    header_label: 'daytime_hours_in_2020_rank'
+    header_label: 'daytime_hours_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2021_rank',
@@ -1047,7 +1178,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2021_rank',
-    header_label: 'daytime_hours_in_2021_rank'
+    header_label: 'daytime_hours_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_in_2022_rank',
@@ -1055,7 +1187,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_in_2022_rank',
-    header_label: 'daytime_hours_in_2022_rank'
+    header_label: 'daytime_hours_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2015_rank',
@@ -1063,7 +1196,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2016_rank',
@@ -1071,7 +1205,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2017_rank',
@@ -1079,7 +1214,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2018_rank',
@@ -1087,7 +1223,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2019_rank',
@@ -1095,7 +1232,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2020_rank',
@@ -1103,7 +1241,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2021_rank',
@@ -1111,7 +1250,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_10_pct_cloud_cover_in_2022_rank',
@@ -1119,7 +1259,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_10_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_10_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2015_rank',
@@ -1127,7 +1268,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2016_rank',
@@ -1135,7 +1277,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2017_rank',
@@ -1143,7 +1286,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2018_rank',
@@ -1151,7 +1295,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2019_rank',
@@ -1159,7 +1304,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2020_rank',
@@ -1167,7 +1313,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2021_rank',
@@ -1175,7 +1322,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_20_pct_cloud_cover_in_2022_rank',
@@ -1183,7 +1331,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_20_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_20_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2015_rank',
@@ -1191,7 +1340,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2016_rank',
@@ -1199,7 +1349,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2017_rank',
@@ -1207,7 +1358,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2018_rank',
@@ -1215,7 +1367,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2019_rank',
@@ -1223,7 +1376,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2020_rank',
@@ -1231,7 +1385,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2021_rank',
@@ -1239,7 +1394,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_30_pct_cloud_cover_in_2022_rank',
@@ -1247,7 +1403,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_30_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_30_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2015_rank',
@@ -1255,7 +1412,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2015_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2015_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2015_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2016_rank',
@@ -1263,7 +1421,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2016_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2016_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2017_rank',
@@ -1271,7 +1430,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2017_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2017_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2018_rank',
@@ -1279,7 +1439,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2018_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2018_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2019_rank',
@@ -1287,7 +1448,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2019_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2019_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2020_rank',
@@ -1295,7 +1457,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2020_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2020_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2020_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2021_rank',
@@ -1303,7 +1466,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2021_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2021_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2021_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'daytime_hours_above_40_pct_cloud_cover_in_2022_rank',
@@ -1311,7 +1475,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'daytime_hours_above_40_pct_cloud_cover_in_2022_rank',
-    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2022_rank'
+    header_label: 'daytime_hours_above_40_pct_cloud_cover_in_2022_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.CLOUD_COVER]
   },
   {
     column_id: 'road_km',
@@ -1319,7 +1484,11 @@ export const column_definitions = [
     table_name: 'parcels_road',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'road_km',
-    header_label: 'road_km'
+    header_label: 'road_km',
+    column_groups: [
+      column_categories.POLLUTION,
+      column_categories.DISTANCE_TO_ROAD
+    ]
   },
   {
     column_id: 'paved_km',
@@ -1327,7 +1496,11 @@ export const column_definitions = [
     table_name: 'parcels_road',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'paved_km',
-    header_label: 'paved_km'
+    header_label: 'paved_km',
+    column_groups: [
+      column_categories.POLLUTION,
+      column_categories.DISTANCE_TO_ROAD
+    ]
   },
   {
     column_id: 'high_traffic_km',
@@ -1335,7 +1508,11 @@ export const column_definitions = [
     table_name: 'parcels_road',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'high_traffic_km',
-    header_label: 'high_traffic_km'
+    header_label: 'high_traffic_km',
+    column_groups: [
+      column_categories.POLLUTION,
+      column_categories.DISTANCE_TO_ROAD
+    ]
   },
   {
     column_id: 'highway_km',
@@ -1343,7 +1520,11 @@ export const column_definitions = [
     table_name: 'parcels_road',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'highway_km',
-    header_label: 'highway_km'
+    header_label: 'highway_km',
+    column_groups: [
+      column_categories.POLLUTION,
+      column_categories.DISTANCE_TO_ROAD
+    ]
   },
   {
     column_id: 'latitude',
@@ -1351,7 +1532,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'latitude',
-    header_label: 'latitude'
+    header_label: 'latitude',
+    column_groups: [column_categories.LOCATION, column_categories.COORDINATES]
   },
   {
     column_id: 'longitude',
@@ -1359,7 +1541,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'longitude',
-    header_label: 'longitude'
+    header_label: 'longitude',
+    column_groups: [column_categories.LOCATION, column_categories.COORDINATES]
   },
   {
     column_id: 'viewshed_percentage',
@@ -1367,7 +1550,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_percentage',
-    header_label: 'viewshed_percentage'
+    header_label: 'viewshed_percentage',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index',
@@ -1375,7 +1559,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index',
-    header_label: 'viewshed_index'
+    header_label: 'viewshed_index',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_under_2km',
@@ -1383,7 +1568,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_under_2km',
-    header_label: 'viewshed_index_under_2km'
+    header_label: 'viewshed_index_under_2km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_2km',
@@ -1391,7 +1577,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_2km',
-    header_label: 'viewshed_index_2km'
+    header_label: 'viewshed_index_2km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_5km',
@@ -1399,7 +1586,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_5km',
-    header_label: 'viewshed_index_5km'
+    header_label: 'viewshed_index_5km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_10km',
@@ -1407,7 +1595,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_10km',
-    header_label: 'viewshed_index_10km'
+    header_label: 'viewshed_index_10km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_20km',
@@ -1415,7 +1604,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_20km',
-    header_label: 'viewshed_index_20km'
+    header_label: 'viewshed_index_20km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_50km',
@@ -1423,7 +1613,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_50km',
-    header_label: 'viewshed_index_50km'
+    header_label: 'viewshed_index_50km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_index_75km',
@@ -1431,7 +1622,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_index_75km',
-    header_label: 'viewshed_index_75km'
+    header_label: 'viewshed_index_75km',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_nw',
@@ -1439,7 +1631,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_nw',
-    header_label: 'viewshed_nw'
+    header_label: 'viewshed_nw',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_sw',
@@ -1447,7 +1640,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_sw',
-    header_label: 'viewshed_sw'
+    header_label: 'viewshed_sw',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_se',
@@ -1455,7 +1649,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_se',
-    header_label: 'viewshed_se'
+    header_label: 'viewshed_se',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_ne',
@@ -1463,7 +1658,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_ne',
-    header_label: 'viewshed_ne'
+    header_label: 'viewshed_ne',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_n',
@@ -1471,7 +1667,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_n',
-    header_label: 'viewshed_n'
+    header_label: 'viewshed_n',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_e',
@@ -1479,7 +1676,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_e',
-    header_label: 'viewshed_e'
+    header_label: 'viewshed_e',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_s',
@@ -1487,7 +1685,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_s',
-    header_label: 'viewshed_s'
+    header_label: 'viewshed_s',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'viewshed_w',
@@ -1495,7 +1694,8 @@ export const column_definitions = [
     table_name: 'parcels_viewshed',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'viewshed_w',
-    header_label: 'viewshed_w'
+    header_label: 'viewshed_w',
+    column_groups: [column_categories.VIEWSHED]
   },
   {
     column_id: 'struct',
@@ -1503,7 +1703,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.BOOLEAN,
     accessorKey: 'struct',
-    header_label: 'struct'
+    header_label: 'struct',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'multistruct',
@@ -1511,7 +1712,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.BOOLEAN,
     accessorKey: 'multistruct',
-    header_label: 'multistruct'
+    header_label: 'multistruct',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'structno',
@@ -1519,7 +1721,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'structno',
-    header_label: 'structno'
+    header_label: 'structno',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'yearbuilt',
@@ -1527,7 +1730,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'yearbuilt',
-    header_label: 'yearbuilt'
+    header_label: 'yearbuilt',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'numstories',
@@ -1535,7 +1739,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'numstories',
-    header_label: 'numstories'
+    header_label: 'numstories',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'numunits',
@@ -1543,7 +1748,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'numunits',
-    header_label: 'numunits'
+    header_label: 'numunits',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'improvval',
@@ -1551,7 +1757,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'improvval',
-    header_label: 'improvval'
+    header_label: 'improvval',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'landval',
@@ -1559,7 +1766,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'landval',
-    header_label: 'landval'
+    header_label: 'landval',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'parval',
@@ -1567,7 +1775,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'parval',
-    header_label: 'parval'
+    header_label: 'parval',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'agval',
@@ -1575,7 +1784,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'agval',
-    header_label: 'agval'
+    header_label: 'agval',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saleprice',
@@ -1583,7 +1793,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'saleprice',
-    header_label: 'saleprice'
+    header_label: 'saleprice',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saledate',
@@ -1591,7 +1802,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'saledate',
-    header_label: 'saledate'
+    header_label: 'saledate',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'taxamt',
@@ -1599,7 +1811,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'taxamt',
-    header_label: 'taxamt'
+    header_label: 'taxamt',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lat',
@@ -1607,7 +1820,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lat',
-    header_label: 'lat'
+    header_label: 'lat',
+    column_groups: [column_categories.LOCATION, column_categories.COORDINATES]
   },
   {
     column_id: 'lon',
@@ -1615,7 +1829,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lon',
-    header_label: 'lon'
+    header_label: 'lon',
+    column_groups: [column_categories.LOCATION, column_categories.COORDINATES]
   },
   {
     column_id: 'sourcedate',
@@ -1623,7 +1838,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'sourcedate',
-    header_label: 'sourcedate'
+    header_label: 'sourcedate',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'recrdareano',
@@ -1631,7 +1847,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'recrdareano',
-    header_label: 'recrdareano'
+    header_label: 'recrdareano',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_AREA]
   },
   {
     column_id: 'gisacre',
@@ -1639,7 +1856,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'gisacre',
-    header_label: 'gisacre'
+    header_label: 'gisacre',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_AREA]
   },
   {
     column_id: 'sqft',
@@ -1647,7 +1865,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'sqft',
-    header_label: 'sqft'
+    header_label: 'sqft',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_AREA]
   },
   {
     column_id: 'll_gisacre',
@@ -1655,7 +1874,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'll_gisacre',
-    header_label: 'll_gisacre'
+    header_label: 'll_gisacre',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_AREA]
   },
   {
     column_id: 'll_gissqft',
@@ -1663,7 +1883,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'll_gissqft',
-    header_label: 'll_gissqft'
+    header_label: 'll_gissqft',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_AREA]
   },
   {
     column_id: 'll_bldg_footprint_sqft',
@@ -1671,7 +1892,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'll_bldg_footprint_sqft',
-    header_label: 'll_bldg_footprint_sqft'
+    header_label: 'll_bldg_footprint_sqft',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'll_bldg_count',
@@ -1679,7 +1901,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'll_bldg_count',
-    header_label: 'll_bldg_count'
+    header_label: 'll_bldg_count',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'cdl_majority_percent',
@@ -1687,7 +1910,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'cdl_majority_percent',
-    header_label: 'cdl_majority_percent'
+    header_label: 'cdl_majority_percent',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'revisedate',
@@ -1695,7 +1919,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'revisedate',
-    header_label: 'revisedate'
+    header_label: 'revisedate',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'll_updated_at',
@@ -1703,7 +1928,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'll_updated_at',
-    header_label: 'll_updated_at'
+    header_label: 'll_updated_at',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'usps_vacancy_date',
@@ -1711,7 +1937,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'usps_vacancy_date',
-    header_label: 'usps_vacancy_date'
+    header_label: 'usps_vacancy_date',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lbcs_activity',
@@ -1719,7 +1946,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lbcs_activity',
-    header_label: 'lbcs_activity'
+    header_label: 'lbcs_activity',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lbcs_function',
@@ -1727,7 +1955,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lbcs_function',
-    header_label: 'lbcs_function'
+    header_label: 'lbcs_function',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lbcs_structure',
@@ -1735,7 +1964,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lbcs_structure',
-    header_label: 'lbcs_structure'
+    header_label: 'lbcs_structure',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'lbcs_site',
@@ -1743,7 +1973,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lbcs_site',
-    header_label: 'lbcs_site'
+    header_label: 'lbcs_site',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lbcs_ownership',
@@ -1751,7 +1982,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'lbcs_ownership',
-    header_label: 'lbcs_ownership'
+    header_label: 'lbcs_ownership',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'reviseddate',
@@ -1759,7 +1991,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'reviseddate',
-    header_label: 'reviseddate'
+    header_label: 'reviseddate',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'zoning_change_date',
@@ -1767,7 +2000,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'zoning_change_date',
-    header_label: 'zoning_change_date'
+    header_label: 'zoning_change_date',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'rzrealdat',
@@ -1775,7 +2009,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'rzrealdat',
-    header_label: 'rzrealdat'
+    header_label: 'rzrealdat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'width',
@@ -1783,7 +2018,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'width',
-    header_label: 'width'
+    header_label: 'width',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'depth',
@@ -1791,7 +2027,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'depth',
-    header_label: 'depth'
+    header_label: 'depth',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lastinsp',
@@ -1799,7 +2036,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'lastinsp',
-    header_label: 'lastinsp'
+    header_label: 'lastinsp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lastassd',
@@ -1807,7 +2045,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'lastassd',
-    header_label: 'lastassd'
+    header_label: 'lastassd',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'agfndarea',
@@ -1815,7 +2054,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'agfndarea',
-    header_label: 'agfndarea'
+    header_label: 'agfndarea',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'entzndat',
@@ -1823,7 +2063,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'entzndat',
-    header_label: 'entzndat'
+    header_label: 'entzndat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'entznassm',
@@ -1831,7 +2072,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'entznassm',
-    header_label: 'entznassm'
+    header_label: 'entznassm',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'plndevdat',
@@ -1839,7 +2081,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'plndevdat',
-    header_label: 'plndevdat'
+    header_label: 'plndevdat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'nprctstdat',
@@ -1847,7 +2090,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'nprctstdat',
-    header_label: 'nprctstdat'
+    header_label: 'nprctstdat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'nprcarea',
@@ -1855,7 +2099,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nprcarea',
-    header_label: 'nprcarea'
+    header_label: 'nprcarea',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'homqldat',
@@ -1863,7 +2108,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.DATE,
     accessorKey: 'homqldat',
-    header_label: 'homqldat'
+    header_label: 'homqldat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resident',
@@ -1871,7 +2117,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'resident',
-    header_label: 'resident'
+    header_label: 'resident',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resi2010',
@@ -1879,7 +2126,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'resi2010',
-    header_label: 'resi2010'
+    header_label: 'resi2010',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resi2000',
@@ -1887,7 +2135,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'resi2000',
-    header_label: 'resi2000'
+    header_label: 'resi2000',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resi1990',
@@ -1895,7 +2144,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'resi1990',
-    header_label: 'resi1990'
+    header_label: 'resi1990',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resiuths',
@@ -1903,7 +2153,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'resiuths',
-    header_label: 'resiuths'
+    header_label: 'resiuths',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'aprtment',
@@ -1911,7 +2162,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'aprtment',
-    header_label: 'aprtment'
+    header_label: 'aprtment',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'trailer',
@@ -1919,7 +2171,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'trailer',
-    header_label: 'trailer'
+    header_label: 'trailer',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'special',
@@ -1927,7 +2180,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'special',
-    header_label: 'special'
+    header_label: 'special',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'other',
@@ -1935,7 +2189,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'other',
-    header_label: 'other'
+    header_label: 'other',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'plant_hardiness_updated',
@@ -1943,7 +2198,11 @@ export const column_definitions = [
     table_name: 'parcels_agriculture',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'plant_hardiness_updated',
-    header_label: 'plant_hardiness_updated'
+    header_label: 'plant_hardiness_updated',
+    column_groups: [
+      column_categories.AGRICULTURE,
+      column_categories.PLANT_HARDINESS
+    ]
   },
   {
     column_id: 'hardiness_temp',
@@ -1951,7 +2210,11 @@ export const column_definitions = [
     table_name: 'parcels_agriculture',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hardiness_temp',
-    header_label: 'hardiness_temp'
+    header_label: 'hardiness_temp',
+    column_groups: [
+      column_categories.AGRICULTURE,
+      column_categories.PLANT_HARDINESS
+    ]
   },
   {
     column_id: 'distance_km',
@@ -1959,7 +2222,12 @@ export const column_definitions = [
     table_name: 'parcels_airport',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'distance_km',
-    header_label: 'distance_km'
+    header_label: 'distance_km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.AIRPORT
+    ]
   },
   {
     column_id: 'geological_features_updated',
@@ -1967,7 +2235,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'geological_features_updated',
-    header_label: 'geological_features_updated'
+    header_label: 'geological_features_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'closest_geological_features_items',
@@ -1975,7 +2248,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_geological_features_items',
-    header_label: 'closest_geological_features_items'
+    header_label: 'closest_geological_features_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_1km',
@@ -1983,7 +2261,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'geological_features_1km',
-    header_label: 'geological_features_1km'
+    header_label: 'geological_features_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_count_1km',
@@ -1991,7 +2274,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'geological_features_count_1km',
-    header_label: 'geological_features_count_1km'
+    header_label: 'geological_features_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_5km',
@@ -1999,7 +2287,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'geological_features_5km',
-    header_label: 'geological_features_5km'
+    header_label: 'geological_features_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_count_5km',
@@ -2007,7 +2300,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'geological_features_count_5km',
-    header_label: 'geological_features_count_5km'
+    header_label: 'geological_features_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_10km',
@@ -2015,7 +2313,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'geological_features_10km',
-    header_label: 'geological_features_10km'
+    header_label: 'geological_features_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_count_10km',
@@ -2023,7 +2326,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'geological_features_count_10km',
-    header_label: 'geological_features_count_10km'
+    header_label: 'geological_features_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_25km',
@@ -2031,7 +2339,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'geological_features_25km',
-    header_label: 'geological_features_25km'
+    header_label: 'geological_features_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'geological_features_count_25km',
@@ -2039,7 +2352,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'geological_features_count_25km',
-    header_label: 'geological_features_count_25km'
+    header_label: 'geological_features_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'healthcare_updated',
@@ -2047,7 +2365,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_updated',
-    header_label: 'healthcare_updated'
+    header_label: 'healthcare_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'closest_healthcare_items',
@@ -2055,7 +2378,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_healthcare_items',
-    header_label: 'closest_healthcare_items'
+    header_label: 'closest_healthcare_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_1km',
@@ -2063,7 +2391,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_1km',
-    header_label: 'healthcare_1km'
+    header_label: 'healthcare_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_1km',
@@ -2071,7 +2404,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_1km',
-    header_label: 'healthcare_count_1km'
+    header_label: 'healthcare_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_5km',
@@ -2079,7 +2417,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_5km',
-    header_label: 'healthcare_5km'
+    header_label: 'healthcare_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_5km',
@@ -2087,7 +2430,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_5km',
-    header_label: 'healthcare_count_5km'
+    header_label: 'healthcare_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_10km',
@@ -2095,7 +2443,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_10km',
-    header_label: 'healthcare_10km'
+    header_label: 'healthcare_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_10km',
@@ -2103,7 +2456,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_10km',
-    header_label: 'healthcare_count_10km'
+    header_label: 'healthcare_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_25km',
@@ -2111,7 +2469,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_25km',
-    header_label: 'healthcare_25km'
+    header_label: 'healthcare_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_25km',
@@ -2119,7 +2482,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_25km',
-    header_label: 'healthcare_count_25km'
+    header_label: 'healthcare_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_50km',
@@ -2127,7 +2495,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_50km',
-    header_label: 'healthcare_50km'
+    header_label: 'healthcare_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_50km',
@@ -2135,7 +2508,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_50km',
-    header_label: 'healthcare_count_50km'
+    header_label: 'healthcare_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_100km',
@@ -2143,7 +2521,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_100km',
-    header_label: 'healthcare_100km'
+    header_label: 'healthcare_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_100km',
@@ -2151,7 +2534,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_100km',
-    header_label: 'healthcare_count_100km'
+    header_label: 'healthcare_count_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_150km',
@@ -2159,7 +2547,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_150km',
-    header_label: 'healthcare_150km'
+    header_label: 'healthcare_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_150km',
@@ -2167,7 +2560,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_150km',
-    header_label: 'healthcare_count_150km'
+    header_label: 'healthcare_count_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_200km',
@@ -2175,7 +2573,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'healthcare_200km',
-    header_label: 'healthcare_200km'
+    header_label: 'healthcare_200km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'healthcare_count_200km',
@@ -2183,7 +2586,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'healthcare_count_200km',
-    header_label: 'healthcare_count_200km'
+    header_label: 'healthcare_count_200km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'library_updated',
@@ -2191,7 +2599,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_updated',
-    header_label: 'library_updated'
+    header_label: 'library_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'closest_library_items',
@@ -2199,7 +2612,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_library_items',
-    header_label: 'closest_library_items'
+    header_label: 'closest_library_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_1km',
@@ -2207,7 +2625,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'library_1km',
-    header_label: 'library_1km'
+    header_label: 'library_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_count_1km',
@@ -2215,7 +2638,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_count_1km',
-    header_label: 'library_count_1km'
+    header_label: 'library_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_5km',
@@ -2223,7 +2651,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'library_5km',
-    header_label: 'library_5km'
+    header_label: 'library_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_count_5km',
@@ -2231,7 +2664,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_count_5km',
-    header_label: 'library_count_5km'
+    header_label: 'library_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_10km',
@@ -2239,7 +2677,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'library_10km',
-    header_label: 'library_10km'
+    header_label: 'library_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_count_10km',
@@ -2247,7 +2690,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_count_10km',
-    header_label: 'library_count_10km'
+    header_label: 'library_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_25km',
@@ -2255,7 +2703,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'library_25km',
-    header_label: 'library_25km'
+    header_label: 'library_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_count_25km',
@@ -2263,7 +2716,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_count_25km',
-    header_label: 'library_count_25km'
+    header_label: 'library_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_50km',
@@ -2271,7 +2729,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'library_50km',
-    header_label: 'library_50km'
+    header_label: 'library_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'library_count_50km',
@@ -2279,7 +2742,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'library_count_50km',
-    header_label: 'library_count_50km'
+    header_label: 'library_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'military_updated',
@@ -2287,7 +2755,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_updated',
-    header_label: 'military_updated'
+    header_label: 'military_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'closest_military_distance',
@@ -2295,7 +2768,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_military_distance',
-    header_label: 'closest_military_distance'
+    header_label: 'closest_military_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'closest_military_items',
@@ -2303,7 +2781,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_military_items',
-    header_label: 'closest_military_items'
+    header_label: 'closest_military_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_1km',
@@ -2311,7 +2794,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_1km',
-    header_label: 'military_1km'
+    header_label: 'military_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_1km',
@@ -2319,7 +2807,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_1km',
-    header_label: 'military_count_1km'
+    header_label: 'military_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_5km',
@@ -2327,7 +2820,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_5km',
-    header_label: 'military_5km'
+    header_label: 'military_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_5km',
@@ -2335,7 +2833,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_5km',
-    header_label: 'military_count_5km'
+    header_label: 'military_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_10km',
@@ -2343,7 +2846,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_10km',
-    header_label: 'military_10km'
+    header_label: 'military_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_10km',
@@ -2351,7 +2859,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_10km',
-    header_label: 'military_count_10km'
+    header_label: 'military_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_25km',
@@ -2359,7 +2872,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_25km',
-    header_label: 'military_25km'
+    header_label: 'military_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_25km',
@@ -2367,7 +2885,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_25km',
-    header_label: 'military_count_25km'
+    header_label: 'military_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_50km',
@@ -2375,7 +2898,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_50km',
-    header_label: 'military_50km'
+    header_label: 'military_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_50km',
@@ -2383,7 +2911,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_50km',
-    header_label: 'military_count_50km'
+    header_label: 'military_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_100km',
@@ -2391,7 +2924,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_100km',
-    header_label: 'military_100km'
+    header_label: 'military_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_100km',
@@ -2399,7 +2937,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_100km',
-    header_label: 'military_count_100km'
+    header_label: 'military_count_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_150km',
@@ -2407,7 +2950,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_150km',
-    header_label: 'military_150km'
+    header_label: 'military_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_150km',
@@ -2415,7 +2963,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_150km',
-    header_label: 'military_count_150km'
+    header_label: 'military_count_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_200km',
@@ -2423,7 +2976,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'military_200km',
-    header_label: 'military_200km'
+    header_label: 'military_200km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_200km',
@@ -2431,7 +2989,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_200km',
-    header_label: 'military_count_200km'
+    header_label: 'military_count_200km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'natural_updated',
@@ -2439,7 +3002,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_updated',
-    header_label: 'natural_updated'
+    header_label: 'natural_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'closest_natural_items',
@@ -2447,7 +3015,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_natural_items',
-    header_label: 'closest_natural_items'
+    header_label: 'closest_natural_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_1km',
@@ -2455,7 +3028,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'natural_1km',
-    header_label: 'natural_1km'
+    header_label: 'natural_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_count_1km',
@@ -2463,7 +3041,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_count_1km',
-    header_label: 'natural_count_1km'
+    header_label: 'natural_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_density_1km',
@@ -2471,7 +3054,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_density_1km',
-    header_label: 'natural_density_1km'
+    header_label: 'natural_density_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_5km',
@@ -2479,7 +3067,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'natural_5km',
-    header_label: 'natural_5km'
+    header_label: 'natural_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_count_5km',
@@ -2487,7 +3080,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_count_5km',
-    header_label: 'natural_count_5km'
+    header_label: 'natural_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_density_5km',
@@ -2495,7 +3093,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_density_5km',
-    header_label: 'natural_density_5km'
+    header_label: 'natural_density_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_10km',
@@ -2503,7 +3106,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'natural_10km',
-    header_label: 'natural_10km'
+    header_label: 'natural_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_count_10km',
@@ -2511,7 +3119,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_count_10km',
-    header_label: 'natural_count_10km'
+    header_label: 'natural_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_density_10km',
@@ -2519,7 +3132,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_density_10km',
-    header_label: 'natural_density_10km'
+    header_label: 'natural_density_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_25km',
@@ -2527,7 +3145,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'natural_25km',
-    header_label: 'natural_25km'
+    header_label: 'natural_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_count_25km',
@@ -2535,7 +3158,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_count_25km',
-    header_label: 'natural_count_25km'
+    header_label: 'natural_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'natural_density_25km',
@@ -2543,7 +3171,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'natural_density_25km',
-    header_label: 'natural_density_25km'
+    header_label: 'natural_density_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'pollution_updated',
@@ -2551,7 +3184,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_updated',
-    header_label: 'pollution_updated'
+    header_label: 'pollution_updated',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'closest_pollution_items',
@@ -2559,7 +3193,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_pollution_items',
-    header_label: 'closest_pollution_items'
+    header_label: 'closest_pollution_items',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_1km',
@@ -2567,7 +3202,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'pollution_1km',
-    header_label: 'pollution_1km'
+    header_label: 'pollution_1km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_count_1km',
@@ -2575,7 +3211,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_count_1km',
-    header_label: 'pollution_count_1km'
+    header_label: 'pollution_count_1km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_density_1km',
@@ -2583,7 +3220,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_density_1km',
-    header_label: 'pollution_density_1km'
+    header_label: 'pollution_density_1km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_5km',
@@ -2591,7 +3229,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'pollution_5km',
-    header_label: 'pollution_5km'
+    header_label: 'pollution_5km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_count_5km',
@@ -2599,7 +3238,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_count_5km',
-    header_label: 'pollution_count_5km'
+    header_label: 'pollution_count_5km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_density_5km',
@@ -2607,7 +3247,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_density_5km',
-    header_label: 'pollution_density_5km'
+    header_label: 'pollution_density_5km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_10km',
@@ -2615,7 +3256,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'pollution_10km',
-    header_label: 'pollution_10km'
+    header_label: 'pollution_10km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_count_10km',
@@ -2623,7 +3265,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_count_10km',
-    header_label: 'pollution_count_10km'
+    header_label: 'pollution_count_10km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_density_10km',
@@ -2631,7 +3274,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_density_10km',
-    header_label: 'pollution_density_10km'
+    header_label: 'pollution_density_10km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_25km',
@@ -2639,7 +3283,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'pollution_25km',
-    header_label: 'pollution_25km'
+    header_label: 'pollution_25km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_count_25km',
@@ -2647,7 +3292,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_count_25km',
-    header_label: 'pollution_count_25km'
+    header_label: 'pollution_count_25km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'pollution_density_25km',
@@ -2655,7 +3301,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'pollution_density_25km',
-    header_label: 'pollution_density_25km'
+    header_label: 'pollution_density_25km',
+    column_groups: [column_categories.POLLUTION, column_categories.DENSITY]
   },
   {
     column_id: 'public_land_updated',
@@ -2663,7 +3310,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_updated',
-    header_label: 'public_land_updated'
+    header_label: 'public_land_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'closest_public_land_items',
@@ -2671,7 +3323,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_public_land_items',
-    header_label: 'closest_public_land_items'
+    header_label: 'closest_public_land_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_1km',
@@ -2679,7 +3336,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'public_land_1km',
-    header_label: 'public_land_1km'
+    header_label: 'public_land_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_count_1km',
@@ -2687,7 +3349,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_count_1km',
-    header_label: 'public_land_count_1km'
+    header_label: 'public_land_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_density_1km',
@@ -2695,7 +3362,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_density_1km',
-    header_label: 'public_land_density_1km'
+    header_label: 'public_land_density_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_5km',
@@ -2703,7 +3375,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'public_land_5km',
-    header_label: 'public_land_5km'
+    header_label: 'public_land_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_count_5km',
@@ -2711,7 +3388,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_count_5km',
-    header_label: 'public_land_count_5km'
+    header_label: 'public_land_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_density_5km',
@@ -2719,7 +3401,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_density_5km',
-    header_label: 'public_land_density_5km'
+    header_label: 'public_land_density_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_10km',
@@ -2727,7 +3414,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'public_land_10km',
-    header_label: 'public_land_10km'
+    header_label: 'public_land_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_count_10km',
@@ -2735,7 +3427,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_count_10km',
-    header_label: 'public_land_count_10km'
+    header_label: 'public_land_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_density_10km',
@@ -2743,7 +3440,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_density_10km',
-    header_label: 'public_land_density_10km'
+    header_label: 'public_land_density_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_25km',
@@ -2751,7 +3453,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'public_land_25km',
-    header_label: 'public_land_25km'
+    header_label: 'public_land_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_count_25km',
@@ -2759,7 +3466,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_count_25km',
-    header_label: 'public_land_count_25km'
+    header_label: 'public_land_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'public_land_density_25km',
@@ -2767,7 +3479,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'public_land_density_25km',
-    header_label: 'public_land_density_25km'
+    header_label: 'public_land_density_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'religious_updated',
@@ -2775,7 +3492,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religious_updated',
-    header_label: 'religious_updated'
+    header_label: 'religious_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'closest_religious_items',
@@ -2783,7 +3505,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_religious_items',
-    header_label: 'closest_religious_items'
+    header_label: 'closest_religious_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_1km',
@@ -2791,7 +3518,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_1km',
-    header_label: 'religion_1km'
+    header_label: 'religion_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_1km',
@@ -2799,7 +3531,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_1km',
-    header_label: 'religion_count_1km'
+    header_label: 'religion_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_1km',
@@ -2807,7 +3544,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_1km',
-    header_label: 'religion_density_1km'
+    header_label: 'religion_density_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_5km',
@@ -2815,7 +3557,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_5km',
-    header_label: 'religion_5km'
+    header_label: 'religion_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_5km',
@@ -2823,7 +3570,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_5km',
-    header_label: 'religion_count_5km'
+    header_label: 'religion_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_5km',
@@ -2831,7 +3583,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_5km',
-    header_label: 'religion_density_5km'
+    header_label: 'religion_density_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_10km',
@@ -2839,7 +3596,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_10km',
-    header_label: 'religion_10km'
+    header_label: 'religion_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_10km',
@@ -2847,7 +3609,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_10km',
-    header_label: 'religion_count_10km'
+    header_label: 'religion_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_10km',
@@ -2855,7 +3622,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_10km',
-    header_label: 'religion_density_10km'
+    header_label: 'religion_density_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_25km',
@@ -2863,7 +3635,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_25km',
-    header_label: 'religion_25km'
+    header_label: 'religion_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_25km',
@@ -2871,7 +3648,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_25km',
-    header_label: 'religion_count_25km'
+    header_label: 'religion_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_25km',
@@ -2879,7 +3661,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_25km',
-    header_label: 'religion_density_25km'
+    header_label: 'religion_density_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_50km',
@@ -2887,7 +3674,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_50km',
-    header_label: 'religion_50km'
+    header_label: 'religion_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_50km',
@@ -2895,7 +3687,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_50km',
-    header_label: 'religion_count_50km'
+    header_label: 'religion_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_50km',
@@ -2903,7 +3700,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_50km',
-    header_label: 'religion_density_50km'
+    header_label: 'religion_density_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_100km',
@@ -2911,7 +3713,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_100km',
-    header_label: 'religion_100km'
+    header_label: 'religion_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_100km',
@@ -2919,7 +3726,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_100km',
-    header_label: 'religion_count_100km'
+    header_label: 'religion_count_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_100km',
@@ -2927,7 +3739,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_100km',
-    header_label: 'religion_density_100km'
+    header_label: 'religion_density_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_150km',
@@ -2935,7 +3752,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'religion_150km',
-    header_label: 'religion_150km'
+    header_label: 'religion_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_count_150km',
@@ -2943,7 +3765,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_count_150km',
-    header_label: 'religion_count_150km'
+    header_label: 'religion_count_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'religion_density_150km',
@@ -2951,7 +3778,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'religion_density_150km',
-    header_label: 'religion_density_150km'
+    header_label: 'religion_density_150km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'spring_updated',
@@ -2959,7 +3791,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_updated',
-    header_label: 'spring_updated'
+    header_label: 'spring_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'closest_spring_distance',
@@ -2967,7 +3804,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_spring_distance',
-    header_label: 'closest_spring_distance'
+    header_label: 'closest_spring_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'closest_spring_items',
@@ -2975,7 +3817,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_spring_items',
-    header_label: 'closest_spring_items'
+    header_label: 'closest_spring_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_1km',
@@ -2983,7 +3830,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_1km',
-    header_label: 'spring_1km'
+    header_label: 'spring_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_1km',
@@ -2991,7 +3843,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_1km',
-    header_label: 'spring_count_1km'
+    header_label: 'spring_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_5km',
@@ -2999,7 +3856,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_5km',
-    header_label: 'spring_5km'
+    header_label: 'spring_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_5km',
@@ -3007,7 +3869,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_5km',
-    header_label: 'spring_count_5km'
+    header_label: 'spring_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_10km',
@@ -3015,7 +3882,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_10km',
-    header_label: 'spring_10km'
+    header_label: 'spring_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_10km',
@@ -3023,7 +3895,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_10km',
-    header_label: 'spring_count_10km'
+    header_label: 'spring_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_25km',
@@ -3031,7 +3908,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_25km',
-    header_label: 'spring_25km'
+    header_label: 'spring_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_25km',
@@ -3039,7 +3921,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_25km',
-    header_label: 'spring_count_25km'
+    header_label: 'spring_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_50km',
@@ -3047,7 +3934,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_50km',
-    header_label: 'spring_50km'
+    header_label: 'spring_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_50km',
@@ -3055,7 +3947,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_50km',
-    header_label: 'spring_count_50km'
+    header_label: 'spring_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_100km',
@@ -3063,7 +3960,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'spring_100km',
-    header_label: 'spring_100km'
+    header_label: 'spring_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_100km',
@@ -3071,7 +3973,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_100km',
-    header_label: 'spring_count_100km'
+    header_label: 'spring_count_100km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'water_updated',
@@ -3079,7 +3986,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_updated',
-    header_label: 'water_updated'
+    header_label: 'water_updated',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'closest_water_items',
@@ -3087,7 +3999,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'closest_water_items',
-    header_label: 'closest_water_items'
+    header_label: 'closest_water_items',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_1km',
@@ -3095,7 +4012,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'water_1km',
-    header_label: 'water_1km'
+    header_label: 'water_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_count_1km',
@@ -3103,7 +4025,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_count_1km',
-    header_label: 'water_count_1km'
+    header_label: 'water_count_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_density_1km',
@@ -3111,7 +4038,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_density_1km',
-    header_label: 'water_density_1km'
+    header_label: 'water_density_1km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_5km',
@@ -3119,7 +4051,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'water_5km',
-    header_label: 'water_5km'
+    header_label: 'water_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_count_5km',
@@ -3127,7 +4064,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_count_5km',
-    header_label: 'water_count_5km'
+    header_label: 'water_count_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_density_5km',
@@ -3135,7 +4077,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_density_5km',
-    header_label: 'water_density_5km'
+    header_label: 'water_density_5km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_10km',
@@ -3143,7 +4090,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'water_10km',
-    header_label: 'water_10km'
+    header_label: 'water_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_count_10km',
@@ -3151,7 +4103,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_count_10km',
-    header_label: 'water_count_10km'
+    header_label: 'water_count_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_density_10km',
@@ -3159,7 +4116,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_density_10km',
-    header_label: 'water_density_10km'
+    header_label: 'water_density_10km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_25km',
@@ -3167,7 +4129,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'water_25km',
-    header_label: 'water_25km'
+    header_label: 'water_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_count_25km',
@@ -3175,7 +4142,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_count_25km',
-    header_label: 'water_count_25km'
+    header_label: 'water_count_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_density_25km',
@@ -3183,7 +4155,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_density_25km',
-    header_label: 'water_density_25km'
+    header_label: 'water_density_25km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_50km',
@@ -3191,7 +4168,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'water_50km',
-    header_label: 'water_50km'
+    header_label: 'water_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_count_50km',
@@ -3199,7 +4181,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_count_50km',
-    header_label: 'water_count_50km'
+    header_label: 'water_count_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'water_density_50km',
@@ -3207,7 +4194,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'water_density_50km',
-    header_label: 'water_density_50km'
+    header_label: 'water_density_50km',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'min',
@@ -3215,7 +4207,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'min',
-    header_label: 'min'
+    header_label: 'min',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'p10',
@@ -3223,7 +4216,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'p10',
-    header_label: 'p10'
+    header_label: 'p10',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'p25',
@@ -3231,7 +4225,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'p25',
-    header_label: 'p25'
+    header_label: 'p25',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'p50',
@@ -3239,7 +4234,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'p50',
-    header_label: 'p50'
+    header_label: 'p50',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'p75',
@@ -3247,7 +4243,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'p75',
-    header_label: 'p75'
+    header_label: 'p75',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'p90',
@@ -3255,7 +4252,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'p90',
-    header_label: 'p90'
+    header_label: 'p90',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'max',
@@ -3263,7 +4261,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'max',
-    header_label: 'max'
+    header_label: 'max',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'median',
@@ -3271,7 +4270,8 @@ export const column_definitions = [
     table_name: 'parcels_elevation',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'median',
-    header_label: 'median'
+    header_label: 'median',
+    column_groups: [column_categories.ELEVATION]
   },
   {
     column_id: 'coordinates',
@@ -3279,7 +4279,8 @@ export const column_definitions = [
     table_name: 'parcels_geometry',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'coordinates',
-    header_label: 'coordinates'
+    header_label: 'coordinates',
+    column_groups: [column_categories.LOCATION, column_categories.COORDINATES]
   },
   {
     column_id: 'broadband_updated',
@@ -3287,7 +4288,8 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'broadband_updated',
-    header_label: 'broadband_updated'
+    header_label: 'broadband_updated',
+    column_groups: [column_categories.INTERNET]
   },
   {
     column_id: 'max_download_speed',
@@ -3295,7 +4297,12 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'max_download_speed',
-    header_label: 'max_download_speed'
+    header_label: 'max_download_speed',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_DOWNLOAD
+    ]
   },
   {
     column_id: 'max_upload_speed',
@@ -3303,7 +4310,12 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'max_upload_speed',
-    header_label: 'max_upload_speed'
+    header_label: 'max_upload_speed',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_UPLOAD
+    ]
   },
   {
     column_id: 'low_latency',
@@ -3311,7 +4323,11 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.BOOLEAN,
     accessorKey: 'low_latency',
-    header_label: 'low_latency'
+    header_label: 'low_latency',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_LATENCY
+    ]
   },
   {
     column_id: 'closest_provider_distance',
@@ -3319,7 +4335,11 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_provider_distance',
-    header_label: 'closest_provider_distance'
+    header_label: 'closest_provider_distance',
+    column_groups: [
+      column_categories.INTERNET
+      // TODO distance to
+    ]
   },
   {
     column_id: 'nearby_max_download_speed',
@@ -3327,7 +4347,12 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nearby_max_download_speed',
-    header_label: 'nearby_max_download_speed'
+    header_label: 'nearby_max_download_speed',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_DOWNLOAD
+    ]
   },
   {
     column_id: 'nearby_max_upload_speed',
@@ -3335,7 +4360,12 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nearby_max_upload_speed',
-    header_label: 'nearby_max_upload_speed'
+    header_label: 'nearby_max_upload_speed',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_UPLOAD
+    ]
   },
   {
     column_id: 'surrounding_providers',
@@ -3343,7 +4373,11 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.JSON,
     accessorKey: 'surrounding_providers',
-    header_label: 'surrounding_providers'
+    header_label: 'surrounding_providers',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_PROVIDER
+    ]
   },
   {
     column_id: 'surrounding_coverage_density',
@@ -3351,7 +4385,11 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'surrounding_coverage_density',
-    header_label: 'surrounding_coverage_density'
+    header_label: 'surrounding_coverage_density',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_COVERAGE
+    ]
   },
   {
     column_id: 'public',
@@ -3359,7 +4397,8 @@ export const column_definitions = [
     table_name: 'parcels_meta',
     data_type: table_constants.TABLE_DATA_TYPES.BOOLEAN,
     accessorKey: 'public',
-    header_label: 'public'
+    header_label: 'public',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'tribal',
@@ -3367,7 +4406,8 @@ export const column_definitions = [
     table_name: 'parcels_meta',
     data_type: table_constants.TABLE_DATA_TYPES.BOOLEAN,
     accessorKey: 'tribal',
-    header_label: 'tribal'
+    header_label: 'tribal',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'nature_updated',
@@ -3375,7 +4415,8 @@ export const column_definitions = [
     table_name: 'parcels_nature',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nature_updated',
-    header_label: 'nature_updated'
+    header_label: 'nature_updated',
+    column_groups: [column_categories.NATURE]
   },
   {
     column_id: 'nature_score',
@@ -3383,7 +4424,8 @@ export const column_definitions = [
     table_name: 'parcels_nature',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nature_score',
-    header_label: 'nature_score'
+    header_label: 'nature_score',
+    column_groups: [column_categories.NATURE]
   },
   {
     column_id: 'leaf_rating',
@@ -3391,7 +4433,8 @@ export const column_definitions = [
     table_name: 'parcels_nature',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'leaf_rating',
-    header_label: 'leaf_rating'
+    header_label: 'leaf_rating',
+    column_groups: [column_categories.NATURE]
   },
   {
     column_id: 'hardiness_temp_rank',
@@ -3399,7 +4442,11 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hardiness_temp_rank',
-    header_label: 'hardiness_temp_rank'
+    header_label: 'hardiness_temp_rank',
+    column_groups: [
+      column_categories.AGRICULTURE,
+      column_categories.PLANT_HARDINESS
+    ]
   },
   {
     column_id: 'max_download_speed_rank',
@@ -3407,7 +4454,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'max_download_speed_rank',
-    header_label: 'max_download_speed_rank'
+    header_label: 'max_download_speed_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_DOWNLOAD
+    ]
   },
   {
     column_id: 'closest_military_distance_rank',
@@ -3415,7 +4467,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_military_distance_rank',
-    header_label: 'closest_military_distance_rank'
+    header_label: 'closest_military_distance_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'closest_spring_distance_rank',
@@ -3423,7 +4480,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_spring_distance_rank',
-    header_label: 'closest_spring_distance_rank'
+    header_label: 'closest_spring_distance_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'military_count_25km_rank',
@@ -3431,7 +4493,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_25km_rank',
-    header_label: 'military_count_25km_rank'
+    header_label: 'military_count_25km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_50km_rank',
@@ -3439,7 +4506,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_50km_rank',
-    header_label: 'military_count_50km_rank'
+    header_label: 'military_count_50km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'military_count_200km_rank',
@@ -3447,7 +4519,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'military_count_200km_rank',
-    header_label: 'military_count_200km_rank'
+    header_label: 'military_count_200km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'spring_count_1km_rank',
@@ -3455,7 +4532,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_1km_rank',
-    header_label: 'spring_count_1km_rank'
+    header_label: 'spring_count_1km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_5km_rank',
@@ -3463,7 +4545,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_5km_rank',
-    header_label: 'spring_count_5km_rank'
+    header_label: 'spring_count_5km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_10km_rank',
@@ -3471,7 +4558,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_10km_rank',
-    header_label: 'spring_count_10km_rank'
+    header_label: 'spring_count_10km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_50km_rank',
@@ -3479,7 +4571,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_50km_rank',
-    header_label: 'spring_count_50km_rank'
+    header_label: 'spring_count_50km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'spring_count_100km_rank',
@@ -3487,7 +4584,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'spring_count_100km_rank',
-    header_label: 'spring_count_100km_rank'
+    header_label: 'spring_count_100km_rank',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DENSITY,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'max_upload_speed_rank',
@@ -3495,7 +4597,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'max_upload_speed_rank',
-    header_label: 'max_upload_speed_rank'
+    header_label: 'max_upload_speed_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_UPLOAD
+    ]
   },
   {
     column_id: 'closest_provider_distance_rank',
@@ -3503,7 +4610,11 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'closest_provider_distance_rank',
-    header_label: 'closest_provider_distance_rank'
+    header_label: 'closest_provider_distance_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_PROVIDER
+    ]
   },
   {
     column_id: 'nearby_max_download_speed_rank',
@@ -3511,7 +4622,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nearby_max_download_speed_rank',
-    header_label: 'nearby_max_download_speed_rank'
+    header_label: 'nearby_max_download_speed_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_DOWNLOAD
+    ]
   },
   {
     column_id: 'nearby_max_upload_speed_rank',
@@ -3519,7 +4635,12 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'nearby_max_upload_speed_rank',
-    header_label: 'nearby_max_upload_speed_rank'
+    header_label: 'nearby_max_upload_speed_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_SPEED,
+      column_categories.INTERNET_UPLOAD
+    ]
   },
   {
     column_id: 'surrounding_coverage_density_rank',
@@ -3527,7 +4648,11 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'surrounding_coverage_density_rank',
-    header_label: 'surrounding_coverage_density_rank'
+    header_label: 'surrounding_coverage_density_rank',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_COVERAGE
+    ]
   },
   {
     column_id: 'fair_days_in_2019_rank',
@@ -3535,7 +4660,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'fair_days_in_2019_rank',
-    header_label: 'fair_days_in_2019_rank'
+    header_label: 'fair_days_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.DAYS]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2016_rank',
@@ -3543,7 +4669,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2016_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2016_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2016_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2017_rank',
@@ -3551,7 +4678,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2017_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2017_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2017_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2018_rank',
@@ -3559,7 +4687,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2018_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2018_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2018_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'hrs_below_0_c_apparent_temperature_in_2019_rank',
@@ -3567,7 +4696,8 @@ export const column_definitions = [
     table_name: 'parcels_rank',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'hrs_below_0_c_apparent_temperature_in_2019_rank',
-    header_label: 'hrs_below_0_c_apparent_temperature_in_2019_rank'
+    header_label: 'hrs_below_0_c_apparent_temperature_in_2019_rank',
+    column_groups: [column_categories.CLIMATE, column_categories.TEMPERATURE]
   },
   {
     column_id: 'geoid',
@@ -3575,7 +4705,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'geoid',
-    header_label: 'geoid'
+    header_label: 'geoid',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'sourceagent',
@@ -3583,7 +4714,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'sourceagent',
-    header_label: 'sourceagent'
+    header_label: 'sourceagent',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'parcelnumb',
@@ -3591,7 +4723,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'parcelnumb',
-    header_label: 'parcelnumb'
+    header_label: 'parcelnumb',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'usecode',
@@ -3599,7 +4732,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'usecode',
-    header_label: 'usecode'
+    header_label: 'usecode',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'usedesc',
@@ -3607,7 +4741,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'usedesc',
-    header_label: 'usedesc'
+    header_label: 'usedesc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'zoning',
@@ -3615,7 +4750,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'zoning',
-    header_label: 'zoning'
+    header_label: 'zoning',
+    column_groups: [column_categories.PROPERTY, column_categories.ZONING]
   },
   {
     column_id: 'zoning_description',
@@ -3623,7 +4759,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'zoning_description',
-    header_label: 'zoning_description'
+    header_label: 'zoning_description',
+    column_groups: [column_categories.PROPERTY, column_categories.ZONING]
   },
   {
     column_id: 'closest_provider_h3_res8_id',
@@ -3631,7 +4768,11 @@ export const column_definitions = [
     table_name: 'parcels_internet',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_provider_h3_res8_id',
-    header_label: 'closest_provider_h3_res8_id'
+    header_label: 'closest_provider_h3_res8_id',
+    column_groups: [
+      column_categories.INTERNET,
+      column_categories.INTERNET_PROVIDER
+    ]
   },
   {
     column_id: 'll_uuid',
@@ -3639,7 +4780,8 @@ export const column_definitions = [
     table_name: 'parcels_road',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'll_uuid',
-    header_label: 'll_uuid'
+    header_label: 'll_uuid',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'closest_pollution_name',
@@ -3647,7 +4789,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_pollution_name',
-    header_label: 'closest_pollution_name'
+    header_label: 'closest_pollution_name',
+    column_groups: [column_categories.POLLUTION]
   },
   {
     column_id: 'closest_pollution_distance',
@@ -3655,7 +4798,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_pollution_distance',
-    header_label: 'closest_pollution_distance'
+    header_label: 'closest_pollution_distance',
+    column_groups: [column_categories.POLLUTION]
   },
   {
     column_id: 'closest_pollution_tags',
@@ -3663,7 +4807,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_pollution_tags',
-    header_label: 'closest_pollution_tags'
+    header_label: 'closest_pollution_tags',
+    column_groups: [column_categories.POLLUTION]
   },
   {
     column_id: 'structstyle',
@@ -3671,7 +4816,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'structstyle',
-    header_label: 'structstyle'
+    header_label: 'structstyle',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'parvaltype',
@@ -3679,7 +4825,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'parvaltype',
-    header_label: 'parvaltype'
+    header_label: 'parvaltype',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'ptype',
@@ -3687,7 +4834,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'ptype',
-    header_label: 'ptype'
+    header_label: 'ptype',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'sdatwebadr',
@@ -3695,7 +4843,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'sdatwebadr',
-    header_label: 'sdatwebadr'
+    header_label: 'sdatwebadr',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'polyid',
@@ -3703,7 +4852,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'polyid',
-    header_label: 'polyid'
+    header_label: 'polyid',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'qoz',
@@ -3711,7 +4861,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'qoz',
-    header_label: 'qoz'
+    header_label: 'qoz',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'qoz_tract',
@@ -3719,7 +4870,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'qoz_tract',
-    header_label: 'qoz_tract'
+    header_label: 'qoz_tract',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'taxyear',
@@ -3727,7 +4879,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'taxyear',
-    header_label: 'taxyear'
+    header_label: 'taxyear',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'owntype',
@@ -3735,7 +4888,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owntype',
-    header_label: 'owntype'
+    header_label: 'owntype',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'owner',
@@ -3743,7 +4897,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owner',
-    header_label: 'owner'
+    header_label: 'owner',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'owner_index',
@@ -3751,7 +4906,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owner_index',
-    header_label: 'owner_index'
+    header_label: 'owner_index',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'ownfrst',
@@ -3759,7 +4915,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'ownfrst',
-    header_label: 'ownfrst'
+    header_label: 'ownfrst',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'ownlast',
@@ -3767,7 +4924,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'ownlast',
-    header_label: 'ownlast'
+    header_label: 'ownlast',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'owner2',
@@ -3775,7 +4933,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owner2',
-    header_label: 'owner2'
+    header_label: 'owner2',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'owner3',
@@ -3783,7 +4942,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owner3',
-    header_label: 'owner3'
+    header_label: 'owner3',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'owner4',
@@ -3791,7 +4951,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'owner4',
-    header_label: 'owner4'
+    header_label: 'owner4',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'subsurfown',
@@ -3799,7 +4960,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'subsurfown',
-    header_label: 'subsurfown'
+    header_label: 'subsurfown',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'subowntype',
@@ -3807,7 +4969,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'subowntype',
-    header_label: 'subowntype'
+    header_label: 'subowntype',
+    column_groups: [column_categories.PROPERTY, column_categories.OWNERSHIP]
   },
   {
     column_id: 'mailadd',
@@ -3815,7 +4978,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mailadd',
-    header_label: 'mailadd'
+    header_label: 'mailadd',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_address2',
@@ -3823,7 +4987,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_address2',
-    header_label: 'mail_address2'
+    header_label: 'mail_address2',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'careof',
@@ -3831,7 +4996,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'careof',
-    header_label: 'careof'
+    header_label: 'careof',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_addno',
@@ -3839,7 +5005,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_addno',
-    header_label: 'mail_addno'
+    header_label: 'mail_addno',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_addpref',
@@ -3847,7 +5014,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_addpref',
-    header_label: 'mail_addpref'
+    header_label: 'mail_addpref',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_addstr',
@@ -3855,7 +5023,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_addstr',
-    header_label: 'mail_addstr'
+    header_label: 'mail_addstr',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_addsttyp',
@@ -3863,7 +5032,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_addsttyp',
-    header_label: 'mail_addsttyp'
+    header_label: 'mail_addsttyp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_addstsuf',
@@ -3871,7 +5041,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_addstsuf',
-    header_label: 'mail_addstsuf'
+    header_label: 'mail_addstsuf',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_unit',
@@ -3879,7 +5050,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_unit',
-    header_label: 'mail_unit'
+    header_label: 'mail_unit',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_city',
@@ -3887,7 +5059,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_city',
-    header_label: 'mail_city'
+    header_label: 'mail_city',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_state2',
@@ -3895,7 +5068,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_state2',
-    header_label: 'mail_state2'
+    header_label: 'mail_state2',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_zip',
@@ -3903,7 +5077,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_zip',
-    header_label: 'mail_zip'
+    header_label: 'mail_zip',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_country',
@@ -3911,7 +5086,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_country',
-    header_label: 'mail_country'
+    header_label: 'mail_country',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mail_urbanization',
@@ -3919,7 +5095,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mail_urbanization',
-    header_label: 'mail_urbanization'
+    header_label: 'mail_urbanization',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'address',
@@ -3927,7 +5104,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'address',
-    header_label: 'address'
+    header_label: 'address',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'address2',
@@ -3935,7 +5113,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'address2',
-    header_label: 'address2'
+    header_label: 'address2',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saddno',
@@ -3943,7 +5122,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'saddno',
-    header_label: 'saddno'
+    header_label: 'saddno',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saddpref',
@@ -3951,7 +5131,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'saddpref',
-    header_label: 'saddpref'
+    header_label: 'saddpref',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saddstr',
@@ -3959,7 +5140,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'saddstr',
-    header_label: 'saddstr'
+    header_label: 'saddstr',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saddsttyp',
@@ -3967,7 +5149,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'saddsttyp',
-    header_label: 'saddsttyp'
+    header_label: 'saddsttyp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'saddstsuf',
@@ -3975,7 +5158,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'saddstsuf',
-    header_label: 'saddstsuf'
+    header_label: 'saddstsuf',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'sunit',
@@ -3983,7 +5167,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'sunit',
-    header_label: 'sunit'
+    header_label: 'sunit',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'scity',
@@ -3991,7 +5176,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'scity',
-    header_label: 'scity'
+    header_label: 'scity',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'original_address',
@@ -3999,7 +5185,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'original_address',
-    header_label: 'original_address'
+    header_label: 'original_address',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'city',
@@ -4007,7 +5194,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'city',
-    header_label: 'city'
+    header_label: 'city',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'county',
@@ -4015,7 +5203,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'county',
-    header_label: 'county'
+    header_label: 'county',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'state2',
@@ -4023,7 +5212,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'state2',
-    header_label: 'state2'
+    header_label: 'state2',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'szip',
@@ -4031,7 +5221,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'szip',
-    header_label: 'szip'
+    header_label: 'szip',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'urbanization',
@@ -4039,7 +5230,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'urbanization',
-    header_label: 'urbanization'
+    header_label: 'urbanization',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'location_name',
@@ -4047,7 +5239,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'location_name',
-    header_label: 'location_name'
+    header_label: 'location_name',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'address_source',
@@ -4055,7 +5248,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'address_source',
-    header_label: 'address_source'
+    header_label: 'address_source',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'legaldesc',
@@ -4063,7 +5257,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'legaldesc',
-    header_label: 'legaldesc'
+    header_label: 'legaldesc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'plat',
@@ -4071,7 +5266,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'plat',
-    header_label: 'plat'
+    header_label: 'plat',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'book',
@@ -4079,7 +5275,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'book',
-    header_label: 'book'
+    header_label: 'book',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'page',
@@ -4087,7 +5284,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'page',
-    header_label: 'page'
+    header_label: 'page',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'block',
@@ -4095,7 +5293,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'block',
-    header_label: 'block'
+    header_label: 'block',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'lot',
@@ -4103,7 +5302,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lot',
-    header_label: 'lot'
+    header_label: 'lot',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'neighborhood',
@@ -4111,7 +5311,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'neighborhood',
-    header_label: 'neighborhood'
+    header_label: 'neighborhood',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'subdivision',
@@ -4119,7 +5320,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'subdivision',
-    header_label: 'subdivision'
+    header_label: 'subdivision',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'hardiness_zone',
@@ -4127,7 +5329,11 @@ export const column_definitions = [
     table_name: 'parcels_agriculture',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'hardiness_zone',
-    header_label: 'hardiness_zone'
+    header_label: 'hardiness_zone',
+    column_groups: [
+      column_categories.AGRICULTURE,
+      column_categories.PLANT_HARDINESS
+    ]
   },
   {
     column_id: 'closest_library_name',
@@ -4135,7 +5341,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_library_name',
-    header_label: 'closest_library_name'
+    header_label: 'closest_library_name',
+    column_groups: [column_categories.LOCATION, column_categories.LIBRARY]
   },
   {
     column_id: 'goz',
@@ -4143,7 +5350,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'goz',
-    header_label: 'goz'
+    header_label: 'goz',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'goz_tract',
@@ -4151,7 +5359,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'goz_tract',
-    header_label: 'goz_tract'
+    header_label: 'goz_tract',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'census_tract',
@@ -4159,7 +5368,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'census_tract',
-    header_label: 'census_tract'
+    header_label: 'census_tract',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'census_block',
@@ -4167,7 +5377,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'census_block',
-    header_label: 'census_block'
+    header_label: 'census_block',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'census_blockgroup',
@@ -4175,7 +5386,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'census_blockgroup',
-    header_label: 'census_blockgroup'
+    header_label: 'census_blockgroup',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'sourceref',
@@ -4183,7 +5395,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'sourceref',
-    header_label: 'sourceref'
+    header_label: 'sourceref',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'sourceurl',
@@ -4191,7 +5404,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'sourceurl',
-    header_label: 'sourceurl'
+    header_label: 'sourceurl',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'recrdareatx',
@@ -4199,7 +5413,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'recrdareatx',
-    header_label: 'recrdareatx'
+    header_label: 'recrdareatx',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_library_distance',
@@ -4207,7 +5422,8 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_library_distance',
-    header_label: 'closest_library_distance'
+    header_label: 'closest_library_distance',
+    column_groups: [column_categories.LOCATION, column_categories.LIBRARY]
   },
   {
     column_id: 'abbrev',
@@ -4215,7 +5431,12 @@ export const column_definitions = [
     table_name: 'parcels_airport',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'abbrev',
-    header_label: 'abbrev'
+    header_label: 'abbrev',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.AIRPORT
+    ]
   },
   {
     column_id: 'closest_library_tags',
@@ -4223,7 +5444,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_library_tags',
-    header_label: 'closest_library_tags'
+    header_label: 'closest_library_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.LIBRARY
+    ]
   },
   {
     column_id: 'closest_spring_name',
@@ -4231,7 +5457,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_spring_name',
-    header_label: 'closest_spring_name'
+    header_label: 'closest_spring_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'closest_geological_features_name',
@@ -4239,7 +5470,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_geological_features_name',
-    header_label: 'closest_geological_features_name'
+    header_label: 'closest_geological_features_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'cdl_raw',
@@ -4247,7 +5483,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'cdl_raw',
-    header_label: 'cdl_raw'
+    header_label: 'cdl_raw',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'cdl_majority_category',
@@ -4255,7 +5492,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'cdl_majority_category',
-    header_label: 'cdl_majority_category'
+    header_label: 'cdl_majority_category',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_geological_features_distance',
@@ -4263,7 +5501,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_geological_features_distance',
-    header_label: 'closest_geological_features_distance'
+    header_label: 'closest_geological_features_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'cdl_date',
@@ -4271,7 +5514,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'cdl_date',
-    header_label: 'cdl_date'
+    header_label: 'cdl_date',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_geological_features_tags',
@@ -4279,7 +5523,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_geological_features_tags',
-    header_label: 'closest_geological_features_tags'
+    header_label: 'closest_geological_features_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.GEOLOGIC_FEATURES
+    ]
   },
   {
     column_id: 'path',
@@ -4287,7 +5536,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'path',
-    header_label: 'path'
+    header_label: 'path',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'll_stable_id',
@@ -4295,7 +5545,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'll_stable_id',
-    header_label: 'll_stable_id'
+    header_label: 'll_stable_id',
+    column_groups: [column_categories.PROPERTY, column_categories.PARCEL_ID]
   },
   {
     column_id: 'dpv_status',
@@ -4303,7 +5554,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dpv_status',
-    header_label: 'dpv_status'
+    header_label: 'dpv_status',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dpv_codes',
@@ -4311,7 +5563,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dpv_codes',
-    header_label: 'dpv_codes'
+    header_label: 'dpv_codes',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dpv_notes',
@@ -4319,7 +5572,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dpv_notes',
-    header_label: 'dpv_notes'
+    header_label: 'dpv_notes',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dpv_type',
@@ -4327,7 +5581,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dpv_type',
-    header_label: 'dpv_type'
+    header_label: 'dpv_type',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'cass_errorno',
@@ -4335,7 +5590,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'cass_errorno',
-    header_label: 'cass_errorno'
+    header_label: 'cass_errorno',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'rdi',
@@ -4343,7 +5599,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'rdi',
-    header_label: 'rdi'
+    header_label: 'rdi',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'usps_vacancy',
@@ -4351,7 +5608,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'usps_vacancy',
-    header_label: 'usps_vacancy'
+    header_label: 'usps_vacancy',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_spring_tags',
@@ -4359,7 +5617,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_spring_tags',
-    header_label: 'closest_spring_tags'
+    header_label: 'closest_spring_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.SPRING
+    ]
   },
   {
     column_id: 'lbcs_activity_desc',
@@ -4367,7 +5630,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lbcs_activity_desc',
-    header_label: 'lbcs_activity_desc'
+    header_label: 'lbcs_activity_desc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_natural_name',
@@ -4375,7 +5639,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_natural_name',
-    header_label: 'closest_natural_name'
+    header_label: 'closest_natural_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'lbcs_function_desc',
@@ -4383,7 +5652,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lbcs_function_desc',
-    header_label: 'lbcs_function_desc'
+    header_label: 'lbcs_function_desc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_natural_distance',
@@ -4391,7 +5661,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_natural_distance',
-    header_label: 'closest_natural_distance'
+    header_label: 'closest_natural_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'lbcs_structure_desc',
@@ -4399,7 +5674,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lbcs_structure_desc',
-    header_label: 'lbcs_structure_desc'
+    header_label: 'lbcs_structure_desc',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'closest_natural_tags',
@@ -4407,7 +5683,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_natural_tags',
-    header_label: 'closest_natural_tags'
+    header_label: 'closest_natural_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.NATURAL
+    ]
   },
   {
     column_id: 'lbcs_site_desc',
@@ -4415,7 +5696,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lbcs_site_desc',
-    header_label: 'lbcs_site_desc'
+    header_label: 'lbcs_site_desc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_water_name',
@@ -4423,7 +5705,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_water_name',
-    header_label: 'closest_water_name'
+    header_label: 'closest_water_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'lbcs_ownership_desc',
@@ -4431,7 +5718,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'lbcs_ownership_desc',
-    header_label: 'lbcs_ownership_desc'
+    header_label: 'lbcs_ownership_desc',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'padus_public_access',
@@ -4439,7 +5727,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'padus_public_access',
-    header_label: 'padus_public_access'
+    header_label: 'padus_public_access',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'homestead_exemption',
@@ -4447,7 +5736,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'homestead_exemption',
-    header_label: 'homestead_exemption'
+    header_label: 'homestead_exemption',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_water_distance',
@@ -4455,7 +5745,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_water_distance',
-    header_label: 'closest_water_distance'
+    header_label: 'closest_water_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'jurscode',
@@ -4463,7 +5758,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'jurscode',
-    header_label: 'jurscode'
+    header_label: 'jurscode',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'acctid_county_stripped',
@@ -4471,7 +5767,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'acctid_county_stripped',
-    header_label: 'acctid_county_stripped'
+    header_label: 'acctid_county_stripped',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'geogcode',
@@ -4479,7 +5776,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'geogcode',
-    header_label: 'geogcode'
+    header_label: 'geogcode',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'ooi',
@@ -4487,7 +5785,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'ooi',
-    header_label: 'ooi'
+    header_label: 'ooi',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'resityp',
@@ -4495,7 +5794,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'resityp',
-    header_label: 'resityp'
+    header_label: 'resityp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'addrtyp',
@@ -4503,7 +5803,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'addrtyp',
-    header_label: 'addrtyp'
+    header_label: 'addrtyp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'namekey',
@@ -4511,7 +5812,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'namekey',
-    header_label: 'namekey'
+    header_label: 'namekey',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dr1clerk',
@@ -4519,7 +5821,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dr1clerk',
-    header_label: 'dr1clerk'
+    header_label: 'dr1clerk',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'towncode',
@@ -4527,7 +5830,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'towncode',
-    header_label: 'towncode'
+    header_label: 'towncode',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'desctown',
@@ -4535,7 +5839,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'desctown',
-    header_label: 'desctown'
+    header_label: 'desctown',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'subdivision_code',
@@ -4543,7 +5848,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'subdivision_code',
-    header_label: 'subdivision_code'
+    header_label: 'subdivision_code',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'detailed_subdivision_code',
@@ -4551,7 +5857,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'detailed_subdivision_code',
-    header_label: 'detailed_subdivision_code'
+    header_label: 'detailed_subdivision_code',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dr1liber',
@@ -4559,7 +5866,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dr1liber',
-    header_label: 'dr1liber'
+    header_label: 'dr1liber',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'dr1folio',
@@ -4567,7 +5875,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'dr1folio',
-    header_label: 'dr1folio'
+    header_label: 'dr1folio',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'section',
@@ -4575,7 +5884,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'section',
-    header_label: 'section'
+    header_label: 'section',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'map',
@@ -4583,7 +5893,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'map',
-    header_label: 'map'
+    header_label: 'map',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'grid',
@@ -4591,7 +5902,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'grid',
-    header_label: 'grid'
+    header_label: 'grid',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_water_tags',
@@ -4599,7 +5911,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_water_tags',
-    header_label: 'closest_water_tags'
+    header_label: 'closest_water_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.WATER
+    ]
   },
   {
     column_id: 'closest_religious_name',
@@ -4607,7 +5924,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_religious_name',
-    header_label: 'closest_religious_name'
+    header_label: 'closest_religious_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'ciuse',
@@ -4615,7 +5937,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'ciuse',
-    header_label: 'ciuse'
+    header_label: 'ciuse',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'descciuse',
@@ -4623,7 +5946,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'descciuse',
-    header_label: 'descciuse'
+    header_label: 'descciuse',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'exclass',
@@ -4631,7 +5955,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'exclass',
-    header_label: 'exclass'
+    header_label: 'exclass',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'descexcl',
@@ -4639,7 +5964,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'descexcl',
-    header_label: 'descexcl'
+    header_label: 'descexcl',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'luom',
@@ -4647,7 +5973,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'luom',
-    header_label: 'luom'
+    header_label: 'luom',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_healthcare_name',
@@ -4655,7 +5982,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_healthcare_name',
-    header_label: 'closest_healthcare_name'
+    header_label: 'closest_healthcare_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'closest_healthcare_distance',
@@ -4663,7 +5995,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_healthcare_distance',
-    header_label: 'closest_healthcare_distance'
+    header_label: 'closest_healthcare_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'pfuw',
@@ -4671,7 +6008,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfuw',
-    header_label: 'pfuw'
+    header_label: 'pfuw',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pfus',
@@ -4679,7 +6017,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfus',
-    header_label: 'pfus'
+    header_label: 'pfus',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pflw',
@@ -4687,7 +6026,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pflw',
-    header_label: 'pflw'
+    header_label: 'pflw',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pfsp',
@@ -4695,7 +6035,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfsp',
-    header_label: 'pfsp'
+    header_label: 'pfsp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pfsu',
@@ -4703,7 +6044,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfsu',
-    header_label: 'pfsu'
+    header_label: 'pfsu',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pfic',
@@ -4711,7 +6053,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfic',
-    header_label: 'pfic'
+    header_label: 'pfic',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'pfih',
@@ -4719,7 +6062,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'pfih',
-    header_label: 'pfih'
+    header_label: 'pfih',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'recind',
@@ -4727,7 +6071,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'recind',
-    header_label: 'recind'
+    header_label: 'recind',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'permittyp',
@@ -4735,7 +6080,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'permittyp',
-    header_label: 'permittyp'
+    header_label: 'permittyp',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'strugrad',
@@ -4743,7 +6089,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'strugrad',
-    header_label: 'strugrad'
+    header_label: 'strugrad',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'descgrad',
@@ -4751,7 +6098,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'descgrad',
-    header_label: 'descgrad'
+    header_label: 'descgrad',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'strucnst',
@@ -4759,7 +6107,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'strucnst',
-    header_label: 'strucnst'
+    header_label: 'strucnst',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'desccnst',
@@ -4767,7 +6116,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'desccnst',
-    header_label: 'desccnst'
+    header_label: 'desccnst',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'strustyl',
@@ -4775,7 +6125,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'strustyl',
-    header_label: 'strustyl'
+    header_label: 'strustyl',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'strubldg',
@@ -4783,7 +6134,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'strubldg',
-    header_label: 'strubldg'
+    header_label: 'strubldg',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'descbldg',
@@ -4791,7 +6143,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'descbldg',
-    header_label: 'descbldg'
+    header_label: 'descbldg',
+    column_groups: [column_categories.PROPERTY, column_categories.STRUCTURE]
   },
   {
     column_id: 'closest_healthcare_tags',
@@ -4799,7 +6152,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_healthcare_tags',
-    header_label: 'closest_healthcare_tags'
+    header_label: 'closest_healthcare_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.HEALTHCARE
+    ]
   },
   {
     column_id: 'closest_religious_distance',
@@ -4807,7 +6165,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_religious_distance',
-    header_label: 'closest_religious_distance'
+    header_label: 'closest_religious_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'assessor',
@@ -4815,7 +6178,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'assessor',
-    header_label: 'assessor'
+    header_label: 'assessor',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'transno1',
@@ -4823,7 +6187,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'transno1',
-    header_label: 'transno1'
+    header_label: 'transno1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'grntnam1',
@@ -4831,7 +6196,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'grntnam1',
-    header_label: 'grntnam1'
+    header_label: 'grntnam1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'gr1clrk1v',
@@ -4839,7 +6205,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'gr1clrk1v',
-    header_label: 'gr1clrk1v'
+    header_label: 'gr1clrk1v',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'gr1libr1',
@@ -4847,7 +6214,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'gr1libr1',
-    header_label: 'gr1libr1'
+    header_label: 'gr1libr1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'gr1folo1',
@@ -4855,7 +6223,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'gr1folo1',
-    header_label: 'gr1folo1'
+    header_label: 'gr1folo1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'convey1',
@@ -4863,7 +6232,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'convey1',
-    header_label: 'convey1'
+    header_label: 'convey1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'mortgag1',
@@ -4871,7 +6241,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'mortgag1',
-    header_label: 'mortgag1'
+    header_label: 'mortgag1',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'crtarcod',
@@ -4879,7 +6250,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'crtarcod',
-    header_label: 'crtarcod'
+    header_label: 'crtarcod',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'fcmacode',
@@ -4887,7 +6259,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'fcmacode',
-    header_label: 'fcmacode'
+    header_label: 'fcmacode',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_military_name',
@@ -4895,7 +6268,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_military_name',
-    header_label: 'closest_military_name'
+    header_label: 'closest_military_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'agfndluom',
@@ -4903,7 +6281,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'agfndluom',
-    header_label: 'agfndluom'
+    header_label: 'agfndluom',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_religious_tags',
@@ -4911,7 +6290,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_religious_tags',
-    header_label: 'closest_religious_tags'
+    header_label: 'closest_religious_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.RELIGIOUS
+    ]
   },
   {
     column_id: 'closest_military_tags',
@@ -4919,7 +6303,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_military_tags',
-    header_label: 'closest_military_tags'
+    header_label: 'closest_military_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.MILITARY
+    ]
   },
   {
     column_id: 'closest_public_land_name',
@@ -4927,7 +6316,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_public_land_name',
-    header_label: 'closest_public_land_name'
+    header_label: 'closest_public_land_name',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'closest_public_land_distance',
@@ -4935,7 +6329,12 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_public_land_distance',
-    header_label: 'closest_public_land_distance'
+    header_label: 'closest_public_land_distance',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.PUBLIC_LAND
+    ]
   },
   {
     column_id: 'nprcluom',
@@ -4943,7 +6342,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'nprcluom',
-    header_label: 'nprcluom'
+    header_label: 'nprcluom',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'homqlcod',
@@ -4951,7 +6351,8 @@ export const column_definitions = [
     table_name: 'parcels',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'homqlcod',
-    header_label: 'homqlcod'
+    header_label: 'homqlcod',
+    column_groups: [column_categories.PROPERTY]
   },
   {
     column_id: 'closest_public_land_tags',
@@ -4959,6 +6360,11 @@ export const column_definitions = [
     table_name: 'parcels_density',
     data_type: table_constants.TABLE_DATA_TYPES.TEXT,
     accessorKey: 'closest_public_land_tags',
-    header_label: 'closest_public_land_tags'
+    header_label: 'closest_public_land_tags',
+    column_groups: [
+      column_categories.LOCATION,
+      column_categories.DISTANCE_TO_FEATURES,
+      column_categories.PUBLIC_LAND
+    ]
   }
 ]
