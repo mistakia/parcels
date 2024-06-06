@@ -16,8 +16,8 @@ export function appReducer(state = initialState(), { payload, type }) {
     case app_actions.APP_LOADED:
       return state.merge({ isLoaded: true })
 
-    case parcel_view_actions.SET_PARCELS_VIEW: {
-      const { view_id } = payload
+    case parcel_view_actions.PARCEL_VIEW_STATE_CHANGED: {
+      const { view_id } = payload.parcel_view
       return state.merge({ selected_parcel_view_id: view_id })
     }
 

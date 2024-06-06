@@ -11,22 +11,22 @@ export const parcel_view_actions = {
   DELETE_PARCEL_VIEW_FAILED: 'DELETE_PARCEL_VIEW_FAILED',
   DELETE_PARCEL_VIEW_FULFILLED: 'DELETE_PARCEL_VIEW_FULFILLED',
 
-  SET_PARCELS_VIEW: 'SET_PARCELS_VIEW',
+  SAVE_PARCELS_VIEW: 'SAVE_PARCELS_VIEW',
   DELETE_PARCELS_VIEW: 'DELETE_PARCELS_VIEW',
 
-  set_parcels_view: ({
-    view_id,
-    view_name,
-    view_description,
-    table_state
-  }) => ({
-    type: parcel_view_actions.SET_PARCELS_VIEW,
+  PARCEL_VIEW_STATE_CHANGED: 'PARCEL_VIEW_STATE_CHANGED',
+
+  save_parcels_view: (parcel_view, view_change_params) => ({
+    type: parcel_view_actions.SAVE_PARCELS_VIEW,
     payload: {
-      view_id,
-      view_name,
-      view_description,
-      table_state
+      parcel_view,
+      view_change_params
     }
+  }),
+
+  parcel_view_state_changed: (parcel_view, view_change_params) => ({
+    type: parcel_view_actions.PARCEL_VIEW_STATE_CHANGED,
+    payload: { parcel_view, view_change_params }
   }),
 
   delete_parcels_view: (view_id) => ({

@@ -8,8 +8,10 @@ import {
 import { parcel_actions } from './actions'
 import { app_actions } from '@core/app/actions'
 
-export function* load_parcels() {
-  const parcel_view = yield select(get_selected_parcel_view)
+export function* load_parcels({ payload }) {
+  const parcel_view = payload.parcel_view
+    ? payload.parcel_view
+    : yield select(get_selected_parcel_view)
   const params = parcel_view.table_state
 
   if (!params) {
@@ -48,8 +50,8 @@ export function* watch_load_more_parcels() {
   yield takeLeading(parcel_actions.LOAD_MORE_PARCELS, load_parcels)
 }
 
-export function* watch_post_parcel_view_fulfilled() {
-  yield takeLatest(parcel_view_actions.POST_PARCEL_VIEW_FULFILLED, load_parcels)
+export function* watch_parcel_view_state_changed() {
+  yield takeLatest(parcel_view_actions.PARCEL_VIEW_STATE_CHANGED, load_parcels)
 }
 
 export function* watch_set_selected_parcel_view_id() {
@@ -62,6 +64,6 @@ export function* watch_set_selected_parcel_view_id() {
 
 export const parcelSagas = [
   fork(watch_load_more_parcels),
-  fork(watch_post_parcel_view_fulfilled),
-  fork(watch_set_selected_parcel_view_id)
+  fork(watch_set_selected_parcel_view_id),
+  fork(watch_parcel_view_state_changed)
 ]

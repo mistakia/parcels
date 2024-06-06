@@ -7,7 +7,8 @@ import { app_actions } from '@core/app'
 
 export function parcelsReducer(state = new List(), { payload, type }) {
   switch (type) {
-    case parcel_view_actions.SET_PARCELS_VIEW:
+    case parcel_view_actions.PARCEL_VIEW_STATE_CHANGED:
+    case parcel_view_actions.SAVE_PARCELS_VIEW:
       return new List()
 
     case app_actions.SET_SELECTED_PARCEL_VIEW_ID:

@@ -5,11 +5,22 @@ import { parcel_view_actions } from './actions'
 
 export function parcel_view_reducer(state = new Map(), { payload, type }) {
   switch (type) {
-    case parcel_view_actions.SET_PARCELS_VIEW:
-      return state.mergeIn([`${payload.view_id}`], {
-        ...payload,
-        table_state: new Map(payload.table_state)
+    case parcel_view_actions.PARCEL_VIEW_STATE_CHANGED: {
+      const { parcel_view } = payload
+      return state.mergeIn([`${parcel_view.view_id}`], {
+        ...parcel_view,
+        table_state: new Map(parcel_view.table_state)
       })
+    }
+
+    case parcel_view_actions.SAVE_PARCELS_VIEW: {
+      const { parcel_view } = payload
+      return state.mergeIn([`${parcel_view.view_id}`], {
+        ...parcel_view,
+        table_state: new Map(parcel_view.table_state),
+        saved_table_state: new Map(parcel_view.table_state)
+      })
+    }
 
     case parcel_actions.GET_PARCELS_PENDING:
       return state.setIn([`${payload.opts.view_id}`, 'is_fetching'], true)
@@ -27,7 +38,14 @@ export function parcel_view_reducer(state = new Map(), { payload, type }) {
     case parcel_view_actions.GET_VIEWS_FULFILLED:
       return state.withMutations((map) => {
         payload.data.forEach((view) => {
-          map.set(view.view_id, new Map(view))
+          map.set(
+            view.view_id,
+            new Map({
+              ...view,
+              table_state: new Map(view.table_state),
+              saved_table_state: new Map(view.table_state)
+            })
+          )
         })
       })
 
@@ -36,7 +54,8 @@ export function parcel_view_reducer(state = new Map(), { payload, type }) {
         payload.data.view_id,
         new Map({
           ...payload.data,
-          table_state: new Map(payload.data.table_state)
+          table_state: new Map(payload.data.table_state),
+          saved_table_state: new Map(payload.data.table_state)
         })
       )
 

@@ -123,7 +123,8 @@ export function* set_selected_parcel_view({ payload }) {
 }
 
 export function* save_parcel_view_table_state({ payload }) {
-  const { view_id, view_name, view_description, table_state } = payload
+  const { parcel_view } = payload
+  const { view_id, view_name, view_description, table_state } = parcel_view
 
   const params = {
     view_name,
@@ -165,9 +166,9 @@ export function* watch_app_loaded() {
   yield takeLatest(app_actions.APP_LOADED, load_parcel_views)
 }
 
-export function* watch_set_parcels_view() {
+export function* watch_save_parcels_view() {
   yield takeLatest(
-    parcel_view_actions.SET_PARCELS_VIEW,
+    parcel_view_actions.SAVE_PARCELS_VIEW,
     save_parcel_view_table_state
   )
 }
@@ -193,7 +194,7 @@ export function* watch_delete_parcels_view() {
 
 export const parcel_view_sagas = [
   fork(watch_app_loaded),
-  fork(watch_set_parcels_view),
+  fork(watch_save_parcels_view),
   fork(watch_get_views_fulfilled),
   fork(watch_post_parcel_view_fulfilled),
   fork(watch_delete_parcels_view)

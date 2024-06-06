@@ -9,13 +9,13 @@ import Table from 'react-table/index.js'
 export default function ParcelsPage({
   parcels,
   selected_parcel_view,
-  set_parcels_view,
+  save_parcels_view,
   parcel_columns,
   load_more_parcels,
-  table_state,
   all_parcel_views,
   set_selected_parcel_view_id,
-  delete_parcels_view
+  delete_parcels_view,
+  parcel_view_state_changed
 }) {
   React.useEffect(() => {
     const view_id = selected_parcel_view.view_id
@@ -36,8 +36,10 @@ export default function ParcelsPage({
       </div>
       <Table
         data={parcels}
-        on_view_change={set_parcels_view}
-        table_state={table_state}
+        on_view_change={parcel_view_state_changed}
+        on_save_view={save_parcels_view}
+        table_state={selected_parcel_view.table_state}
+        saved_table_state={selected_parcel_view.saved_table_state}
         all_columns={parcel_columns}
         selected_view={selected_parcel_view}
         select_view={set_selected_parcel_view_id}
@@ -56,11 +58,11 @@ ParcelsPage.propTypes = {
   parcels: PropTypes.array,
   parcels_bounding_box: PropTypes.array,
   selected_parcel_view: PropTypes.object,
-  table_state: PropTypes.object,
-  set_parcels_view: PropTypes.func,
+  save_parcels_view: PropTypes.func,
   parcel_columns: PropTypes.object,
   load_more_parcels: PropTypes.func,
   all_parcel_views: PropTypes.array,
   set_selected_parcel_view_id: PropTypes.func,
-  delete_parcels_view: PropTypes.func
+  delete_parcels_view: PropTypes.func,
+  parcel_view_state_changed: PropTypes.func
 }
