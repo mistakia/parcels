@@ -49,6 +49,7 @@ export default function ParcelsPage({
         is_fetching={selected_parcel_view.is_fetching}
         views={all_parcel_views}
         delete_view={delete_parcels_view}
+        disable_splits
       />
     </>
   )

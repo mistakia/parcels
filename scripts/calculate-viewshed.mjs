@@ -21,13 +21,11 @@ const earth_radius = 6371 // Earth's mean radius in kilometers
  *   array.filter((element, index) => index % n === n - 1)
  *  */
 
-/* eslint-disable no-extra-semi */
 const group_by = (xs, key) =>
   xs.reduce((rv, x) => {
     ;(rv[x[key]] = rv[x[key]] || []).push(x)
     return rv
   }, {})
-/* eslint-enable no-extra-semi */
 
 function to_radians(degree) {
   return (degree * Math.PI) / 180
@@ -377,9 +375,8 @@ const find_high_elevation_points_within_polygon = async (
   }
 
   if (!highest_points.length) {
-    const highest_point = await find_highest_elevation_within_polygon(
-      feature_polygon
-    )
+    const highest_point =
+      await find_highest_elevation_within_polygon(feature_polygon)
     highest_points.push(highest_point)
   }
 
