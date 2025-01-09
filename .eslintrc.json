@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["build/*"],
   "parser": "@babel/eslint-parser",
   "env": {
     "browser": true,
