@@ -4,6 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import Box from '@mui/material/Box'
 
 import Routes from '@views/routes'
+import Menu from '@components/menu/menu'
 
 export default function App({ load, is_loaded }) {
   React.useEffect(() => {
@@ -21,9 +22,12 @@ export default function App({ load, is_loaded }) {
   }
 
   return (
-    <>
-      <Routes />
-    </>
+    <Box sx={{ display: 'flex' }}>
+      <Menu />
+      <Box sx={{ width: '100%' }}>
+        <Routes />
+      </Box>
+    </Box>
   )
 }
 

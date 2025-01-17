@@ -1,22 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useMap } from 'react-leaflet'
 
-export default function ParcelsMap({ parcels_bounding_box }) {
+export default function ParcelsMap() {
   const map = useMap()
 
+  const usa_bounding_box = [
+    [30.14512718337613, -129.94628906250003], // [south, west]
+    [45.98169518512228, -66.66503906250001] // [north, east]
+  ]
+
   React.useEffect(() => {
-    const bounds = [
-      [parcels_bounding_box[1], parcels_bounding_box[0]],
-      [parcels_bounding_box[3], parcels_bounding_box[2]]
-    ]
-    map.fitBounds(bounds)
-  }, [
-    parcels_bounding_box[0],
-    parcels_bounding_box[1],
-    parcels_bounding_box[2],
-    parcels_bounding_box[3]
-  ])
+    map.fitBounds(usa_bounding_box)
+  }, [])
 
   // const items = parcel_features.map((feature, index) => {
   //   switch (feature.geometry.type) {
@@ -38,8 +33,4 @@ export default function ParcelsMap({ parcels_bounding_box }) {
   // })
 
   return null
-}
-
-ParcelsMap.propTypes = {
-  parcels_bounding_box: PropTypes.array
 }

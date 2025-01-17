@@ -7,6 +7,7 @@ import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom'
 import { get_app } from '@core/app'
 import AuthPage from '@pages/auth'
 import ParcelsPage from '@pages/parcels'
+import MapPage from '@pages/map'
 
 const map_state_to_props = createSelector(get_app, (app) => ({
   public_key: app.public_key
@@ -25,6 +26,7 @@ const Routes = ({ public_key }) => {
   return (
     <RouterRoutes>
       <Route path='/parcels' element={<ParcelsPage />} />
+      <Route path='/map' element={<MapPage />} />
       <Route path='*' element={<Navigate to='/parcels' />} />
     </RouterRoutes>
   )
