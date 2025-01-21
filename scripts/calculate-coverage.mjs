@@ -1,17 +1,17 @@
 import debug from 'debug'
 import dayjs from 'dayjs'
-// import yargs from 'yargs'
-// import { hideBin } from 'yargs/helpers'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
 import db from '#db'
 // import config from '#config'
 import { isMain, get_column_coverage } from '#utils'
 
-// const argv = yargs(hideBin(process.argv)).argv
+const argv = yargs(hideBin(process.argv)).argv
 const log = debug('calculate-coverage')
 debug.enable('calculate-coverage')
 
-const calculate_coverage = async () => {
+const calculate_coverage = async ({ force_update = false }) => {
   const tables = [
     'parcels',
     'parcels_agriculture',
@@ -47,7 +47,7 @@ const calculate_coverage = async () => {
   for (const column of columns) {
     const coverage_updated = dayjs.unix(column.coverage_updated)
 
-    if (column.column_updated) {
+    if (column.column_updated && !force_update) {
       const column_updated = dayjs(column.column_updated)
       if (coverage_updated.isAfter(column_updated)) {
         log(
@@ -55,7 +55,7 @@ const calculate_coverage = async () => {
         )
         continue
       }
-    } else if (column.coverage_updated) {
+    } else if (column.coverage_updated && !force_update) {
       log(
         `skipping ${column.column_name} in ${column.table_name} because coverage was last calculated on ${coverage_updated}`
       )
@@ -72,7 +72,7 @@ export default calculate_coverage
 const main = async () => {
   let error
   try {
-    await calculate_coverage()
+    await calculate_coverage({ force_update: argv.force_update })
   } catch (err) {
     error = err
     console.log(error)
