@@ -10,7 +10,7 @@ export default async function ({ column_name, table_name, use_cache = true }) {
     db.raw('COUNT(*) AS total_rows'),
     db.raw(`COUNT(${table_name}.${column_name}) AS covered_rows`),
     db.raw(
-      `(COUNT(${table_name}.${column_name}) / COUNT(*)) * 100 AS coverage_percentage`
+      `ROUND((COUNT(${table_name}.${column_name})::numeric / COUNT(*)::numeric) * 100, 2) AS coverage_percentage`
     )
   )
 
