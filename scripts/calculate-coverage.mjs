@@ -29,26 +29,20 @@ const calculate_coverage = async () => {
     'parcels_weather'
   ]
 
-  const columns = await db('INFORMATION_SCHEMA.COLUMNS')
-    .select(
-      'INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME as column_name',
-      'INFORMATION_SCHEMA.COLUMNS.TABLE_NAME as table_name',
-      'coverage.coverage_updated',
-      'coverage.column_updated'
-    )
-    .whereIn('INFORMATION_SCHEMA.COLUMNS.TABLE_NAME', tables)
-    .leftJoin('coverage', function () {
-      this.on(
-        'coverage.column_name',
-        '=',
-        'INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME'
-      )
-      this.andOn(
-        'coverage.table_name',
-        '=',
-        'INFORMATION_SCHEMA.COLUMNS.TABLE_NAME'
-      )
-    })
+  const query = `
+    SELECT
+      INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME as column_name,
+      INFORMATION_SCHEMA.COLUMNS.TABLE_NAME as table_name,
+      coverage.coverage_updated,
+      coverage.column_updated
+    FROM INFORMATION_SCHEMA.COLUMNS
+    LEFT JOIN coverage ON
+      coverage.column_name = INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME AND
+      coverage.table_name = INFORMATION_SCHEMA.COLUMNS.TABLE_NAME
+    WHERE INFORMATION_SCHEMA.COLUMNS.TABLE_NAME IN (${tables.map((t) => `'${t}'`).join(',')})`
+
+  const results = await db.raw(query)
+  const columns = results.rows
 
   for (const column of columns) {
     const coverage_updated = dayjs.unix(column.coverage_updated)

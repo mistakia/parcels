@@ -10,7 +10,7 @@ import { isMain } from '#utils'
 const log = debug('calculate-heatmaps')
 debug.enable('calculate-heatmaps')
 
-const calculate_heatmaps = async () => {
+const calculate_hardiness_heatmaps = async () => {
   try {
     await db.raw(`
       INSERT INTO parcels_production.heatmaps (h3_res4_id, median_hardiness_temp_rank)
@@ -26,6 +26,10 @@ const calculate_heatmaps = async () => {
   } catch (error) {
     log(`Error calculating hardiness heatmaps: ${error}`)
   }
+}
+
+const calculate_heatmaps = async () => {
+  await calculate_hardiness_heatmaps()
 }
 
 export default calculate_heatmaps
