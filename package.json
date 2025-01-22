@@ -5,7 +5,8 @@
     "start:api": "NODE_ENV=development node server.mjs",
     "lint": "eslint .",
     "prettier": "prettier --write .",
-    "test": "NODE_ENV=test TEST=all mocha --exit"
+    "test": "NODE_ENV=test TEST=all mocha --exit",
+    "export:schema": "ssh database 'pg_dump -U parcelsuser -h localhost --dbname=parcels_production --schema-only --clean --no-owner --if-exists --file=/home/user/schema.postgres.sql --no-tablespaces' && scp database:/home/user/schema.postgres.sql ./db/"
   },
   "imports": {
     "#root/*": "./*",
