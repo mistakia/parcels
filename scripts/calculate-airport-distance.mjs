@@ -70,7 +70,7 @@ const calculate_airport_distances_for_parcels = async (parcels) => {
 
     inserts.push({
       ll_uuid: parcel.ll_uuid,
-      distance_km: closest_airport.distance,
+      distance_km: Math.round(closest_airport.distance),
       abbrev: closest_airport.airport.abbrev
     })
 
