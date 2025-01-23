@@ -1,5 +1,4 @@
 import { call, takeLatest, fork, put, select } from 'redux-saga/effects'
-import * as table_constants from 'react-table/src/constants.mjs'
 import Ed25519 from 'nanocurrency-web/dist/lib/ed25519'
 import Convert from 'nanocurrency-web/dist/lib/util/convert'
 import { blake2b } from 'blakejs'
@@ -29,75 +28,31 @@ export function* init_parcel_views({ payload }) {
         sort: [],
         columns: [
           {
-            accessorKey: 'path',
-            column_name: 'path',
-            table_name: 'parcels',
-            header_label: 'Path',
-            // footer_label: `Count ${data.length}`,
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'path'
           },
           {
-            accessorKey: 'owner',
-            column_name: 'owner',
-            table_name: 'parcels',
-            header_label: 'Owner',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'll_gisacre'
           },
           {
-            accessorKey: 'll_gisacre',
-            column_name: 'll_gisacre',
-            table_name: 'parcels',
-            header_label: 'Acreage',
-            data_type: table_constants.TABLE_DATA_TYPES.NUMBER
+            column_id: 'address'
           },
           {
-            accessorKey: 'address',
-            column_name: 'address',
-            table_name: 'parcels',
-            header_label: 'Address',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'usecode'
           },
           {
-            accessorKey: 'usecode',
-            column_name: 'usecode',
-            table_name: 'parcels',
-            header_label: 'Use Code',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'usedesc'
           },
           {
-            accessorKey: 'usedesc',
-            column_name: 'usedesc',
-            table_name: 'parcels',
-            header_label: 'Use Description',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'zoning'
           },
           {
-            accessorKey: 'zoning',
-            column_name: 'zoning',
-            table_name: 'parcels',
-            header_label: 'Zoning',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'zoning_description'
           },
           {
-            accessorKey: 'zoning_description',
-            column_name: 'zoning_description',
-            table_name: 'parcels',
-            header_label: 'Zoning Description',
-            data_type: table_constants.TABLE_DATA_TYPES.TEXT
+            column_id: 'lat'
           },
           {
-            accessorKey: 'lat',
-            column_name: 'lat',
-            table_name: 'parcels',
-            header_label: 'Latitude',
-            data_type: table_constants.TABLE_DATA_TYPES.NUMBER
-          },
-          {
-            accessorKey: 'lon',
-            column_name: 'lon',
-            table_name: 'parcels',
-            header_label: 'Longitude',
-            data_type: table_constants.TABLE_DATA_TYPES.NUMBER
+            column_id: 'lon'
           }
         ]
       }

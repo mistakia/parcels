@@ -133,6 +133,9 @@ const column_categories = {
   },
   NATURE: {
     priority: 1
+  },
+  ELECTION_RESULTS: {
+    priority: 1
   }
 }
 

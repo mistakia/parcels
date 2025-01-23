@@ -18,19 +18,6 @@ export function* load_parcels({ payload }) {
     return
   }
 
-  if (params.columns) {
-    params.columns = params.columns.map((column) => {
-      if (typeof column === 'string') {
-        return column
-      } else {
-        return {
-          column_name: column.column_name,
-          table_name: column.table_name
-        }
-      }
-    })
-  }
-
   params.offset = yield select((state) => state.get('parcels').size)
   params.view_id = parcel_view.view_id
 

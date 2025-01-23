@@ -40,18 +40,28 @@ router.get('/?', async (req, res) => {
     }
 
     const table_name_index = {}
-    const join_table = (table_name) => {
+    const join_table = ({ table_name, params }) => {
       // if we haven't joined this table yet, join it
       if (
         !table_name_index[table_name] &&
         !default_parcel_tables.includes(table_name)
       ) {
         table_name_index[table_name] = true
-        parcels_query.leftJoin(
-          table_name,
-          'parcels.ll_uuid',
-          `${table_name}.ll_uuid`
-        )
+        if (params?.year) {
+          const years = Array.isArray(params.year) ? params.year : [params.year]
+
+          parcels_query.leftJoin(table_name, function () {
+            this.on('parcels.ll_uuid', '=', `${table_name}.ll_uuid`).on(
+              db.raw(`${table_name}.election_year IN (${years.join(',')})`)
+            )
+          })
+        } else {
+          parcels_query.leftJoin(
+            table_name,
+            'parcels.ll_uuid',
+            `${table_name}.ll_uuid`
+          )
+        }
       }
     }
 
@@ -61,29 +71,29 @@ router.get('/?', async (req, res) => {
       }
 
       for (const column of req.query.columns) {
-        let column_name, table_name
+        const column_id = typeof column === 'string' ? column : column.column_id
 
-        if (typeof column === 'string') {
-          const column_definition = column_definitions.find(
-            (def) => def.column_id === column
-          )
-          if (!column_definition) {
-            return res
-              .status(400)
-              .send({ error: `invalid column id: ${column}` })
-          }
-          column_name = column_definition.column_id
-          table_name = column_definition.table_name
-        } else {
-          column_name = column.column_name
-          table_name = column.table_name
+        if (column_id === 'rank_aggregation') {
+          continue
         }
+
+        const column_definition = column_definitions.find(
+          (def) => def.column_id === column_id
+        )
+
+        if (!column_definition) {
+          return res
+            .status(400)
+            .send({ error: `invalid column id: ${column_id}` })
+        }
+
+        const { column_name, table_name } = column_definition
 
         if (default_parcel_columns.includes(column_name)) {
           continue
         }
 
-        join_table(table_name)
+        join_table({ table_name, params: column?.params })
         parcels_query.select(`${table_name}.${column_name}`)
       }
     }
@@ -95,20 +105,35 @@ router.get('/?', async (req, res) => {
           .send({ error: 'invalid rank_aggregation query param' })
       }
 
+      const rank_aggregation_strings = []
+      let total_weight = 0
+
       for (const rank_aggregation of req.query.rank_aggregation) {
-        join_table(rank_aggregation.table_name)
+        const { column_id } = rank_aggregation
+        const column_definition = column_definitions.find(
+          (def) => def.column_id === column_id
+        )
+        if (!column_definition) {
+          log(`invalid column id: ${column_id}`)
+          continue
+        }
+
+        const column_name = column_definition.column_name
+        const table_name = column_definition.table_name
+
+        join_table({
+          table_name,
+          params: rank_aggregation?.params
+        })
+
+        rank_aggregation_strings.push(
+          `(${rank_aggregation.weight} * ${table_name}.${column_name})`
+        )
+        total_weight += Number(rank_aggregation.weight)
       }
 
-      const sum_string = req.query.rank_aggregation
-        .map(
-          (rank_aggregation) =>
-            `(${rank_aggregation.weight} * ${rank_aggregation.table_name}.${rank_aggregation.column_name})`
-        )
-        .join(' + ')
-      const total_weight = req.query.rank_aggregation.reduce(
-        (acc, rank_aggregation) => acc + Number(rank_aggregation.weight),
-        0
-      )
+      const sum_string = rank_aggregation_strings.join(' + ')
+
       parcels_query.select(
         db.raw(`(${sum_string}) / ${total_weight} as rank_aggregation`)
       )
@@ -128,23 +153,16 @@ router.get('/?', async (req, res) => {
       }
 
       for (const where of req.query.where) {
-        let column_name
-        let table_name
-        if (where.column_id) {
-          const column_definition = column_definitions.find(
-            (def) => def.column_id === where.column_id
-          )
-          if (!column_definition) {
-            return res
-              .status(400)
-              .send({ error: `invalid column id: ${where.column_id}` })
-          }
-          column_name = column_definition.column_name
-          table_name = column_definition.table_name
-        } else {
-          column_name = where.column_name
-          table_name = where.table_name
+        const column_definition = column_definitions.find(
+          (def) => def.column_id === where.column_id
+        )
+        if (!column_definition) {
+          return res
+            .status(400)
+            .send({ error: `invalid column id: ${where.column_id}` })
         }
+        const column_name = column_definition.column_name
+        const table_name = column_definition.table_name
 
         if (where.operator === 'IS NULL') {
           parcels_query.whereNull(`${table_name}.${column_name}`)
@@ -279,6 +297,7 @@ router.get('/coverage', async (req, res) => {
 
     const tables = [
       'parcels',
+      'parcels_election_results',
       'parcels_agriculture',
       'parcels_airport',
       'parcels_coastline',

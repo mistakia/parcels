@@ -1143,6 +1143,7 @@ DROP INDEX IF EXISTS parcels_production.idx_650112_lat;
 DROP INDEX IF EXISTS parcels_production.idx_650109_provider_id;
 DROP INDEX IF EXISTS parcels_production.idx_650104_abbrev;
 DROP INDEX IF EXISTS parcels_production.election_results_geometry_idx;
+ALTER TABLE IF EXISTS ONLY parcels_production.parcels_election_results DROP CONSTRAINT IF EXISTS parcels_election_results_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.importers DROP CONSTRAINT IF EXISTS importers_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.heatmaps DROP CONSTRAINT IF EXISTS heatmaps_h3_res4_id_h3_res4_id1_key;
 ALTER TABLE IF EXISTS ONLY parcels_production.election_results DROP CONSTRAINT IF EXISTS election_results_pkey;
@@ -1164,6 +1165,7 @@ DROP SEQUENCE IF EXISTS parcels_production.parcels_geometry_extra_ogc_fid_seq;
 DROP TABLE IF EXISTS parcels_production.parcels_geometry_extra;
 DROP TABLE IF EXISTS parcels_production.parcels_geometry;
 DROP TABLE IF EXISTS parcels_production.parcels_elevation;
+DROP TABLE IF EXISTS parcels_production.parcels_election_results;
 DROP TABLE IF EXISTS parcels_production.parcels_density;
 DROP TABLE IF EXISTS parcels_production.parcels_coastline;
 DROP TABLE IF EXISTS parcels_production.parcels_airport;
@@ -21914,6 +21916,20 @@ CREATE TABLE parcels_production.parcels_density (
 
 
 --
+-- Name: parcels_election_results; Type: TABLE; Schema: parcels_production; Owner: -
+--
+
+CREATE TABLE parcels_production.parcels_election_results (
+    ll_uuid character varying(36) NOT NULL,
+    election_year smallint NOT NULL,
+    votes_dem integer,
+    votes_rep integer,
+    votes_total integer,
+    pct_dem_lead numeric(6,4)
+);
+
+
+--
 -- Name: parcels_elevation; Type: TABLE; Schema: parcels_production; Owner: -
 --
 
@@ -22623,6 +22639,14 @@ ALTER TABLE ONLY parcels_production.heatmaps
 
 ALTER TABLE ONLY parcels_production.importers
     ADD CONSTRAINT importers_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: parcels_election_results parcels_election_results_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: -
+--
+
+ALTER TABLE ONLY parcels_production.parcels_election_results
+    ADD CONSTRAINT parcels_election_results_pkey PRIMARY KEY (ll_uuid, election_year);
 
 
 --

@@ -1,6 +1,14 @@
 import * as table_constants from 'react-table/src/constants.mjs'
 import column_categories from './column-categories.mjs'
 
+export const election_results_single_year = {
+  values: [2024],
+  data_type: table_constants.TABLE_DATA_TYPES.SELECT,
+  single: true,
+  default_value: 2024,
+  enable_multi_on_split: ['year']
+}
+
 export const column_definitions = [
   {
     column_id: 'daytime_hrs_below_5_c_apparent_temperature_in_2017_rank',
@@ -6366,5 +6374,65 @@ export const column_definitions = [
       column_categories.DISTANCE_TO_FEATURES,
       column_categories.PUBLIC_LAND
     ]
+  },
+  {
+    column_id: 'election_year',
+    column_name: 'election_year',
+    table_name: 'parcels_election_results',
+    data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
+    accessorKey: 'election_year',
+    header_label: 'election_year',
+    column_groups: [column_categories.ELECTION_RESULTS],
+    column_params: {
+      year: election_results_single_year
+    }
+  },
+  {
+    column_id: 'votes_dem',
+    column_name: 'votes_dem',
+    table_name: 'parcels_election_results',
+    data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
+    accessorKey: 'votes_dem',
+    header_label: 'votes_dem',
+    column_groups: [column_categories.ELECTION_RESULTS],
+    column_params: {
+      year: election_results_single_year
+    }
+  },
+  {
+    column_id: 'votes_rep',
+    column_name: 'votes_rep',
+    table_name: 'parcels_election_results',
+    data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
+    accessorKey: 'votes_rep',
+    header_label: 'votes_rep',
+    column_groups: [column_categories.ELECTION_RESULTS],
+    column_params: {
+      year: election_results_single_year
+    }
+  },
+  {
+    column_id: 'votes_total',
+    column_name: 'votes_total',
+    table_name: 'parcels_election_results',
+    data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
+    accessorKey: 'votes_total',
+    header_label: 'votes_total',
+    column_groups: [column_categories.ELECTION_RESULTS],
+    column_params: {
+      year: election_results_single_year
+    }
+  },
+  {
+    column_id: 'pct_dem_lead',
+    column_name: 'pct_dem_lead',
+    table_name: 'parcels_election_results',
+    data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
+    accessorKey: 'pct_dem_lead',
+    header_label: 'pct_dem_lead',
+    column_groups: [column_categories.ELECTION_RESULTS],
+    column_params: {
+      year: election_results_single_year
+    }
   }
 ]
