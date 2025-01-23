@@ -1,100 +1,22 @@
 import express from 'express'
 
 import { get_column_coverage, validators } from '#utils'
-import { column_definitions } from '#common'
+import { column_definitions, get_parcels_query_results } from '#common'
 
 const router = express.Router()
 
 router.get('/?', async (req, res) => {
-  const { log, db } = req.app.locals
+  const { log } = req.app.locals
   try {
-    const parcels_query = db('parcels')
-
-    const default_parcel_tables = ['parcels', 'parcels_geometry']
-    const default_parcel_columns = ['path', 'll_uuid', 'lat', 'lon']
-
-    for (const column of default_parcel_columns) {
-      parcels_query.select(`parcels.${column}`)
-    }
-
-    parcels_query.leftJoin(
-      'parcels_geometry',
-      'parcels.ll_uuid',
-      'parcels_geometry.ll_uuid'
-    )
-    parcels_query.select('parcels_geometry.coordinates')
-
-    parcels_query.limit(1000)
-
     if (req.query.sort) {
       if (!validators.sort_validator(req.query.sort)) {
         return res.status(400).send({ error: 'invalid sort query param' })
-      }
-
-      for (const sort of req.query.sort) {
-        sort.desc = sort.desc === 'true'
-        parcels_query.orderByRaw(
-          `${sort.column_id} ${sort.desc ? 'desc' : 'asc'} NULLS LAST`
-        )
-      }
-    }
-
-    const table_name_index = {}
-    const join_table = ({ table_name, params }) => {
-      // if we haven't joined this table yet, join it
-      if (
-        !table_name_index[table_name] &&
-        !default_parcel_tables.includes(table_name)
-      ) {
-        table_name_index[table_name] = true
-        if (params?.year) {
-          const years = Array.isArray(params.year) ? params.year : [params.year]
-
-          parcels_query.leftJoin(table_name, function () {
-            this.on('parcels.ll_uuid', '=', `${table_name}.ll_uuid`).on(
-              db.raw(`${table_name}.election_year IN (${years.join(',')})`)
-            )
-          })
-        } else {
-          parcels_query.leftJoin(
-            table_name,
-            'parcels.ll_uuid',
-            `${table_name}.ll_uuid`
-          )
-        }
       }
     }
 
     if (req.query.columns) {
       if (!validators.columns_validator(req.query.columns)) {
         return res.status(400).send({ error: 'invalid columns query param' })
-      }
-
-      for (const column of req.query.columns) {
-        const column_id = typeof column === 'string' ? column : column.column_id
-
-        if (column_id === 'rank_aggregation') {
-          continue
-        }
-
-        const column_definition = column_definitions.find(
-          (def) => def.column_id === column_id
-        )
-
-        if (!column_definition) {
-          return res
-            .status(400)
-            .send({ error: `invalid column id: ${column_id}` })
-        }
-
-        const { column_name, table_name } = column_definition
-
-        if (default_parcel_columns.includes(column_name)) {
-          continue
-        }
-
-        join_table({ table_name, params: column?.params })
-        parcels_query.select(`${table_name}.${column_name}`)
       }
     }
 
@@ -104,100 +26,21 @@ router.get('/?', async (req, res) => {
           .status(400)
           .send({ error: 'invalid rank_aggregation query param' })
       }
-
-      const rank_aggregation_strings = []
-      let total_weight = 0
-
-      for (const rank_aggregation of req.query.rank_aggregation) {
-        const { column_id } = rank_aggregation
-        const column_definition = column_definitions.find(
-          (def) => def.column_id === column_id
-        )
-        if (!column_definition) {
-          log(`invalid column id: ${column_id}`)
-          continue
-        }
-
-        const column_name = column_definition.column_name
-        const table_name = column_definition.table_name
-
-        join_table({
-          table_name,
-          params: rank_aggregation?.params
-        })
-
-        rank_aggregation_strings.push(
-          `(${rank_aggregation.weight} * ${table_name}.${column_name})`
-        )
-        total_weight += Number(rank_aggregation.weight)
-      }
-
-      const sum_string = rank_aggregation_strings.join(' + ')
-
-      parcels_query.select(
-        db.raw(`(${sum_string}) / ${total_weight} as rank_aggregation`)
-      )
     }
 
     if (req.query.offset) {
       if (!validators.offset_validator(req.query.offset)) {
         return res.status(400).send({ error: 'invalid offset query param' })
       }
-
-      parcels_query.offset(req.query.offset)
     }
 
     if (req.query.where) {
       if (!validators.where_validator(req.query.where)) {
         return res.status(400).send({ error: 'invalid where query param' })
       }
-
-      for (const where of req.query.where) {
-        const column_definition = column_definitions.find(
-          (def) => def.column_id === where.column_id
-        )
-        if (!column_definition) {
-          return res
-            .status(400)
-            .send({ error: `invalid column id: ${where.column_id}` })
-        }
-        const column_name = column_definition.column_name
-        const table_name = column_definition.table_name
-
-        if (where.operator === 'IS NULL') {
-          parcels_query.whereNull(`${table_name}.${column_name}`)
-        } else if (where.operator === 'IS NOT NULL') {
-          parcels_query.whereNotNull(`${table_name}.${column_name}`)
-        } else if (where.operator === 'IN') {
-          parcels_query.whereIn(`${table_name}.${column_name}`, where.value)
-        } else if (where.operator === 'NOT IN') {
-          parcels_query.whereNotIn(`${table_name}.${column_name}`, where.value)
-        } else if (where.operator === 'LIKE') {
-          parcels_query.where(
-            `${table_name}.${column_name}`,
-            'LIKE',
-            `%${where.value}%`
-          )
-        } else if (where.operator === 'NOT LIKE') {
-          parcels_query.where(
-            `${table_name}.${column_name}`,
-            'NOT LIKE',
-            `%${where.value}%`
-          )
-        } else if (where.value) {
-          parcels_query.where(
-            `${table_name}.${column_name}`,
-            where.operator,
-            where.value
-          )
-        }
-      }
     }
 
-    log(parcels_query.toString())
-
-    const parcels = await parcels_query
-
+    const parcels = await get_parcels_query_results(req.query)
     res.status(200).send(parcels)
   } catch (err) {
     log(err)
