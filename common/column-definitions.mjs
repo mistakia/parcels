@@ -2225,12 +2225,13 @@ export const column_definitions = [
     ]
   },
   {
-    column_id: 'distance_km',
+    column_id: 'airport_distance_km',
     column_name: 'distance_km',
     table_name: 'parcels_airport',
     data_type: table_constants.TABLE_DATA_TYPES.NUMBER,
     accessorKey: 'distance_km',
-    header_label: 'distance_km',
+    header_label: 'airport_distance_km',
+    column_title: 'Airport Distance (km)',
     column_groups: [
       column_categories.LOCATION,
       column_categories.DISTANCE_TO_FEATURES,

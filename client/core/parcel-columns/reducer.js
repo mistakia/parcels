@@ -8,10 +8,7 @@ export function parcel_column_reducer(state = new Map(), { payload, type }) {
     case parcel_column_actions.GET_PARCEL_COLUMNS_FULFILLED:
       return state.withMutations((map) => {
         payload.data.forEach((column) => {
-          map.set(column.column_name, {
-            column_id: column.column_name,
-            ...column
-          })
+          map.set(column.column_id, column)
         })
 
         map.set('rank_aggregation', {
