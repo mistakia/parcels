@@ -14,8 +14,7 @@ export default async function get_parcels_heatmap({
     db.raw('h3_lat_lng_to_cell(point(lon, lat), ?) as h3_index', [resolution])
   )
 
-  const heatmap_query = db()
-    .with('parsed_paths', parcels_query)
+  const heatmap_query = db.with('parsed_paths', parcels_query)
     .select([
       'h3_index',
       db.raw('count(*) as parcel_count'),
