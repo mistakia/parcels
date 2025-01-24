@@ -1,7 +1,11 @@
 import express from 'express'
 
 import { get_column_coverage, validators } from '#utils'
-import { column_definitions, get_parcels_query_results } from '#common'
+import {
+  column_definitions,
+  get_parcels_query_results,
+  get_parcels_heatmap
+} from '#common'
 
 const router = express.Router()
 
@@ -176,6 +180,43 @@ router.get('/columns', async (req, res) => {
   const { log } = req.app.locals
   try {
     res.status(200).send(column_definitions)
+  } catch (err) {
+    log(err)
+    res.status(500).send({ error: err.toString() })
+  }
+})
+
+router.get('/heatmap', async (req, res) => {
+  const { log } = req.app.locals
+  try {
+    if (req.query.sort) {
+      if (!validators.sort_validator(req.query.sort)) {
+        return res.status(400).send({ error: 'invalid sort query param' })
+      }
+    }
+
+    if (req.query.columns) {
+      if (!validators.columns_validator(req.query.columns)) {
+        return res.status(400).send({ error: 'invalid columns query param' })
+      }
+    }
+
+    if (req.query.rank_aggregation) {
+      if (!validators.rank_aggregation_validator(req.query.rank_aggregation)) {
+        return res
+          .status(400)
+          .send({ error: 'invalid rank_aggregation query param' })
+      }
+    }
+
+    if (req.query.where) {
+      if (!validators.where_validator(req.query.where)) {
+        return res.status(400).send({ error: 'invalid where query param' })
+      }
+    }
+
+    const heatmap = await get_parcels_heatmap(req.query)
+    res.status(200).send(heatmap)
   } catch (err) {
     log(err)
     res.status(500).send({ error: err.toString() })

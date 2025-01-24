@@ -5,6 +5,7 @@ import { parcelsReducer } from './parcels'
 import { parcel_view_reducer } from './parcel-views'
 import { parcel_column_reducer } from './parcel-columns'
 import { heatmap_reducer } from './heatmaps'
+import { parcels_heatmap_reducer } from './parcels-heatmap'
 
 const rootReducer = (router) =>
   combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = (router) =>
     parcels: parcelsReducer,
     parcel_views: parcel_view_reducer,
     parcel_columns: parcel_column_reducer,
-    heatmaps: heatmap_reducer
+    heatmaps: heatmap_reducer,
+    parcels_heatmap: parcels_heatmap_reducer
   })
 
 export default rootReducer

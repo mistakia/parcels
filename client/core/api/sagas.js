@@ -13,6 +13,7 @@ import {
   delete_parcel_view_actions
 } from '@core/parcel-views/actions'
 import { get_heatmap_tile_actions } from '@core/heatmaps/actions'
+import { get_parcels_heatmap_actions } from '@core/parcels-heatmap/actions'
 
 function* fetchAPI(apiFunction, actions, opts = {}) {
   const { abort, request } = apiRequest(apiFunction, opts)
@@ -75,4 +76,9 @@ export const get_heatmap_tile = fetch.bind(
   null,
   api.get_heatmap_tile,
   get_heatmap_tile_actions
+)
+export const get_parcels_heatmap = fetch.bind(
+  null,
+  api.get_parcels_heatmap,
+  get_parcels_heatmap_actions
 )

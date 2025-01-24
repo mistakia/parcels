@@ -18,6 +18,10 @@ export const api = {
     const url = `${API_URL}/parcels?${qs.stringify(params)}`
     return { url }
   },
+  get_parcels_heatmap(params) {
+    const url = `${API_URL}/parcels/heatmap?${qs.stringify(params)}`
+    return { url }
+  },
   get_parcels_count(params) {
     const url = `${API_URL}/parcels/count?${qs.stringify(params)}`
     return { url }

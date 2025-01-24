@@ -1150,6 +1150,7 @@ ALTER TABLE IF EXISTS ONLY parcels_production.election_results DROP CONSTRAINT I
 ALTER TABLE IF EXISTS ONLY parcels_production.database_table_views DROP CONSTRAINT IF EXISTS database_table_views_view_name_table_name_user_public_key_key;
 ALTER TABLE IF EXISTS ONLY parcels_production.database_table_views DROP CONSTRAINT IF EXISTS database_table_views_pkey;
 ALTER TABLE IF EXISTS parcels_production.parcels_geometry_extra ALTER COLUMN ogc_fid DROP DEFAULT;
+DROP TABLE IF EXISTS parcels_production.usgs_seismic_hazards_model;
 DROP TABLE IF EXISTS parcels_production.tiles;
 DROP TABLE IF EXISTS parcels_production.roads;
 DROP TABLE IF EXISTS parcels_production.properties;
@@ -22591,6 +22592,18 @@ CREATE TABLE parcels_production.tiles (
     z smallint NOT NULL,
     y integer NOT NULL,
     x integer NOT NULL
+);
+
+
+--
+-- Name: usgs_seismic_hazards_model; Type: TABLE; Schema: parcels_production; Owner: -
+--
+
+CREATE TABLE parcels_production.usgs_seismic_hazards_model (
+    year smallint NOT NULL,
+    coordinates parcels_production.geometry(Geometry,4326),
+    low_cont smallint,
+    high_cont smallint
 );
 
 

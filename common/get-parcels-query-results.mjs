@@ -5,7 +5,7 @@ import { column_definitions } from '#common'
 
 const log = debug('get_parcels_query_results')
 
-export default async function get_parcels_query_results({
+export function build_parcels_query({
   splits = [],
   where = [],
   columns = [],
@@ -13,7 +13,8 @@ export default async function get_parcels_query_results({
   sort = [],
   offset = 0,
   limit = 1000,
-  rank_aggregation = []
+  rank_aggregation = [],
+  ignore_limit = false
 }) {
   const parcels_query = db('parcels')
 
@@ -31,7 +32,9 @@ export default async function get_parcels_query_results({
   )
   parcels_query.select('parcels_geometry.coordinates')
 
-  parcels_query.limit(limit)
+  if (!ignore_limit) {
+    parcels_query.limit(limit)
+  }
 
   for (const sort_item of sort) {
     const { column_id, desc } = sort_item
@@ -165,4 +168,9 @@ export default async function get_parcels_query_results({
   log(parcels_query.toString())
 
   return parcels_query
+}
+
+export default async function get_parcels_query_results(params) {
+  const query = build_parcels_query(params)
+  return query
 }
