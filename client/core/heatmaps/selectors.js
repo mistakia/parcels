@@ -12,7 +12,8 @@ export const get_heatmap_cells = createSelector(
       items.push({
         cell_id,
         geojson,
-        median_hardiness_temp_rank: heatmap.median_hardiness_temp_rank
+        median_hardiness_temp_rank: heatmap.median_hardiness_temp_rank,
+        parcels_count: heatmap.parcels_count
       })
     }
 

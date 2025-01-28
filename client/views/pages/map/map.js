@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer } from 'react-leaflet'
+
 import ParcelsMap from '@components/parcels-map'
 import ParcelsHeatmapLayer from '@components/parcels-heatmap-layer'
+import HeatmapLayer from '@components/heatmap-layer'
 
 export default function MapPage({
   load_parcels_heatmap,
@@ -17,6 +19,7 @@ export default function MapPage({
       <MapContainer style={{ height: '100%', width: '100%' }}>
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         <ParcelsHeatmapLayer />
+        <HeatmapLayer />
         <ParcelsMap />
       </MapContainer>
     </div>
