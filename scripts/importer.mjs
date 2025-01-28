@@ -13,12 +13,17 @@ const argv = yargs(hideBin(process.argv)).argv
 const log = debug('importer')
 debug.enable('importer,import-county')
 
-const importer = async ({ max = Infinity, base_path = null } = {}) => {
+const importer = async ({
+  max = Infinity,
+  base_path = null,
+  selected_only = false
+} = {}) => {
   let property_areas = await db('properties')
   property_areas = property_areas
     .filter((p) => p.num_parcels && p.sqmi)
     .filter((p) => p.classes === 'place county')
     .filter((p) => !base_path || p.path.startsWith(base_path))
+    .filter((p) => (selected_only ? p.selected : true))
 
   for (const area of property_areas) {
     area.avg_sqmi = area.sqmi / area.num_parcels
@@ -87,7 +92,8 @@ const main = async () => {
   try {
     await importer({
       max: argv.max,
-      base_path: argv.base_path
+      base_path: argv.base_path,
+      selected_only: argv.selected_only
     })
   } catch (err) {
     error = err

@@ -22574,7 +22574,8 @@ CREATE TABLE parcels_production.properties (
     sqmi numeric(20,8),
     num_parcels integer,
     num_owners integer,
-    import_cursor integer
+    import_cursor integer,
+    selected boolean DEFAULT false
 );
 
 
