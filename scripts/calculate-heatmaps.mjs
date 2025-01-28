@@ -28,8 +28,26 @@ const calculate_hardiness_heatmaps = async () => {
   }
 }
 
+const calculate_parcels_count = async () => {
+  try {
+    await db.raw(`
+      INSERT INTO parcels_production.heatmaps (h3_res4_id, parcels_count)
+      SELECT
+        h3_lat_lng_to_cell(ST_MakePoint(p.lon, p.lat), 4) AS h3_res4_id,
+        COUNT(*) AS parcels_count
+      FROM parcels_production.parcels p
+      GROUP BY h3_lat_lng_to_cell(st_makepoint(p.lon, p.lat), 4)
+      ON CONFLICT (h3_res4_id) DO UPDATE SET parcels_count = EXCLUDED.parcels_count;
+    `)
+    log('Saved parcels count heatmap')
+  } catch (error) {
+    log(`Error calculating parcels count heatmap: ${error}`)
+  }
+}
+
 const calculate_heatmaps = async () => {
   await calculate_hardiness_heatmaps()
+  await calculate_parcels_count()
 }
 
 export default calculate_heatmaps
