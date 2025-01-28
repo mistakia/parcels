@@ -17,6 +17,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 DROP PUBLICATION IF EXISTS parcels_production_publication;
+ALTER TABLE IF EXISTS ONLY parcels_production.parcels_seismic_hazards_model DROP CONSTRAINT IF EXISTS parcels_seismic_hazards_model_ll_uuid_fkey;
 DROP TRIGGER IF EXISTS update_parcels_zoning_description ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS update_parcels_zoning_change_date ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS update_parcels_zoning ON parcels_production.parcels;
@@ -1143,12 +1144,15 @@ DROP INDEX IF EXISTS parcels_production.idx_650112_lat;
 DROP INDEX IF EXISTS parcels_production.idx_650109_provider_id;
 DROP INDEX IF EXISTS parcels_production.idx_650104_abbrev;
 DROP INDEX IF EXISTS parcels_production.election_results_geometry_idx;
+ALTER TABLE IF EXISTS ONLY parcels_production.properties DROP CONSTRAINT IF EXISTS properties_pkey;
+ALTER TABLE IF EXISTS ONLY parcels_production.parcels_seismic_hazards_model DROP CONSTRAINT IF EXISTS parcels_seismic_hazards_model_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.parcels_election_results DROP CONSTRAINT IF EXISTS parcels_election_results_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.importers DROP CONSTRAINT IF EXISTS importers_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.heatmaps DROP CONSTRAINT IF EXISTS heatmaps_h3_res4_id_h3_res4_id1_key;
 ALTER TABLE IF EXISTS ONLY parcels_production.election_results DROP CONSTRAINT IF EXISTS election_results_pkey;
 ALTER TABLE IF EXISTS ONLY parcels_production.database_table_views DROP CONSTRAINT IF EXISTS database_table_views_view_name_table_name_user_public_key_key;
 ALTER TABLE IF EXISTS ONLY parcels_production.database_table_views DROP CONSTRAINT IF EXISTS database_table_views_pkey;
+ALTER TABLE IF EXISTS ONLY parcels_production.coverage DROP CONSTRAINT IF EXISTS coverage_pkey;
 ALTER TABLE IF EXISTS parcels_production.parcels_geometry_extra ALTER COLUMN ogc_fid DROP DEFAULT;
 DROP TABLE IF EXISTS parcels_production.usgs_seismic_hazards_model;
 DROP TABLE IF EXISTS parcels_production.tiles;
@@ -1157,6 +1161,7 @@ DROP TABLE IF EXISTS parcels_production.properties;
 DROP TABLE IF EXISTS parcels_production.plant_hardiness_zones;
 DROP TABLE IF EXISTS parcels_production.parcels_weather;
 DROP TABLE IF EXISTS parcels_production.parcels_viewshed;
+DROP TABLE IF EXISTS parcels_production.parcels_seismic_hazards_model;
 DROP TABLE IF EXISTS parcels_production.parcels_road;
 DROP TABLE IF EXISTS parcels_production.parcels_rank;
 DROP TABLE IF EXISTS parcels_production.parcels_nature;
@@ -20080,7 +20085,8 @@ CREATE TABLE parcels_production.election_results (
 
 CREATE TABLE parcels_production.heatmaps (
     h3_res4_id public.h3index,
-    median_hardiness_temp_rank double precision
+    median_hardiness_temp_rank double precision,
+    parcels_count integer
 );
 
 
@@ -22268,6 +22274,19 @@ CREATE TABLE parcels_production.parcels_road (
 
 
 --
+-- Name: parcels_seismic_hazards_model; Type: TABLE; Schema: parcels_production; Owner: -
+--
+
+CREATE TABLE parcels_production.parcels_seismic_hazards_model (
+    ll_uuid character varying(36) NOT NULL,
+    ll_updated_at timestamp with time zone,
+    year smallint NOT NULL,
+    low_cont smallint,
+    high_cont smallint
+);
+
+
+--
 -- Name: parcels_viewshed; Type: TABLE; Schema: parcels_production; Owner: -
 --
 
@@ -22551,7 +22570,7 @@ CREATE TABLE parcels_production.properties (
     postal character varying(10),
     classes character varying(30),
     headline character varying(50),
-    path character varying(100),
+    path character varying(100) NOT NULL,
     sqmi numeric(20,8),
     num_parcels integer,
     num_owners integer,
@@ -22615,6 +22634,14 @@ ALTER TABLE ONLY parcels_production.parcels_geometry_extra ALTER COLUMN ogc_fid 
 
 
 --
+-- Name: coverage coverage_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: -
+--
+
+ALTER TABLE ONLY parcels_production.coverage
+    ADD CONSTRAINT coverage_pkey PRIMARY KEY (column_name, table_name);
+
+
+--
 -- Name: database_table_views database_table_views_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: -
 --
 
@@ -22660,6 +22687,22 @@ ALTER TABLE ONLY parcels_production.importers
 
 ALTER TABLE ONLY parcels_production.parcels_election_results
     ADD CONSTRAINT parcels_election_results_pkey PRIMARY KEY (ll_uuid, election_year);
+
+
+--
+-- Name: parcels_seismic_hazards_model parcels_seismic_hazards_model_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: -
+--
+
+ALTER TABLE ONLY parcels_production.parcels_seismic_hazards_model
+    ADD CONSTRAINT parcels_seismic_hazards_model_pkey PRIMARY KEY (ll_uuid, year);
+
+
+--
+-- Name: properties properties_pkey; Type: CONSTRAINT; Schema: parcels_production; Owner: -
+--
+
+ALTER TABLE ONLY parcels_production.properties
+    ADD CONSTRAINT properties_pkey PRIMARY KEY (path);
 
 
 --
@@ -30542,6 +30585,14 @@ CREATE TRIGGER update_parcels_zoning_change_date AFTER UPDATE ON parcels_product
 --
 
 CREATE TRIGGER update_parcels_zoning_description AFTER UPDATE ON parcels_production.parcels FOR EACH ROW EXECUTE FUNCTION public.update_parcels_zoning_description_fn();
+
+
+--
+-- Name: parcels_seismic_hazards_model parcels_seismic_hazards_model_ll_uuid_fkey; Type: FK CONSTRAINT; Schema: parcels_production; Owner: -
+--
+
+ALTER TABLE ONLY parcels_production.parcels_seismic_hazards_model
+    ADD CONSTRAINT parcels_seismic_hazards_model_ll_uuid_fkey FOREIGN KEY (ll_uuid) REFERENCES parcels_production.parcels(ll_uuid);
 
 
 --
