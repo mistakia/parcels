@@ -64,6 +64,8 @@ api.use((req, res, next) => {
 
 const resourcesPath = path.join(__dirname, '..', 'resources')
 api.use('/resources', serveStatic(resourcesPath))
+const dataPath = path.join(__dirname, '..', 'data')
+api.use('/data', serveStatic(dataPath))
 api.use('/api/parcels', routes.parcels)
 api.use('/api/views', routes.views)
 api.use('/api/heatmaps', routes.heatmap)

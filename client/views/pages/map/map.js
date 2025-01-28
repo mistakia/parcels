@@ -5,6 +5,7 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import ParcelsMap from '@components/parcels-map'
 import ParcelsHeatmapLayer from '@components/parcels-heatmap-layer'
 import HeatmapLayer from '@components/heatmap-layer'
+import CountyBoundaries from '@components/county-boundaries'
 
 export default function MapPage({
   load_parcels_heatmap,
@@ -18,6 +19,7 @@ export default function MapPage({
     <div style={{ height: '100vh', width: '100%' }}>
       <MapContainer style={{ height: '100%', width: '100%' }}>
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+        <CountyBoundaries />
         <ParcelsHeatmapLayer />
         <HeatmapLayer />
         <ParcelsMap />
