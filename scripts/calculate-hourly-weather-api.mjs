@@ -3,11 +3,18 @@ import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import suncalc from 'suncalc'
 import fetch from 'node-fetch'
+import { find } from 'geo-tz'
 import qs from 'qs'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc.js'
+import timezone from 'dayjs/plugin/timezone.js'
 import { Worker, isMainThread, parentPort, workerData } from 'worker_threads'
 
 import db from '#db'
 import { isMain, get_parcels_query } from '#utils'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const argv = yargs(hideBin(process.argv))
   .option('parcels', {
@@ -132,11 +139,16 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
     return null
   }
 
+  // get timezone from coordinates
+  const tz = find(latitude, longitude)[0]
+
   // console.time('calculate_hourly_weather')
 
   const sun_times_cache = {
     key: null,
-    value: null
+    value: null,
+    dawn: null,
+    dusk: null
   }
 
   // used to prevent calculating cloud cover for the same day multiple times
@@ -152,19 +164,30 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
       const cloudcover = cloudcover_weather_hours[index].cloudcover
       const wind_speed = wind_weather_hours[index].windspeed_10m
 
-      // convert iso8601 GMT+0 time to local time based on longitude, latitude
-      const time = new Date(weather_hour.time)
-      const year = time.getFullYear()
-      const hour = time.getHours()
+      // Parse the iso8601 time in the location's timezone
+      const local_time = dayjs(weather_hour.time, tz)
+      const hour = local_time.hour()
+      const year = local_time.year()
+      const local_time_date_string = local_time.format('YYYY-MM-DD')
 
       // hardcoded fix for timezone adjustment resulting in a few hours of 2014 data
       if (year === 2014) {
         return acc
       }
 
-      const local_time_date_string = time.toISOString().slice(0, 10)
       if (sun_times_cache.key !== local_time_date_string) {
-        sun_times_cache.value = suncalc.getTimes(time, latitude, longitude)
+        // Calculate sun times using the local date at noon
+        const noon_time = local_time.hour(12).minute(0).second(0)
+        const raw_sun_times = suncalc.getTimes(
+          noon_time.toDate(), // convert to date object
+          latitude, 
+          longitude
+        )
+        
+        // Cache both raw times and dayjs converted times
+        sun_times_cache.value = raw_sun_times
+        sun_times_cache.dawn = dayjs(raw_sun_times.dawn).tz(tz)
+        sun_times_cache.dusk = dayjs(raw_sun_times.dusk).tz(tz)
         sun_times_cache.key = local_time_date_string
       }
 
@@ -222,10 +245,7 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
       }
 
       // daytime hour metrics
-      if (
-        time >= sun_times_cache.value.dawn &&
-        time <= sun_times_cache.value.dusk
-      ) {
+      if (local_time.isAfter(sun_times_cache.dawn) && local_time.isBefore(sun_times_cache.dusk)) {
         acc[year].daytime_hours += 1
 
         // daytime temp metrics
@@ -300,8 +320,8 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
           // stop checking for indoor day if it snowed today
           if (!snowed_today) {
             // get daytime hours
-            const dawn_hour = sun_times_cache.value.dawn.getHours()
-            const dusk_hour = sun_times_cache.value.dusk.getHours()
+            const dawn_hour = sun_times_cache.dawn.hour()
+            const dusk_hour = sun_times_cache.dusk.hour()
             const weather_hours_for_daytime_hours = weather_hours.slice(
               index - (hour - dawn_hour),
               index + (dusk_hour - hour)
@@ -411,8 +431,8 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
               ] === undefined
             ) {
               // get all cloud cover hours for the day
-              const dawn_hour = sun_times_cache.value.dawn.getHours()
-              const dusk_hour = sun_times_cache.value.dusk.getHours()
+              const dawn_hour = sun_times_cache.dawn.hour()
+              const dusk_hour = sun_times_cache.dusk.hour()
               const cloudcover_weather_hours_for_day =
                 cloudcover_weather_hours.slice(
                   index - (hour - dawn_hour),
@@ -459,8 +479,8 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
               ] === undefined
             ) {
               // get all cloud cover hours for the day
-              const dawn_hour = sun_times_cache.value.dawn.getHours()
-              const dusk_hour = sun_times_cache.value.dusk.getHours()
+              const dawn_hour = sun_times_cache.dawn.hour()
+              const dusk_hour = sun_times_cache.dusk.hour()
               const cloudcover_weather_hours_for_day =
                 cloudcover_weather_hours.slice(
                   index - (hour - dawn_hour),
