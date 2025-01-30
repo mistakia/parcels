@@ -665,7 +665,7 @@ const calculate_hourly_weather_for_parcels_worker = async ({
         year
       })
 
-      if (!year_data || !year_data.length) {
+      if (!year_data) {
         continue
       }
 
