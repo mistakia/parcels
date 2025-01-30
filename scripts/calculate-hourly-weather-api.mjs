@@ -180,10 +180,10 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
         const noon_time = local_time.hour(12).minute(0).second(0)
         const raw_sun_times = suncalc.getTimes(
           noon_time.toDate(), // convert to date object
-          latitude, 
+          latitude,
           longitude
         )
-        
+
         // Cache both raw times and dayjs converted times
         sun_times_cache.value = raw_sun_times
         sun_times_cache.dawn = dayjs(raw_sun_times.dawn).tz(tz)
@@ -245,7 +245,10 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
       }
 
       // daytime hour metrics
-      if (local_time.isAfter(sun_times_cache.dawn) && local_time.isBefore(sun_times_cache.dusk)) {
+      if (
+        local_time.isAfter(sun_times_cache.dawn) &&
+        local_time.isBefore(sun_times_cache.dusk)
+      ) {
         acc[year].daytime_hours += 1
 
         // daytime temp metrics
@@ -581,82 +584,94 @@ const save_hourly_weather = async (inserts) => {
 }
 
 const calculate_filtered_parcels = async () => {
-  const parcels = await get_filtered_parcels()
   const num_threads = 4
-  const chunk_size = Math.ceil(parcels.length / num_threads)
+  const batch_size = 100
   const workers = []
+  let has_more_parcels = true
 
-  log(`Processing ${parcels.length} parcels across ${num_threads} threads`)
+  log(
+    `Processing parcels in batches of ${batch_size} across ${num_threads} threads`
+  )
 
-  const worker_promises = []
+  // Create workers once
   for (let i = 0; i < num_threads; i++) {
-    const start = i * chunk_size
-    const end = start + chunk_size
-    const chunk = parcels.slice(start, end)
-
-    log(`Starting worker ${i + 1} with ${chunk.length} parcels`)
-
     const worker = new Worker(new URL(import.meta.url), {
-      workerData: {
-        parcels: chunk,
-        worker_id: i + 1
-      }
+      workerData: { worker_id: i + 1 }
     })
     workers.push(worker)
-
-    worker_promises.push(
-      new Promise((resolve, reject) => {
-        worker.on('message', (message) => {
-          if (message.type === 'progress') {
-            log(`Worker ${message.worker_id}: ${message.message}`)
-          } else if (message.type === 'result') {
-            resolve(message.data)
-          }
-        })
-        worker.on('error', reject)
-        worker.on('exit', (code) => {
-          if (code !== 0) {
-            reject(new Error(`Worker stopped with exit code ${code}`))
-          }
-        })
-      })
-    )
   }
 
   try {
-    const results = await Promise.all(worker_promises)
-    const inserts = results.flat()
+    while (has_more_parcels) {
+      // Get next batch of parcels
+      const parcels = await get_filtered_parcels()
 
-    // Terminate all workers
-    for (const worker of workers) {
-      worker.terminate()
-    }
+      if (!parcels.length) {
+        break
+      }
 
-    if (inserts.length && !argv.dry) {
-      await save_hourly_weather(inserts)
-    } else if (inserts.length && argv.dry) {
-      console.log('Dry run - would have inserted:', inserts)
-    }
+      if (parcels.length !== 100) {
+        has_more_parcels = false
+      }
 
-    if (parcels.length === 100) {
-      log('More parcels to process, continuing...')
-      await calculate_filtered_parcels()
-    } else {
-      log('Finished processing all parcels')
+      // Split parcels among workers
+      const chunk_size = Math.ceil(parcels.length / num_threads)
+      const worker_promises = workers.map((worker, i) => {
+        const start = i * chunk_size
+        const end = start + chunk_size
+        const chunk = parcels.slice(start, end)
+
+        return new Promise((resolve, reject) => {
+          const message_handler = (message) => {
+            if (message.type === 'progress') {
+              log(`Worker ${message.worker_id}: ${message.message}`)
+            } else if (message.type === 'result') {
+              worker.removeListener('message', message_handler)
+              resolve(message.data)
+            }
+          }
+
+          worker.on('message', message_handler)
+          worker.on('error', (error) => {
+            worker.removeListener('message', message_handler)
+            reject(error)
+          })
+
+          // Send chunk to worker
+          worker.postMessage({ type: 'process_parcels', parcels: chunk })
+        })
+      })
+
+      // Wait for all workers to complete current batch
+      const results = await Promise.all(worker_promises)
+      const inserts = results.flat()
+
+      if (inserts.length && !argv.dry) {
+        await save_hourly_weather(inserts)
+      } else if (inserts.length && argv.dry) {
+        console.log('Dry run - would have inserted:', inserts)
+      }
+
+      log(`Completed batch of ${parcels.length} parcels`)
     }
   } catch (error) {
-    // Ensure workers are terminated even if an error occurs
+    log('Error processing parcels:', error)
+    throw error
+  } finally {
+    // Clean up workers
     for (const worker of workers) {
       worker.terminate()
     }
-    throw error
   }
+
+  log('Finished processing all parcels')
 }
 
-const calculate_hourly_weather_for_parcels_worker = async ({
-  parcels,
-  worker_id
-}) => {
+const calculate_hourly_weather_for_parcels_worker = async (message) => {
+  if (message.type !== 'process_parcels') return
+
+  const { parcels } = message
+  const { worker_id } = workerData
   const timestamp = Math.round(Date.now() / 1000)
   const inserts = []
 
@@ -685,9 +700,7 @@ const calculate_hourly_weather_for_parcels_worker = async ({
         year
       })
 
-      if (!year_data) {
-        continue
-      }
+      if (!year_data) continue
 
       inserts.push({
         ll_uuid,
@@ -758,7 +771,7 @@ const main = async () => {
     process.exit()
   } else {
     // Worker process
-    await calculate_hourly_weather_for_parcels_worker(workerData)
+    parentPort.on('message', calculate_hourly_weather_for_parcels_worker)
   }
 }
 
