@@ -26,7 +26,7 @@ const calculate_coverage = async ({ force_update = false }) => {
     'parcels_rank',
     'parcels_road',
     'parcels_viewshed',
-    'parcels_weather'
+    'parcels_weather_summary'
   ]
 
   const query = `

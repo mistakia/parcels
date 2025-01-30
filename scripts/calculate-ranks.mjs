@@ -114,41 +114,30 @@ const calculate_ranks = async () => {
     }
   ]
 
-  const parcels_weather_columns = await db('information_schema.columns')
-    .select('column_name')
-    .where('table_name', 'parcels_weather')
-    .whereNotIn('column_name', ['ll_uuid', 'updated'])
-
-  const ascending_weather_types = [
-    'hrs_below_0_c_apparent_temperature',
-    'hrs_below_5_c_apparent_temperature',
-    'hrs_below_10_c_apparent_temperature',
-    'daytime_hrs_below_0_c_apparent_temperature',
-    'daytime_hrs_below_5_c_apparent_temperature',
-    'daytime_hrs_below_10_c_apparent_temperature',
-    'indoor_days',
-    'daytime_hours_above_10_pct_cloud_cover',
-    'daytime_hours_above_20_pct_cloud_cover',
-    'daytime_hours_above_30_pct_cloud_cover',
-    'daytime_hours_above_40_pct_cloud_cover',
-    'daytime_hours_above_50_pct_cloud_cover',
-    'daytime_hours_above_60_pct_cloud_cover',
-    'daytime_hours_above_70_pct_cloud_cover',
-    'daytime_hours_above_80_pct_cloud_cover',
-    'daytime_hours_above_90_pct_cloud_cover',
-    'daytime_hours_above_100_pct_cloud_cover'
+  // Weather summary fields to rank
+  const weather_summary_fields = [
+    { field: 'avg_fair_days', order_by: 'DESC' },
+    { field: 'avg_perfect_days', order_by: 'DESC' },
+    { field: 'avg_active_days', order_by: 'DESC' },
+    { field: 'avg_dinner_outside_days', order_by: 'DESC' },
+    { field: 'avg_indoor_days', order_by: 'ASC' },
+    { field: 'avg_hrs_below_0c', order_by: 'ASC' },
+    { field: 'avg_hrs_below_5c', order_by: 'ASC' },
+    { field: 'avg_hrs_below_10c', order_by: 'ASC' },
+    { field: 'avg_daytime_hrs_below_0c', order_by: 'ASC' },
+    { field: 'avg_daytime_hrs_below_5c', order_by: 'ASC' },
+    { field: 'avg_daytime_hrs_below_10c', order_by: 'ASC' },
+    { field: 'avg_cloudy_hours_10pct', order_by: 'ASC' },
+    { field: 'avg_cloudy_hours_50pct', order_by: 'ASC' },
+    { field: 'avg_cloudy_hours_90pct', order_by: 'ASC' }
   ]
-  for (const weather_column of parcels_weather_columns) {
-    const { column_name } = weather_column
-    if (column_name.includes('_dates')) {
-      continue
-    }
-    const weather_column_type = column_name.replace(/_in_[0-9]{4}/gi, '')
-    const is_asc = ascending_weather_types.includes(weather_column_type)
+
+  // Add weather summary fields to items array
+  for (const weather_field of weather_summary_fields) {
     items.push({
-      field: column_name,
-      table_name: 'parcels_weather',
-      order_by: is_asc ? 'ASC' : 'DESC'
+      field: weather_field.field,
+      table_name: 'parcels_weather_summary',
+      order_by: weather_field.order_by
     })
   }
 

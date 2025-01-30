@@ -70,7 +70,8 @@ const generate_column_updated_triggers = async () => {
     'parcels_nature',
     'parcels_rank',
     'parcels_road',
-    'parcels_viewshed'
+    'parcels_viewshed',
+    'parcels_weather_summary'
   ]
 
   const columns = await db('information_schema.columns')

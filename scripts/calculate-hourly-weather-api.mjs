@@ -46,35 +46,32 @@ const get_hourly_weather = async ({
 }) => {
   const hourly = [
     'temperature_2m',
-    'relativehumidity_2m',
-    'dewpoint_2m',
+    // 'relativehumidity_2m',
+    // 'dewpoint_2m',
     'apparent_temperature',
-    'surface_pressure',
-    'precipitation',
-    'rain',
+    // 'surface_pressure',
+    // 'precipitation',
+    // 'rain',
     'snowfall',
     'cloudcover',
-    'cloudcover_low',
-    'cloudcover_mid',
-    'cloudcover_high',
-    'shortwave_radiation',
-    'direct_radiation',
-    'direct_normal_irradiance',
-    'diffuse_radiation',
-    'windspeed_10m',
-    'winddirection_10m',
-    'windgusts_10m',
-    'et0_fao_evapotranspiration',
-    'weathercode',
-    'vapor_pressure_deficit',
-    'soil_temperature_0_to_7cm',
-    'soil_temperature_7_to_28cm',
-    'soil_temperature_28_to_100cm',
-    'soil_temperature_100_to_255cm',
-    'soil_moisture_0_to_7cm',
-    'soil_moisture_7_to_28cm',
-    'soil_moisture_28_to_100cm',
-    'soil_moisture_100_to_255cm'
+    // 'shortwave_radiation',
+    // 'direct_radiation',
+    // 'direct_normal_irradiance',
+    // 'diffuse_radiation',
+    'windspeed_10m'
+    // 'winddirection_10m',
+    // 'windgusts_10m',
+    // 'et0_fao_evapotranspiration',
+    // 'weathercode',
+    // 'vapor_pressure_deficit',
+    // 'soil_temperature_0_to_7cm',
+    // 'soil_temperature_7_to_28cm',
+    // 'soil_temperature_28_to_100cm',
+    // 'soil_temperature_100_to_255cm',
+    // 'soil_moisture_0_to_7cm',
+    // 'soil_moisture_7_to_28cm',
+    // 'soil_moisture_28_to_100cm',
+    // 'soil_moisture_100_to_255cm'
   ]
 
   const query_params = {
@@ -517,22 +514,19 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
     {}
   )
 
-  const return_data = Object.keys(weather_data_by_year).reduce((acc, year) => {
-    const year_data = weather_data_by_year[year]
-    for (const key in year_data) {
-      if (key === 'dates') {
-        for (const date_key in year_data[key]) {
-          acc[`${date_key}_${key}_in_${year}`] = Object.keys(
-            year_data[key][date_key]
-          )
-        }
-        continue
-      }
-
-      acc[`${key}_in_${year}`] = year_data[key]
-    }
-    return acc
-  }, {})
+  const year_data = weather_data_by_year[year]
+  const return_data = {
+    year,
+    ...year_data,
+    // Transform the dates objects into arrays
+    fair_days_dates: Object.keys(year_data.dates.fair_days),
+    perfect_days_dates: Object.keys(year_data.dates.perfect_days),
+    active_days_dates: Object.keys(year_data.dates.active_days),
+    dinner_outside_days_dates: Object.keys(year_data.dates.dinner_outside_days),
+    indoor_days_dates: Object.keys(year_data.dates.indoor_days)
+  }
+  // Remove the nested dates object since we flattened it
+  delete return_data.dates
 
   console.timeEnd('calculate_hourly_weather')
 
@@ -559,7 +553,10 @@ const get_filtered_parcels = async () => {
 }
 
 const save_hourly_weather = async (inserts) => {
-  await db('parcels_weather').insert(inserts).onConflict('ll_uuid').merge()
+  await db('parcels_weather')
+    .insert(inserts)
+    .onConflict(['ll_uuid', 'year'])
+    .merge()
   log(`inserted ${inserts.length} parcel hourly weather metrics`)
 }
 
@@ -576,8 +573,7 @@ const calculate_filtered_parcels = async () => {
 
     const worker = new Worker(new URL(import.meta.url), {
       workerData: {
-        parcels: chunk,
-        year: argv.year
+        parcels: chunk
       }
     })
 
@@ -608,7 +604,7 @@ const calculate_filtered_parcels = async () => {
   }
 }
 
-const calculate_hourly_weather_for_parcels = async ({ parcels, year }) => {
+const calculate_hourly_weather_for_parcels = async ({ parcels }) => {
   const timestamp = Math.round(Date.now() / 1000)
   const inserts = []
   log(`parcels missing hourly weather: ${parcels.length}`)
@@ -616,21 +612,25 @@ const calculate_hourly_weather_for_parcels = async ({ parcels, year }) => {
     const { ll_uuid } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
-    const data = await calculate_hourly_weather({
-      longitude,
-      latitude,
-      year
-    })
+    const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+    for (const year of years) {
+      const year_data = await calculate_hourly_weather({
+        longitude,
+        latitude,
+        year
+      })
 
-    if (!data) {
-      continue
+      if (!year_data || !year_data.length) {
+        continue
+      }
+
+      inserts.push({
+        ll_uuid,
+        year,
+        updated: timestamp,
+        ...year_data
+      })
     }
-
-    inserts.push({
-      ll_uuid,
-      updated: timestamp,
-      ...data
-    })
   }
 
   return inserts
