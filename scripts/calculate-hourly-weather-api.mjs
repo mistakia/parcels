@@ -564,6 +564,7 @@ const calculate_filtered_parcels = async () => {
   const parcels = await get_filtered_parcels()
   const num_threads = 4
   const chunk_size = Math.ceil(parcels.length / num_threads)
+  const workers = []
 
   log(`Processing ${parcels.length} parcels across ${num_threads} threads`)
 
@@ -581,14 +582,15 @@ const calculate_filtered_parcels = async () => {
         worker_id: i + 1
       }
     })
+    workers.push(worker)
 
     worker_promises.push(
       new Promise((resolve, reject) => {
         worker.on('message', (message) => {
           if (message.type === 'progress') {
             log(`Worker ${message.worker_id}: ${message.message}`)
-          } else {
-            resolve(message)
+          } else if (message.type === 'result') {
+            resolve(message.data)
           }
         })
         worker.on('error', reject)
@@ -601,24 +603,40 @@ const calculate_filtered_parcels = async () => {
     )
   }
 
-  const results = await Promise.all(worker_promises)
-  const inserts = results.flat()
+  try {
+    const results = await Promise.all(worker_promises)
+    const inserts = results.flat()
 
-  if (inserts.length && !argv.dry) {
-    await save_hourly_weather(inserts)
-  } else if (inserts.length && argv.dry) {
-    console.log('Dry run - would have inserted:', inserts)
-  }
+    // Terminate all workers
+    for (const worker of workers) {
+      worker.terminate()
+    }
 
-  if (parcels.length === 100) {
-    log('More parcels to process, continuing...')
-    await calculate_filtered_parcels()
-  } else {
-    log('Finished processing all parcels')
+    if (inserts.length && !argv.dry) {
+      await save_hourly_weather(inserts)
+    } else if (inserts.length && argv.dry) {
+      console.log('Dry run - would have inserted:', inserts)
+    }
+
+    if (parcels.length === 100) {
+      log('More parcels to process, continuing...')
+      await calculate_filtered_parcels()
+    } else {
+      log('Finished processing all parcels')
+    }
+  } catch (error) {
+    // Ensure workers are terminated even if an error occurs
+    for (const worker of workers) {
+      worker.terminate()
+    }
+    throw error
   }
 }
 
-const calculate_hourly_weather_for_parcels = async ({ parcels, worker_id }) => {
+const calculate_hourly_weather_for_parcels_worker = async ({
+  parcels,
+  worker_id
+}) => {
   const timestamp = Math.round(Date.now() / 1000)
   const inserts = []
 
@@ -666,7 +684,10 @@ const calculate_hourly_weather_for_parcels = async ({ parcels, worker_id }) => {
     message: `Completed processing ${parcels.length} parcels`
   })
 
-  return inserts
+  parentPort.postMessage({
+    type: 'result',
+    data: inserts
+  })
 }
 
 const get_parcel_by_ll_uuid = async (ll_uuid) => {
@@ -717,8 +738,7 @@ const main = async () => {
     process.exit()
   } else {
     // Worker process
-    const results = await calculate_hourly_weather_for_parcels(workerData)
-    parentPort.postMessage(results)
+    await calculate_hourly_weather_for_parcels_worker(workerData)
   }
 }
 
