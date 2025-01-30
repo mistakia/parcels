@@ -132,7 +132,7 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
     return null
   }
 
-  console.time('calculate_hourly_weather')
+  // console.time('calculate_hourly_weather')
 
   const sun_times_cache = {
     key: null,
@@ -528,7 +528,7 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
   // Remove the nested dates object since we flattened it
   delete return_data.dates
 
-  console.timeEnd('calculate_hourly_weather')
+  // console.timeEnd('calculate_hourly_weather')
 
   return return_data
 }
@@ -565,21 +565,32 @@ const calculate_filtered_parcels = async () => {
   const num_threads = 4
   const chunk_size = Math.ceil(parcels.length / num_threads)
 
+  log(`Processing ${parcels.length} parcels across ${num_threads} threads`)
+
   const worker_promises = []
   for (let i = 0; i < num_threads; i++) {
     const start = i * chunk_size
     const end = start + chunk_size
     const chunk = parcels.slice(start, end)
 
+    log(`Starting worker ${i + 1} with ${chunk.length} parcels`)
+
     const worker = new Worker(new URL(import.meta.url), {
       workerData: {
-        parcels: chunk
+        parcels: chunk,
+        worker_id: i + 1
       }
     })
 
     worker_promises.push(
       new Promise((resolve, reject) => {
-        worker.on('message', resolve)
+        worker.on('message', (message) => {
+          if (message.type === 'progress') {
+            log(`Worker ${message.worker_id}: ${message.message}`)
+          } else {
+            resolve(message)
+          }
+        })
         worker.on('error', reject)
         worker.on('exit', (code) => {
           if (code !== 0) {
@@ -600,19 +611,35 @@ const calculate_filtered_parcels = async () => {
   }
 
   if (parcels.length === 100) {
+    log('More parcels to process, continuing...')
     await calculate_filtered_parcels()
+  } else {
+    log('Finished processing all parcels')
   }
 }
 
-const calculate_hourly_weather_for_parcels = async ({ parcels }) => {
+const calculate_hourly_weather_for_parcels = async ({ parcels, worker_id }) => {
   const timestamp = Math.round(Date.now() / 1000)
   const inserts = []
-  log(`parcels missing hourly weather: ${parcels.length}`)
-  for (const parcel of parcels) {
+
+  parentPort.postMessage({
+    type: 'progress',
+    worker_id,
+    message: `Processing ${parcels.length} parcels`
+  })
+
+  for (const [index, parcel] of parcels.entries()) {
     const { ll_uuid } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
     const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+
+    parentPort.postMessage({
+      type: 'progress',
+      worker_id,
+      message: `Processing parcel ${index + 1}/${parcels.length} (${ll_uuid})`
+    })
+
     for (const year of years) {
       const year_data = await calculate_hourly_weather({
         longitude,
@@ -632,6 +659,12 @@ const calculate_hourly_weather_for_parcels = async ({ parcels }) => {
       })
     }
   }
+
+  parentPort.postMessage({
+    type: 'progress',
+    worker_id,
+    message: `Completed processing ${parcels.length} parcels`
+  })
 
   return inserts
 }
