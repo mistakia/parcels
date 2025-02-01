@@ -604,7 +604,7 @@ const calculate_parcels_for_batch = async (parcels) => {
     }
 
     // Save in smaller batches to avoid memory issues
-    if (inserts.length >= 20 && !argv.dry) {
+    if (inserts.length >= 100 && !argv.dry) {
       await save_hourly_weather(inserts)
       inserts = []
     }
