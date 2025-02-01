@@ -23,6 +23,69 @@ DROP TRIGGER IF EXISTS update_parcels_zoning_change_date ON parcels_production.p
 DROP TRIGGER IF EXISTS update_parcels_zoning ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS update_parcels_yearbuilt ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS update_parcels_width ON parcels_production.parcels;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_years ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_updated ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_min_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_median_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_max_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_ll_uuid ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS update_parcels_weather_summary_avg_active_days ON parcels_production.parcels_weather_summary;
 DROP TRIGGER IF EXISTS update_parcels_viewshed_viewshed_w ON parcels_production.parcels_viewshed;
 DROP TRIGGER IF EXISTS update_parcels_viewshed_viewshed_sw ON parcels_production.parcels_viewshed;
 DROP TRIGGER IF EXISTS update_parcels_viewshed_viewshed_se ON parcels_production.parcels_viewshed;
@@ -195,6 +258,20 @@ DROP TRIGGER IF EXISTS update_parcels_rank_daytime_hours_above_10_pct_cloud_cove
 DROP TRIGGER IF EXISTS update_parcels_rank_closest_spring_distance_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS update_parcels_rank_closest_provider_distance_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS update_parcels_rank_closest_military_distance_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_perfect_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_indoor_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_hrs_below_5c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_hrs_below_10c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_hrs_below_0c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_fair_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_dinner_outside_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_daytime_hrs_below_5c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_daytime_hrs_below_10c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_daytime_hrs_below_0c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_cloudy_hours_90pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_cloudy_hours_50pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_cloudy_hours_10pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS update_parcels_rank_avg_active_days_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS update_parcels_rank_active_days_in_2022_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS update_parcels_rank_active_days_in_2021_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS update_parcels_rank_active_days_in_2020_rank ON parcels_production.parcels_rank;
@@ -424,6 +501,17 @@ DROP TRIGGER IF EXISTS update_parcels_density_pollution_5km ON parcels_productio
 DROP TRIGGER IF EXISTS update_parcels_density_pollution_25km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS update_parcels_density_pollution_1km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS update_parcels_density_pollution_10km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_updated ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_density_5km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_density_50km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_density_25km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_density_1km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_density_10km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_count_5km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_count_50km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_count_25km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_count_1km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS update_parcels_density_parcels_count_10km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS update_parcels_density_natural_updated ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS update_parcels_density_natural_density_5km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS update_parcels_density_natural_density_25km ON parcels_production.parcels_density;
@@ -572,6 +660,69 @@ DROP TRIGGER IF EXISTS insert_parcels_zoning_change_date ON parcels_production.p
 DROP TRIGGER IF EXISTS insert_parcels_zoning ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS insert_parcels_yearbuilt ON parcels_production.parcels;
 DROP TRIGGER IF EXISTS insert_parcels_width ON parcels_production.parcels;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_years ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_updated ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_min_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_median_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_max_active_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_ll_uuid ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_perfect_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_indoor_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_fair_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_dinner_outside_days ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_daytime_hrs_below_5c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_daytime_hrs_below_10c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_daytime_hrs_below_0c ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_daytime_hours ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_cloudy_hours_90pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_cloudy_hours_50pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_cloudy_hours_10pct ON parcels_production.parcels_weather_summary;
+DROP TRIGGER IF EXISTS insert_parcels_weather_summary_avg_active_days ON parcels_production.parcels_weather_summary;
 DROP TRIGGER IF EXISTS insert_parcels_viewshed_viewshed_w ON parcels_production.parcels_viewshed;
 DROP TRIGGER IF EXISTS insert_parcels_viewshed_viewshed_sw ON parcels_production.parcels_viewshed;
 DROP TRIGGER IF EXISTS insert_parcels_viewshed_viewshed_se ON parcels_production.parcels_viewshed;
@@ -744,6 +895,20 @@ DROP TRIGGER IF EXISTS insert_parcels_rank_daytime_hours_above_10_pct_cloud_cove
 DROP TRIGGER IF EXISTS insert_parcels_rank_closest_spring_distance_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS insert_parcels_rank_closest_provider_distance_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS insert_parcels_rank_closest_military_distance_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_perfect_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_indoor_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_hrs_below_5c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_hrs_below_10c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_hrs_below_0c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_fair_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_dinner_outside_days_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_daytime_hrs_below_5c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_daytime_hrs_below_10c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_daytime_hrs_below_0c_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_cloudy_hours_90pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_cloudy_hours_50pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_cloudy_hours_10pct_rank ON parcels_production.parcels_rank;
+DROP TRIGGER IF EXISTS insert_parcels_rank_avg_active_days_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS insert_parcels_rank_active_days_in_2022_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS insert_parcels_rank_active_days_in_2021_rank ON parcels_production.parcels_rank;
 DROP TRIGGER IF EXISTS insert_parcels_rank_active_days_in_2020_rank ON parcels_production.parcels_rank;
@@ -973,6 +1138,17 @@ DROP TRIGGER IF EXISTS insert_parcels_density_pollution_5km ON parcels_productio
 DROP TRIGGER IF EXISTS insert_parcels_density_pollution_25km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS insert_parcels_density_pollution_1km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS insert_parcels_density_pollution_10km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_updated ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_density_5km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_density_50km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_density_25km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_density_1km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_density_10km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_count_5km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_count_50km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_count_25km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_count_1km ON parcels_production.parcels_density;
+DROP TRIGGER IF EXISTS insert_parcels_density_parcels_count_10km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS insert_parcels_density_natural_updated ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS insert_parcels_density_natural_density_5km ON parcels_production.parcels_density;
 DROP TRIGGER IF EXISTS insert_parcels_density_natural_density_25km ON parcels_production.parcels_density;
@@ -1192,6 +1368,69 @@ DROP FUNCTION IF EXISTS public.update_parcels_zoning_description_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_zoning_change_date_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_yearbuilt_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_width_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_years_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_updated_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_fair_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_min_active_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_fair_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_median_active_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_fair_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_max_active_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_ll_uuid_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_fair_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_weather_summary_avg_active_days_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_viewshed_viewshed_w_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_viewshed_viewshed_sw_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_viewshed_viewshed_se_fn();
@@ -1364,6 +1603,20 @@ DROP FUNCTION IF EXISTS public.update_parcels_rank_daytime_hours_above_10_pct_cl
 DROP FUNCTION IF EXISTS public.update_parcels_rank_closest_spring_distance_rank_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_rank_closest_provider_distance_rank_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_rank_closest_military_distance_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_perfect_days_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_indoor_days_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_hrs_below_5c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_hrs_below_10c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_hrs_below_0c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_fair_days_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_dinner_outside_days_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_daytime_hrs_below_5c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_daytime_hrs_below_10c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_daytime_hrs_below_0c_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_cloudy_hours_90pct_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_cloudy_hours_50pct_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_cloudy_hours_10pct_rank_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_rank_avg_active_days_rank_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_rank_active_days_in_2022_rank_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_rank_active_days_in_2021_rank_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_rank_active_days_in_2020_rank_fn();
@@ -1593,6 +1846,17 @@ DROP FUNCTION IF EXISTS public.update_parcels_density_pollution_5km_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_pollution_25km_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_pollution_1km_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_pollution_10km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_updated_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_density_5km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_density_50km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_density_25km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_density_1km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_density_10km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_count_5km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_count_50km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_count_25km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_count_1km_fn();
+DROP FUNCTION IF EXISTS public.update_parcels_density_parcels_count_10km_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_natural_updated_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_natural_density_5km_fn();
 DROP FUNCTION IF EXISTS public.update_parcels_density_natural_density_25km_fn();
@@ -1742,6 +2006,69 @@ DROP FUNCTION IF EXISTS public.insert_parcels_zoning_description_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_zoning_change_date_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_yearbuilt_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_width_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_years_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_updated_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_fair_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_min_active_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_fair_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_median_active_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_fair_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_max_active_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_ll_uuid_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_perfect_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_indoor_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_fair_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_dinner_outside_days_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_daytime_hrs_below_5c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_daytime_hrs_below_10c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_daytime_hrs_below_0c_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_daytime_hours_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_cloudy_hours_90pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_cloudy_hours_50pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_cloudy_hours_10pct_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_weather_summary_avg_active_days_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_viewshed_viewshed_w_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_viewshed_viewshed_sw_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_viewshed_viewshed_se_fn();
@@ -1914,6 +2241,20 @@ DROP FUNCTION IF EXISTS public.insert_parcels_rank_daytime_hours_above_10_pct_cl
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_closest_spring_distance_rank_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_closest_provider_distance_rank_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_closest_military_distance_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_perfect_days_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_indoor_days_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_hrs_below_5c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_hrs_below_10c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_hrs_below_0c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_fair_days_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_dinner_outside_days_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_daytime_hrs_below_5c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_daytime_hrs_below_10c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_daytime_hrs_below_0c_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_cloudy_hours_90pct_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_cloudy_hours_50pct_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_cloudy_hours_10pct_rank_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_rank_avg_active_days_rank_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_active_days_in_2022_rank_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_active_days_in_2021_rank_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_rank_active_days_in_2020_rank_fn();
@@ -2143,6 +2484,17 @@ DROP FUNCTION IF EXISTS public.insert_parcels_density_pollution_5km_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_pollution_25km_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_pollution_1km_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_pollution_10km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_updated_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_density_5km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_density_50km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_density_25km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_density_1km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_density_10km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_count_5km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_count_50km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_count_25km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_count_1km_fn();
+DROP FUNCTION IF EXISTS public.insert_parcels_density_parcels_count_10km_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_natural_updated_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_natural_density_5km_fn();
 DROP FUNCTION IF EXISTS public.insert_parcels_density_natural_density_25km_fn();
@@ -4652,6 +5004,182 @@ CREATE FUNCTION public.insert_parcels_density_natural_updated_fn() RETURNS trigg
       UPDATE coverage
       SET column_updated = NOW()
       WHERE column_name = 'natural_updated';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_count_10km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_count_10km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_10km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_count_1km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_count_1km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_1km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_count_25km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_count_25km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_25km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_count_50km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_count_50km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_50km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_count_5km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_count_5km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_5km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_density_10km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_density_10km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_10km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_density_1km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_density_1km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_1km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_density_25km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_density_25km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_25km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_density_50km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_density_50km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_50km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_density_5km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_density_5km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_5km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_density_parcels_updated_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_density_parcels_updated_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_updated';
       RETURN NEW;
     END;
     $$;
@@ -8322,6 +8850,230 @@ CREATE FUNCTION public.insert_parcels_rank_active_days_in_2022_rank_fn() RETURNS
 
 
 --
+-- Name: insert_parcels_rank_avg_active_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_active_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_active_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_cloudy_hours_10pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_10pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_10pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_cloudy_hours_50pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_50pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_50pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_cloudy_hours_90pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_90pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_90pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_daytime_hrs_below_0c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_0c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_0c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_daytime_hrs_below_10c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_10c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_10c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_daytime_hrs_below_5c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_5c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_5c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_dinner_outside_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_dinner_outside_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_dinner_outside_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_fair_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_fair_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_fair_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_hrs_below_0c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_hrs_below_0c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_0c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_hrs_below_10c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_hrs_below_10c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_10c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_hrs_below_5c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_hrs_below_5c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_5c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_indoor_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_indoor_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_indoor_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_rank_avg_perfect_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_rank_avg_perfect_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_perfect_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
 -- Name: insert_parcels_rank_closest_military_distance_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -11074,6 +11826,1014 @@ CREATE FUNCTION public.insert_parcels_viewshed_viewshed_w_fn() RETURNS trigger
 
 
 --
+-- Name: insert_parcels_weather_summary_avg_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_avg_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_avg_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_ll_uuid_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_ll_uuid_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'll_uuid';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_max_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_max_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_median_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_median_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_min_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_min_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_updated_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_updated_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'updated';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: insert_parcels_weather_summary_years_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_parcels_weather_summary_years_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'years';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
 -- Name: insert_parcels_width_fn(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -13447,6 +15207,182 @@ CREATE FUNCTION public.update_parcels_density_natural_updated_fn() RETURNS trigg
       UPDATE coverage
       SET column_updated = NOW()
       WHERE column_name = 'natural_updated';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_count_10km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_count_10km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_10km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_count_1km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_count_1km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_1km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_count_25km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_count_25km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_25km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_count_50km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_count_50km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_50km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_count_5km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_count_5km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_count_5km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_density_10km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_density_10km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_10km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_density_1km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_density_1km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_1km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_density_25km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_density_25km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_25km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_density_50km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_density_50km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_50km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_density_5km_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_density_5km_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_density_5km';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_density_parcels_updated_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_density_parcels_updated_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'parcels_updated';
       RETURN NEW;
     END;
     $$;
@@ -17117,6 +19053,230 @@ CREATE FUNCTION public.update_parcels_rank_active_days_in_2022_rank_fn() RETURNS
 
 
 --
+-- Name: update_parcels_rank_avg_active_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_active_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_active_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_cloudy_hours_10pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_cloudy_hours_10pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_10pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_cloudy_hours_50pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_cloudy_hours_50pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_50pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_cloudy_hours_90pct_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_cloudy_hours_90pct_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_90pct_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_daytime_hrs_below_0c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_0c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_0c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_daytime_hrs_below_10c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_10c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_10c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_daytime_hrs_below_5c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_5c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_5c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_dinner_outside_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_dinner_outside_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_dinner_outside_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_fair_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_fair_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_fair_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_hrs_below_0c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_hrs_below_0c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_0c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_hrs_below_10c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_hrs_below_10c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_10c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_hrs_below_5c_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_hrs_below_5c_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_5c_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_indoor_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_indoor_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_indoor_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_rank_avg_perfect_days_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_rank_avg_perfect_days_rank_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_perfect_days_rank';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
 -- Name: update_parcels_rank_closest_military_distance_rank_fn(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -19869,6 +22029,1014 @@ CREATE FUNCTION public.update_parcels_viewshed_viewshed_w_fn() RETURNS trigger
 
 
 --
+-- Name: update_parcels_weather_summary_avg_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_avg_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_avg_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'avg_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_ll_uuid_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_ll_uuid_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'll_uuid';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_max_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_max_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'max_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_median_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_median_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'median_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_active_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_active_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_active_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_cloudy_hours_10pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_10pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_10pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_cloudy_hours_50pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_50pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_50pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_cloudy_hours_90pct_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_90pct_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_cloudy_hours_90pct';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_daytime_hours_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_daytime_hours_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hours';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_daytime_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_daytime_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_daytime_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_daytime_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_dinner_outside_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_dinner_outside_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_dinner_outside_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_fair_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_fair_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_fair_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_hrs_below_0c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_hrs_below_0c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_0c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_hrs_below_10c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_hrs_below_10c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_10c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_hrs_below_5c_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_hrs_below_5c_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_hrs_below_5c';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_indoor_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_indoor_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_indoor_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_min_perfect_days_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_min_perfect_days_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'min_perfect_days';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_updated_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_updated_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'updated';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
+-- Name: update_parcels_weather_summary_years_fn(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.update_parcels_weather_summary_years_fn() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      UPDATE coverage
+      SET column_updated = NOW()
+      WHERE column_name = 'years';
+      RETURN NEW;
+    END;
+    $$;
+
+
+--
 -- Name: update_parcels_width_fn(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -21920,7 +25088,18 @@ CREATE TABLE parcels_production.parcels_density (
     water_50km json,
     water_count_50km integer,
     water_density_50km numeric(8,7),
-    ll_uuid character varying(36) NOT NULL
+    ll_uuid character varying(36) NOT NULL,
+    parcels_updated bigint,
+    parcels_count_1km integer,
+    parcels_density_1km numeric(8,7),
+    parcels_count_5km integer,
+    parcels_density_5km numeric(8,7),
+    parcels_count_10km integer,
+    parcels_density_10km numeric(8,7),
+    parcels_count_25km integer,
+    parcels_density_25km numeric(8,7),
+    parcels_count_50km integer,
+    parcels_density_50km numeric(8,7)
 );
 
 
@@ -23691,6 +26870,83 @@ CREATE TRIGGER insert_parcels_density_natural_updated AFTER INSERT ON parcels_pr
 
 
 --
+-- Name: parcels_density insert_parcels_density_parcels_count_10km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_count_10km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_count_10km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_count_1km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_count_1km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_count_1km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_count_25km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_count_25km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_count_25km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_count_50km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_count_50km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_count_50km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_count_5km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_count_5km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_count_5km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_density_10km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_density_10km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_density_10km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_density_1km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_density_1km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_density_1km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_density_25km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_density_25km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_density_25km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_density_50km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_density_50km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_density_50km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_density_5km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_density_5km AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_density_5km_fn();
+
+
+--
+-- Name: parcels_density insert_parcels_density_parcels_updated; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_density_parcels_updated AFTER INSERT ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_density_parcels_updated_fn();
+
+
+--
 -- Name: parcels_density insert_parcels_density_pollution_10km; Type: TRIGGER; Schema: parcels_production; Owner: -
 --
 
@@ -25294,6 +28550,104 @@ CREATE TRIGGER insert_parcels_rank_active_days_in_2022_rank AFTER INSERT ON parc
 
 
 --
+-- Name: parcels_rank insert_parcels_rank_avg_active_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_active_days_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_active_days_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_cloudy_hours_10pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_cloudy_hours_10pct_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_10pct_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_cloudy_hours_50pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_cloudy_hours_50pct_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_50pct_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_cloudy_hours_90pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_cloudy_hours_90pct_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_cloudy_hours_90pct_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_daytime_hrs_below_0c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_daytime_hrs_below_0c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_0c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_daytime_hrs_below_10c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_daytime_hrs_below_10c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_10c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_daytime_hrs_below_5c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_daytime_hrs_below_5c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_daytime_hrs_below_5c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_dinner_outside_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_dinner_outside_days_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_dinner_outside_days_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_fair_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_fair_days_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_fair_days_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_hrs_below_0c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_hrs_below_0c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_hrs_below_0c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_hrs_below_10c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_hrs_below_10c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_hrs_below_10c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_hrs_below_5c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_hrs_below_5c_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_hrs_below_5c_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_indoor_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_indoor_days_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_indoor_days_rank_fn();
+
+
+--
+-- Name: parcels_rank insert_parcels_rank_avg_perfect_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_rank_avg_perfect_days_rank AFTER INSERT ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_rank_avg_perfect_days_rank_fn();
+
+
+--
 -- Name: parcels_rank insert_parcels_rank_closest_military_distance_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
 --
 
@@ -26498,6 +29852,447 @@ CREATE TRIGGER insert_parcels_viewshed_viewshed_w AFTER INSERT ON parcels_produc
 
 
 --
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_active_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_cloudy_hours_10pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_cloudy_hours_50pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_cloudy_hours_90pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_daytime_hours AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_daytime_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_daytime_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_daytime_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_dinner_outside_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_fair_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_indoor_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_avg_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_avg_perfect_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_avg_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_ll_uuid; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_ll_uuid AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_ll_uuid_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_active_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_cloudy_hours_10pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_cloudy_hours_50pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_cloudy_hours_90pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_daytime_hours AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_daytime_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_daytime_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_daytime_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_dinner_outside_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_fair_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_indoor_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_max_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_max_perfect_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_max_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_active_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_cloudy_hours_10pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_cloudy_hours_50pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_cloudy_hours_90pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_daytime_hours AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_daytime_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_daytime_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_daytime_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_dinner_outside_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_fair_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_indoor_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_median_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_median_perfect_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_median_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_active_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_cloudy_hours_10pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_cloudy_hours_50pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_cloudy_hours_90pct AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_daytime_hours AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_daytime_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_daytime_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_daytime_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_dinner_outside_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_fair_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_hrs_below_0c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_hrs_below_10c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_hrs_below_5c AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_indoor_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_min_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_min_perfect_days AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_min_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_updated; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_updated AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_updated_fn();
+
+
+--
+-- Name: parcels_weather_summary insert_parcels_weather_summary_years; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER insert_parcels_weather_summary_years AFTER INSERT ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.insert_parcels_weather_summary_years_fn();
+
+
+--
 -- Name: parcels insert_parcels_width; Type: TRIGGER; Schema: parcels_production; Owner: -
 --
 
@@ -27531,6 +31326,83 @@ CREATE TRIGGER update_parcels_density_natural_density_5km AFTER UPDATE ON parcel
 --
 
 CREATE TRIGGER update_parcels_density_natural_updated AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_natural_updated_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_count_10km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_count_10km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_count_10km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_count_1km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_count_1km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_count_1km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_count_25km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_count_25km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_count_25km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_count_50km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_count_50km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_count_50km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_count_5km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_count_5km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_count_5km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_density_10km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_density_10km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_density_10km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_density_1km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_density_1km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_density_1km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_density_25km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_density_25km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_density_25km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_density_50km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_density_50km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_density_50km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_density_5km; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_density_5km AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_density_5km_fn();
+
+
+--
+-- Name: parcels_density update_parcels_density_parcels_updated; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_density_parcels_updated AFTER UPDATE ON parcels_production.parcels_density FOR EACH ROW EXECUTE FUNCTION public.update_parcels_density_parcels_updated_fn();
 
 
 --
@@ -29137,6 +33009,104 @@ CREATE TRIGGER update_parcels_rank_active_days_in_2022_rank AFTER UPDATE ON parc
 
 
 --
+-- Name: parcels_rank update_parcels_rank_avg_active_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_active_days_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_active_days_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_cloudy_hours_10pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_cloudy_hours_10pct_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_cloudy_hours_10pct_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_cloudy_hours_50pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_cloudy_hours_50pct_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_cloudy_hours_50pct_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_cloudy_hours_90pct_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_cloudy_hours_90pct_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_cloudy_hours_90pct_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_daytime_hrs_below_0c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_daytime_hrs_below_0c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_0c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_daytime_hrs_below_10c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_daytime_hrs_below_10c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_10c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_daytime_hrs_below_5c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_daytime_hrs_below_5c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_daytime_hrs_below_5c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_dinner_outside_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_dinner_outside_days_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_dinner_outside_days_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_fair_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_fair_days_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_fair_days_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_hrs_below_0c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_hrs_below_0c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_hrs_below_0c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_hrs_below_10c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_hrs_below_10c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_hrs_below_10c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_hrs_below_5c_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_hrs_below_5c_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_hrs_below_5c_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_indoor_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_indoor_days_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_indoor_days_rank_fn();
+
+
+--
+-- Name: parcels_rank update_parcels_rank_avg_perfect_days_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_rank_avg_perfect_days_rank AFTER UPDATE ON parcels_production.parcels_rank FOR EACH ROW EXECUTE FUNCTION public.update_parcels_rank_avg_perfect_days_rank_fn();
+
+
+--
 -- Name: parcels_rank update_parcels_rank_closest_military_distance_rank; Type: TRIGGER; Schema: parcels_production; Owner: -
 --
 
@@ -30341,6 +34311,447 @@ CREATE TRIGGER update_parcels_viewshed_viewshed_w AFTER UPDATE ON parcels_produc
 
 
 --
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_active_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_cloudy_hours_10pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_cloudy_hours_50pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_cloudy_hours_90pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_daytime_hours AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_daytime_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_daytime_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_daytime_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_dinner_outside_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_fair_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_indoor_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_avg_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_avg_perfect_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_avg_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_ll_uuid; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_ll_uuid AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_ll_uuid_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_active_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_cloudy_hours_10pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_cloudy_hours_50pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_cloudy_hours_90pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_daytime_hours AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_daytime_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_daytime_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_daytime_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_dinner_outside_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_fair_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_indoor_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_max_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_max_perfect_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_max_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_active_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_cloudy_hours_10pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_cloudy_hours_50pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_cloudy_hours_90pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_daytime_hours AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_daytime_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_daytime_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_daytime_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_dinner_outside_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_fair_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_indoor_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_median_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_median_perfect_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_median_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_active_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_active_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_active_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_cloudy_hours_10pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_cloudy_hours_10pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_10pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_cloudy_hours_50pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_cloudy_hours_50pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_50pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_cloudy_hours_90pct; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_cloudy_hours_90pct AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_cloudy_hours_90pct_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_daytime_hours; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_daytime_hours AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_daytime_hours_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_daytime_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_daytime_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_daytime_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_daytime_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_daytime_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_daytime_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_daytime_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_dinner_outside_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_dinner_outside_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_dinner_outside_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_fair_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_fair_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_fair_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_hrs_below_0c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_hrs_below_0c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_hrs_below_0c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_hrs_below_10c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_hrs_below_10c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_hrs_below_10c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_hrs_below_5c; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_hrs_below_5c AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_hrs_below_5c_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_indoor_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_indoor_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_indoor_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_min_perfect_days; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_min_perfect_days AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_min_perfect_days_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_updated; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_updated AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_updated_fn();
+
+
+--
+-- Name: parcels_weather_summary update_parcels_weather_summary_years; Type: TRIGGER; Schema: parcels_production; Owner: -
+--
+
+CREATE TRIGGER update_parcels_weather_summary_years AFTER UPDATE ON parcels_production.parcels_weather_summary FOR EACH ROW EXECUTE FUNCTION public.update_parcels_weather_summary_years_fn();
+
+
+--
 -- Name: parcels update_parcels_width; Type: TRIGGER; Schema: parcels_production; Owner: -
 --
 
@@ -30471,7 +34882,6 @@ GRANT SELECT ON TABLE parcels_production.importers TO replication_user;
 -- Name: TABLE parcels; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels TO replication_user;
 
 
@@ -30479,7 +34889,6 @@ GRANT SELECT ON TABLE parcels_production.parcels TO replication_user;
 -- Name: TABLE parcels_agriculture; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_agriculture TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_agriculture TO replication_user;
 
 
@@ -30487,7 +34896,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_agriculture TO replication_user
 -- Name: TABLE parcels_airport; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_airport TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_airport TO replication_user;
 
 
@@ -30495,7 +34903,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_airport TO replication_user;
 -- Name: TABLE parcels_coastline; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_coastline TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_coastline TO replication_user;
 
 
@@ -30503,7 +34910,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_coastline TO replication_user;
 -- Name: TABLE parcels_density; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_density TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_density TO replication_user;
 
 
@@ -30511,7 +34917,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_density TO replication_user;
 -- Name: TABLE parcels_elevation; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_elevation TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_elevation TO replication_user;
 
 
@@ -30519,7 +34924,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_elevation TO replication_user;
 -- Name: TABLE parcels_geometry; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_geometry TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_geometry TO replication_user;
 
 
@@ -30542,7 +34946,6 @@ GRANT ALL ON SEQUENCE parcels_production.parcels_geometry_extra_ogc_fid_seq TO p
 -- Name: TABLE parcels_internet; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_internet TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_internet TO replication_user;
 
 
@@ -30550,7 +34953,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_internet TO replication_user;
 -- Name: TABLE parcels_meta; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_meta TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_meta TO replication_user;
 
 
@@ -30558,7 +34960,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_meta TO replication_user;
 -- Name: TABLE parcels_nature; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_nature TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_nature TO replication_user;
 
 
@@ -30573,7 +34974,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_rank TO replication_user;
 -- Name: TABLE parcels_road; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_road TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_road TO replication_user;
 
 
@@ -30581,7 +34981,6 @@ GRANT SELECT ON TABLE parcels_production.parcels_road TO replication_user;
 -- Name: TABLE parcels_viewshed; Type: ACL; Schema: parcels_production; Owner: -
 --
 
-GRANT ALL ON TABLE parcels_production.parcels_viewshed TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_viewshed TO replication_user;
 
 
@@ -30589,6 +34988,7 @@ GRANT SELECT ON TABLE parcels_production.parcels_viewshed TO replication_user;
 -- Name: TABLE parcels_weather; Type: ACL; Schema: parcels_production; Owner: -
 --
 
+GRANT ALL ON TABLE parcels_production.parcels_weather TO parcelsuser;
 GRANT SELECT ON TABLE parcels_production.parcels_weather TO replication_user;
 
 
