@@ -8,7 +8,6 @@ import qs from 'qs'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
-import { Worker, isMainThread, parentPort, workerData } from 'worker_threads'
 
 import db from '#db'
 import { isMain, get_parcels_query } from '#utils'
@@ -556,25 +555,6 @@ const calculate_hourly_weather = async ({ longitude, latitude, year }) => {
   return return_data
 }
 
-const get_filtered_parcels = async () => {
-  const parcels_query = get_parcels_query()
-  parcels_query.select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
-  parcels_query.join('coordinates', function () {
-    this.on('coordinates.lat', '=', 'parcels.lat')
-    this.andOn('coordinates.lon', '=', 'parcels.lon')
-  })
-
-  parcels_query
-    .leftJoin('parcels_weather', 'parcels_weather.ll_uuid', 'parcels.ll_uuid')
-    .whereNull('parcels_weather.updated')
-
-  parcels_query.orderByRaw('RANDOM()')
-
-  parcels_query.limit(100)
-
-  return parcels_query
-}
-
 const save_hourly_weather = async (inserts) => {
   await db('parcels_weather')
     .insert(inserts)
@@ -583,115 +563,28 @@ const save_hourly_weather = async (inserts) => {
   log(`inserted ${inserts.length} parcel hourly weather metrics`)
 }
 
-const calculate_filtered_parcels = async () => {
-  const num_threads = 4
-  const batch_size = 100
-  const workers = []
-  let has_more_parcels = true
+const get_filtered_parcels = async () => {
+  const parcels_query = get_parcels_query()
 
-  log(
-    `Processing parcels in batches of ${batch_size} across ${num_threads} threads`
-  )
-
-  // Create workers once
-  for (let i = 0; i < num_threads; i++) {
-    const worker = new Worker(new URL(import.meta.url), {
-      workerData: { worker_id: i + 1 }
-    })
-    workers.push(worker)
-  }
-
-  try {
-    while (has_more_parcels) {
-      // Get next batch of parcels
-      const parcels = await get_filtered_parcels()
-
-      if (!parcels.length) {
-        break
-      }
-
-      if (parcels.length !== 100) {
-        has_more_parcels = false
-      }
-
-      // Split parcels among workers
-      const chunk_size = Math.ceil(parcels.length / num_threads)
-      const worker_promises = workers.map((worker, i) => {
-        const start = i * chunk_size
-        const end = start + chunk_size
-        const chunk = parcels.slice(start, end)
-
-        return new Promise((resolve, reject) => {
-          const message_handler = (message) => {
-            if (message.type === 'progress') {
-              log(`Worker ${message.worker_id}: ${message.message}`)
-            } else if (message.type === 'result') {
-              worker.removeListener('message', message_handler)
-              resolve(message.data)
-            }
-          }
-
-          worker.on('message', message_handler)
-          worker.on('error', (error) => {
-            worker.removeListener('message', message_handler)
-            reject(error)
-          })
-
-          // Send chunk to worker
-          worker.postMessage({ type: 'process_parcels', parcels: chunk })
-        })
-      })
-
-      // Wait for all workers to complete current batch
-      const results = await Promise.all(worker_promises)
-      const inserts = results.flat()
-
-      if (inserts.length && !argv.dry) {
-        await save_hourly_weather(inserts)
-      } else if (inserts.length && argv.dry) {
-        console.log('Dry run - would have inserted:', inserts)
-      }
-
-      log(`Completed batch of ${parcels.length} parcels`)
-    }
-  } catch (error) {
-    log('Error processing parcels:', error)
-    throw error
-  } finally {
-    // Clean up workers
-    for (const worker of workers) {
-      worker.terminate()
-    }
-  }
-
-  log('Finished processing all parcels')
+  return parcels_query
+    .select('parcels.ll_uuid', 'parcels.lon', 'parcels.lat')
+    .leftJoin('parcels_weather', 'parcels_weather.ll_uuid', 'parcels.ll_uuid')
+    .whereNull('parcels_weather.updated')
+    .orderByRaw('RANDOM()')
 }
 
-const calculate_hourly_weather_for_parcels_worker = async (message) => {
-  if (message.type !== 'process_parcels') return
-
-  const { parcels } = message
-  const { worker_id } = workerData
+const calculate_parcels_for_batch = async (parcels) => {
   const timestamp = Math.round(Date.now() / 1000)
-  const inserts = []
-
-  parentPort.postMessage({
-    type: 'progress',
-    worker_id,
-    message: `Processing ${parcels.length} parcels`
-  })
+  let inserts = []
+  const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+  log(`parcels missing weather metrics: ${parcels.length}`)
 
   for (const [index, parcel] of parcels.entries()) {
     const { ll_uuid } = parcel
     const longitude = Number(parcel.lon)
     const latitude = Number(parcel.lat)
-    const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
 
-    parentPort.postMessage({
-      type: 'progress',
-      worker_id,
-      message: `Processing parcel ${index + 1}/${parcels.length} (${ll_uuid})`
-    })
+    log(`Processing parcel ${index + 1}/${parcels.length} (${ll_uuid})`)
 
     for (const year of years) {
       const year_data = await calculate_hourly_weather({
@@ -709,18 +602,35 @@ const calculate_hourly_weather_for_parcels_worker = async (message) => {
         ...year_data
       })
     }
+
+    // Save in smaller batches to avoid memory issues
+    if (inserts.length >= 20 && !argv.dry) {
+      await save_hourly_weather(inserts)
+      inserts = []
+    }
+
+    // Force garbage collection after each parcel if available
+    if (global.gc) {
+      global.gc()
+    }
   }
 
-  parentPort.postMessage({
-    type: 'progress',
-    worker_id,
-    message: `Completed processing ${parcels.length} parcels`
-  })
+  if (inserts.length && !argv.dry) {
+    await save_hourly_weather(inserts)
+  } else if (inserts.length && argv.dry) {
+    console.log('Dry run - would have inserted:', inserts)
+  }
+}
 
-  parentPort.postMessage({
-    type: 'result',
-    data: inserts
-  })
+const calculate_filtered_parcels = async () => {
+  try {
+    const parcels = await get_filtered_parcels()
+    await calculate_parcels_for_batch(parcels)
+    log('Finished processing all parcels')
+  } catch (error) {
+    log('Error processing parcels:', error)
+    throw error
+  }
 }
 
 const get_parcel_by_ll_uuid = async (ll_uuid) => {
@@ -732,47 +642,42 @@ const get_parcel_by_ll_uuid = async (ll_uuid) => {
 }
 
 const main = async () => {
-  if (isMainThread) {
-    let error
-    try {
-      if (argv.parcels) {
-        await calculate_filtered_parcels()
-      } else {
-        let longitude
-        let latitude
+  let error
+  try {
+    if (argv.parcels) {
+      await calculate_filtered_parcels()
+    } else {
+      let longitude
+      let latitude
 
-        if (argv.ll_uuid) {
-          const parcel = await get_parcel_by_ll_uuid(argv.ll_uuid)
-          if (!parcel) {
-            throw new Error(`No parcel found with ll_uuid: ${argv.ll_uuid}`)
-          }
-          longitude = parcel.lon
-          latitude = parcel.lat
-        } else if (argv.lat && argv.lon) {
-          longitude = argv.lon
-          latitude = argv.lat
-        } else {
-          // Default coordinates if no input provided
-          longitude = -80.3517
-          latitude = 38.2242
+      if (argv.ll_uuid) {
+        const parcel = await get_parcel_by_ll_uuid(argv.ll_uuid)
+        if (!parcel) {
+          throw new Error(`No parcel found with ll_uuid: ${argv.ll_uuid}`)
         }
-
-        const data = await calculate_hourly_weather({
-          longitude,
-          latitude,
-          year: argv.year
-        })
-        console.log(data)
+        longitude = parcel.lon
+        latitude = parcel.lat
+      } else if (argv.lat && argv.lon) {
+        longitude = argv.lon
+        latitude = argv.lat
+      } else {
+        // Default coordinates if no input provided
+        longitude = -80.3517
+        latitude = 38.2242
       }
-    } catch (err) {
-      error = err
-      console.log(error)
+
+      const data = await calculate_hourly_weather({
+        longitude,
+        latitude,
+        year: argv.year
+      })
+      console.log(data)
     }
-    process.exit()
-  } else {
-    // Worker process
-    parentPort.on('message', calculate_hourly_weather_for_parcels_worker)
+  } catch (err) {
+    error = err
+    console.log(error)
   }
+  process.exit()
 }
 
 if (isMain) {
