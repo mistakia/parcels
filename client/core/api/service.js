@@ -45,6 +45,10 @@ export const api = {
   get_heatmap_tile(params) {
     const url = `${API_URL}/heatmaps?${qs.stringify(params)}`
     return { url }
+  },
+  get_parcel({ ll_uuid }) {
+    const url = `${API_URL}/parcels/${ll_uuid}`
+    return { url }
   }
 }
 

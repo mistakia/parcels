@@ -49,7 +49,7 @@ export function* watch_set_selected_parcel_view_id() {
 //  ROOT
 // -------------------------------------
 
-export const parcelSagas = [
+export const parcels_sagas = [
   fork(watch_load_more_parcels),
   fork(watch_set_selected_parcel_view_id),
   fork(watch_parcel_view_state_changed)

@@ -5,7 +5,7 @@ import { Parcel } from './parcel'
 import { parcel_view_actions } from '@core/parcel-views'
 import { app_actions } from '@core/app'
 
-export function parcelsReducer(state = new List(), { payload, type }) {
+export function parcels_reducer(state = new List(), { payload, type }) {
   switch (type) {
     case parcel_view_actions.PARCEL_VIEW_STATE_CHANGED:
     case parcel_view_actions.SAVE_PARCELS_VIEW:

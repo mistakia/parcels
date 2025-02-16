@@ -12,7 +12,7 @@ const initialState = new Record({
   selected_parcel_ll_uuid: null
 })
 
-export function appReducer(state = initialState(), { payload, type }) {
+export function app_reducer(state = initialState(), { payload, type }) {
   switch (type) {
     case app_actions.APP_LOADED:
       return state.merge({ isLoaded: true })

@@ -6,6 +6,7 @@ import {
   get_parcels_query_results,
   get_parcels_heatmap
 } from '#common'
+import parcel from './parcel.mjs'
 
 const router = express.Router()
 
@@ -222,5 +223,7 @@ router.get('/heatmap', async (req, res) => {
     res.status(500).send({ error: err.toString() })
   }
 })
+
+router.use('/:ll_uuid', parcel)
 
 export default router

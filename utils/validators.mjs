@@ -2,6 +2,16 @@ import Validator from 'fastest-validator'
 
 const v = new Validator({ haltOnFirstError: true })
 
+const ll_uuid_schema = {
+  type: 'string',
+  format: {
+    type: 'uuid',
+    version: 1
+  },
+  $$root: true
+}
+export const ll_uuid_validator = v.compile(ll_uuid_schema)
+
 const sort_schema = {
   type: 'array',
   items: {

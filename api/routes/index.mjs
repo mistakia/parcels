@@ -1,4 +1,4 @@
-import parcels from './parcels.mjs'
+import parcels from './parcels/index.mjs'
 import views from './views.mjs'
 import heatmap from './heatmap.mjs'
 
