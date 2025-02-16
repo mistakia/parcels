@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 
 import Routes from '@views/routes'
 import Menu from '@components/menu/menu'
+import SelectedParcel from '@components/selected-parcel'
 
 export default function App({ load, is_loaded }) {
   React.useEffect(() => {
@@ -27,6 +28,7 @@ export default function App({ load, is_loaded }) {
       <Box sx={{ width: '100%' }}>
         <Routes />
       </Box>
+      <SelectedParcel />
     </Box>
   )
 }

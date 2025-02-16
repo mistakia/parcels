@@ -8,7 +8,8 @@ const initialState = new Record({
   isLoaded: false,
   public_key: null,
   private_key: null,
-  selected_parcel_view_id: DEFAULT_PARCEL_VIEW_ID
+  selected_parcel_view_id: DEFAULT_PARCEL_VIEW_ID,
+  selected_parcel_ll_uuid: null
 })
 
 export function appReducer(state = initialState(), { payload, type }) {
@@ -33,6 +34,11 @@ export function appReducer(state = initialState(), { payload, type }) {
         public_key: payload.public_key,
         private_key: payload.private_key
       })
+
+    case app_actions.SET_SELECTED_PARCEL: {
+      const { ll_uuid } = payload
+      return state.merge({ selected_parcel_ll_uuid: ll_uuid })
+    }
 
     default:
       return state

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Table from 'react-table/index.js'
 
+const new_view_prefix_columns = ['ll_uuid']
+
 export default function ParcelsPage({
   parcels,
   selected_parcel_view,
@@ -37,6 +39,7 @@ export default function ParcelsPage({
         is_fetching={selected_parcel_view.is_fetching}
         views={all_parcel_views}
         delete_view={delete_parcels_view}
+        new_view_prefix_columns={new_view_prefix_columns}
         disable_splits
       />
     </>
